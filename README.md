@@ -6,4 +6,4 @@ Programming notes and snipets in one place
 
 ##### Python
 
-*  [Imports](../python/imports.md)
+*  [Imports](../blob/master/python/imports.md)
