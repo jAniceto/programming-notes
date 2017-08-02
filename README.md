@@ -6,4 +6,4 @@ Programming notes and snipets in one place
 
 ##### Python
 
-*  [Imports](../python/imports)
+*  [Imports](../python/imports.md)
