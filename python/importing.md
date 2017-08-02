@@ -1,9 +1,6 @@
 # Imports in Python
 ---
 
-## Prerequisites
----
-
 ### Namespace
 
 For example, you might be writing some code that has a function called `fun()` and there is another module available, which also has a function with the name `fun()`. Now the interpreter has no way of knowing which version of `fun()` function you are referring within your code.
