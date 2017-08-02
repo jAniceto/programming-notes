@@ -2,9 +2,9 @@
 Programming notes and snipets in one place
 
 
-### Content
+## Content
 
-##### Python
+### Python
 
 * [Imports](/python/imports.md)
 * [Virtual Environments](/python/virtual-environments.md)
