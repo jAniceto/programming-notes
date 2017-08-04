@@ -8,7 +8,7 @@ Programming notes and snipets in one place.
 * [Imports](/python/imports.md)
 * [Virtual Environments](/python/virtual-environments.md)
 * [MySQL](/python/mysql.md)
-* [Emails](/python/emails.md)
+* [Emails](/python/email.md)
 
 ### Command line
 * [Keep SSH sessions running](/cmd/keep-ssh-running.md)
