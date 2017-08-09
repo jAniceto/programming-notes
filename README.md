@@ -14,3 +14,4 @@ Programming notes and snipets in one place.
 * [MySQL](/python/mysql.md)
 * [Emails](/python/email.md)
 * [Flask](/python/flask.md)
+* [Storing data in dictionaries](/python/store-dicts.md)
