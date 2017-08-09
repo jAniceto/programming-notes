@@ -15,3 +15,4 @@ Programming notes and snipets in one place.
 * [Emails](/python/email.md)
 * [Flask](/python/flask.md)
 * [Storing data in dictionaries](/python/store-dicts.md)
+* [Web scrapping](/python/web-scrapping.md)
