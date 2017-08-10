@@ -16,3 +16,4 @@ Programming notes and snipets in one place.
 * [Flask](/python/flask.md)
 * [Storing data in dictionaries](/python/store-dicts.md)
 * [Web scrapping](/python/web-scrapping.md)
+* [String formatting](/python/string-formatting.md)
