@@ -1,4 +1,4 @@
-# String formating in Python
+# String formatting in Python
 
 ### F-strings (Python >=3.6)
 ```python
