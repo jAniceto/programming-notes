@@ -1,6 +1,6 @@
 # Linux Crontab
 
-To view currently active crontab entries: `$ sudo crontab -1`
+To view currently active crontab entries: `$ sudo crontab -l`
 
 To enter the edit the crontab enter the following command in the terminal: `$ sudo crontab -e`
 
@@ -27,4 +27,9 @@ string        | meaning
 ### Example 1: Run a python script every day a 16:15
 ```
 15 16 * * * sudo python /home/pi/projects/script1.py
+```
+
+### Example 2: Run a python script every five days a 18:30
+```
+30 18 */5 * * sudo python /home/pi/projects/script1.py
 ```
