@@ -22,7 +22,7 @@ f'My app name is {name}.'  # 'My app name is Test.
 
 The following table shows various ways to format numbers using str.format(), including examples for both float formatting and integers.
 
-To run examples use print("FORMAT".format(NUMBER)). So to get the output of the first example, you would run: print("{:.2f}".format(3.1415926));
+To run examples use `print("FORMAT".format(NUMBER))`. So to get the output of the first example, you would run: `print("{:.2f}".format(3.1415926))`.
 
 Number |	Format |	Output |	Description
 --- | --- | --- | ---
