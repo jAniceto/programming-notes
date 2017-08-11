@@ -39,6 +39,19 @@ INSERT INTO users(name, email, username, password) VALUES(x, x, x, x)
 
 ## Usage in Python
 
+#### Configuring in MySQL in Flask:
+```python
+# Config MySQL
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'mypassword'
+app.config['MYSQL_DB'] = 'flaskappdb'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'  # useful to return queries as dictionaries
+
+# Initialize MySQL
+mysql = MySQL(app)
+```
+
 Create cursor:  `cursor = mysql.connection.cursor()`
 
 Execute a MySQL command:  `cursor.execute( command )`
@@ -48,3 +61,9 @@ Add data:  `cursor.execute("INSERT INTO users(name, email, username, password) V
 Commit to database:  `mysql.connection.commit()`
 
 Close:  `cursor.close()`
+
+#### Check DB for a login: 
+```python
+result = cursor.execute("SELECT * FROM users WHERE username = %s", [username])`
+data = cursor.fetchone()
+```
