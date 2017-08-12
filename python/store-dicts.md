@@ -20,6 +20,10 @@ with open('data.json', 'r') as fp:
     data = json.load(fp)
 ```
 
+#### json.dump() vs json.dumps(), json.load() vs json.loads()
+
+If you want to dump the JSON into a file/socket or whatever, then you should go for `dump()`. If you only need it as a string (for printing, parsing or whatever) then use `dumps()` (dump string). The functions with an `s` take string parameters. The others take file streams.
+
 ---
 
 ## Pickle
