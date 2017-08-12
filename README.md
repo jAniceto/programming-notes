@@ -1,5 +1,5 @@
 # Programming Notes
-Programming notes and snipets in one place.
+Programming notes, snipets and examples in one place.
 
 ## Content
 * [Github Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
