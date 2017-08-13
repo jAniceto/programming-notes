@@ -39,11 +39,6 @@ for activity in client.get_activities(after = "2010-01-01T00:00:00Z",  limit=5):
     print("{0.name} {0.moving_time}".format(activity))
 ```
 
-
-
-
-
-
-```python
-
-```
+##### Official documentation
+* [Strava API Docs](http://strava.github.io/api/)
+* [stravalib Docs](http://pythonhosted.org/stravalib/index.html)
