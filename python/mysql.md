@@ -37,6 +37,28 @@ INSERT INTO users(name, email, username, password) VALUES(x, x, x, x)
 `SELECT * FROM users;`  Select all rows from users table
 
 
+## Copying a database to another server
+
+1. One the server where the DB is located make a backup file by running the following command (on Windows it may be necessary to `cd Program Files/MySQL/MySQL Server 5.1/bin` first: 
+
+   `mysqldump -u root -p database_name > C:\Users\USER\Desktop\database_name.sql`
+
+   Alternatively: `mysqldump -u[root] -p[password] database_123 > C:\Users\USER\Desktop\database_123.sql`
+
+   If getting an "Access Denied" it message probably means you are outputing to a directory where you have no permission to create files.
+
+2. On the second server create a new database using the same database name:
+
+   `mysql -u root -p` to start the MySQL shell
+
+   `CREATE DATABASE database_123;` to create the new DB
+
+3. Copy the created backup to the second server and import it:
+
+   `mysql -u[root] -p[password] database_name < database_name.sql`
+
+
+
 ## Usage in Python
 
 #### Configuring in MySQL in Flask:
