@@ -2,9 +2,12 @@
 Programming notes, snipets and examples in one place.
 
 ## Content
+
+### Python
 * [Github Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-* [Crontab](/crontab.md)
-* [Keep SSH sessions running](/keep-ssh-running.md)
+* [Crontab](/general/crontab.md)
+* [Keep SSH sessions running](/general/keep-ssh-running.md)
+* [Windows batch scripts](/general/batch-script.md)
 
 ### Python
 
