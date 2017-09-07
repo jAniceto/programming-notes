@@ -3,13 +3,15 @@ Programming notes, snipets and examples in one place.
 
 ## Content
 
-### Python
+### General
 * [Github Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 * [Crontab](/general/crontab.md)
 * [Keep SSH sessions running](/general/keep-ssh-running.md)
 * [Windows batch scripts](/general/batch-script.md)
 
 ### Python
+
+* [Hosting Python scripts online](/python/hosting.md)
 
 #### Core concepts
 * [Imports](/python/imports.md)
