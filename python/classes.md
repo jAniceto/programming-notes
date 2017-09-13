@@ -68,3 +68,7 @@ class Airplane:
 ```
 
 So if you wanted to call this method you'd do something like this: `airplane1.fly()`. Actually this is the same thing as this: `Airplane.fly(airplane1)`. Both of these would do the same thing, i.e. print out "I'm flying!". So `airplane1` is the instance that we used to call our `fly` method. This instance is what gets passed to `self`. 
+
+
+### References:
+* [https://www.reddit.com/r/learnpython/comments/1cpu7x/explain_classes_init_and_self_like_im_five/](https://www.reddit.com/r/learnpython/comments/1cpu7x/explain_classes_init_and_self_like_im_five/)
