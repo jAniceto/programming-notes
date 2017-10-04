@@ -20,3 +20,4 @@ My prefered configurations and extensions in various development environments. M
 #### Other 
 - [OneDark-Pro theme](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme) 
 - [Magic Python](https://marketplace.visualstudio.com/items?itemName=magicstack.MagicPython)
+- [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer)
