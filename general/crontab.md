@@ -4,6 +4,8 @@ To view currently active crontab entries: `$ sudo crontab -l`
 
 To enter the edit the crontab enter the following command in the terminal: `$ sudo crontab -e`
 
+**Note:** Don't use `sudo` in a cron job. Instead edit root's crontab instead of your own, e.g. `sudo crontab -e` and then enter commands without `sudo`.
+
 At the bottom of the file enter one line for each task in the following format:
 
 ``` 
@@ -33,3 +35,8 @@ string        | meaning
 ```
 30 18 */5 * * sudo python /home/pi/projects/script1.py
 ```
+
+
+### Helpfull links:
+
+https://crontab.guru
