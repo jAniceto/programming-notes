@@ -8,6 +8,10 @@ Programming notes, snipets and examples in one place.
 * [Crontab](/general/crontab.md)
 * [Keep SSH sessions running](/general/keep-ssh-running.md)
 * [Windows batch scripts](/general/batch-script.md)
+* [Command Line Cheat Sheet](/general/CLI-Cheat-Sheet.pdf)
+* [Development environments](/general/dev-environments.md)
+* [Git](/general/git.md) cheat sheets [here](/general/git-cheatsheet-EN-grey.pdf) and [here](/general/github-git-cheat-sheet.pdf)
+
 
 ### Python
 
@@ -19,14 +23,18 @@ Programming notes, snipets and examples in one place.
 * [MySQL](/python/mysql.md)
 * [Emails](/python/email.md)
 * [Storing data in dictionaries (JSON and pickle)](/python/store-dicts.md)
-* [Web scrapping](/python/web-scrapping.md)
 * [String formatting](/python/string-formatting.md)
+* [args and kwargs](/python/args-kwargs.md)
+* [Built-in functions](/python/builtin-functions.md)
+* [Classes](/python/classes.md)
+* [Imports](/python/imports.md)
 
 
 #### External libraries
 * [Flask](/python/flask.md)
 * [Image manipulation](/python/image-manipulation.md)
 * [Strava API](/python/stravalib.md)
+* [Beautiful Soup](/python/beautifulsoup4.md)
 
 ### HTML/CSS
 * [CSS selectors](/html-css/css-selectors.md)
