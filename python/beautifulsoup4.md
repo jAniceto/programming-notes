@@ -10,7 +10,7 @@ pip install requests
 
 ## Usage
 
-```
+```python
 from bs4 import BeautifulSoup
 import requests
 
