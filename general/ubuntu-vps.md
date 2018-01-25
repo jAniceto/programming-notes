@@ -95,6 +95,7 @@ Add the following lines of code to the file to configure the virtual host. Be su
 ```
 <VirtualHost *:80>
 		ServerName mywebsite.com
+		ServerAlias www.mywebsite.com
 		ServerAdmin admin@mywebsite.com
 		WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
 		<Directory /var/www/FlaskApp/FlaskApp/>
