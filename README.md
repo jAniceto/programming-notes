@@ -1,9 +1,7 @@
 # Programming Notes
 Programming notes, snipets and examples in one place.
 
-## Content
-
-### General
+## General
 * [Github Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 * [Crontab](/general/crontab.md)
 * [Keep SSH sessions running](/general/keep-ssh-running.md)
@@ -14,7 +12,7 @@ Programming notes, snipets and examples in one place.
 * [Deploy a Flask app on an Ubuntu VPS](/general/ubuntu-vps.md)
 
 
-### Python
+## Python
 
 * [Hosting Python scripts online](/python/hosting.md)
 
@@ -37,10 +35,10 @@ Programming notes, snipets and examples in one place.
 * [Strava API](/python/stravalib.md)
 * [Beautiful Soup](/python/beautifulsoup4.md)
 
-### HTML/CSS
+## HTML/CSS
 * [CSS selectors](/html-css/css-selectors.md)
 
-### Javascript
+## Javascript
 * [DataTables Library](/javascript/DataTables.md)
 * [Caching data](/javascript/cache-data.md)
 
