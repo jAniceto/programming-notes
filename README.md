@@ -10,6 +10,8 @@ Programming notes, snipets and examples in one place.
 * [Development environments](/general/dev-environments.md)
 * [Git](/general/git.md) cheat sheets [here](/general/git-cheatsheet-EN-grey.pdf) and [here](/general/github-git-cheat-sheet.pdf)
 * [Deploy a Flask app on an Ubuntu VPS](/general/ubuntu-vps.md)
+* [Hiding Passwords and Secret Keys in Environment Variables](/general/os-env-vars.md)
+
 
 
 ## Python
