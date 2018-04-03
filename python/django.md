@@ -1,0 +1,65 @@
+# Building a Django site
+
+### Installing Django
+
+`pip install Django`
+
+### Start project
+
+Navigate via the terminal or command prompt to an area where you want to work on your project, then do:
+
+`django-admin startproject mysite`
+
+This will create a directory called mysite. Within that directory, you have another one called mysite, along with a manage.py file. The manage.py file lets you easily interact with your project via the command line. The contents of the second mysite directory contain your settings and urls mainly. Broken down:
+
+```cmd
+/mysite/  REM Simple container, Call whatever you want.
+    manage.py  REM Lets you interact with your project via the command line.
+    /mysite/  REM Actual project directory.
+        __init__.py  REM Tells python this is a Python package.
+        settings.py  REM Settings for the project.
+        urls.py  REM URL rules. Django docs aptly describes as your table of contents.
+        wsgi.py  REM WSGI magic begins here. Worry about this when it comes time to actually deploy to a server.
+```
+
+The paradigm of Django is that either a website is an app, or a collection of apps in most cases. We currently have our website, called "mysite" for now. For now, run the following via the command line or terminal to run the local development server, which you can reach at http://127.0.0.1:8000. 
+
+`python manage.py runserver`
+
+#### Create an app
+
+Change directory into your new directory: `cd mysite`. Next, we create a new app:
+
+`python manage.py startapp webapp`
+
+Now a new directory exists, called webapp. In here, we see a lot of similar files, and some new ones:
+
+```
+webapp/
+    migrations/ 
+    __init__.py
+    admin.py
+    apps.py
+    models.py
+    tests.py
+    views.py
+```
+
+Next, we need to include our new app in our installed applications:
+
+Open the `mysite/settings.py` file and add the `'webapp'` line:
+
+```python
+# ...this is just a slice of code within settings.py 
+# do not delete the other code
+# just add 'webapp' to the list.
+INSTALLED_APPS = [
+    'webapp',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+```
