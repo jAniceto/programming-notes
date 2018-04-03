@@ -33,6 +33,7 @@ Programming notes, snipets and examples in one place.
 
 #### External libraries
 * [Flask](/python/flask.md)
+* [Django](/python/django.md)
 * [Image manipulation](/python/image-manipulation.md)
 * [Strava API](/python/stravalib.md)
 * [Beautiful Soup](/python/beautifulsoup4.md)
