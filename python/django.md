@@ -24,11 +24,12 @@ This will create a directory called mysite. Within that directory, you have anot
 
 The paradigm of Django is that either a website is an app, or a collection of apps in most cases. We currently have our website, called "mysite" for now. For now, run the following via the command line or terminal to run the local development server, which you can reach at http://127.0.0.1:8000. 
 
-`python manage.py runserver`
+```
+cd mysite
+python manage.py runserver
+```
 
 #### Create an app
-
-Change directory into your new directory: `cd mysite`. Next, we create a new app:
 
 `python manage.py startapp webapp`
 
