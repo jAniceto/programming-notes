@@ -1,10 +1,10 @@
 # Building a Django site
 
-### Installing Django
+## Installing Django
 
 `pip install Django`
 
-### Start project
+## Start project
 
 Navigate via the terminal or command prompt to an area where you want to work on your project, then do:
 
@@ -29,7 +29,7 @@ cd mysite
 python manage.py runserver
 ```
 
-#### Create an app
+### Create an app
 
 `python manage.py startapp webapp`
 
@@ -64,3 +64,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 ```
+
+### Make migrations (databases)
+
+Whenever you define new models, you need to migrate: 
+
+`python manage.py makemigrations`
+
+The `makemigrations` command tells Django that you've made some model changes, and you want to save them as a migration. Migrations are used any time you want Django to recognize changes to the models and database schema. **Adding data to an existing database table, for example, is not something that needs a migration, changing that table's structure (by changing the model), would require a migration.** You can also tell Django you want to make migrations for only a specific app, like: `python manage.py makemigrations webapp`
+
+Once you've made migrations, nothing has actually happened yet. You can run a migrate, but there is one more check you can make. This will output the proposed SQL that will be run for you by Django when you migrate. The `0001` is the migration ID. You can see this on the `0001_initial.py` file in the migrations folder of your app.
+
+`python manage.py sqlmigrate webapp 0001` (Optional)
+
+If all looks good, you can run the `migrate` command. This will actually perform the migrations. If this is your first time doing this, you should see quite a bit has been migrated.
+
+`python manage.py migrate`
+
+
