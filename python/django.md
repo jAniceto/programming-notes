@@ -82,3 +82,19 @@ If all looks good, you can run the `migrate` command. This will actually perform
 `python manage.py migrate`
 
 
+### Admin control panel
+
+To access the admin page, you visit /admin/, assuming the admin app is indeed installed. To login to the admin panel you need to create an user:
+
+`python manage.py createsuperuser`
+
+To register a model create a webapp/admin.py file, and in it put:
+
+```python
+from django.contrib import admin
+from webapp.models import Post
+
+admin.site.register(Post)
+```
+
+Here, we are importing the admin, the Post model, and then we're registering the Post model.
