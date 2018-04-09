@@ -98,3 +98,30 @@ admin.site.register(Post)
 ```
 
 Here, we are importing the admin, the Post model, and then we're registering the Post model.
+
+
+## Using MySQL database 
+
+By default Django works with SQLite database management system. First, create the MySQL database using the MySQL shell: 
+
+`CREATE DATABASE django_db;`
+
+To use MySQL in Django, instead of SQLite, do the following:
+
+`pip install mysqlclient`
+
+Go to the main `settings.py` file and modify the DATABASES section to:
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_db',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': ''
+    }
+}
+```
+Now you can run the migrate command to create all tables Django needs: `python manage.py migrate`
