@@ -125,3 +125,41 @@ DATABASES = {
 }
 ```
 Now you can run the migrate command to create all tables Django needs: `python manage.py migrate`
+
+## Django authentication system
+
+Base project struture for this section:
+
+```
+mysite/
+  manage.py
+  
+  mysite/
+    __init__.py
+    settings.py
+    urls.py
+    wsgi.py
+  
+  app1/
+    __init__.py
+    admin.py
+    apps.py
+    migrations/
+    models.py
+    tests.py
+    views.py
+```
+
+```python
+# mysite/urls.py
+
+```
+
+```python
+# mysite/urls.py
+
+urlpatterns = [
+  ...
+  path('accounts/', include(django.contrib.auth.urls))
+]
+```
