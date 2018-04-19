@@ -24,6 +24,7 @@ Programming notes, snipets and examples in one place.
 * [MySQL](/python/mysql.md)
 * [Emails](/python/email.md)
 * [Storing data in dictionaries (JSON and pickle)](/python/store-dicts.md)
+* [Handling CSV](/python/csv.md)
 * [String formatting](/python/string-formatting.md)
 * [args and kwargs](/python/args-kwargs.md)
 * [Built-in functions](/python/builtin-functions.md)
