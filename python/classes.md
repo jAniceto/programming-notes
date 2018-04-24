@@ -70,5 +70,55 @@ class Airplane:
 So if you wanted to call this method you'd do something like this: `airplane1.fly()`. Actually this is the same thing as this: `Airplane.fly(airplane1)`. Both of these would do the same thing, i.e. print out "I'm flying!". So `airplane1` is the instance that we used to call our `fly` method. This instance is what gets passed to `self`. 
 
 
+### Classes
+
+```python
+# Function, this lives outside a class
+def add(a, b):
+    return a + b
+
+
+class Adder():
+
+    # __init__ roughly equivilant to a constructor in other languages
+    def __init__(self, a, b):
+        # Adding attributes to this instance of our class
+        self.a = a
+        self.b = b
+
+    # Method, This belongs to an instance of a class and must have self as first argument. self refers to an instance of a class
+    def add(self):
+        return self.a + self.b
+
+    # CLass Method, belongs to a class and is shared by every instance of the class, must have the class as first argument
+    @classmethod
+    def class_add(cls, x, y):
+        return x + y
+
+    # Static Method, Only belongs to the class for organisation, can't reference class or instance attributes
+    @staticmethod
+    def static_add(c, d):
+        return c + d
+
+
+# Let's start with an instance initialized with values for a and b
+foo = Adder(1, 2)
+# we call the add method of foo which refernces the values we initialized the class with
+print ('Instance result', foo.add())
+
+# Class method doesnt require an instance, note no () after Adder, we arent creating an instance, just referencing the class
+bar = Adder.class_add(1, 2)
+print ('Class result', bar)
+
+# Static, similar to classmethod we don't need to create an instance
+baz = Adder.static_add(1, 2)
+print ('Static result', baz)
+
+# Finally we'll just use our add function
+spam = add(1, 2)
+print ('Function result', spam)
+```
+
+
 ### References:
 * [https://www.reddit.com/r/learnpython/comments/1cpu7x/explain_classes_init_and_self_like_im_five/](https://www.reddit.com/r/learnpython/comments/1cpu7x/explain_classes_init_and_self_like_im_five/)
