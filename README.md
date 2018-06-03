@@ -16,13 +16,11 @@ Programming notes, snipets and examples in one place.
 
 ## Python
 
+* [Useful and common python operations snippets](/python/snippets.md)
 * [Hosting Python scripts online](/python/hosting.md)
 
 #### Core concepts
 * [Imports](/python/imports.md)
-* [Virtual Environments](/python/virtual-environments.md)
-* [MySQL](/python/mysql.md)
-* [Emails](/python/email.md)
 * [Storing data in dictionaries (JSON and pickle)](/python/store-dicts.md)
 * [Handling CSV](/python/csv.md)
 * [String formatting](/python/string-formatting.md)
@@ -30,7 +28,14 @@ Programming notes, snipets and examples in one place.
 * [Built-in functions](/python/builtin-functions.md)
 * [Classes](/python/classes.md)
 * [Imports](/python/imports.md)
+* [Slice notation](python/slice-notation.md)
 
+#### Intermediate or advanced operations
+* [Virtual Environments](/python/virtual-environments.md)
+* [MySQL](/python/mysql.md)
+* [Emails](/python/email.md)
+* [Progress bars](python/progress-bar.md)
+* [Magic methods](python/magic-methods.md)
 
 #### External libraries
 * [Flask](/python/flask.md)
