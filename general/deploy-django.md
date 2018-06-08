@@ -28,7 +28,7 @@ Install the database system and the libraries needed to interact with it.
 
 #### For MySQL
 ```
-$ sudo apt-get libmysqlclient-dev
+$ sudo apt-get install libmysqlclient-dev
 $ sudo apt-get install mysql-server mysql-client
 ```
 
@@ -39,7 +39,7 @@ $ systemctl status mysql.service
 
 If the output is negative you can run `sudo systemctl start mysql` to get `mysql.service` started again. Now you can log in with your MySQL credentials using the following command. Where `-u` is the flag for declaring your username and `-p` is the flag that tells MySQL that this user requires a password:
 
-`$ mysql -u db_user -p`
+`$ sudo mysql -u db_user -p`
 
 ```mysql
 mysql> SHOW DATABASES;
@@ -76,8 +76,17 @@ $ pip install django gunicorn
 ```
 
 ## 4) Create Django project
+
+Since we already have a project directory, we will tell Django to install the files here. It will create a second level directory with the actual code, which is normal, and place a management script in this directory. The key to this is that we are defining the directory explicitly instead of allowing Django to make decisions relative to our current directory:
 ```
-$ django-admin startproject myproject
+$ django-admin startproject myproject ~/myproject
+```
+
+At this point, your project directory (~/myproject in our case) should have the following content:
+```
+~/myproject/manage.py: A Django project management script.
+~/myproject/myproject/: The Django project package. This should contain the __init__.py, settings.py, urls.py, and wsgi.py files.
+~/myproject/myprojectenv/: The virtual environment directory we created earlier.
 ```
 
 Go to the end of the `settings.py` file and add `STATIC_ROOT` as shown below:
@@ -128,7 +137,7 @@ password = db_password
 default-character-set = utf8
 ```
 
-Where database name in our case is blog_data, your username for the MySQL server is the one you’ve created, and the password is the MySQL server password you’ve created. Also, you’ll notice that utf8 is set as the default encoding, this is a common way to encode unicode data in MySQL. Once the file has been edited, we need to restart MySQL for the changes to take effect.
+Where database name in our case is mysite, your username for the MySQL server is the one you’ve created, and the password is the MySQL server password you’ve created. Also, you’ll notice that utf8 is set as the default encoding, this is a common way to encode unicode data in MySQL. Once the file has been edited, we need to restart MySQL for the changes to take effect.
 ```
 $ systemctl daemon-reload
 $ systemctl restart mysql
@@ -136,7 +145,7 @@ $ systemctl restart mysql
 
 Please note that restarting MySQL takes a few seconds, so please be patient. Now, let's test the MySQL connection to the application. We need to verify that the configurations in Django detect your MySQL server properly. We can do this by simply running the server. If it fails, it means that the connection isn’t working properly. Otherwise, the connection is valid.
 ```
-$ cd ~/my_blog_app/blog/
+$ cd ~/mysite/mysite/
 $ python manage.py runserver your-server-ip:8000
 ```
 
