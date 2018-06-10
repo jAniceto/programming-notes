@@ -22,9 +22,10 @@ This will install pip, the Python development files needed to build Gunicorn lat
 
 Install the database system and the libraries needed to interact with it.
 
-#### For Postgres
-
-`$ sudo apt-get install postgresql postgresql-contrib`
+#### For Postgres: 
+```
+$ sudo apt-get install postgresql postgresql-contrib`
+```
 
 #### For MySQL
 ```
@@ -38,8 +39,9 @@ $ systemctl status mysql.service
 ```
 
 If the output is negative you can run `sudo systemctl start mysql` to get `mysql.service` started again. Now you can log in with your MySQL credentials using the following command. Where `-u` is the flag for declaring your username and `-p` is the flag that tells MySQL that this user requires a password:
-
-`$ sudo mysql -u db_user -p`
+```
+$ sudo mysql -u db_user -p
+```
 
 ```mysql
 mysql> SHOW DATABASES;
@@ -49,7 +51,7 @@ mysql> SHOW DATABASES;
 
 Whenever you'd like to exit MySQL server, press CTRL + D.
 
-## 3) Create a Python Virtual Environment
+## 4) Create a Python Virtual Environment
 
 ```
 $ sudo -H pip3 install --upgrade pip
@@ -75,7 +77,7 @@ With your virtual environment active, install Django and Gunicorn:
 $ pip install django gunicorn
 ```
 
-## 4) Create Django project
+## 5) Create Django project
 
 Since we already have a project directory, we will tell Django to install the files here. It will create a second level directory with the actual code, which is normal, and place a management script in this directory. The key to this is that we are defining the directory explicitly instead of allowing Django to make decisions relative to our current directory:
 ```
@@ -106,6 +108,24 @@ Add your server’s IP address between the square brackets and single quotes to 
 # ALLOWED_HOSTS = ['.example.com', '203.0.113.5']
 ALLOWED_HOSTS = ['your_server_domain_or_IP', 'second_domain_or_IP', . . .]
 ```
+
+Migrate the initial database schema to our database using the management script:
+
+```
+(venv) $ python ~/myproject/manage.py makemigrations
+(venv) $ python ~/myproject/manage.py migrate
+```
+Create an administrative user for the project by typing:
+```
+(venv) $ ~/myproject/manage.py createsuperuser
+```
+
+We can collect all of the static content into the directory location we configured by typing:
+```
+(venv) $ ~/myproject/manage.py collectstatic
+```
+
+The static files will then be placed in a directory called static within your project directory.
 
 #### Connect your Django app to MySQL
 
@@ -149,7 +169,7 @@ $ cd ~/mysite/mysite/
 $ python manage.py runserver your-server-ip:8000
 ```
 
-## 5) Setting up Gunicorn's ability to serve the project
+## 6) Setting up Gunicorn's ability to serve the project
 The last thing we want to do before leaving our virtual environment is test Gunicorn to make sure that it can serve the application. We can do this by entering our project directory and using gunicorn to load the project's WSGI module:
 
 ```
@@ -161,11 +181,15 @@ This will start Gunicorn on the same interface that the Django development serve
 
 We passed Gunicorn a module by specifying the relative directory path to Django's wsgi.py file, which is the entry point to our application, using Python's module syntax. Inside of this file, a function called application is defined, which is used to communicate with the application. When you are finished testing, hit CTRL-C in the terminal window to stop Gunicorn. We're now finished configuring our Django application. We can back out of our virtual environment by typing:
 
-`$ deactivate`
+```
+$ deactivate
+```
 
 Create and open a systemd service file for Gunicorn with sudo privileges in your text editor:
 
-`$ sudo nano /etc/systemd/system/gunicorn.service`
+```
+$ sudo nano /etc/systemd/system/gunicorn.service
+```
 
 ```
 [Unit]
@@ -201,7 +225,7 @@ If the systemctl status command indicated that an error occurred or if you do no
 $ sudo journalctl -u gunicorn
 ```
 
-## 6) Configure Nginx to Proxy Pass to Gunicorn
+## 7) Configure Nginx to Proxy Pass to Gunicorn
 Now that Gunicorn is set up, we need to configure Nginx to pass traffic to the process. Start by creating and opening a new server block in Nginx's sites-available directory:
 ```
 $ sudo nano /etc/nginx/sites-available/myproject
@@ -245,6 +269,34 @@ $ sudo ufw delete allow 8000
 $ sudo ufw allow 'Nginx Full'
 ```
 You should now be able to go to your server's domain or IP address to view your application.
+
+
+
+## 8) Troubleshooting
+
+Logs can help narrow down root causes. Check each of them in turn and look for messages indicating problem areas. The following logs may be helpful:
+
+* Check the Nginx process logs by typing: `sudo journalctl -u nginx`
+* Check the Nginx access logs by typing: `sudo less /var/log/nginx/access.log`
+* Check the Nginx error logs by typing: `sudo less /var/log/nginx/error.log`
+* Check the Gunicorn application logs by typing: `sudo journalctl -u gunicorn`
+
+As you update your configuration or application, you will likely need to restart the processes to adjust to your changes. If you update your Django application, you can restart the Gunicorn process to pick up the changes by typing:
+```
+$ sudo systemctl restart gunicorn
+```
+
+If you change gunicorn systemd service file, reload the daemon and restart the process by typing:
+
+```
+$ sudo systemctl daemon-reload
+$ sudo systemctl restart gunicorn
+```
+
+If you change the Nginx server block configuration, test the configuration and then Nginx by typing:
+```
+$ sudo nginx -t && sudo systemctl restart nginx
+```
 
 
 ## References
