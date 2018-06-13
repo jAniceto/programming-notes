@@ -4,7 +4,7 @@ This guide will demonstrate how to install and configure some components on Ubun
 
 ## 1) Initial Server Setup
 
-Perform the initial server setup as detailed [here](general/server-setup.md).
+Perform the initial server setup as detailed [here](server-setup.md).
 
 ## 2) Install the Packages from the Ubuntu Repositories
 
@@ -300,6 +300,6 @@ $ sudo nginx -t && sudo systemctl restart nginx
 
 
 ## References
-* https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04#prerequisites-and-goals
-* https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-uwsgi-and-nginx-on-ubuntu-16-04#prerequisites-and-goals
-* https://www.digitalocean.com/community/tutorials/how-to-create-a-django-app-and-connect-it-to-a-database#step-5-%E2%80%94-add-the-mysql-database-connection-to-your-application
+* [DigitalOcean - Setup Django, Postgres, nginx and Gunicorn on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04)
+* [DigitalOcean - Serve Django with uwsgi and ngix on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-uwsgi-and-nginx-on-ubuntu-16-04)
+* [DigitalOcean - Create Django app and connect to database](https://www.digitalocean.com/community/tutorials/how-to-create-a-django-app-and-connect-it-to-a-database)
