@@ -64,5 +64,9 @@ Now, open up a new terminal session and using SSH with your new username:
 
 You should be logged in to the new user account without using a password. 
 
+## 5) Other
+
+Chose the timezone by running: `sudo dpkg-reconfigure tzdata`
+
 ## References:
 * https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04
