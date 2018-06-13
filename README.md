@@ -9,9 +9,10 @@ Programming notes, snipets and examples in one place.
 * [Command Line Cheat Sheet](/general/CLI-Cheat-Sheet.pdf)
 * [Development environments](/general/dev-environments.md)
 * [Git](/general/git.md) cheat sheets [here](/general/git-cheatsheet-EN-grey.pdf) and [here](/general/github-git-cheat-sheet.pdf)
-* [Deploy a Flask app on an Ubuntu VPS](/general/ubuntu-vps.md)
 * [Hiding Passwords and Secret Keys in Environment Variables](/general/os-env-vars.md)
-
+* [Initial server setup with Ubuntu](/general/server-setup.md)
+* [Deploy a Flask app on an Ubuntu VPS](/general/ubuntu-vps.md)
+* [Deploy a Django app in an Ubuntu VPS](/general/deploy-django.md)
 
 
 ## Python
