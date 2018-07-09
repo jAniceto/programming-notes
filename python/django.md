@@ -163,3 +163,105 @@ urlpatterns = [
   path('accounts/', include(django.contrib.auth.urls))
 ]
 ```
+
+## Performing AJAX POST Requests in Django
+
+Ref: http://coreymaynard.com/blog/performing-ajax-post-requests-in-django/
+
+A common pitfall that shows up when developing a Django application is when you try and make your first POST request to your server from AJAX. As a response you receive a helpful 403 FORBIDDEN notice, and not much other information. There's a fairly simple way of handling this issue in a seamless fashion,.
+
+Firstly, let's discuss the actual problem that is causing this. Django comes with a security feature called Cross Site Request Forgery protection. A CSRF attack is when some external malicious site contains a link with some JavaScript that is intended to perform an action on your web site using the credentials of a logged-in-user who visited the malicious site in their browser. To protect against this, Django adds a CSRF token to every request that must be included with every unsafe HTTP request method (POST, PUT, and DELETE). This random string is verified upon every request, and if it is not valid (or not present) the server will respond with 403 FORBIDDEN.
+
+So, assuming you already have a Django project all setup and ready to go, we're going to create a view and a template to show the POST request in action. Just to keep things simple, we're going to do this in a separate app, so go ahead and create a new app and add it to your INSTALLED_APPS list. Inside of that app let's modify the views file and make it look like this:
+
+```python
+from django.views.generic import TemplateView
+from django.http import HttpResponse
+
+import json
+
+class PostExample(TemplateView):
+    template_name = 'start.html'
+
+    def post(self, request):
+        return HttpResponse(json.dumps({'key': 'value'}), mimetype="application/json")
+```
+
+What we're doing here is creating an incredibly basic view that on a GET request will respond with the `start.html` template and on a post request will respond with a hard coded JSON dictionary. Now we need to add the URL for this view to the project:
+
+```python
+url(r'^$', PostExample.as_view(), name='test-start'),
+```
+
+The template we're going to develop here will be equally simple, let's start with the following:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<script src="{{ STATIC_URL }}js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#post").click(function(e) {
+        e.preventDefault();
+        var data = {
+            'foo': 'bar'
+        }
+
+        $.ajax({
+            "type": "POST",
+            "dataType": "json",
+            "url": "/test/",
+            "data": data,
+            "success": function(result) {
+                console.log(result);
+            },
+        });
+    });
+});
+</script>
+</head>
+<body>
+    <h1>PostExample</h1>
+    <p><a href="" id="post">Post Request</a></p>
+</body>
+</html>
+```
+
+If you were to go to that page and click the link, you instead of a lovely JSON response you would see the 403 FORBIDDEN notice. Let's take care of that. The way to solve this is by overriding the jQuery beforeSend method on an AJAX query and grabbing the CSRF token embedded in the request and including it in the POST headers. Create a new JavaScript file and add the following to it, and make sure to include it into your template:
+
+```javascript
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+            // Only send the token to relative URLs i.e. locally.
+            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        }
+    }
+});
+```
+
+With that being done, all you have to do is add the CSRF token into the template like this:
+
+```
+{% csrf_token %}
+```
+
+That takes care of it! You can now make AJAX POST requests from within your application, without doing any specific work on a per instance basis.
+
