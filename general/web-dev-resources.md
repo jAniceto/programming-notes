@@ -17,6 +17,19 @@
 * Dummy Image Placeholders - https://placeholder.com
 * Free Icons - https://www.iconfinder.com
 
+## COLOR & DESIGN:
+* Generate Color Palette from Image - https://www.canva.com/color-palette/
+* Color Palette Generator - https://coolors.co/app
+* Create Color Schemes - https://color.hailpixel.com
+* Get Color Schemes of Websites - http://stylifyme.com
+* Create Gradients - https://uigradients.com
+* CSS Button Generator - http://css3buttongenerator.com 
+
+## IMAGE COMPRESSION:
+* Compress All Images - https://compressor.io/compress
+* Compress JPG - http://jpeg-optimizer.com/
+* Compress PNG - https://tinypng.com/
+
 ## CODE OPTIMIZATION:
 * Minify JS & CSS - http://minifier.org
 * Code Optimization Tools - https://codebeautify.org
@@ -28,11 +41,6 @@
 * Less Converter & More - http://www.webtoolkitonline.com   
 * Markdown Editor - https://stackedit.io
 * Jade Converter - http://www.html2jade.org/
-
-## IMAGE COMPRESSION:
-* Compress All Images - https://compressor.io/compress
-* Compress JPG - http://jpeg-optimizer.com/
-* Compress PNG - https://tinypng.com/
 
 ## VALIDATION & COMPATIBILITY:
 * Validate HTML - https://validator.w3.org
@@ -50,20 +58,13 @@
 * Snippet Manager - https://gist.github.com
 * Snippet Manager - https://pastebin.com
 
-## COLOR & DESIGN:
-* Create Color Schemes - https://color.hailpixel.com
-* Get Color Schemes of Websites - http://stylifyme.com
-* Create Gradients - https://uigradients.com
-* CSS Button Generator - http://css3buttongenerator.com 
-* HTML Entity Lookup - http://entity-lookup.leftlogic.com/
+## WIREFRAME:
+* In Browser Wireframing - https://app.moqups.com
+* Very Basic In Browser Wireframing - https://wireframe.cc
 
 ## RESPONSIVENESS:
 * Device Testing - http://www.responsinator.com
 * What's My Browser Size - https://www.webpagefx.com/tools/whats-my-browser-size/
-
-## WIREFRAME:
-* In Browser Wireframing - https://app.moqups.com
-* Very Basic In Browser Wireframing - https://wireframe.cc
 
 ## SPEED TEST:
 * Speed & Performance Testing - https://tools.keycdn.com/speed
@@ -71,6 +72,7 @@
 
 ## OTHER:
 * Public API Resources - https://github.com/toddmotto/public-apis?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more
+* HTML Entity Lookup - http://entity-lookup.leftlogic.com/
 
 ### References:
 * https://gist.github.com/bradtraversy/61171a9b81586f5bc4c0ca1e2beb59ab
