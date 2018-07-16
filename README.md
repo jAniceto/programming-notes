@@ -2,6 +2,7 @@
 Programming notes, snipets and examples in one place.
 
 ## General
+* [Web Dev Resources](/general/web-dev-resources.md)
 * [Github Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 * [Crontab](/general/crontab.md)
 * [Keep SSH sessions running](/general/keep-ssh-running.md)
