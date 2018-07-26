@@ -1,0 +1,5 @@
+site_name: Programming Notes
+site_description: Programming notes, snipets and examples in one place.
+site_author: José Aniceto
+theme:
+  name: 'material'

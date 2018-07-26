@@ -1,0 +1,1411 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Programming notes, snipets and examples in one place.">
+      
+      
+      
+        <meta name="author" content="José Aniceto">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.2">
+    
+    
+      
+        <title>Imports in Python - Programming Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.ba0fd1a6.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#imports-in-python" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="Programming Notes" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Programming Notes
+              </span>
+              <span class="md-header-nav__topic">
+                Imports in Python
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <span class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </span>
+    Programming Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Programming Notes" class="md-nav__link">
+      Programming Notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      General
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        General
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general/batch-script/" title="Create a Windows batch script" class="md-nav__link">
+      Create a Windows batch script
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general/crontab/" title="Linux Crontab" class="md-nav__link">
+      Linux Crontab
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general/deploy-django/" title="Deploy a Django app in an Ubuntu VPS (DigitalOcean)" class="md-nav__link">
+      Deploy a Django app in an Ubuntu VPS (DigitalOcean)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general/dev-environments/" title="Development environments" class="md-nav__link">
+      Development environments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general/git/" title="Git Version Control System" class="md-nav__link">
+      Git Version Control System
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general/keep-ssh-running/" title="Keep SSH sessions running after disconnecting" class="md-nav__link">
+      Keep SSH sessions running after disconnecting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general/os-env-vars/" title="Hiding Passwords and Secret Keys in Environment Variables" class="md-nav__link">
+      Hiding Passwords and Secret Keys in Environment Variables
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general/server-setup/" title="Initial Server Setup with Ubuntu 18.04" class="md-nav__link">
+      Initial Server Setup with Ubuntu 18.04
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general/ubuntu-vps/" title="Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)" class="md-nav__link">
+      Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general/web-dev-resources/" title="Online Resources For Web Developers" class="md-nav__link">
+      Online Resources For Web Developers
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Html css
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Html css
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../html-css/css-selectors/" title="CSS selectors" class="md-nav__link">
+      CSS selectors
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Javascript
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Javascript
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/DataTables/" title="DataTables JS Library" class="md-nav__link">
+      DataTables JS Library
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/cache-data/" title="Caching data" class="md-nav__link">
+      Caching data
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../args-kwargs/" title="*args and **kwargs" class="md-nav__link">
+      *args and **kwargs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../beautifulsoup4/" title="Web scrapping with Beautiful Soup 4" class="md-nav__link">
+      Web scrapping with Beautiful Soup 4
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../builtin-functions/" title="Sorting lists" class="md-nav__link">
+      Sorting lists
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../classes/" title="Classes and OOP (Object Oriented Programming)" class="md-nav__link">
+      Classes and OOP (Object Oriented Programming)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../csv/" title="CSV files" class="md-nav__link">
+      CSV files
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../django/" title="Building a Django site" class="md-nav__link">
+      Building a Django site
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../email/" title="Sending e-mails with Python" class="md-nav__link">
+      Sending e-mails with Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../flask/" title="Building a Flask site" class="md-nav__link">
+      Building a Flask site
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hosting/" title="Hosting Python scripts and services" class="md-nav__link">
+      Hosting Python scripts and services
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../image-manipulation/" title="Image manipulation in Python" class="md-nav__link">
+      Image manipulation in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Imports in Python
+      </label>
+    
+    <a href="./" title="Imports in Python" class="md-nav__link md-nav__link--active">
+      Imports in Python
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#namespace" title="Namespace" class="md-nav__link">
+    Namespace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-vs-package" title="Module vs. Package" class="md-nav__link">
+    Module vs. Package
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#__init__py" title="__init__.py" class="md-nav__link">
+    __init__.py
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relative-vs-absolute-imports" title="Relative vs. Absolute Imports" class="md-nav__link">
+    Relative vs. Absolute Imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regular-imports" title="Regular Imports" class="md-nav__link">
+    Regular Imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-imports" title="Local Imports" class="md-nav__link">
+    Local Imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-imports" title="Optional Imports" class="md-nav__link">
+    Optional Imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circular-imports" title="Circular Imports" class="md-nav__link">
+    Circular Imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shadowed-imports" title="Shadowed imports" class="md-nav__link">
+    Shadowed imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packages-without-the-__init__py-file" title="Packages (without the __init__.py file)" class="md-nav__link">
+    Packages (without the __init__.py file)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packages-with-the-__init__py-file-and-relative-imports" title="Packages (with the __init__.py file) and Relative Imports" class="md-nav__link">
+    Packages (with the __init__.py file) and Relative Imports
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#__init__py_1" title="__init__.py" class="md-nav__link">
+    __init__.py
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-for-convenience-other-users-will-not-need-to-know-your-modules-exact-location-in-the-package-hierarchy" title="1. For convenience,  other users will not need to know your module's exact location in the package hierarchy." class="md-nav__link">
+    1. For convenience,  other users will not need to know your module's exact location in the package hierarchy.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-if-you-want-something-to-be-initialized-as-soon-as-the-package-gets-executed" title="2. If you want something to be initialized as soon as the package gets executed." class="md-nav__link">
+    2. If you want something to be initialized as soon as the package gets executed.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relative-imports" title="Relative Imports" class="md-nav__link">
+    Relative Imports
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-modules-with-the-help-of-the-initpy-file" title="Loading Modules with the Help of the init.py File" class="md-nav__link">
+    Loading Modules with the Help of the init.py File
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../magic-methods/" title="Magic methods" class="md-nav__link">
+      Magic methods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../matlab/" title="Matlab" class="md-nav__link">
+      Matlab
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mysql/" title="Mysql" class="md-nav__link">
+      Mysql
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../progress-bar/" title="Progress bar" class="md-nav__link">
+      Progress bar
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../slice-notation/" title="Slice notation" class="md-nav__link">
+      Slice notation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../snippets/" title="Snippets" class="md-nav__link">
+      Snippets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../store-dicts/" title="Store dicts" class="md-nav__link">
+      Store dicts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../stravalib/" title="Stravalib" class="md-nav__link">
+      Stravalib
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../string-formatting/" title="String formatting" class="md-nav__link">
+      String formatting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../virtual-environments/" title="Virtual environments" class="md-nav__link">
+      Virtual environments
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#namespace" title="Namespace" class="md-nav__link">
+    Namespace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-vs-package" title="Module vs. Package" class="md-nav__link">
+    Module vs. Package
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#__init__py" title="__init__.py" class="md-nav__link">
+    __init__.py
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relative-vs-absolute-imports" title="Relative vs. Absolute Imports" class="md-nav__link">
+    Relative vs. Absolute Imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regular-imports" title="Regular Imports" class="md-nav__link">
+    Regular Imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-imports" title="Local Imports" class="md-nav__link">
+    Local Imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-imports" title="Optional Imports" class="md-nav__link">
+    Optional Imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circular-imports" title="Circular Imports" class="md-nav__link">
+    Circular Imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shadowed-imports" title="Shadowed imports" class="md-nav__link">
+    Shadowed imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packages-without-the-__init__py-file" title="Packages (without the __init__.py file)" class="md-nav__link">
+    Packages (without the __init__.py file)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packages-with-the-__init__py-file-and-relative-imports" title="Packages (with the __init__.py file) and Relative Imports" class="md-nav__link">
+    Packages (with the __init__.py file) and Relative Imports
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#__init__py_1" title="__init__.py" class="md-nav__link">
+    __init__.py
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-for-convenience-other-users-will-not-need-to-know-your-modules-exact-location-in-the-package-hierarchy" title="1. For convenience,  other users will not need to know your module's exact location in the package hierarchy." class="md-nav__link">
+    1. For convenience,  other users will not need to know your module's exact location in the package hierarchy.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-if-you-want-something-to-be-initialized-as-soon-as-the-package-gets-executed" title="2. If you want something to be initialized as soon as the package gets executed." class="md-nav__link">
+    2. If you want something to be initialized as soon as the package gets executed.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relative-imports" title="Relative Imports" class="md-nav__link">
+    Relative Imports
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-modules-with-the-help-of-the-initpy-file" title="Loading Modules with the Help of the init.py File" class="md-nav__link">
+    Loading Modules with the Help of the init.py File
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="imports-in-python">Imports in Python</h1>
+<h3 id="namespace">Namespace</h3>
+<p>For example, you might be writing some code that has a function called <code>fun()</code> and there is another module available, which also has a function with the name <code>fun()</code>. Now the interpreter has no way of knowing which version of <code>fun()</code> function you are referring within your code.</p>
+<p><strong>Namespace</strong> is designed to overcome this difficulty and is used to differentiate functions, classes, variables etc. with the same name, available in different modules.</p>
+<h3 id="module-vs-package">Module vs. Package</h3>
+<p>A Python <strong>module</strong> is simply a Python source file, which can expose classes, functions and global variables. When imported from another Python source file, the file name is sometimes treated as a namespace.</p>
+<p>A Python <strong>package</strong> is simply a directory of Python module(s).</p>
+<h3 id="__init__py"><code>__init__.py</code></h3>
+<p>The <code>__init__.py</code> file is the first thing that gets executed when a package is loaded.</p>
+<p>More on the <code>__init__.py</code> file in the <strong>Packages (with the <code>__init__.py</code> file) and Relative Imports</strong> section.</p>
+<h3 id="relative-vs-absolute-imports">Relative vs. Absolute Imports</h3>
+<p><strong>Relative imports</strong> - specific location of the modules to be imported are relative to the current package.</p>
+<p><strong>Absolute imports</strong> - an import where you fully specify the location of the entities being imported.</p>
+<h2 id="regular-imports">Regular Imports</h2>
+<hr />
+<p>Assume the following file structure.</p>
+<pre><code class="sh">someDir/
+    main.py
+    siblingModule.py
+</code></pre>
+
+<p>The following shows different ways to import the module <code>siblingModule.py</code> into <code>main.py</code>.</p>
+<pre><code class="python"># siblingModule.py
+
+def siblingModuleFun():
+    print('Hello from siblingModuleFun')
+
+def siblingModuleFunTwo():
+    print('Hello from siblingModuleFunTwo')
+</code></pre>
+
+<pre><code class="python"># main.py
+
+# Provides access to all exposed functions, global variables, classes, etc.
+# We need to specify the namespace explicitly, hence we always have to prepend the module name.
+# Since we are not using the current files namespace, it allows us to have multiple function with the same name, from different modules.
+import siblingModule
+
+siblingModule.siblingModuleFun() # Hello from siblingModuleFun
+siblingModule.siblingModuleFunTwo() # Hello from siblingModuleFunTwo
+
+# If siblingModule is already defined in current namespace, we can use the 'as' keyword to give the module a different namespace identifier.
+import siblingModule as sibMod
+
+sibMod.siblingModuleFun() # Hello from siblingModuleFun
+sibMod.siblingModuleFunTwo() # Hello from siblingModuleFunTwo
+
+# Only imports specific entities from a module.
+# Allows to access the entity without prepending module name.
+# But the downside is that we are allowed to overwrite (not override) the function name and we cannot use the module name to help as reach the function.
+from siblingModule import siblingModuleFun
+
+siblingModuleFun() # Hello from siblingModuleFun
+
+siblingModuleFunTwo() # Error
+siblingModule.siblingModuleFunTwo() # Error
+
+# Both 'from siblingModule import *' and 'import siblingModule' import all entities from the module.
+# With 'import siblingModule' you are allowed to have multiple function with the same name, from different modules.
+# With 'from siblingModule import *' the functions with the same name will overwrite any function from the imported module(s).
+from siblingModule import *
+
+siblingModuleFun() # Hello from siblingModuleFun
+siblingModuleFunTwo() # Hello from siblingModuleFunTwo
+</code></pre>
+
+<h2 id="local-imports">Local Imports</h2>
+<hr />
+<p>Importing modules at the top of the script, is importing the module into the global scope, which means that any functions will be able to use it. </p>
+<p>A <strong>local import</strong> is when you import a module into local scope, which means that it exists only within the block that it was loaded in.</p>
+<pre><code class="python">import globalModule  # Global scope
+
+def funOne(a):
+
+    # Local scope
+    import localModule
+
+    globalModule.someFunction()
+    return localModule.someFunction()
+
+def funTwo():
+
+    globalModule.someFunction()
+    return localModule.someFunction() # Error
+
+globalModule.someFunction()
+</code></pre>
+
+<h2 id="optional-imports">Optional Imports</h2>
+<hr />
+<p><strong>Optional imports</strong> are used when you have a preferred module or package that you want to use, but you also want a fallback in case it something goes wrong.</p>
+<p>You might use <strong>optional imports</strong> to support multiple operating system, resolve issues between different versions,  etc.</p>
+<pre><code class="python">try:
+    # Import 'someModuleA' that is only available in Windows
+    import someModuleA
+except ImportError:
+    try:
+        # Import 'someModuleB' that is only available in Linux
+        import someModuleB
+    except ImportError:
+</code></pre>
+
+<h2 id="circular-imports">Circular Imports</h2>
+<hr />
+<p><strong>Circular imports</strong> happen when you create two modules that import each other.</p>
+<pre><code class="python"># A.py
+
+import B
+
+def Afun():
+    print('Hello from Afun')
+
+B.Bfun()
+Afun()
+</code></pre>
+
+<pre><code class="sh"># B.py
+
+import A
+
+def Bfun():
+    print('Hello from Bfun')
+
+A.Afun()
+Bfun()
+</code></pre>
+
+<p>If you run either of these modules, you should receive an <code>AttributeError</code>. This happens because both modules are attempting to import each other. Basically what’s happening here is that <code>A.py</code> is trying to import <code>B.py</code>, but it can’t do that because <code>B.py</code> is attempting to import <code>A.py</code>, which is already being executed. To prevent this kind of thing from happening, refactor your code.</p>
+<h2 id="shadowed-imports">Shadowed imports</h2>
+<hr />
+<p><strong>Shadow imports</strong> happen when the programmer creates a module with the same name as a standard Python module.</p>
+<p>In this case, create a file named <code>math.py</code> and put the following code inside it:</p>
+<pre><code class="python">import math
+
+def square_root(number):
+    return math.sqrt(number)
+
+square_root(72)
+</code></pre>
+
+<p>When you run a Python script, the first place Python looks for a module called <code>math</code> is in the currently running script’s directory. In this case, it finds the module we’re running and tries to use that. But our module doesn’t have a function or attribute called <code>sqrt</code>, so an <code>AttributeError</code> is raised.</p>
+<h2 id="packages-without-the-__init__py-file">Packages (without the <code>__init__.py</code> file)</h2>
+<hr />
+<p>Assume the following file structure.</p>
+<pre><code class="sh">someDir/
+    main.py
+    subModules/
+        subA.py
+        subSubModules/
+            subSubA.py
+</code></pre>
+
+<pre><code class="python"># subA.py
+
+def subAFun():
+    print('Hello from subAFun')
+
+def subAFunTwo():
+    print('Hello from subAFunTwo')
+</code></pre>
+
+<pre><code class="python"># subSubA.py
+
+def subSubAFun():
+    print('Hello from subSubAFun')
+
+def subSubAFunTwo():
+    print('Hello from subSubAFunTwo')
+</code></pre>
+
+<pre><code class="python"># main.py
+
+# Provides access to all exposed functions, global variables, public classes, etc. in a module 'subA'.
+# We need to specify the namespace explicitly, hence we have to prepend the package name and/or module name.
+# Since we are not using the current files namespace, it allows us to have multiple function with the same name, from different modules/packages.
+import subModules.subA
+
+subModules.subA.subAFun() # Hello from subAFun
+subModules.subA.subAFunTwo() # Hello from subAFunTwo
+
+# Only imports specific entities from a module.
+# Allows to access the entity without prepending module name.
+# But the downside is that we are allowed to overwrite (not override) the function name and we cannot use the module/package name to help as reach the function.
+from subModules.subA import subAFun
+
+subAFun() # Hello from subAFun
+subAFunTwo() # Error
+
+# To me, this is the most clear way of import modules from subdirectories, and it allows to differentiate between namespaces.
+from subModules import subA
+
+subA.subAFun() # Hello from subAFun
+subA.subAFunTwo() # Hello from subAFunTwo
+</code></pre>
+
+<pre><code class="python"># Importing all entities from a sub-submodule.
+import subModules.subSubModules.subSubA
+
+subModules.subSubModules.subSubA.subSubAFun() # Hello from subSubAFun
+subModules.subSubModules.subSubA.subSubAFunTwo() # Hello from subSubAFunTwo
+
+# Importing a specific entity from a sub-submodule.
+from subModules.subSubModules.subSubA import subSubAFun
+
+subSubAFun() # Hello from subSubAFun
+subSubAFunTwo() # Error
+
+# Imports all entities.
+# Allows to differentiate between namespaces.
+from subModules.subSubModules import subSubA
+
+subSubA.subSubAFun() # Hello from subSubAFun
+subSubA.subSubAFunTwo() # Hello from subSubAFunTwo
+</code></pre>
+
+<h2 id="packages-with-the-__init__py-file-and-relative-imports">Packages (with the <code>__init__.py</code> file) and Relative Imports</h2>
+<hr />
+<h3 id="__init__py_1"><code>__init__.py</code></h3>
+<p>There are two main reasons for using the <code>__init__.py</code> file.</p>
+<h5 id="1-for-convenience-other-users-will-not-need-to-know-your-modules-exact-location-in-the-package-hierarchy">1. For convenience,  other users will not need to know your module's exact location in the package hierarchy.</h5>
+<pre><code class="sh">someDir/
+    __init__.py
+    A.py
+    B.py
+    ...
+    Z.py
+</code></pre>
+
+<pre><code class="python"># A.py
+
+def add(x, y):
+    return x + y
+</code></pre>
+
+<pre><code class="python"># __init__.py
+
+from A import *
+from B import *
+...
+from Z import *
+</code></pre>
+
+<p>Then others can call <code>add(x, y)</code> , without knowing <code>A.py</code> exists</p>
+<pre><code class="python">from someDir import add
+</code></pre>
+
+<p>Without <code>__init__.py</code></p>
+<pre><code class="python">from someDir.A import add
+</code></pre>
+
+<h5 id="2-if-you-want-something-to-be-initialized-as-soon-as-the-package-gets-executed">2. If you want something to be initialized as soon as the package gets executed.</h5>
+<h3 id="relative-imports">Relative Imports</h3>
+<p>Note that relative imports are not specific to <code>__init__.py</code> files.</p>
+<p><code>'__main__'</code> is the name of the scope in which top-level code executes. A module’s<code>__name__</code> variable is set to <code>'__main__'</code> when read from standard input, a script, or from an interactive prompt.</p>
+<p>Relative imports use the module's <code>__name__</code> variable to determine where it is in a package.  When you use a relative import, such as <code>from ..someDir import someModule</code>, the two dots indicate to step up a level in the package hierarchy.  For instance, if your current module is <code>moduleA</code>, then it's <code>__name__</code> variable is <code>someDir.subDir.moduleA</code>. Then, writing <code>from ..moduleB import *</code> in <code>moduleA</code> means, go up a directory, and import everything from <code>moduleB</code>. <code>moduleB</code> would be found on the same level as the <code>subDir</code> directory.</p>
+<p>However, if your module's name is <code>__main__</code>,  you cannot use <code>from ..somePath import moduleName</code> statements.</p>
+<h3 id="loading-modules-with-the-help-of-the-initpy-file">Loading Modules with the Help of the <code>init.py</code> File</h3>
+<p>Assume the following file structure.</p>
+<pre><code class="sh">someDir/
+    main.py
+    subModules/
+        __init__.py
+        subA.py
+        subSubModules/
+            __init__.py
+            subSubA.py
+</code></pre>
+
+<pre><code class="python"># subA.py
+
+def subAFun():
+    print('Hello from subAFun')
+
+def subAFunTwo():
+    print('Hello from subAFunTwo')
+</code></pre>
+
+<pre><code class="python"># subSubA.py
+
+def subSubAFun():
+    print('Hello from subSubAFun')
+
+def subSubAFunTwo():
+    print('Hello from subSubAFunTwo')
+</code></pre>
+
+<pre><code class="python"># __init__.py from subDir
+
+# Adds 'subAFun()' and 'subAFunTwo()' to the 'subDir' namespace 
+from .subA import *
+
+# The following two import statement do the same thing, they add 'subSubAFun()' and 'subSubAFunTwo()' to the 'subDir' namespace. The first one assumes '__init__.py' is empty in 'subSubDir', and the second one, assumes '__init__.py' in 'subSubDir' contains 'from .subSubA import *'.
+
+# Assumes '__init__.py' is empty in 'subSubDir'
+# Adds 'subSubAFun()' and 'subSubAFunTwo()' to the 'subDir' namespace
+from .subSubDir.subSubA import *
+
+# Assumes '__init__.py' in 'subSubDir' has 'from .subSubA import *'
+# Adds 'subSubAFun()' and 'subSubAFunTwo()' to the 'subDir' namespace
+from .subSubDir import *
+</code></pre>
+
+<pre><code class="python"># __init__.py from subSubDir
+
+# Adds 'subSubAFun()' and 'subSubAFunTwo()' to the 'subSubDir' namespace
+from .subSubA import *
+</code></pre>
+
+<pre><code class="python"># main.py
+
+import subDir
+
+subDir.subAFun() # Hello from subAFun
+subDir.subAFunTwo() # Hello from subAFunTwo
+subDir.subSubAFun() # Hello from subSubAFun
+subDir.subSubAFunTwo() # Hello from subSubAFunTwo
+</code></pre>
+
+<p>From the above, we can observe that it's almost as though <code>__init__.py</code> converts a package into a module, or more correctly makes a package behave like a module.</p>
+<p>To access functions of <code>subA.py</code> in <code>subSubA.py</code>.
+Only works if the <code>__name__</code> variable of <code>subSubA.py</code> is not <code>'__main__'</code></p>
+<pre><code class="python"># subSubA.py
+
+from ..subA import *
+
+subAFun() # Hello from subAFun
+subAFunTwo() # Hello from subAFunTwo
+</code></pre>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../image-manipulation/" title="Image manipulation in Python" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Image manipulation in Python
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../magic-methods/" title="Magic methods" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Magic methods
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.a59e2a89.js"></script>
+      
+      <script>app.initialize({version:"0.17.5",url:{base:"../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
