@@ -260,9 +260,7 @@ $.ajaxSetup({
 With that being done, all you have to do is add the CSRF token into the template like this:
 
 ```
-<pre><code>
 {% csrf_token %}
-</code></pre>
 ```
 
 That takes care of it! You can now make AJAX POST requests from within your application, without doing any specific work on a per instance basis.
