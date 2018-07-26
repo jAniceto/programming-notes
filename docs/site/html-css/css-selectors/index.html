@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>CSS selectors - Programming Notes</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "CSS selectors";
+    var mkdocs_page_input_path = "html-css\\css-selectors.md";
+    var mkdocs_page_url = "/html-css/css-selectors/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../README/" class="icon icon-home"> Programming Notes</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../README/">Programming Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">General</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../general/batch-script/">Create a Windows batch script</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/crontab/">Linux Crontab</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/deploy-django/">Deploy a Django app in an Ubuntu VPS (DigitalOcean)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/dev-environments/">Development environments</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/git/">Git Version Control System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/keep-ssh-running/">Keep SSH sessions running after disconnecting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/os-env-vars/">Hiding Passwords and Secret Keys in Environment Variables</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/server-setup/">Initial Server Setup with Ubuntu 18.04</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/ubuntu-vps/">Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/web-dev-resources/">Online Resources For Web Developers</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Html css</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">CSS selectors</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#css-selectors">CSS selectors</a></li>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Javascript</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../javascript/DataTables/">DataTables</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../javascript/cache-data/">Cache data</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python/args-kwargs/">Args kwargs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/beautifulsoup4/">Beautifulsoup4</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/builtin-functions/">Builtin functions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/classes/">Classes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/csv/">Csv</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/django/">Django</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/email/">Email</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/flask/">Flask</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/hosting/">Hosting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/image-manipulation/">Image manipulation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/imports/">Imports</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/magic-methods/">Magic methods</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/matlab/">Matlab</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/mysql/">Mysql</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/progress-bar/">Progress bar</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/slice-notation/">Slice notation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/snippets/">Snippets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/store-dicts/">Store dicts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/stravalib/">Stravalib</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/string-formatting/">String formatting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/virtual-environments/">Virtual environments</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../README/">Programming Notes</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../README/">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Html css &raquo;</li>
+        
+      
+    
+    <li>CSS selectors</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="css-selectors">CSS selectors</h1>
+<p>In CSS, selectors are patterns used to select the element(s) you want to style.</p>
+<p>The "CSS" column indicates in which CSS version the property is defined (CSS1, CSS2, or CSS3).</p>
+<table>
+<thead>
+<tr>
+<th>Selector</th>
+<th>Example</th>
+<th>Example description</th>
+<th>CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.class</td>
+<td>.intro</td>
+<td>Selects all elements with class="intro"</td>
+<td>1</td>
+</tr>
+<tr>
+<td>#id</td>
+<td>#firstname</td>
+<td>Selects the element with id="firstname"</td>
+<td>1</td>
+</tr>
+<tr>
+<td>*</td>
+<td>*</td>
+<td>Selects all elements</td>
+<td>2</td>
+</tr>
+<tr>
+<td>element</td>
+<td>p</td>
+<td>Selects all \<p> elements</td>
+<td>1</td>
+</tr>
+<tr>
+<td>element,element</td>
+<td>div, p</td>
+<td>Selects all \<div> elements and all \<p> elements</td>
+<td>1</td>
+</tr>
+<tr>
+<td>element element</td>
+<td>div p</td>
+<td>Selects all \<p> elements inside \<div> elements</td>
+<td>1</td>
+</tr>
+<tr>
+<td>element&gt;element</td>
+<td>div &gt; p</td>
+<td>Selects all \<p> elements where the parent is a \<div> element</td>
+<td>2</td>
+</tr>
+<tr>
+<td>element+element</td>
+<td>div + p</td>
+<td>Selects all \<p> elements that are placed immediately after \<div> elements</td>
+<td>2</td>
+</tr>
+<tr>
+<td>element1~element2</td>
+<td>p ~ ul</td>
+<td>Selects every \<ul> element that are preceded by a \<p> element</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:active</td>
+<td>a:active</td>
+<td>Selects the active link</td>
+<td>1</td>
+</tr>
+<tr>
+<td>::after</td>
+<td>p::after</td>
+<td>Insert something after the content of each \<p> element</td>
+<td>2</td>
+</tr>
+<tr>
+<td>::before</td>
+<td>p::before</td>
+<td>Insert something before the content of each \<p> element</td>
+<td>2</td>
+</tr>
+<tr>
+<td>:checked</td>
+<td>input:checked</td>
+<td>Selects every checked <input> element</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:disabled</td>
+<td>input:disabled</td>
+<td>Selects every disabled <input> element</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:empty</td>
+<td>p:empty</td>
+<td>Selects every \<p> element that has no children (including text nodes)</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:enabled</td>
+<td>input:enabled</td>
+<td>Selects every enabled <input> element</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:first-child</td>
+<td>p:first-child</td>
+<td>Selects every \<p> element that is the first child of its parent</td>
+<td>2</td>
+</tr>
+<tr>
+<td>::first-letter</td>
+<td>p::first-letter</td>
+<td>Selects the first letter of every \<p> element</td>
+<td>1</td>
+</tr>
+<tr>
+<td>::first-line</td>
+<td>p::first-line</td>
+<td>Selects the first line of every \<p> element</td>
+<td>1</td>
+</tr>
+<tr>
+<td>:first-of-type</td>
+<td>p:first-of-type</td>
+<td>Selects every \<p> element that is the first \<p> element of its parent</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:focus</td>
+<td>input:focus</td>
+<td>Selects the input element which has focus</td>
+<td>2</td>
+</tr>
+<tr>
+<td>:hover</td>
+<td>a:hover</td>
+<td>Selects links on mouse over</td>
+<td>1</td>
+</tr>
+<tr>
+<td>:in-range</td>
+<td>input:in-range</td>
+<td>Selects input elements with a value within a specified range</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:invalid</td>
+<td>input:invalid</td>
+<td>Selects all input elements with an invalid value</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:lang(language)</td>
+<td>p:lang(it)</td>
+<td>Selects every \<p> element with a lang attribute equal to "it" (Italian)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>:last-child</td>
+<td>p:last-child</td>
+<td>Selects every \<p> element that is the last child of its parent</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:last-of-type</td>
+<td>p:last-of-type</td>
+<td>Selects every \<p> element that is the last \<p> element of its parent</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:link</td>
+<td>a:link</td>
+<td>Selects all unvisited links</td>
+<td>1</td>
+</tr>
+<tr>
+<td>:not(selector)</td>
+<td>:not(p)</td>
+<td>Selects every element that is not a \<p> element</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:nth-child(n)</td>
+<td>p:nth-child(2)</td>
+<td>Selects every \<p> element that is the second child of its parent</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:nth-last-child(n)</td>
+<td>p:nth-last-child(2)</td>
+<td>Selects every \<p> element that is the second child of its parent, counting from the last child</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:nth-last-of-type(n)</td>
+<td>p:nth-last-of-type(2)</td>
+<td>Selects every \<p> element that is the second \<p> element of its parent, counting from the last child</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:nth-of-type(n)</td>
+<td>p:nth-of-type(2)</td>
+<td>Selects every \<p> element that is the second \<p> element of its parent</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:only-of-type</td>
+<td>p:only-of-type</td>
+<td>Selects every \<p> element that is the only \<p> element of its parent</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:only-child</td>
+<td>p:only-child</td>
+<td>Selects every \<p> element that is the only child of its parent</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:optional</td>
+<td>input:optional</td>
+<td>Selects input elements with no "required" attribute</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:out-of-range</td>
+<td>input:out-of-range</td>
+<td>Selects input elements with a value outside a specified range</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:read-only</td>
+<td>input:read-only</td>
+<td>Selects input elements with the "readonly" attribute specified</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:read-write</td>
+<td>input:read-write</td>
+<td>Selects input elements with the "readonly" attribute NOT specified</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:required</td>
+<td>input:required</td>
+<td>Selects input elements with the "required" attribute specified</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:root</td>
+<td>:root</td>
+<td>Selects the document's root element</td>
+<td>3</td>
+</tr>
+<tr>
+<td>::selection</td>
+<td>::selection</td>
+<td>Selects the portion of an element that is selected by a user</td>
+<td></td>
+</tr>
+<tr>
+<td>:target</td>
+<td>#news:target</td>
+<td>Selects the current active #news element (clicked on a URL containing that anchor name)</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:valid</td>
+<td>input:valid</td>
+<td>Selects all input elements with a valid value</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:visited</td>
+<td>a:visited</td>
+<td>Selects all visited links</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../javascript/DataTables/" class="btn btn-neutral float-right" title="DataTables">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../general/web-dev-resources/" class="btn btn-neutral" title="Online Resources For Web Developers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../general/web-dev-resources/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../javascript/DataTables/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

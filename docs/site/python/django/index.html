@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Building a Django site - Programming Notes</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Building a Django site";
+    var mkdocs_page_input_path = "python\\django.md";
+    var mkdocs_page_url = "/python/django/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../README/" class="icon icon-home"> Programming Notes</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../README/">Programming Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">General</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../general/batch-script/">Create a Windows batch script</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/crontab/">Linux Crontab</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/deploy-django/">Deploy a Django app in an Ubuntu VPS (DigitalOcean)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/dev-environments/">Development environments</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/git/">Git Version Control System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/keep-ssh-running/">Keep SSH sessions running after disconnecting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/os-env-vars/">Hiding Passwords and Secret Keys in Environment Variables</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/server-setup/">Initial Server Setup with Ubuntu 18.04</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/ubuntu-vps/">Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/web-dev-resources/">Online Resources For Web Developers</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Html css</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../html-css/css-selectors/">CSS selectors</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Javascript</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../javascript/DataTables/">DataTables JS Library</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../javascript/cache-data/">Caching data</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../args-kwargs/">*args and **kwargs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../beautifulsoup4/">Web scrapping with Beautiful Soup 4</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../builtin-functions/">Sorting lists</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../classes/">Classes and OOP (Object Oriented Programming)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../csv/">CSV files</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Building a Django site</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#building-a-django-site">Building a Django site</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#installing-django">Installing Django</a></li>
+        
+            <li><a class="toctree-l4" href="#start-project">Start project</a></li>
+        
+            <li><a class="toctree-l4" href="#using-mysql-database">Using MySQL database</a></li>
+        
+            <li><a class="toctree-l4" href="#django-authentication-system">Django authentication system</a></li>
+        
+            <li><a class="toctree-l4" href="#performing-ajax-post-requests-in-django">Performing AJAX POST Requests in Django</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../email/">Email</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../flask/">Flask</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../hosting/">Hosting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../image-manipulation/">Image manipulation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../imports/">Imports</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../magic-methods/">Magic methods</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../matlab/">Matlab</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mysql/">Mysql</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../progress-bar/">Progress bar</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../slice-notation/">Slice notation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../snippets/">Snippets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../store-dicts/">Store dicts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../stravalib/">Stravalib</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../string-formatting/">String formatting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../virtual-environments/">Virtual environments</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../README/">Programming Notes</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../README/">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Python &raquo;</li>
+        
+      
+    
+    <li>Building a Django site</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="building-a-django-site">Building a Django site</h1>
+<h2 id="installing-django">Installing Django</h2>
+<p><code>pip install Django</code></p>
+<h2 id="start-project">Start project</h2>
+<p>Navigate via the terminal or command prompt to an area where you want to work on your project, then do:</p>
+<p><code>django-admin startproject mysite</code></p>
+<p>This will create a directory called mysite. Within that directory, you have another one called mysite, along with a manage.py file. The manage.py file lets you easily interact with your project via the command line. The contents of the second mysite directory contain your settings and urls mainly. Broken down:</p>
+<pre><code class="cmd">/mysite/  REM Simple container, Call whatever you want.
+    manage.py  REM Lets you interact with your project via the command line.
+    /mysite/  REM Actual project directory.
+        __init__.py  REM Tells python this is a Python package.
+        settings.py  REM Settings for the project.
+        urls.py  REM URL rules. Django docs aptly describes as your table of contents.
+        wsgi.py  REM WSGI magic begins here. Worry about this when it comes time to actually deploy to a server.
+</code></pre>
+
+<p>The paradigm of Django is that either a website is an app, or a collection of apps in most cases. We currently have our website, called "mysite" for now. For now, run the following via the command line or terminal to run the local development server, which you can reach at http://127.0.0.1:8000. </p>
+<pre><code>cd mysite
+python manage.py runserver
+</code></pre>
+
+<h3 id="create-an-app">Create an app</h3>
+<p><code>python manage.py startapp webapp</code></p>
+<p>Now a new directory exists, called webapp. In here, we see a lot of similar files, and some new ones:</p>
+<pre><code>webapp/
+    migrations/ 
+    __init__.py
+    admin.py
+    apps.py
+    models.py
+    tests.py
+    views.py
+</code></pre>
+
+<p>Next, we need to include our new app in our installed applications:</p>
+<p>Open the <code>mysite/settings.py</code> file and add the <code>'webapp'</code> line:</p>
+<pre><code class="python"># ...this is just a slice of code within settings.py 
+# do not delete the other code
+# just add 'webapp' to the list.
+INSTALLED_APPS = [
+    'webapp',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+</code></pre>
+
+<h3 id="make-migrations-databases">Make migrations (databases)</h3>
+<p>Whenever you define new models, you need to migrate: </p>
+<p><code>python manage.py makemigrations</code></p>
+<p>The <code>makemigrations</code> command tells Django that you've made some model changes, and you want to save them as a migration. Migrations are used any time you want Django to recognize changes to the models and database schema. <strong>Adding data to an existing database table, for example, is not something that needs a migration, changing that table's structure (by changing the model), would require a migration.</strong> You can also tell Django you want to make migrations for only a specific app, like: <code>python manage.py makemigrations webapp</code></p>
+<p>Once you've made migrations, nothing has actually happened yet. You can run a migrate, but there is one more check you can make. This will output the proposed SQL that will be run for you by Django when you migrate. The <code>0001</code> is the migration ID. You can see this on the <code>0001_initial.py</code> file in the migrations folder of your app.</p>
+<p><code>python manage.py sqlmigrate webapp 0001</code> (Optional)</p>
+<p>If all looks good, you can run the <code>migrate</code> command. This will actually perform the migrations. If this is your first time doing this, you should see quite a bit has been migrated.</p>
+<p><code>python manage.py migrate</code></p>
+<h3 id="admin-control-panel">Admin control panel</h3>
+<p>To access the admin page, you visit /admin/, assuming the admin app is indeed installed. To login to the admin panel you need to create an user:</p>
+<p><code>python manage.py createsuperuser</code></p>
+<p>To register a model create a webapp/admin.py file, and in it put:</p>
+<pre><code class="python">from django.contrib import admin
+from webapp.models import Post
+
+admin.site.register(Post)
+</code></pre>
+
+<p>Here, we are importing the admin, the Post model, and then we're registering the Post model.</p>
+<h2 id="using-mysql-database">Using MySQL database</h2>
+<p>By default Django works with SQLite database management system. First, create the MySQL database using the MySQL shell: </p>
+<p><code>CREATE DATABASE django_db;</code></p>
+<p>To use MySQL in Django, instead of SQLite, do the following:</p>
+<p><code>pip install mysqlclient</code></p>
+<p>Go to the main <code>settings.py</code> file and modify the DATABASES section to:</p>
+<pre><code class="python">DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_db',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': ''
+    }
+}
+</code></pre>
+
+<p>Now you can run the migrate command to create all tables Django needs: <code>python manage.py migrate</code></p>
+<h2 id="django-authentication-system">Django authentication system</h2>
+<p>Base project struture for this section:</p>
+<pre><code>mysite/
+  manage.py
+
+  mysite/
+    __init__.py
+    settings.py
+    urls.py
+    wsgi.py
+
+  app1/
+    __init__.py
+    admin.py
+    apps.py
+    migrations/
+    models.py
+    tests.py
+    views.py
+</code></pre>
+
+<pre><code class="python"># mysite/urls.py
+
+</code></pre>
+
+<pre><code class="python"># mysite/urls.py
+
+urlpatterns = [
+  ...
+  path('accounts/', include(django.contrib.auth.urls))
+]
+</code></pre>
+
+<h2 id="performing-ajax-post-requests-in-django">Performing AJAX POST Requests in Django</h2>
+<p>Ref: http://coreymaynard.com/blog/performing-ajax-post-requests-in-django/</p>
+<p>A common pitfall that shows up when developing a Django application is when you try and make your first POST request to your server from AJAX. As a response you receive a helpful 403 FORBIDDEN notice, and not much other information. There's a fairly simple way of handling this issue in a seamless fashion,.</p>
+<p>Firstly, let's discuss the actual problem that is causing this. Django comes with a security feature called Cross Site Request Forgery protection. A CSRF attack is when some external malicious site contains a link with some JavaScript that is intended to perform an action on your web site using the credentials of a logged-in-user who visited the malicious site in their browser. To protect against this, Django adds a CSRF token to every request that must be included with every unsafe HTTP request method (POST, PUT, and DELETE). This random string is verified upon every request, and if it is not valid (or not present) the server will respond with 403 FORBIDDEN.</p>
+<p>So, assuming you already have a Django project all setup and ready to go, we're going to create a view and a template to show the POST request in action. Just to keep things simple, we're going to do this in a separate app, so go ahead and create a new app and add it to your INSTALLED_APPS list. Inside of that app let's modify the views file and make it look like this:</p>
+<pre><code class="python">from django.views.generic import TemplateView
+from django.http import HttpResponse
+
+import json
+
+class PostExample(TemplateView):
+    template_name = 'start.html'
+
+    def post(self, request):
+        return HttpResponse(json.dumps({'key': 'value'}), mimetype=&quot;application/json&quot;)
+</code></pre>
+
+<p>What we're doing here is creating an incredibly basic view that on a GET request will respond with the <code>start.html</code> template and on a post request will respond with a hard coded JSON dictionary. Now we need to add the URL for this view to the project:</p>
+<pre><code class="python">url(r'^$', PostExample.as_view(), name='test-start'),
+</code></pre>
+
+<p>The template we're going to develop here will be equally simple, let's start with the following:</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script src=&quot;{{ STATIC_URL }}js/jquery-1.11.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function() {
+    $(&quot;#post&quot;).click(function(e) {
+        e.preventDefault();
+        var data = {
+            'foo': 'bar'
+        }
+
+        $.ajax({
+            &quot;type&quot;: &quot;POST&quot;,
+            &quot;dataType&quot;: &quot;json&quot;,
+            &quot;url&quot;: &quot;/test/&quot;,
+            &quot;data&quot;: data,
+            &quot;success&quot;: function(result) {
+                console.log(result);
+            },
+        });
+    });
+});
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;PostExample&lt;/h1&gt;
+    &lt;p&gt;&lt;a href=&quot;&quot; id=&quot;post&quot;&gt;Post Request&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>If you were to go to that page and click the link, you instead of a lovely JSON response you would see the 403 FORBIDDEN notice. Let's take care of that. The way to solve this is by overriding the jQuery beforeSend method on an AJAX query and grabbing the CSRF token embedded in the request and including it in the POST headers. Create a new JavaScript file and add the following to it, and make sure to include it into your template:</p>
+<pre><code class="javascript">function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie &amp;&amp; document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i &lt; cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+            // Only send the token to relative URLs i.e. locally.
+            xhr.setRequestHeader(&quot;X-CSRFToken&quot;, getCookie('csrftoken'));
+        }
+    }
+});
+</code></pre>
+
+<p>With that being done, all you have to do is add the CSRF token into the template like this:</p>
+<pre><code>{% csrf_token %}
+</code></pre>
+
+<p>That takes care of it! You can now make AJAX POST requests from within your application, without doing any specific work on a per instance basis.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../email/" class="btn btn-neutral float-right" title="Email">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../csv/" class="btn btn-neutral" title="CSV files"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../csv/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../email/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

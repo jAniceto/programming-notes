@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Slice notation - Programming Notes</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Slice notation";
+    var mkdocs_page_input_path = "python\\slice-notation.md";
+    var mkdocs_page_url = "/python/slice-notation/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../README/" class="icon icon-home"> Programming Notes</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../README/">Programming Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">General</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../general/batch-script/">Create a Windows batch script</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/crontab/">Linux Crontab</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/deploy-django/">Deploy a Django app in an Ubuntu VPS (DigitalOcean)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/dev-environments/">Development environments</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/git/">Git Version Control System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/keep-ssh-running/">Keep SSH sessions running after disconnecting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/os-env-vars/">Hiding Passwords and Secret Keys in Environment Variables</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/server-setup/">Initial Server Setup with Ubuntu 18.04</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/ubuntu-vps/">Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/web-dev-resources/">Online Resources For Web Developers</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Html css</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../html-css/css-selectors/">CSS selectors</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Javascript</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../javascript/DataTables/">DataTables JS Library</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../javascript/cache-data/">Caching data</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../args-kwargs/">*args and **kwargs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../beautifulsoup4/">Web scrapping with Beautiful Soup 4</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../builtin-functions/">Sorting lists</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../classes/">Classes and OOP (Object Oriented Programming)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../csv/">CSV files</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../django/">Building a Django site</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../email/">Sending e-mails with Python</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../flask/">Building a Flask site</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../hosting/">Hosting Python scripts and services</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../image-manipulation/">Image manipulation in Python</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../imports/">Imports in Python</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../magic-methods/">Magic methods</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../matlab/">Run Matlab programs in Python</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mysql/">Using MySQL in Python</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../progress-bar/">Progress Bars</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Slice notation</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#slice-notation">Slice notation</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../snippets/">Snippets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../store-dicts/">Store dicts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../stravalib/">Stravalib</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../string-formatting/">String formatting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../virtual-environments/">Virtual environments</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../README/">Programming Notes</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../README/">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Python &raquo;</li>
+        
+      
+    
+    <li>Slice notation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="slice-notation">Slice notation</h1>
+<p>The ASCII art diagram is helpful too for remembering how slices work:</p>
+<pre><code> +---+---+---+---+---+---+
+ | P | y | t | h | o | n |
+ +---+---+---+---+---+---+
+ 0   1   2   3   4   5   6
+-6  -5  -4  -3  -2  -1
+</code></pre>
+<p>One way to remember how slices work is to think of the indices as pointing <em>between</em> characters, with the left edge of the first character numbered 0. Then the right edge of the last character of a string of <em>n</em> characters has index <em>n</em>.</p>
+<pre><code class="python">a[start:end] # items start through end-1
+a[start:]    # items start through the rest of the array
+a[:end]      # items from the beginning through end-1
+a[:]         # a copy of the whole array
+</code></pre>
+
+<p>There is also the <code>step</code> value, which can be used with any of the above:</p>
+<pre><code class="python">a[start:end:step] # start through not past end, by step
+</code></pre>
+
+<p>The key point to remember is that the <code>:end</code> value represents the first value that is <em>not</em> in the selected slice. So, the difference beween <code>end</code> and <code>start</code> is the number of elements selected (if <code>step</code> is 1, the default).</p>
+<p>The other feature is that <code>start</code> or <code>end</code> may be a <em>negative</em> number, which means it counts from the end of the array instead of the beginning. So:</p>
+<pre><code class="python">a[-1]    # last item in the array
+a[-2:]   # last two items in the array
+a[:-2]   # everything except the last two items
+</code></pre>
+
+<p>Python is kind to the programmer if there are fewer items than you ask for. For example, if you ask for <code>a[:-2]</code> and <code>a</code> only contains one element, you get an empty list instead of an error. Sometimes you would prefer the error, so you have to be aware that this may happen.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../snippets/" class="btn btn-neutral float-right" title="Snippets">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../progress-bar/" class="btn btn-neutral" title="Progress Bars"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../progress-bar/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../snippets/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

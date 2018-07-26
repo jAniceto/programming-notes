@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Sending e-mails with Python - Programming Notes</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Sending e-mails with Python";
+    var mkdocs_page_input_path = "python\\email.md";
+    var mkdocs_page_url = "/python/email/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../README/" class="icon icon-home"> Programming Notes</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../README/">Programming Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">General</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../general/batch-script/">Create a Windows batch script</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/crontab/">Linux Crontab</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/deploy-django/">Deploy a Django app in an Ubuntu VPS (DigitalOcean)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/dev-environments/">Development environments</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/git/">Git Version Control System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/keep-ssh-running/">Keep SSH sessions running after disconnecting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/os-env-vars/">Hiding Passwords and Secret Keys in Environment Variables</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/server-setup/">Initial Server Setup with Ubuntu 18.04</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/ubuntu-vps/">Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/web-dev-resources/">Online Resources For Web Developers</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Html css</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../html-css/css-selectors/">CSS selectors</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Javascript</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../javascript/DataTables/">DataTables JS Library</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../javascript/cache-data/">Caching data</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../args-kwargs/">*args and **kwargs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../beautifulsoup4/">Web scrapping with Beautiful Soup 4</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../builtin-functions/">Sorting lists</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../classes/">Classes and OOP (Object Oriented Programming)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../csv/">CSV files</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../django/">Building a Django site</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Sending e-mails with Python</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#sending-e-mails-with-python">Sending e-mails with Python</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#very-basic-example">Very basic example</a></li>
+        
+            <li><a class="toctree-l4" href="#more-complete-case">More complete case</a></li>
+        
+            <li><a class="toctree-l4" href="#html-email">HTML email</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../flask/">Flask</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../hosting/">Hosting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../image-manipulation/">Image manipulation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../imports/">Imports</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../magic-methods/">Magic methods</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../matlab/">Matlab</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mysql/">Mysql</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../progress-bar/">Progress bar</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../slice-notation/">Slice notation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../snippets/">Snippets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../store-dicts/">Store dicts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../stravalib/">Stravalib</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../string-formatting/">String formatting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../virtual-environments/">Virtual environments</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../README/">Programming Notes</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../README/">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Python &raquo;</li>
+        
+      
+    
+    <li>Sending e-mails with Python</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="sending-e-mails-with-python">Sending e-mails with Python</h1>
+<p>In all examples I am using a gmail server to send emails. If you are not using a gmail address you need to insert the respective smtp server and possibly the port.</p>
+<ul>
+<li>Gmail: smtp.gmail.com, port 587</li>
+<li>Hotmail: smtp.live.com, port 587</li>
+<li>Outlook: smtp-mail.outlook.com, port 587</li>
+</ul>
+<h3 id="very-basic-example">Very basic example</h3>
+<p>This is a very barebones example. No subject is added to the email. </p>
+<pre><code class="python">import smtplib
+
+sender = 'sender@gmail.com'
+pwd = 'senderpassword'  # password for sender email
+receiver = 'receiver@gmail.com'
+msg = 'Hi there!'
+
+server = smtplib.SMTP('smtp.gmail.com', 587)  # smtp server and port for the sender email
+server.ehlo()
+server.starttls()  # starts a TLS encrypted connection
+server.login(sender, pwd)
+server.sendmail(sender, receiver, msg)
+server.close()
+
+print('Mail sent!')
+</code></pre>
+
+<hr />
+<h3 id="more-complete-case">More complete case</h3>
+<p>This uses the Python email library to help compose the email. You can add the subject to the email. </p>
+<pre><code class="python">import smtplib
+from email.message import EmailMessage
+
+sender = 'sender@gmail.com'
+pwd = 'senderpassword'  # password for sender email
+receiver = 'receiver@gmail.com'
+message = 'Hi there!'
+
+msg = EmailMessage()
+msg.set_content(message)
+msg['Subject'] = subject
+msg['From'] = sender
+msg['To'] = receiver
+
+server = smtplib.SMTP('smtp.gmail.com', 587)
+server.ehlo()
+server.starttls()  # starts a TLS encrypted connection
+server.login(sender, pwd)
+server.sendmail(sender, receiver, msg.as_string())
+server.close()
+
+print('Mail sent!')
+</code></pre>
+
+<hr />
+<h3 id="html-email">HTML email</h3>
+<p>Here’s an example of how to create an HTML message with an alternative plain text version.</p>
+<pre><code class="python">import smtplib
+
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+# me == my email address
+# you == recipient's email address
+me = &quot;my@email.com&quot;
+you = &quot;your@email.com&quot;
+
+# Create message container - the correct MIME type is multipart/alternative.
+msg = MIMEMultipart('alternative')
+msg['Subject'] = &quot;Link&quot;
+msg['From'] = me
+msg['To'] = you
+
+# Create the body of the message (a plain-text and an HTML version).
+text = &quot;Hi!\nHow are you?\nHere is the link you wanted:\nhttp://www.python.org&quot;
+html = &quot;&quot;&quot;\
+&lt;html&gt;
+  &lt;head&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Hi!&lt;br&gt;
+       How are you?&lt;br&gt;
+       Here is the &lt;a href=&quot;http://www.python.org&quot;&gt;link&lt;/a&gt; you wanted.
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+&quot;&quot;&quot;
+
+# Record the MIME types of both parts - text/plain and text/html.
+part1 = MIMEText(text, 'plain')
+part2 = MIMEText(html, 'html')
+
+# Attach parts into message container.
+# According to RFC 2046, the last part of a multipart message, in this case
+# the HTML message, is best and preferred.
+msg.attach(part1)
+msg.attach(part2)
+
+# Send the message via local SMTP server.
+s = smtplib.SMTP('localhost')
+# sendmail function takes 3 arguments: sender's address, recipient's address
+# and message to send - here it is sent as one string.
+s.sendmail(me, you, msg.as_string())
+s.quit()
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../flask/" class="btn btn-neutral float-right" title="Flask">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../django/" class="btn btn-neutral" title="Building a Django site"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../django/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../flask/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

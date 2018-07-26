@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Create a Windows batch script - Programming Notes</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Create a Windows batch script";
+    var mkdocs_page_input_path = "general\\batch-script.md";
+    var mkdocs_page_url = "/general/batch-script/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../README/" class="icon icon-home"> Programming Notes</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../README/">Programming Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">General</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">Create a Windows batch script</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#create-a-windows-batch-script">Create a Windows batch script</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#some-usefull-commands">Some usefull commands:</a></li>
+        
+            <li><a class="toctree-l4" href="#useful-batch-files">Useful batch files:</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../crontab/">Crontab</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../deploy-django/">Deploy django</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dev-environments/">Dev environments</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../git/">Git</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keep-ssh-running/">Keep ssh running</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../os-env-vars/">Os env vars</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../server-setup/">Server setup</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ubuntu-vps/">Ubuntu vps</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../web-dev-resources/">Web dev resources</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Html css</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../html-css/css-selectors/">Css selectors</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Javascript</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../javascript/DataTables/">DataTables</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../javascript/cache-data/">Cache data</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python/args-kwargs/">Args kwargs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/beautifulsoup4/">Beautifulsoup4</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/builtin-functions/">Builtin functions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/classes/">Classes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/csv/">Csv</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/django/">Django</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/email/">Email</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/flask/">Flask</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/hosting/">Hosting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/image-manipulation/">Image manipulation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/imports/">Imports</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/magic-methods/">Magic methods</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/matlab/">Matlab</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/mysql/">Mysql</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/progress-bar/">Progress bar</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/slice-notation/">Slice notation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/snippets/">Snippets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/store-dicts/">Store dicts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/stravalib/">Stravalib</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/string-formatting/">String formatting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/virtual-environments/">Virtual environments</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../README/">Programming Notes</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../README/">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>General &raquo;</li>
+        
+      
+    
+    <li>Create a Windows batch script</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="create-a-windows-batch-script">Create a Windows batch script</h1>
+<p>A batch file is a text file with the extension <strong>.bat</strong> that contains one or more command line commands to be run consecutively. </p>
+<h2 id="some-usefull-commands">Some usefull commands:</h2>
+<p><strong>@echo</strong> - This parameter will allow you to view your working script in the command prompt. This parameter is useful for viewing your working code. If any issues arise from the batch file, you will be able to view the issues associated with your script using the echo function. Adding a following off to this parameter will allow you to quickly close your script after it has finished.</p>
+<p><strong>title</strong> - This will provide a title for your batch script in your Command Prompt window.</p>
+<p><strong>cls</strong> - Clears your command prompt, best used when extraneous code can make what you’re accessing had to find.</p>
+<p><strong>rem</strong> OR <strong>::</strong> - Shorthand for remark. Rem statements are not entered into your code. Instead, they are used to explain and give information regarding the code.</p>
+<p><strong>%%a</strong> - Each file in the folder.</p>
+<p><strong>(“.\”)</strong> - The root folder. When using the command prompt, one must direct the prompt to a particular directory before changing a files name, deleting a file, and so on. With batch files, you only need to paste your .bat file into the directory of your choosing.</p>
+<p><strong>pause</strong> - Allows a break in the logical chain of your .bat file. This allows for users to read over command lines before proceeding with the code. The phrase “Press any key to continue…” will denote a pause.</p>
+<p><strong>start “” [website]</strong> - Will head to a website of your choice using your default web browser.</p>
+<p>A complete list can be found <a href="https://en.wikibooks.org/wiki/Windows_Batch_Scripting">here</a>.</p>
+<h2 id="useful-batch-files">Useful batch files:</h2>
+<h3 id="start-flask-server">Start Flask server</h3>
+<p>The following script starts a Flask development server provided the batch file is located in the project root directory.</p>
+<pre><code>echo off
+cd %localhost%
+call venv\Scripts\activate.bat
+start python dashboard\__init__.py
+pause
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../crontab/" class="btn btn-neutral float-right" title="Crontab">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../README/" class="btn btn-neutral" title="Programming Notes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../README/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../crontab/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

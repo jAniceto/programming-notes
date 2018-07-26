@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Image manipulation in Python - Programming Notes</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Image manipulation in Python";
+    var mkdocs_page_input_path = "python\\image-manipulation.md";
+    var mkdocs_page_url = "/python/image-manipulation/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../README/" class="icon icon-home"> Programming Notes</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../README/">Programming Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">General</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../general/batch-script/">Create a Windows batch script</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/crontab/">Linux Crontab</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/deploy-django/">Deploy a Django app in an Ubuntu VPS (DigitalOcean)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/dev-environments/">Development environments</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/git/">Git Version Control System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/keep-ssh-running/">Keep SSH sessions running after disconnecting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/os-env-vars/">Hiding Passwords and Secret Keys in Environment Variables</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/server-setup/">Initial Server Setup with Ubuntu 18.04</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/ubuntu-vps/">Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../general/web-dev-resources/">Online Resources For Web Developers</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Html css</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../html-css/css-selectors/">CSS selectors</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Javascript</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../javascript/DataTables/">DataTables JS Library</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../javascript/cache-data/">Caching data</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../args-kwargs/">*args and **kwargs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../beautifulsoup4/">Web scrapping with Beautiful Soup 4</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../builtin-functions/">Sorting lists</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../classes/">Classes and OOP (Object Oriented Programming)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../csv/">CSV files</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../django/">Building a Django site</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../email/">Sending e-mails with Python</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../flask/">Building a Flask site</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../hosting/">Hosting Python scripts and services</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Image manipulation in Python</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#image-manipulation-in-python">Image manipulation in Python</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#pillow">Pillow</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../imports/">Imports</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../magic-methods/">Magic methods</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../matlab/">Matlab</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mysql/">Mysql</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../progress-bar/">Progress bar</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../slice-notation/">Slice notation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../snippets/">Snippets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../store-dicts/">Store dicts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../stravalib/">Stravalib</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../string-formatting/">String formatting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../virtual-environments/">Virtual environments</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../README/">Programming Notes</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../README/">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Python &raquo;</li>
+        
+      
+    
+    <li>Image manipulation in Python</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="image-manipulation-in-python">Image manipulation in Python</h1>
+<p>The <strong>Python Imaging Library</strong> (PIL) development has stagnated, with its last release in 2009. Luckily, there’s an actively-developed fork of PIL called <strong>Pillow</strong>.
+<strong>Pillow</strong> is easier to install, runs on all operating systems, and supports Python 3.</p>
+<h2 id="pillow">Pillow</h2>
+<ul>
+<li>Pillow and PIL cannot co-exist in the same environment. Before installing Pillow, please uninstall PIL.</li>
+<li>Pillow &gt;= 2.0.0 supports Python versions 2.6, 2.7, 3.2, 3.3, 3.4</li>
+<li>Before installing Pillow, you’ll have to install Pillow’s prerequisites. <a href="https://pillow.readthedocs.io/en/3.0.0/installation.html">Instructions here</a>.</li>
+</ul>
+<h3 id="instalation">Instalation:</h3>
+<p><strong>Windows</strong>: </p>
+<p><code>$ pip install Pillow</code></p>
+<p><strong>Linux (Debian or Ubuntu)</strong>: </p>
+<p>Make sure you have Python’s development libraries installed. In Debian or Ubuntu: <code>$ sudo apt-get install python3-dev python3-setuptools</code>
+Prerequisites are installed on Ubuntu 12.04 LTS or Raspian Wheezy 7.0 with: <code>$ sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev python-tk</code></p>
+<p><code>$ pip install Pillow</code></p>
+<pre><code class="python">from PIL import Image, ImageFilter
+#Read image
+im = Image.open( 'image.jpg' )
+#Display image
+im.show()
+
+#Applying a filter to the image
+im_sharp = im.filter( ImageFilter.SHARPEN )
+#Saving the filtered image to a new file
+im_sharp.save( 'image_sharpened.jpg', 'JPEG' )
+
+#Splitting the image into its respective bands, i.e. Red, Green,
+#and Blue for RGB
+r,g,b = im_sharp.split()
+
+#Viewing EXIF data embedded in image
+exif_data = im._getexif()
+exif_data
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../imports/" class="btn btn-neutral float-right" title="Imports">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../hosting/" class="btn btn-neutral" title="Hosting Python scripts and services"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../hosting/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../imports/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>
