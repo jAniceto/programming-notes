@@ -1,6 +1,13 @@
 # Filter a table or list by typing in search box
 
-## For a table
+## Using a JS library:
+
+* [listjs.com](http://listjs.com/)
+
+
+## From scratch: 
+
+### For a table
 
 1) HTML 
 
@@ -100,7 +107,7 @@ function myFunction() {
 * Change `tr[i].getElementsByTagName('td')[0]` to `[1]` if you want to search for "Country" (index 1) instead of "Name" (index 0).
 
 
-## For a list
+### For a list
 
 1) HTML 
 
