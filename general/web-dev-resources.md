@@ -9,6 +9,11 @@
 * UUID Generator - https://www.uuidgenerator.net/
 * Hash Generator - https://passwordsgenerator.net/sha256-hash-generator/
 
+## FONTS
+* Google Fonts - https://fonts.google.com/
+* Font Joy - https://fontjoy.com/
+* Font Pair - https://fontpair.co/
+
 ## IMAGE RESOURCES:
 * Free Stock Images - https://www.pexels.com
 * Free Stock Images With Great API - https://unsplash.com/
