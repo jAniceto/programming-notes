@@ -2,6 +2,7 @@
 
 ### Index
 * [Create a slug](#create-a-slug)
+* [Send email](#send-email)
 
 ---
 
@@ -27,7 +28,7 @@ class Test(models.Model):
 
 ---
 
-### Send mail
+### Send email
 If `html_message` keyword argument is provided, the resulting email will be a multipart/alternative email with `message` as the text/plain content type and `html_message` as the text/html content type. 
 
 ```python
