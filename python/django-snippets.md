@@ -5,7 +5,6 @@
 
 ---
 
-
 ### Create a slug
 Call the Django `slugify` function automatically by overriding the `save` method. It is preferable to generate the slug only once when you create a new object, otherwise your URLs may change when the `q` field is edited, which can cause broken links. More info [here](https://stackoverflow.com/questions/837828/how-do-i-create-a-slug-in-django).
 
@@ -25,3 +24,24 @@ class Test(models.Model):
 
         super(Test, self).save(*args, **kwargs)
 ```
+
+---
+
+### Send mail
+If `html_message` keyword argument is provided, the resulting email will be a multipart/alternative email with `message` as the text/plain content type and `html_message` as the text/html content type. 
+
+```python
+# views.py
+
+from django.core.mail import send_mail
+
+send_mail(
+    'Subject here',
+    'Here is the message.',
+    'from@example.com',
+    ['to@example.com'],
+    fail_silently=False,
+)
+```
+
+Mail is sent using the SMTP host and port specified in the `EMAIL_HOST` and `EMAIL_PORT` settings. The `EMAIL_HOST_USER` and `EMAIL_HOST_PASSWORD` settings, if set, are used to authenticate to the SMTP server, and the `EMAIL_USE_TLS` and `EMAIL_USE_SSL` settings control whether a secure connection is used. More info [here](https://docs.djangoproject.com/en/2.1/topics/email/).
