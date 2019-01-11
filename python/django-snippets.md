@@ -3,6 +3,8 @@
 ### Index
 * [Create a slug](#create-a-slug)
 * [Send email](#send-email)
+* [Database dump to file](#database-dump-to-file)
+* [Provide data to DB via Django Python Shell](#provide-data-to-db-via-django-python-shell)
 
 ---
 
@@ -46,3 +48,37 @@ send_mail(
 ```
 
 Mail is sent using the SMTP host and port specified in the `EMAIL_HOST` and `EMAIL_PORT` settings. The `EMAIL_HOST_USER` and `EMAIL_HOST_PASSWORD` settings, if set, are used to authenticate to the SMTP server, and the `EMAIL_USE_TLS` and `EMAIL_USE_SSL` settings control whether a secure connection is used. More info [here](https://docs.djangoproject.com/en/2.1/topics/email/).
+
+---
+
+### Database dump to file
+Save from DB
+```
+$ python manage.py dumpdata > db_dump.json
+```
+
+Load fixture to DB
+```
+$ python manage.py loaddata <fixture>
+```
+
+---
+
+### Provide data to DB via Django Python Shell
+Exemple for loading data in a json file named `filename.json` to the Model `Member` in the app `website`
+
+```
+$ python manage.py shell
+```
+
+```python
+>>> import json
+>>> from website.models import Member
+>>> with open('filename.json', encoding="utf-8") as f:
+...     members_json = json.load(f)
+...
+>>> for member in members_json:
+...     member = Member(name=member['name'], position=member['position'], alumni=member['alumni'])
+...     member.save()
+...
+>>> exit()
