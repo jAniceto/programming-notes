@@ -13,6 +13,7 @@
 * Google Fonts - https://fonts.google.com/
 * Font Joy - https://fontjoy.com/
 * Font Pair - https://fontpair.co/
+* HTML symbols - https://www.toptal.com/designers/htmlarrows/
 
 ## IMAGE RESOURCES:
 * Free Stock Images - https://www.pexels.com
