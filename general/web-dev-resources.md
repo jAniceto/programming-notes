@@ -26,6 +26,7 @@
 ## COLOR & DESIGN:
 * Generate Color Palette from Image - https://www.canva.com/color-palette/
 * Color Palette Generator - https://coolors.co/app
+* Color Pallete Generator - http://colormind.io/
 * Create Color Schemes - https://color.hailpixel.com
 * Get Color Schemes of Websites - http://stylifyme.com
 * Create Gradients - https://uigradients.com
