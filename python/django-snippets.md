@@ -5,6 +5,7 @@
 * [Send email](#send-email)
 * [Database dump to file](#database-dump-to-file)
 * [Provide data to DB via Django Python Shell](#provide-data-to-db-via-django-python-shell)
+* [Create script with access to Django shell](#create-script-with-access-to-django-shell)
 
 ---
 
@@ -82,3 +83,49 @@ $ python manage.py shell
 ...     member.save()
 ...
 >>> exit()
+```
+
+---
+
+### Create script with access to Django shell
+If you wnat to run an external script but have access to the Django environment like you do with `python manage.py shell` you can do the following. More info [here](https://stackoverflow.com/questions/8047204/django-script-to-access-model-objects-without-using-manage-py-shell)
+
+```python
+# your_script.py
+
+import os
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "your_project_name.settings")
+
+# your imports, e.g. Django models
+from your_project_name.models import Location
+
+# From now onwards start your script..
+```
+
+Here is an example to access and modify your model:
+```python
+# models.py
+
+class Location(models.Model):
+    name = models.CharField(max_length=100)
+```
+
+```python
+# your_script.py
+
+if __name__ == '__main__':    
+    # e.g. add a new location
+    l = Location()
+    l.name = 'Berlin'
+    l.save()
+
+    # this is an example to access your model
+    locations = Location.objects.all()
+    print locations
+
+    # e.g. delete the location
+    berlin = Location.objects.filter(name='Berlin')
+    print berlin
+    berlin.delete()
+```
