@@ -9,6 +9,12 @@
 * UUID Generator - https://www.uuidgenerator.net/
 * Hash Generator - https://passwordsgenerator.net/sha256-hash-generator/
 
+## FONTS
+* Google Fonts - https://fonts.google.com/
+* Font Joy - https://fontjoy.com/
+* Font Pair - https://fontpair.co/
+* HTML symbols - https://www.toptal.com/designers/htmlarrows/
+
 ## IMAGE RESOURCES:
 * Free Stock Images - https://www.pexels.com
 * Free Stock Images With Great API - https://unsplash.com/
@@ -20,6 +26,7 @@
 ## COLOR & DESIGN:
 * Generate Color Palette from Image - https://www.canva.com/color-palette/
 * Color Palette Generator - https://coolors.co/app
+* Color Pallete Generator - http://colormind.io/
 * Create Color Schemes - https://color.hailpixel.com
 * Get Color Schemes of Websites - http://stylifyme.com
 * Create Gradients - https://uigradients.com
