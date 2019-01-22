@@ -160,5 +160,5 @@ python manage.py shell
 
 5) Finally:
 ```
-python3 manage.py loaddata datadump.json
+python manage.py loaddata datadump.json
 ```
