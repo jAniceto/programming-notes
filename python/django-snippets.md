@@ -6,6 +6,7 @@
 * [Database dump to file](#database-dump-to-file)
 * [Provide data to DB via Django Python Shell](#provide-data-to-db-via-django-python-shell)
 * [Create script with access to Django shell](#create-script-with-access-to-django-shell)
+* [Migrate Django from SQLite to PostgreSQL](#migrate-django-from-sqlite-to-postgresql)
 
 ---
 
@@ -128,4 +129,36 @@ if __name__ == '__main__':
     berlin = Location.objects.filter(name='Berlin')
     print berlin
     berlin.delete()
+```
+---
+
+### Migrate Django from SQLite to PostgreSQL
+
+Here's how to migrate a Django database from SQLite to PostgreSQL. More info [here](https://stackoverflow.com/questions/3034910/whats-the-best-way-to-migrate-a-django-db-from-sqlite-to-mysql).
+
+1) Dump existing data:
+```
+python manage.py dumpdata > datadump.json
+```
+
+2) Change settings.py to Postgres backend.
+
+3) Make sure you can connect on PostgreSQL. Then:
+```
+python manage.py migrate --run-syncdb
+```
+
+4) Run this on Django shell to exclude contentype data
+```
+python manage.py shell
+```
+```
+>>> from django.contrib.contenttypes.models import ContentType
+>>> ContentType.objects.all().delete()
+>>> quit()
+````
+
+5) Finally:
+```
+python3 manage.py loaddata datadump.json
 ```
