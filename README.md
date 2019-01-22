@@ -5,6 +5,7 @@ Programming notes, snippets and examples in one place.
 ## GENERAL
 * [Create a Windows batch script](/general/batch-script.md)
 * [Linux Crontab](/general/crontab.md)
+* [Deploy a Django app to Heroku](/general/deploy-django-heroku.md)
 * [Deploy a Django app in an Ubuntu VPS (DigitalOcean)](/general/deploy-django.md)
 * [Development environments](/general/dev-environments.md)
 * [Git Version Control System](/general/git.md)
@@ -33,6 +34,7 @@ Programming notes, snippets and examples in one place.
 * [Classes and OOP (Object Oriented Programming)](/python/classes.md)
 * [Create a standalone exacutable from a Python scripy](/python/create-exe.md)
 * [CSV files](/python/csv.md)
+* [Collection of useful Django snippets for several purposes](/python/django-snippets.md)
 * [Building a Django site](/python/django.md)
 * [Sending e-mails with Python](/python/email.md)
 * [Building a Flask site](/python/flask.md)
