@@ -87,6 +87,20 @@ $ heroku run python manage.py migrate
 You should now be able to see your app in the Heroku Dashboard as well as a Dyno web process with the `ON` indication.
 
 
+## 5) Import local database to Heroky (Optional)
+
+If you are using a postgresql database locally you can easily import it to your newly created Heroku app. First create a backup of your local DB:
+
+```bash
+pg_dump -U USERNAME DATABASE > pg_db_dump.sql
+```
+
+To import it to Heroku run:
+
+```bash
+heroku pg:psql --app APPNAME < pg_db_dump.sql
+```
+
 ### References:
 * [Getting Started on Heroku with Python](https://devcenter.heroku.com/articles/getting-started-with-python)
 * [Deploying Python and Django Apps on Heroku](https://devcenter.heroku.com/articles/deploying-python)
