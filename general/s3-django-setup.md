@@ -185,3 +185,4 @@ We are now ready to serve static and media files from the S3 bucket!
 ### References
 * [Setting up Amazon S3 Bucket for serving Django Static and Media files](https://medium.com/@manibatra23/setting-up-amazon-s3-bucket-for-serving-django-static-and-media-files-3e781ab325d5)
 * [Using Amazon S3 to Store your Django Site's Static and Media Files](https://www.caktusgroup.com/blog/2014/11/10/Using-Amazon-S3-to-store-your-Django-sites-static-and-media-files/)
+* [How to Setup Amazon S3 in a Django Project](https://simpleisbetterthancomplex.com/tutorial/2017/08/01/how-to-setup-amazon-s3-in-a-django-project.html)
