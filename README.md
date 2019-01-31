@@ -14,6 +14,7 @@ Programming notes, snippets and examples in one place.
 * [Hiding Passwords and Secret Keys in Environment Variables](/general/os-env-vars.md)
 * [Installing Python 3.7 on Raspbian](/general/python-raspbian.md)
 * [Regular expressions](/general/regex.md)
+* [Setting up Amazon S3 Bucket for serving Django Static and Media files](/general/s3-django-setup.md)
 * [Initial Server Setup with Ubuntu 18.04](/general/server-setup.md)
 * [Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)](/general/ubuntu-vps.md)
 * [VPS providers](/general/vps-providers.md)
