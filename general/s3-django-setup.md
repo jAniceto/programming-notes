@@ -30,7 +30,7 @@ After signing up to Amazon AWS we need to create a user using the **IAM** servic
 
 * Select the region you want.
 
-  *Note: Try to create  a bucket in the same region where your app is running to take advantage of AWS’s free in-region data transfer rates.*
+  *Note: Try to create  a bucket in the same region where your app is running to take advantage of AWS's free in-region data transfer rates.*
 
 * Give your bucket a name and click on next that brings you to the **Set Properties** tab. Click on **Next** a couple more times and then click on **Create Bucket** to create your bucket.
 
@@ -54,17 +54,18 @@ Effect : Allow
 Principal : *      //This gives everybody access
 AWS Service : Amazon S3
 Actions : GetObject
-Amazon Resource Name : arn:aws:s3:::<your bucket name>/* //The * at    the end siginifies that access is being given to all the files
+Amazon Resource Name : arn:aws:s3:::<your bucket name>/* 
 ```
+The `*` at the end siginifies that access is being given to all the files.
 
 After setting the values as mentioned above click on **Add Statement**. Do not click on **Generate Policy** yet as you have to create a policy to allow the Django application to put files into the bucket on deployment. The policy will be as follows:
 
 ```
 Select Type of Policy : S3 Bucket Policy
 Effect : Allow
-Principal : <User ARN> //This is the user arn that you kept a note of earlier.
+Principal : <User ARN>     //This is the user arn that you kept a note of earlier.
 AWS Service : Amazon S3
-Actions : * //I gave full access, though I think GetObject,PutObject will be better. Will try it out soon. 
+Actions : *    //I gave full access, though I think GetObject, PutObject will be better. Will try it out soon. 
 Amazon Resource Name : arn:aws:s3:::<your bucket name>/*,arn:aws:s3:::<your bucket name>  // Gives full access to buckets and its contents.
 ```
 
@@ -81,7 +82,7 @@ pip install django-storages boto3
 pip freeze >> requirements.txt
 ```
 
-and add “storages” to the list of INSTALLED_APPS in the settings.py file.
+and add `storages` to the list of INSTALLED_APPS in the `settings.py` file.
 
 ```
 INSTALLED_APPS = (
@@ -89,6 +90,59 @@ INSTALLED_APPS = (
           'storages',
      )
 ```
+
+Next you have to add the following settings to the `settings.py` file in your application.
+
+```python
+# Set S3 as the place to store your files.
+DEFAULT_FILE_STORAGE = 
+storages.backends.s3boto3.S3Boto3Storage"
+STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID", "")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY", "")
+AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME", "")
+AWS_QUERYSTRING_AUTH = False # This will make sure that the file URL does not have unnecessary parameters like your access key.
+AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com'
+
+# Static media settings
+STATIC_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+MEDIA_URL = STATIC_URL + 'media/'
+STATICFILES_DIRS = ( os.path.join(BASE_DIR, "static"), )
+STATIC_ROOT = 'staticfiles'
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+```
+
+Now, make sure the main `urls.py` file does include the url configuration for your media files:
+
+```python
+from django.conf import settings
+
+urlpatterns = [
+  ...
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+```
+
+And as a last step there should be a folder called static in the root of your application (same level as the manage.py file). Git does not allow you to commit empty folders so you can inlcude a readme file in there to commit the folder.
+
+If you are using Heroku before pushing your code use:
+
+```
+heroku config:set DISABLE_COLLECTSTATIC=1
+```
+
+to disable collectstatic running automatically as your static folder is not yet present on the server and an error will be thrown regarding the same. You can run it manually using
+
+```
+heroku run python manage.py collectstatic --noinput
+```
+
+One important point before you go on this adventure. At the moment all the media files (files that are uploaded by the user) used in our models have the property `upload_to` set for them and as a result don't overwrite the static files. 
+
+We are nouw ready to serve static and media files from the S3 bucket!
 
 
 ### References
