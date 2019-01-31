@@ -11,7 +11,8 @@ Here is a list of several popular VPS providers:
 * [digitalocean.com](https://www.digitalocean.com/pricing/) - from 5 $/month + tax (anual)
 * [linode.com](https://www.linode.com) - from 5 $/month + tax
 * [heroku.com](https://www.heroku.com/pricing) from 7 $/month + tax (anual)
-
+* [Google Cloudm](https://console.cloud.google.com/compute)
+* [AWS EC2](https://aws.amazon.com/ec2/)
 
 ### Portugal based providers:
 
