@@ -145,15 +145,41 @@ If you are using Heroku before pushing your code use:
 heroku config:set DISABLE_COLLECTSTATIC=1
 ```
 
-to disable collectstatic running automatically as your static folder is not yet present on the server and an error will be thrown regarding the same. You can run it manually using
+to disable collectstatic running automatically as your static folder is not yet present on the server and an error will be thrown regarding the same. You can now push all changes to Heroku with
+
+```
+git push heroku master
+```
+
+or if you want to push from a different branch:
+
+```
+git push heroku testbranch:master
+```
+
+You can now run the `collectstatic` command manually using:
 
 ```
 heroku run python manage.py collectstatic --noinput
 ```
 
+If you get the following error:
+
+```
+UserWarning: The default behavior of S3Boto3Storage is insecure and will change in django-storages 2.0. By default files and new buckets are saved with an ACL of 'public-read' (globally publicly readable). Version 2.0 will default to using the bucket's ACL. To opt into the new behavior set AWS_DEFAULT_ACL = None, otherwise to silence this warning explicitly set AWS_DEFAULT_ACL. "The default behavior of S3Boto3Storage is insecure and will change "
+...
+AccessDenied
+```
+
+add the following variable to `settings.py`: 
+
+```
+AWS_DEFAULT_ACL = None
+```
+
 One important point before you go on this adventure. At the moment all the media files (files that are uploaded by the user) used in our models have the property `upload_to` set for them and as a result don't overwrite the static files. 
 
-We are nouw ready to serve static and media files from the S3 bucket!
+We are now ready to serve static and media files from the S3 bucket!
 
 
 ### References
