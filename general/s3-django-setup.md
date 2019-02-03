@@ -1,4 +1,4 @@
-# Set up Amazon S3 to serve Django Static and Media files
+# Setting up Amazon S3 Bucket for serving Django Static and Media files
 
 Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django App. 
 
