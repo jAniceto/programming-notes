@@ -1,7 +1,6 @@
-
 # Programming Notes
 Programming notes, snippets and examples in one place.
-
+    
 ## GENERAL
 * [Create a Windows batch script](/general/batch-script.md)
 * [Linux Crontab](/general/crontab.md)
@@ -54,6 +53,4 @@ Programming notes, snippets and examples in one place.
 * [Virtual enviroments](/python/virtual-environments.md)
 
 
-
 These notes contain excerpts, code snippets and examples from various sources including, but not limited to, Python Docs, The Hitchhiker’s Guide to Python and Stack Overflow users. Sources were not collected as this notes were intended for personal use.
-

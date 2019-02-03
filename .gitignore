@@ -1,2 +1,7 @@
-
 create_articles.py
+create_file_info.py
+articles.json
+update_script.py
+
+.idea/
+__pycache__/

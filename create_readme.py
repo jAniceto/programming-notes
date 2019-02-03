@@ -5,11 +5,9 @@ TITLE = 'Programming Notes'
 
 SUBTITLE = 'Programming notes, snippets and examples in one place.'
 
-DISCLAIMER = """
-These notes contain excerpts, code snippets and examples from various sources including, but not limited to, Python Docs, The Hitchhiker’s Guide to Python and Stack Overflow users. Sources were not collected as this notes were intended for personal use.
-"""
+DISCLAIMER = 'These notes contain excerpts, code snippets and examples from various sources including, but not limited to, Python Docs, The Hitchhiker’s Guide to Python and Stack Overflow users. Sources were not collected as this notes were intended for personal use.'
 
-EXCLUDE_DIRS = ['.git']
+EXCLUDE_DIRS = ['.git', '.idea', '__pycache__']
 
 
 def get_md_files(directory):
@@ -28,30 +26,35 @@ def get_article_title(filename):
     return title.replace('#', '').replace('\n', '').replace('\r', '').strip()
 
 
-# Filter the result using os.path.isdir() (and use os.path.join() to get the real path):
-sections = [ name for name in os.listdir('.') if os.path.isdir(os.path.join('.', name)) and name not in EXCLUDE_DIRS ]
+def main():
+    # Filter the result using os.path.isdir() (and use os.path.join() to get the real path):
+    sections = [ name for name in os.listdir('.') if os.path.isdir(os.path.join('.', name)) and name not in EXCLUDE_DIRS ]
 
-index_str = ''
-for section in sections:
-    index_str += '## ' + section.replace('-', ' ').upper() + '\n'
-    
-    md_files = get_md_files(section)
-    
-    for md_file in md_files:
-        title = get_article_title(md_file)
-        index_str += f'* [{title}](/{md_file})\n'.replace('\\', '/')
-    index_str += '\n'
+    index_str = ''
+    for section in sections:
+        index_str += '## ' + section.replace('-', ' ').upper() + '\n'
+
+        md_files = get_md_files(section)
+
+        for md_file in md_files:
+            title = get_article_title(md_file)
+            index_str += f'* [{title}](/{md_file})\n'.replace('\\', '/')
+        index_str += '\n'
 
 
-# Build Readme.md
-
-readme = f"""
-# {TITLE}
+    # Build Readme.md
+    readme = f"""# {TITLE}
 {SUBTITLE}
-
+    
 {index_str}
 {DISCLAIMER}
 """
 
-with open('README.md', 'w', encoding='utf-8') as f:
-    f.write(readme)
+    with open('README.md', 'w', encoding='utf-8') as f:
+        f.write(readme)
+
+    print('readme.md updated!')
+
+
+if __name__ == "__main__":
+    main()
