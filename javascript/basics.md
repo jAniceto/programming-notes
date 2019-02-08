@@ -41,11 +41,40 @@ alert(message);
   
 Similar to the last example, no alert will pop up. In the console, there would be an `Uncaught TypeError`, since there was an attempt to redefine a variable defined with `const`.
 
-## Template literals (formating strings)
+## Template literals (formatting strings)
 
 ```javascript
 const name = 'Daniel';
+
 alert(`Hello ${name}!`);
 ```
 
-                  
+
+## Arrow functions
+
+Since functions, especially anonymous functions, are so common in JavaScript, ES6 has introduced a new syntax for functions called arrow notation that allows for the definition of so-called arrow functions.
+
+```javascript
+() => {
+    alert('Hello, world!');
+}
+
+x => {
+    alert(x);
+}
+
+x => x * 2;
+```
+
+An arrow function is defined without using the word function, but rather just with a pair of parentheses enclosing any arguments the function takes, followed by an arrow, and finally the function body, enclosed in curly braces. Functions with only one argument can be defined without the use of parentheses enclosing the argument list. Functions that have only one line in the body can drop the curly braces and have the body on the same line as the argument list and arrow. Here's an example:
+
+```javascript
+document.addEventListener('DOMContentLoaded', () => {
+    // Have each button change the color of the heading
+    document.querySelectorAll('.color-change').forEach(button => {
+        button.onclick = () => {
+            document.querySelector('#hello').style.color = button.dataset.color;
+        };
+    });
+});
+```
