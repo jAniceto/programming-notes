@@ -55,7 +55,7 @@ Open the `mysite/settings.py` file and add the `'webapp.apps.WebappConfig'` line
 # do not delete the other code
 # just add 'webapp' to the list.
 INSTALLED_APPS = [
-    'webapp.apps.WebappConfig',  # <app_name>.apps.<App_name>Config
+    'webapp.apps.WebappConfig',  # <app_name>.apps.<AppName>Config
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
