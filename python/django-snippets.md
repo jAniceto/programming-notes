@@ -7,6 +7,7 @@
 * [Provide data to DB via Django Python Shell](#provide-data-to-db-via-django-python-shell)
 * [Create script with access to Django shell](#create-script-with-access-to-django-shell)
 * [Migrate Django from SQLite to PostgreSQL](#migrate-django-from-sqlite-to-postgresql)
+* [Using Django Messages with Bootstrap](#using-django-messages-with-bootstrap)
 
 ---
 
@@ -161,4 +162,44 @@ python manage.py shell
 5) Finally:
 ```
 python manage.py loaddata datadump.json
+```
+
+### Using Django Messages with Bootstrap
+
+Configure the Django Messages Framework to work with Bootstrap by changing the `MESSAGE_TAGS`. In the `settings.py` file:
+```python
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'info',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',
+}
+```
+
+In your HTML base template insert the section where messages will display:
+```html
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+```
+
+To use messages do the following in `views.py`:
+```python
+from django.contrib import messages
+
+messages.debug(request, '%s SQL statements were executed.' % count)
+messages.info(request, 'Three credits remain in your account.')
+messages.success(request, 'Profile details updated.')
+messages.warning(request, 'Your account expires in three days.')
+messages.error(request, 'Document deleted.')
 ```
