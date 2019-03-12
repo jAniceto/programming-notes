@@ -2,6 +2,18 @@
 
 A collection of several code snippets of common or useful operation in Python.
 
+
+## Get list of attributes (methods) of an object
+
+Get a list of attributes (methods) of an object with `dir(object)`
+
+To see everything except hidden/dunder methods you can do:
+
+```python
+print((d for d in dir(obj) if not d.startswith('_')))
+```
+
+
 ## Remove dictionary from list
 
 Here's how to remove a specific dictionary, or several dictionaries, from a list of dictionaries by a specific key. In the example below we are removing from the list all dictionaries which have and `id` key of `2`.
