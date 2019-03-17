@@ -8,6 +8,7 @@
 * [Create script with access to Django shell](#create-script-with-access-to-django-shell)
 * [Migrate Django from SQLite to PostgreSQL](#migrate-django-from-sqlite-to-postgresql)
 * [Using Django Messages with Bootstrap](#using-django-messages-with-bootstrap)
+* [Override form `__init__` method](#override-form-__init__-method)
 
 ---
 
@@ -157,12 +158,14 @@ python manage.py shell
 >>> from django.contrib.contenttypes.models import ContentType
 >>> ContentType.objects.all().delete()
 >>> quit()
-````
+```
 
 5) Finally:
 ```
 python manage.py loaddata datadump.json
 ```
+
+---
 
 ### Using Django Messages with Bootstrap
 
@@ -203,3 +206,44 @@ messages.success(request, 'Profile details updated.')
 messages.warning(request, 'Your account expires in three days.')
 messages.error(request, 'Document deleted.')
 ```
+
+---
+
+### Override form `__init__` method
+You can change how a form is created base on logic from a view by modifying the form `__init__` method.
+
+```python
+# forms.py
+
+class TransactionForm(forms.ModelForm):
+
+    class Meta:
+        model = Transaction
+        fields = ('category', 'name', 'value', 'split')
+
+    # Override init method so that the split field only shows in forms of account with more than one user
+    def __init__(self, *args, **kwargs):
+        multiple_users = kwargs.pop('multiple_users', True)
+        super(TransactionForm, self).__init__(*args, **kwargs)
+        if not multiple_users:
+            del self.fields['split']
+```
+
+In the `views.py` file you pass the `multiple_users` variable to the form class
+
+```python
+# views.py
+
+def transaction_new(request, account_id):
+    if request.method == "POST":
+        form = TransactionForm(request.POST, multiple_users=multiple_users)
+        if form.is_valid():
+            transaction.save()
+            return redirect('transaction_new', account_id=account_id)
+        else:
+            form = TransactionForm(multiple_users=multiple_users)
+    context = {...}
+	return render(request, 'expense_tracker/new_transaction.html', context)
+```
+
+---
