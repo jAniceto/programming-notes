@@ -1,5 +1,39 @@
 # Virtual enviroments
 
+## Main packages to handle virtual environments
+- [venv (Standard Library)](#venv-(standard-library))
+- [Pipenv](#pipenv)
+- [virtualenv](#virtualenv-package)
+
+
+## venv (Standard Library)
+
+`venv` already comes with the Python Standard Library so no installation is required.
+
+### Create a new virtual enviroment: 
+
+To create a new virtual environment: `$ python -m venv env_name`
+
+A new folder appears in your current location containinng the new Python installation. The environemnt uses the same Python version as the one used to create it.
+
+To activate the virtual environment: `$ env_name/Scripts/activate.bat`
+
+Once the virtual environment is activated, when you install a package with `pip install package`, it will only be installed in the environment.
+
+To deactivate the virtual environment: `$ deactivate`
+
+To create a requirements file for your project: `$ pip freeze > requirements.txt`
+
+To delete the virtual environment completly just delete the enviroment folder (`env_name`) or run: `$ rmdir env_name /s`
+
+To install packages from an existing `requirements.txt` file: `pip install -r requirements.txt`
+
+Create a virtual environment with access to the packages in the global installation of Python: 
+
+`$ python -m venv env_name --system-site-packages`
+
+
+
 ## Pipenv
 
 Installing Pipenv: `$ pip install pipenv`
@@ -23,13 +57,12 @@ $ pipenv run python main.py
 
 Using `$ pipenv run` ensures that your installed packages are available to your script. It’s also possible to spawn a new shell that ensures all commands have access to your installed packages with `$ pipenv shell`.
 
-
-
 Documentation: [Pipenv](https://pipenv.readthedocs.io/en/latest/)
 
----
 
-## Virtual environment using **virtualenv**
+
+## virtualenv package
+
 Install: `$ pip install virtualenv`
 
 ### Create a new virtual enviroment: 
