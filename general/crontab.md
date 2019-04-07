@@ -36,6 +36,18 @@ string        | meaning
 30 18 */5 * * sudo python /home/pi/projects/script1.py
 ```
 
+### Crontab log
+
+On a default installation the cron jobs get logged to
+```
+$ /var/log/syslog
+```
+
+You can see just cron jobs in that logfile by running
+```
+$ grep CRON /var/log/syslog
+```
+
 
 ### Helpfull links:
 
