@@ -57,6 +57,12 @@ $ pipenv run python main.py
 
 Using `$ pipenv run` ensures that your installed packages are available to your script. It’s also possible to spawn a new shell that ensures all commands have access to your installed packages with `$ pipenv shell`.
 
+### Other commands:
+* `pipenv --rm`: Removes the virtual environment compleatly
+* `pipenv --python 3.6.5`: Specify Python version
+* `pipenv --venv`: Shows virtual environment path
+* `pipenv graph`: Dependencies tree
+
 Documentation: [Pipenv](https://pipenv.readthedocs.io/en/latest/)
 
 
