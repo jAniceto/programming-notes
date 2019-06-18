@@ -99,38 +99,48 @@ ax.set_ylabel('Amount ($)')
 ax.set_yticklabels(y_labels)
 ax.set_xlim(-40, 300) # expand xlim to make labels easier to read
 
-rects = ax.patches
+def add_value_labels(ax, spacing=5, precision=2):
+    """Add labels to the end of each bar in a bar chart.
 
-# For each bar: Place a label
-for rect in rects:
-    # Get X and Y placement of label from rect.
-    x_value = rect.get_width()
-    y_value = rect.get_y() + rect.get_height() / 2
+    Arguments:
+        ax (matplotlib.axes.Axes): The matplotlib object containing the axes of the plot to annotate.
+        spacing (int): The distance between the labels and the bars.
+        precision (int): Float precision to use in the annotation.
+    """
 
-    # Number of points between bar and label. Change to your liking.
-    space = 5
-    # Vertical alignment for positive values
-    ha = 'left'
+    # For each bar: Place a label
+    for rect in ax.patches:
+        # Get X and Y placement of label from rect.
+        x_value = rect.get_width()
+        y_value = rect.get_y() + rect.get_height() / 2
 
-    # If value of bar is negative: Place label left of bar
-    if x_value < 0:
-        # Invert space to place label to the left
-        space *= -1
-        # Horizontally align label at right
-        ha = 'right'
+        # Number of points between bar and label. Change to your liking.
+        space = spacing
+        # Vertical alignment for positive values
+        ha = 'left'
 
-    # Use X value as label and format number with one decimal place
-    label = "{:.1f}".format(x_value)
+        # If value of bar is negative: Place label left of bar
+        if x_value < 0:
+            # Invert space to place label to the left
+            space *= -1
+            # Horizontally align label at right
+            ha = 'right'
 
-    # Create annotation
-    plt.annotate(
-        label,                      # Use `label` as label
-        (x_value, y_value),         # Place label at end of the bar
-        xytext=(space, 0),          # Horizontally shift label by `space`
-        textcoords="offset points", # Interpret `xytext` as offset in points
-        va='center',                # Vertically center label
-        ha=ha)                      # Horizontally align label differently for
-                                    # positive and negative values.
+        # Use X value as label and format number with one decimal place
+        label = "{:.{prec}f}".format(x_value, prec=precision)
+
+        # Create annotation
+        plt.annotate(
+            label,                      # Use `label` as label
+            (x_value, y_value),         # Place label at end of the bar
+            xytext=(space, 0),          # Horizontally shift label by `space`
+            textcoords="offset points", # Interpret `xytext` as offset in points
+            va='center',                # Vertically center label
+            ha=ha,                      # Horizontally align label differently for positive and negative values
+            fontsize=12)
+            
+# Call the function above. All the magic happens there.
+add_value_labels(ax)
 ```
 
 ![barh](https://i.stack.imgur.com/hkyjD.png)
