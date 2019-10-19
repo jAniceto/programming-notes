@@ -1,6 +1,13 @@
 # Programming Notes
 Programming notes, snippets and examples in one place.
     
+## DATA ANALYSIS
+* [Matplotlib](/data-analysis/matplotlib.md)
+* [Saving Scikit-learn model for reuse](/data-analysis/save-model.md)
+* [Seaborn](/data-analysis/seaborn.md)
+
+## DOCS
+
 ## GENERAL
 * [Create a Windows batch script](/general/batch-script.md)
 * [Linux Crontab](/general/crontab.md)
@@ -21,8 +28,12 @@ Programming notes, snippets and examples in one place.
 
 ## HTML CSS
 * [CSS selectors](/html-css/css-selectors.md)
+* [Meta tags for SEO](/html-css/seo-meta-tags.md)
+* [Sticky footer](/html-css/sticky-footer.md)
 
 ## JAVASCRIPT
+* [Making AJAX request](/javascript/ajax.md)
+* [Basic Javascript concepts](/javascript/basics.md)
 * [Caching data](/javascript/cache-data.md)
 * [DataTables JS Library](/javascript/DataTables.md)
 * [Filter a table or list by typing in search box](/javascript/filter-search.md)
@@ -34,6 +45,7 @@ Programming notes, snippets and examples in one place.
 * [Classes and OOP (Object Oriented Programming)](/python/classes.md)
 * [Create a standalone exacutable from a Python scripy](/python/create-exe.md)
 * [CSV files](/python/csv.md)
+* [Datetime module](/python/datetime.md)
 * [Collection of useful Django snippets for several purposes](/python/django-snippets.md)
 * [Building a Django site](/python/django.md)
 * [Sending e-mails with Python](/python/email.md)
@@ -41,6 +53,7 @@ Programming notes, snippets and examples in one place.
 * [Hosting Python scripts and services](/python/hosting.md)
 * [Image manipulation in Python](/python/image-manipulation.md)
 * [Imports in Python](/python/imports.md)
+* [Jupyter Notebooks](/python/jupyter-notebooks.md)
 * [Introduction](/python/magic-methods.md)
 * [Run Matlab programs in Python](/python/matlab.md)
 * [Using MySQL in Python](/python/mysql.md)

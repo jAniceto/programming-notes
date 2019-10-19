@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<link rel="shortcut icon" type="image/png" href="https://janiceto.github.io/programming-notes/images/favicon.png"/>
+		<title>Annotatio - Articles by José Aniceto</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58056773-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-58056773-5');
+	</script>
+	</head>
+	
+	<body class="theme-flat">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="https://janiceto.github.io/programming-notes">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of codding notes and snippets from my journey to self taught programming. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/data-analysis.html">Data Analysis</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/general.html">General</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/python.html">Python</a>
+			
+		</nav>
+
+		<p>by José Aniceto</p>
+	</div>
+</div>		<div class="content container">
+	<div class="posts">
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/deploy-django-heroku.html#deploy-django-heroku">
+					<a href="https://janiceto.github.io/programming-notes/deploy-django-heroku.html#deploy-django-heroku">Deploy a Django app to&nbsp;Heroku</a>
+				</h1>
+				<span class="post-date">ter 22 janeiro 2019</span>
+				<p>
+					<h3>Index:</h3>
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#install-the-heroku-cli">Install the Heroku <span class="caps">CLI</span></a></li>
+<li><a href="#deploying-python-and-django-apps-on-heroku">Deploying Python and Django Apps on&nbsp;Heroku</a></li>
+<li><a href="#configure-django-apps-for-heroku">Configure Django apps for&nbsp;Heroku</a></li>
+<li><a href="#deploy-to-heroku">Deploy to&nbsp;Heroku</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<h3>Requirements:</h3>
+<ul>
+<li>Git&nbsp;installed</li>
+<li>Python&nbsp;&gt;3.6</li>
+<li>Heroku <span class="caps">CLI</span> (see step&nbsp;1)</li>
+</ul>
+<h2>1) Install the Heroku <span class="caps">CLI</span></h2>
+<p>Install the Heroku Command Line Interface (<span class="caps">CLI</span>) for your platform from <a href="https://devcenter.heroku.com/articles/getting-started-with-python#set-up">here</a>. Once installed, you can use the <code>heroku</code> command from your command shell. To log in to the Heroku <span class="caps">CLI</span>&nbsp;use:</p>
+<div class="highlight"><pre><span></span>$ heroku login
+</pre></div>
+
+
+<h2>2) Deploying Python and Django apps on&nbsp;Heroku</h2>
+<p>Heroku automatically identifies your app as a Python app if any of the following files are present in its root directory:
+* <code>Pipfile</code>
+* <code>setup.py</code>
+* <code>requirements.txt</code></p>
+<p>When you deploy to Heroku, the dependencies you specify are automatically installed. If you’re using Django, the <code>collectstatic</code> command also runs automatically during the deployment process. For this to work properly make sure you install the Django-Heroku Python package (step&nbsp;3).</p>
+<h2>3) Configure …</h2>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/deploy-django-heroku.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/django-snippets.html#django-snippets">
+					<a href="https://janiceto.github.io/programming-notes/django-snippets.html#django-snippets">Collection of useful Django snippets for several&nbsp;purposes</a>
+				</h1>
+				<span class="post-date">ter 08 janeiro 2019</span>
+				<p>
+					<h3>Index</h3>
+<ul>
+<li><a href="#create-a-slug">Create a&nbsp;slug</a></li>
+<li><a href="#send-email">Send&nbsp;email</a></li>
+<li><a href="#database-dump-to-file">Database dump to&nbsp;file</a></li>
+<li><a href="#provide-data-to-db-via-django-python-shell">Provide data to <span class="caps">DB</span> via Django Python&nbsp;Shell</a></li>
+<li><a href="#create-script-with-access-to-django-shell">Create script with access to Django&nbsp;shell</a></li>
+<li><a href="#migrate-django-from-sqlite-to-postgresql">Migrate Django from SQLite to&nbsp;PostgreSQL</a></li>
+</ul>
+<hr>
+<h3>Create a&nbsp;slug</h3>
+<p>Call the Django <code>slugify</code> function automatically by overriding the <code>save</code> method. It is preferable to generate the slug only once when you create a new object, otherwise your URLs may change when the <code>q</code> field is edited, which can cause broken links. More info <a href="https://stackoverflow.com/questions/837828/how-do-i-create-a-slug-in-django">here</a>.</p>
+<div class="highlight"><pre><span></span><span class="c1"># models.py</span>
+
+<span class="kn">from</span> <span class="nn">django.utils.text</span> <span class="kn">import</span> <span class="n">slugify</span>
+
+<span class="k">class</span> <span class="nc">Test</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SlugField</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
+            <span class="c1"># Newly created object, so set slug</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="n">slugify</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">q</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">Test</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+
+
+<hr>
+<h3>Send&nbsp;email</h3>
+<p>If <code>html_message</code> keyword argument is provided, the resulting email will be a multipart/alternative email with <code>message</code> as the text/plain content type …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/django-snippets.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/image-metadata.html#image-metadata">
+					<a href="https://janiceto.github.io/programming-notes/image-metadata.html#image-metadata">Editing photos&nbsp;metadata</a>
+				</h1>
+				<span class="post-date">sex 14 dezembro 2018</span>
+				<p>
+					<p>You can do it in one line in the Terminal using <code>jhead</code>.</p>
+<p>For example, adjust all <span class="caps">EXIF</span> times forward by 1&nbsp;hour:</p>
+<div class="highlight"><pre><span></span><span class="n">jhead</span> <span class="o">-</span><span class="n">ta</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span> <span class="o">*</span><span class="p">.</span><span class="n">jpg</span>
+</pre></div>
+
+
+<p>Useful&nbsp;links: </p>
+<p><a href="http://www.sentex.net/~mwandel/jhead/">jhead download&nbsp;page</a></p>
+<p><a href="http://www.sentex.net/~mwandel/jhead/usage.html">jhead&nbsp;documentation</a></p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/image-metadata.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/filter-search.html#filter-search">
+					<a href="https://janiceto.github.io/programming-notes/filter-search.html#filter-search">Filter a table or list by typing in search&nbsp;box</a>
+				</h1>
+				<span class="post-date">ter 28 agosto 2018</span>
+				<p>
+					<h2>Using a <span class="caps">JS</span>&nbsp;library:</h2>
+<ul>
+<li><a href="http://listjs.com/">listjs.com</a></li>
+</ul>
+<h2>From&nbsp;scratch:</h2>
+<h3>For a&nbsp;table</h3>
+<p>1) <span class="caps">HTML</span> </p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myInput&quot;</span> <span class="na">onkeyup</span><span class="o">=</span><span class="s">&quot;myFunction()&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Search for names..&quot;</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">table</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myTable&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;header&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:60%;&quot;</span><span class="p">&gt;</span>Name<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:40%;&quot;</span><span class="p">&gt;</span>Country<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Alfreds Futterkiste<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Germany<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Berglunds snabbkop<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Sweden<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Island Trading<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>UK<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Koniglich Essen<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Germany<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>2) <span class="caps">CSS</span> </p>
+<div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">myInput</span> <span class="p">{</span>
+    <span class="k">background-image</span><span class="p">:</span> <span class="nb">url</span><span class="p">(</span><span class="s1">&#39;/css/searchicon.png&#39;</span><span class="p">);</span> <span class="c">/* Add a search icon to input */</span>
+    <span class="k">background-position</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Position the search icon */</span>
+    <span class="k">background-repeat</span><span class="p">:</span> <span class="kc">no-repeat</span><span class="p">;</span> <span class="c">/* Do not repeat the icon image */</span>
+    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span> <span class="c">/* Full-width */</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Increase font-size */</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">12</span><span class="kt">px</span> <span class="mi">40</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Add some padding */</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#ddd</span><span class="p">;</span> <span class="c">/* Add a grey border */</span>
+    <span class="k">margin-bottom</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Add some space below the input */</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">myTable …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/filter-search.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/vps-providers.html#vps-providers">
+					<a href="https://janiceto.github.io/programming-notes/vps-providers.html#vps-providers"><span class="caps">VPS</span>&nbsp;providers</a>
+				</h1>
+				<span class="post-date">ter 28 agosto 2018</span>
+				<p>
+					<p>When you need to host your projects, you have several options&nbsp;available:</p>
+<p><strong>Shared hosting</strong>, where you share a server with lots of other users and have very limited control over the server. <strong>Dedicated hosting</strong>, where you have complete control over a server, a very flexible option, but requires you to manage the whole server, worry about hardware failures and backups, and is typically expensive. A third option that is in between these two choices is a <strong>Virtual Private Server</strong>, or <strong><span class="caps">VPS</span></strong>.</p>
+<p>VPSs virtualized nature provides several advantages such as instant reinstallation of the operating system, quick recovery and backup, and fast and simple hardware upgrades (the hardware is virtual, after&nbsp;all).</p>
+<p>Here is a list of several popular <span class="caps">VPS</span>&nbsp;providers:</p>
+<ul>
+<li><a href="https://www.digitalocean.com/pricing/">digitalocean.com</a> - from 5 $/month + tax&nbsp;(anual)</li>
+<li><a href="https://www.linode.com">linode.com</a> - from 5 $/month +&nbsp;tax</li>
+<li><a href="https://www.heroku.com/pricing">heroku.com</a> from 7 $/month + tax&nbsp;(anual)</li>
+<li><a href="https://console.cloud.google.com/compute">Google&nbsp;Cloudm</a></li>
+<li><a href="https://aws.amazon.com/ec2/"><span class="caps">AWS</span> <span class="caps">EC2</span></a></li>
+</ul>
+<h3>Portugal based&nbsp;providers:</h3>
+<ul>
+<li><a href="https://www.ovh.pt/vps/vps-ssd.xml">ovh.pt</a> - from …</li></ul>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/vps-providers.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/python-raspbian.html#python-raspbian">
+					<a href="https://janiceto.github.io/programming-notes/python-raspbian.html#python-raspbian">Installing Python 3.7 on&nbsp;Raspbian</a>
+				</h1>
+				<span class="post-date">seg 27 agosto 2018</span>
+				<p>
+					<p>As of January 2018, Raspbian does not yet include the latest Python release, Python 3.6. This means we will have to build it ourselves, and here is how to do it. There is also an ansible role attached that automates it all for&nbsp;you.</p>
+<p>1) Install the required build-tools (some might already be installed on your&nbsp;system).</p>
+<div class="highlight"><pre><span></span>$ sudo apt-get update
+$ sudo apt-get install build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+</pre></div>
+
+
+<p>If one of the packages cannot be found, try a newer version number (e.g. <code>libdb5.4-dev</code> instead of <code>libdb5.3-dev</code>).</p>
+<p>2) Download and install Python 3.6. When downloading the source code, select the most recent release of Python 3.6, available on the <a href="https://www.python.org/downloads/source/">official site</a>. Adjust the file names&nbsp;accordingly.</p>
+<div class="highlight"><pre><span></span>$ wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
+$ tar xf Python-3.7.0 …</pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/python-raspbian.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/create-exe.html#create-exe">
+					<a href="https://janiceto.github.io/programming-notes/create-exe.html#create-exe">Create a standalone exacutable from a Python&nbsp;scripy</a>
+				</h1>
+				<span class="post-date">seg 27 agosto 2018</span>
+				<p>
+					<h2>Using&nbsp;pyinstaller</h2>
+<p>To install pyinstaller on your pc (more details can be found here:&nbsp;https://www.pyinstaller.org/)</p>
+<p><code>pip install pyinstaller</code></p>
+<p>Use cmd to go to your program directory and to turn it into a exe&nbsp;folder</p>
+<p><code>pyinstaller yourprogram.py</code></p>
+<p>What I&nbsp;run:</p>
+<p><code>pyinstaller -F --windowed --icon=myapp.ico SumExcel.py</code></p>
+<p>This makes it a single exe (without the folders with all dependables) but is slightly slower, minimizes the console window sine I have a <span class="caps">GUI</span>, and gives it a snazzy icon that I had saved (you have to copy over the icon, or have an exception incase it isn&#8217;t&nbsp;found)</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/create-exe.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/regex.html#regex">
+					<a href="https://janiceto.github.io/programming-notes/regex.html#regex">Regular&nbsp;expressions</a>
+				</h1>
+				<span class="post-date">qua 08 agosto 2018</span>
+				<p>
+					<h2>Regex for finding&nbsp;URLs</h2>
+<p>Regex if you want to ensure <span class="caps">URL</span> starts with <span class="caps">HTTP</span>/<span class="caps">HTTPS</span>:</p>
+<div class="highlight"><pre><span></span><span class="n">https</span><span class="o">?</span><span class="p">:</span><span class="err">\</span><span class="o">/</span><span class="err">\</span><span class="o">/</span><span class="p">(</span><span class="n">www</span><span class="err">\</span><span class="p">.)</span><span class="o">?</span><span class="p">[</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z0</span><span class="o">-</span><span class="mi">9</span><span class="o">@</span><span class="p">:</span><span class="o">%</span><span class="p">.</span><span class="n">_</span><span class="err">\</span><span class="o">+~#=</span><span class="p">]</span><span class="err">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">256</span><span class="err">}\</span><span class="p">.[</span><span class="n">a</span><span class="o">-</span><span class="n">z</span><span class="p">]</span><span class="err">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="err">}\</span><span class="n">b</span><span class="p">([</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z0</span><span class="o">-</span><span class="mi">9</span><span class="o">@</span><span class="p">:</span><span class="o">%</span><span class="n">_</span><span class="err">\</span><span class="o">+</span><span class="p">.</span><span class="o">~#?&amp;//=</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
+</pre></div>
+
+
+<p>If you do not require <span class="caps">HTTP</span>&nbsp;protocol:</p>
+<div class="highlight"><pre><span></span><span class="p">[</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z0</span><span class="o">-</span><span class="mi">9</span><span class="o">@</span><span class="p">:</span><span class="o">%</span><span class="p">.</span><span class="n">_</span><span class="err">\</span><span class="o">+~#=</span><span class="p">]</span><span class="err">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">256</span><span class="err">}\</span><span class="p">.[</span><span class="n">a</span><span class="o">-</span><span class="n">z</span><span class="p">]</span><span class="err">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="err">}\</span><span class="n">b</span><span class="p">([</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z0</span><span class="o">-</span><span class="mi">9</span><span class="o">@</span><span class="p">:</span><span class="o">%</span><span class="n">_</span><span class="err">\</span><span class="o">+</span><span class="p">.</span><span class="o">~#?&amp;//=</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
+</pre></div>
+
+
+<h4>Exemple usage in VSCode to find a <span class="caps">URL</span> and convert to Markdown link like, <code>[link](link)</code>:</h4>
+<p>Find: <code>(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;//=]*))</code></p>
+<p>Replace: <code>[$1]($1)</code></p>
+<p>Use <code>()</code> to create a group and <code>$1</code> to reference that&nbsp;group.</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/regex.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/matlab.html#matlab">
+					<a href="https://janiceto.github.io/programming-notes/matlab.html#matlab">Run Matlab programs in&nbsp;Python</a>
+				</h1>
+				<span class="post-date">qui 26 julho 2018</span>
+				<p>
+					<p>This example shows how to create a Python package using a <span class="caps">MATLAB</span> function. You can then pass the generated package to the developer who is responsible for integrating it into an application. The target system does not require a licensed copy of <span class="caps">MATLAB</span>.</p>
+<h2>Requirements</h2>
+<ul>
+<li>A Matlab version with a license for <span class="caps">MATLAB</span> Compiler or <span class="caps">MATLAB</span> Compiler <span class="caps">SDK</span> to compile the Python&nbsp;package.</li>
+<li>The target computer (where the final application will run) does not require Matlab or a Matlab Licence. However, it requires the Matlab Runtime (free, <a href="https://www.mathworks.com/products/compiler/matlab-runtime.html">download here</a>) of the same version of the Matlab used to compile the application. For instance, if the package was compiled in Matlab 2018a the target computer must have Matlab Runtime version 2018a&nbsp;installed</li>
+</ul>
+<h2>1) Create a Python package for the Maltab&nbsp;Application</h2>
+<p>For this example let&#8217;s create a simple Matlab function and save it as <code>makesqr.m</code>:</p>
+<div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>y <span class="p">=</span><span class="w"> </span><span class="nf">makesqr</span><span class="p">(</span>x<span class="p">)</span><span class="w"></span>
+
+<span class="n">y …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/matlab.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/web-dev-resources.html#web-dev-resources">
+					<a href="https://janiceto.github.io/programming-notes/web-dev-resources.html#web-dev-resources">Online Resources For Web&nbsp;Developers</a>
+				</h1>
+				<span class="post-date">seg 16 julho 2018</span>
+				<p>
+					<h2><span class="caps">GENERATORS</span>:</h2>
+<ul>
+<li>Text Content Generator -&nbsp;http://www.lipsum.com</li>
+<li>Favicon Generator -&nbsp;http://tools.dynamicdrive.com/favicon     </li>
+<li>Data Generator -&nbsp;https://mockaroo.com/                        </li>
+<li>Mobile Mockup Generator -&nbsp;https://mockuphone.com</li>
+<li>Logo Generator -&nbsp;https://www.logaster.com</li>
+<li><span class="caps">UUID</span> Generator -&nbsp;https://www.uuidgenerator.net/</li>
+<li>Hash Generator -&nbsp;https://passwordsgenerator.net/sha256-hash-generator/</li>
+</ul>
+<h2><span class="caps">FONTS</span></h2>
+<ul>
+<li>Google Fonts -&nbsp;https://fonts.google.com/</li>
+<li>Font Joy -&nbsp;https://fontjoy.com/</li>
+<li>Font Pair -&nbsp;https://fontpair.co/</li>
+<li><span class="caps">HTML</span> symbols -&nbsp;https://www.toptal.com/designers/htmlarrows/</li>
+</ul>
+<h2><span class="caps">IMAGE</span> <span class="caps">RESOURCES</span>:</h2>
+<ul>
+<li>Free Stock Images -&nbsp;https://www.pexels.com</li>
+<li>Free Stock Images With Great <span class="caps">API</span> -&nbsp;https://unsplash.com/</li>
+<li>Free- Vectors, mockups -&nbsp;https://www.freepik.com</li>
+<li>Dummy Image Placeholders -&nbsp;https://source.unsplash.com/</li>
+<li>Dummy Image Placeholders -&nbsp;https://placeholder.com</li>
+<li>Free Icons -&nbsp;https://www.iconfinder.com</li>
+</ul>
+<h2><span class="caps">COLOR</span> <span class="amp">&amp;</span> <span class="caps">DESIGN</span>:</h2>
+<ul>
+<li>Generate Color Palette from Image -&nbsp;https://www.canva.com/color-palette/</li>
+<li>Color Palette Generator -&nbsp;https://coolors.co/app</li>
+<li>Color Pallete Generator -&nbsp;http://colormind.io/</li>
+<li>Create Color Schemes -&nbsp;https://color.hailpixel.com</li>
+<li>Get Color Schemes of Websites …</li></ul>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/web-dev-resources.html">Continue reading »</a>
+			</div>
+	</div>
+	<div class="pagination">
+		<!-- <span class="pagination-item older">Older</span>
+		<span class="pagination-item newer">Newer</span> -->
+<a href="https://janiceto.github.io/programming-notes/author/jose-aniceto.html" class="pagination-item older">Newer</a>
+
+<a href="https://janiceto.github.io/programming-notes/author/jose-aniceto3.html" class="pagination-item newer">Older</a>
+	</div>
+		</div>
+	</body>
+</html>

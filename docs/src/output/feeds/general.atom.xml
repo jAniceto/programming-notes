@@ -1,0 +1,1313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - General</title><link href="https://janiceto.github.io/programming-notes/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes/feeds/general.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes/</id><updated>2019-02-03T20:46:00+00:00</updated><entry><title>Set up Amazon S3 to serve Django Static and Media files</title><link href="https://janiceto.github.io/programming-notes/s3-django-setup.html" rel="alternate"></link><published>2019-01-31T12:10:00+00:00</published><updated>2019-02-03T20:46:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-31:/programming-notes/s3-django-setup.html</id><summary type="html">&lt;p&gt;Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django&amp;nbsp;App. &lt;/p&gt;
+&lt;h2&gt;1) Sign up to &lt;span class="caps"&gt;AWS&lt;/span&gt; S3 and create &lt;span class="caps"&gt;IAM&lt;/span&gt;&amp;nbsp;user&lt;/h2&gt;
+&lt;p&gt;After signing up to Amazon &lt;span class="caps"&gt;AWS&lt;/span&gt; we need to create a user using the &lt;strong&gt;&lt;span class="caps"&gt;IAM&lt;/span&gt;&lt;/strong&gt; service. This way you can restrict the access to the bucket. Each user will have its own access id and key. To do&amp;nbsp;this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;In the &lt;strong&gt;Services&lt;/strong&gt; dropdown select &lt;strong&gt;&lt;span class="caps"&gt;IAM&lt;/span&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &lt;strong&gt;Users&lt;/strong&gt; and select &lt;strong&gt;Add User&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Type the name of the user and make sure that &lt;strong&gt;Programmatic access&lt;/strong&gt; is selected under &lt;strong&gt;Access type&lt;/strong&gt; as you will need this to provide upload access for your S3 bucket. Click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select &lt;strong&gt;Attatch existing policies directly&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From the list that appears select &lt;strong&gt;AmazonS3FullAccess&lt;/strong&gt; and again click on &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &lt;strong&gt;Create User&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This will create the user and generate an access …&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django&amp;nbsp;App. &lt;/p&gt;
+&lt;h2&gt;1) Sign up to &lt;span class="caps"&gt;AWS&lt;/span&gt; S3 and create &lt;span class="caps"&gt;IAM&lt;/span&gt;&amp;nbsp;user&lt;/h2&gt;
+&lt;p&gt;After signing up to Amazon &lt;span class="caps"&gt;AWS&lt;/span&gt; we need to create a user using the &lt;strong&gt;&lt;span class="caps"&gt;IAM&lt;/span&gt;&lt;/strong&gt; service. This way you can restrict the access to the bucket. Each user will have its own access id and key. To do&amp;nbsp;this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;In the &lt;strong&gt;Services&lt;/strong&gt; dropdown select &lt;strong&gt;&lt;span class="caps"&gt;IAM&lt;/span&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &lt;strong&gt;Users&lt;/strong&gt; and select &lt;strong&gt;Add User&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Type the name of the user and make sure that &lt;strong&gt;Programmatic access&lt;/strong&gt; is selected under &lt;strong&gt;Access type&lt;/strong&gt; as you will need this to provide upload access for your S3 bucket. Click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select &lt;strong&gt;Attatch existing policies directly&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From the list that appears select &lt;strong&gt;AmazonS3FullAccess&lt;/strong&gt; and again click on &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &lt;strong&gt;Create User&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This will create the user and generate an access id and key for the user. The id-key pair can only be downloaded at this step so do that by clicking on &lt;strong&gt;Download .csv&lt;/strong&gt;. Keep it&amp;nbsp;secret.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From the Users Dashboard click on the user you have just created. Make a note of &lt;strong&gt;User &lt;span class="caps"&gt;ARN&lt;/span&gt;&lt;/strong&gt;. You will be using this&amp;nbsp;later.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;2) Create a S3&amp;nbsp;Bucket&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;From the Services dropdown select s3. This opens up the dashboard for the S3&amp;nbsp;buckets.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &lt;strong&gt;Create Bucket&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select the region you&amp;nbsp;want.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Note: Try to create  a bucket in the same region where your app is running to take advantage of &lt;span class="caps"&gt;AWS&lt;/span&gt;&amp;#8217;s free in-region data transfer&amp;nbsp;rates.&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Give your bucket a name and click on next that brings you to the &lt;strong&gt;Set Properties&lt;/strong&gt; tab. Click on &lt;strong&gt;Next&lt;/strong&gt; a couple more times and then click on &lt;strong&gt;Create Bucket&lt;/strong&gt; to create your&amp;nbsp;bucket.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;3) Set up Bucket&amp;nbsp;permissions&lt;/h2&gt;
+&lt;p&gt;Now let&amp;#8217;s define the policy for allowing restricted access to our&amp;nbsp;bucket.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Click on the name of the bucket that you just&amp;nbsp;created.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on the &lt;strong&gt;Permissions&lt;/strong&gt;&amp;nbsp;tab.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Since you have to set the permissions for access, click on &lt;strong&gt;Bucket Policy&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;On the bottom left click on &lt;strong&gt;&lt;span class="caps"&gt;AWS&lt;/span&gt; Policy Generator&lt;/strong&gt; which opens up the tool Amazon provides for quick policy&amp;nbsp;generation. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now we have to generate two policy rules. The first one is to allow our hosted website to access your files from the&amp;nbsp;bucket:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;Select&lt;/span&gt; &lt;span class="k"&gt;Type&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;Policy&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;S3&lt;/span&gt; &lt;span class="n"&gt;Bucket&lt;/span&gt; &lt;span class="n"&gt;Policy&lt;/span&gt;
+&lt;span class="n"&gt;Effect&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Allow&lt;/span&gt;
+&lt;span class="n"&gt;Principal&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;      &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;gives&lt;/span&gt; &lt;span class="n"&gt;everybody&lt;/span&gt; &lt;span class="k"&gt;access&lt;/span&gt;
+&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;Service&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Amazon&lt;/span&gt; &lt;span class="n"&gt;S3&lt;/span&gt;
+&lt;span class="n"&gt;Actions&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;GetObject&lt;/span&gt;
+&lt;span class="n"&gt;Amazon&lt;/span&gt; &lt;span class="n"&gt;Resource&lt;/span&gt; &lt;span class="n"&gt;Name&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;arn&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;aws&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;s3&lt;/span&gt;&lt;span class="p"&gt;:::&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;bucket&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="cm"&gt;/* &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;*&lt;/code&gt; at the end siginifies that access is being given to all the&amp;nbsp;files.&lt;/p&gt;
+&lt;p&gt;After setting the values as mentioned above click on &lt;strong&gt;Add Statement&lt;/strong&gt;. Do not click on &lt;strong&gt;Generate Policy&lt;/strong&gt; yet as you have to create a policy to allow the Django application to put files into the bucket on deployment. The policy will be as&amp;nbsp;follows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;Select&lt;/span&gt; &lt;span class="k"&gt;Type&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;Policy&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;S3&lt;/span&gt; &lt;span class="n"&gt;Bucket&lt;/span&gt; &lt;span class="n"&gt;Policy&lt;/span&gt;
+&lt;span class="n"&gt;Effect&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Allow&lt;/span&gt;
+&lt;span class="n"&gt;Principal&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="k"&gt;User&lt;/span&gt; &lt;span class="n"&gt;ARN&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;     &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="k"&gt;user&lt;/span&gt; &lt;span class="n"&gt;arn&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;kept&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;note&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;earlier&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;Service&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Amazon&lt;/span&gt; &lt;span class="n"&gt;S3&lt;/span&gt;
+&lt;span class="n"&gt;Actions&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;gave&lt;/span&gt; &lt;span class="k"&gt;full&lt;/span&gt; &lt;span class="k"&gt;access&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;though&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;think&lt;/span&gt; &lt;span class="n"&gt;GetObject&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PutObject&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Will&lt;/span&gt; &lt;span class="n"&gt;try&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="k"&gt;out&lt;/span&gt; &lt;span class="n"&gt;soon&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; 
+&lt;span class="n"&gt;Amazon&lt;/span&gt; &lt;span class="n"&gt;Resource&lt;/span&gt; &lt;span class="n"&gt;Name&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;arn&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;aws&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;s3&lt;/span&gt;&lt;span class="p"&gt;:::&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;bucket&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="cm"&gt;/*,arn:aws:s3:::&amp;lt;your bucket name&amp;gt;  // Gives full access to buckets and its contents.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After setting the values mentioned above click on &lt;strong&gt;Add Statement&lt;/strong&gt; and then &lt;strong&gt;Generate Policy&lt;/strong&gt; . This will show you the policy which you can copy, paste in the dialogue box on S3 dashboard and click on &lt;strong&gt;Save&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2&gt;4) Providing S3 access to your Heroku&amp;nbsp;app&lt;/h2&gt;
+&lt;p&gt;The last step for setting up the Bucket access is providing the application hosted on Heroku, access to the bucket content. This can be done by setting up the &lt;strong&gt;&lt;span class="caps"&gt;CORS&lt;/span&gt; configuration&lt;/strong&gt;. To do this click on the &lt;strong&gt;&lt;span class="caps"&gt;CORS&lt;/span&gt; Configuration&lt;/strong&gt; tab and click on Save. The default configuration will suffice. Something like&amp;nbsp;this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;CORSConfiguration&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;CORSRule&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;AllowedOrigin&amp;gt;&lt;/span&gt;*&lt;span class="nt"&gt;&amp;lt;/AllowedOrigin&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;AllowedMethod&amp;gt;&lt;/span&gt;GET&lt;span class="nt"&gt;&amp;lt;/AllowedMethod&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;MaxAgeSeconds&amp;gt;&lt;/span&gt;3000&lt;span class="nt"&gt;&amp;lt;/MaxAgeSeconds&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;AllowedHeader&amp;gt;&lt;/span&gt;Authorization&lt;span class="nt"&gt;&amp;lt;/AllowedHeader&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/CORSRule&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/CORSConfiguration&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You have the bucket access set up. Now all you have to do is set up your Django application to access the bucket which is fairly easy. The first step to achieve the goal will be to install Boto3 and DjangoStorages. Nifty APIs to make working with S3 buckets easy. This can be easily done using&amp;nbsp;pip.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;storages&lt;/span&gt; &lt;span class="n"&gt;boto3&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="k"&gt;freeze&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and add &lt;code&gt;storages&lt;/code&gt; to the list of INSTALLED_APPS in the &lt;code&gt;settings.py&lt;/code&gt; file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+          &lt;span class="p"&gt;...,&lt;/span&gt;
+          &lt;span class="s1"&gt;&amp;#39;storages&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+     &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Next you have to add the following settings to the &lt;code&gt;settings.py&lt;/code&gt; file in your&amp;nbsp;application.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Set S3 as the place to store your files.&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_FILE_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 
+&lt;span class="n"&gt;storages&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;backends&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;s3boto3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S3Boto3Storage&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;STATICFILES_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;storages.backends.s3boto3.S3Boto3Storage&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_ACCESS_KEY_ID&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_SECRET_ACCESS_KEY&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_STORAGE_BUCKET_NAME&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_QUERYSTRING_AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="c1"&gt;# This will make sure that the file URL does not have unnecessary parameters like your access key.&lt;/span&gt;
+&lt;span class="n"&gt;AWS_S3_CUSTOM_DOMAIN&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.s3.amazonaws.com&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Static media settings&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.s3.amazonaws.com/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;MEDIA_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;media/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;STATICFILES_DIRS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BASE_DIR&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;staticfiles&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;ADMIN_MEDIA_PREFIX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;admin/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;STATICFILES_FINDERS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;django.contrib.staticfiles.finders.FileSystemFinder&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;django.contrib.staticfiles.finders.AppDirectoriesFinder&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, make sure the main &lt;code&gt;urls.py&lt;/code&gt; file does include the url configuration for your media&amp;nbsp;files:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+  &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;static&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MEDIA_URL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;document_root&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MEDIA_ROOT&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And as a last step there should be a folder called static in the root of your application (same level as the manage.py file). Git does not allow you to commit empty folders so you can inlcude a readme file in there to commit the&amp;nbsp;folder.&lt;/p&gt;
+&lt;p&gt;If you are using Heroku before pushing your code&amp;nbsp;use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;DISABLE_COLLECTSTATIC&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;to disable collectstatic running automatically as your static folder is not yet present on the server and an error will be thrown regarding the same. You can now push all changes to Heroku&amp;nbsp;with&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;or if you want to push from a different&amp;nbsp;branch:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;testbranch&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;master&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can now run the &lt;code&gt;collectstatic&lt;/code&gt; command manually&amp;nbsp;using:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;collectstatic&lt;/span&gt; &lt;span class="c1"&gt;--noinput&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you get the following&amp;nbsp;error:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;UserWarning&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;behavior&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;S3Boto3Storage&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;insecure&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;change&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;storages&lt;/span&gt; &lt;span class="mf"&gt;2.0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;By&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;buckets&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;saved&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;ACL&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;public-read&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;globally&lt;/span&gt; &lt;span class="n"&gt;publicly&lt;/span&gt; &lt;span class="n"&gt;readable&lt;/span&gt;&lt;span class="o"&gt;).&lt;/span&gt; &lt;span class="n"&gt;Version&lt;/span&gt; &lt;span class="mf"&gt;2.0&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;bucket&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;ACL&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;To&lt;/span&gt; &lt;span class="n"&gt;opt&lt;/span&gt; &lt;span class="n"&gt;into&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;behavior&lt;/span&gt; &lt;span class="kd"&gt;set&lt;/span&gt; &lt;span class="n"&gt;AWS_DEFAULT_ACL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;None&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;otherwise&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;silence&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt; &lt;span class="n"&gt;warning&lt;/span&gt; &lt;span class="n"&gt;explicitly&lt;/span&gt; &lt;span class="kd"&gt;set&lt;/span&gt; &lt;span class="n"&gt;AWS_DEFAULT_ACL&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;The default behavior of S3Boto3Storage is insecure and will change &amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="n"&gt;AccessDenied&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;add the following variable to &lt;code&gt;settings.py&lt;/code&gt;: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;AWS_DEFAULT_ACL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;None&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;One important point before you go on this adventure. At the moment all the media files (files that are uploaded by the user) used in our models have the property &lt;code&gt;upload_to&lt;/code&gt; set for them and as a result don&amp;#8217;t overwrite the static&amp;nbsp;files. &lt;/p&gt;
+&lt;p&gt;We are now ready to serve static and media files from the S3&amp;nbsp;bucket!&lt;/p&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://medium.com/@manibatra23/setting-up-amazon-s3-bucket-for-serving-django-static-and-media-files-3e781ab325d5"&gt;Setting up Amazon S3 Bucket for serving Django Static and Media&amp;nbsp;files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.caktusgroup.com/blog/2014/11/10/Using-Amazon-S3-to-store-your-Django-sites-static-and-media-files/"&gt;Using Amazon S3 to Store your Django Site&amp;#8217;s Static and Media&amp;nbsp;Files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://simpleisbetterthancomplex.com/tutorial/2017/08/01/how-to-setup-amazon-s3-in-a-django-project.html"&gt;How to Setup Amazon S3 in a Django&amp;nbsp;Project&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Deploy a Django app to Heroku</title><link href="https://janiceto.github.io/programming-notes/deploy-django-heroku.html" rel="alternate"></link><published>2019-01-22T14:45:00+00:00</published><updated>2019-02-01T23:11:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-22:/programming-notes/deploy-django-heroku.html</id><summary type="html">&lt;h3&gt;Index:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#requirements"&gt;Requirements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#install-the-heroku-cli"&gt;Install the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#deploying-python-and-django-apps-on-heroku"&gt;Deploying Python and Django Apps on&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configure-django-apps-for-heroku"&gt;Configure Django apps for&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#deploy-to-heroku"&gt;Deploy to&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#references"&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Requirements:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Git&amp;nbsp;installed&lt;/li&gt;
+&lt;li&gt;Python&amp;nbsp;&amp;gt;3.6&lt;/li&gt;
+&lt;li&gt;Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt; (see step&amp;nbsp;1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;1) Install the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;Install the Heroku Command Line Interface (&lt;span class="caps"&gt;CLI&lt;/span&gt;) for your platform from &lt;a href="https://devcenter.heroku.com/articles/getting-started-with-python#set-up"&gt;here&lt;/a&gt;. Once installed, you can use the &lt;code&gt;heroku&lt;/code&gt; command from your command shell. To log in to the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&amp;nbsp;use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ heroku login
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;2) Deploying Python and Django apps on&amp;nbsp;Heroku&lt;/h2&gt;
+&lt;p&gt;Heroku automatically identifies your app as a Python app if any of the following files are present in its root directory:
+* &lt;code&gt;Pipfile&lt;/code&gt;
+* &lt;code&gt;setup.py&lt;/code&gt;
+* &lt;code&gt;requirements.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;When you deploy to Heroku, the dependencies you specify are automatically installed. If you’re using Django, the &lt;code&gt;collectstatic&lt;/code&gt; command also runs automatically during the deployment process. For this to work properly make sure you install the Django-Heroku Python package (step&amp;nbsp;3).&lt;/p&gt;
+&lt;h2&gt;3) Configure …&lt;/h2&gt;</summary><content type="html">&lt;h3&gt;Index:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#requirements"&gt;Requirements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#install-the-heroku-cli"&gt;Install the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#deploying-python-and-django-apps-on-heroku"&gt;Deploying Python and Django Apps on&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configure-django-apps-for-heroku"&gt;Configure Django apps for&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#deploy-to-heroku"&gt;Deploy to&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#references"&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Requirements:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Git&amp;nbsp;installed&lt;/li&gt;
+&lt;li&gt;Python&amp;nbsp;&amp;gt;3.6&lt;/li&gt;
+&lt;li&gt;Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt; (see step&amp;nbsp;1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;1) Install the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;Install the Heroku Command Line Interface (&lt;span class="caps"&gt;CLI&lt;/span&gt;) for your platform from &lt;a href="https://devcenter.heroku.com/articles/getting-started-with-python#set-up"&gt;here&lt;/a&gt;. Once installed, you can use the &lt;code&gt;heroku&lt;/code&gt; command from your command shell. To log in to the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&amp;nbsp;use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ heroku login
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;2) Deploying Python and Django apps on&amp;nbsp;Heroku&lt;/h2&gt;
+&lt;p&gt;Heroku automatically identifies your app as a Python app if any of the following files are present in its root directory:
+* &lt;code&gt;Pipfile&lt;/code&gt;
+* &lt;code&gt;setup.py&lt;/code&gt;
+* &lt;code&gt;requirements.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;When you deploy to Heroku, the dependencies you specify are automatically installed. If you’re using Django, the &lt;code&gt;collectstatic&lt;/code&gt; command also runs automatically during the deployment process. For this to work properly make sure you install the Django-Heroku Python package (step&amp;nbsp;3).&lt;/p&gt;
+&lt;h2&gt;3) Configure Django apps for&amp;nbsp;Heroku&lt;/h2&gt;
+&lt;p&gt;Create a &lt;code&gt;Procfile&lt;/code&gt; (no extension) and add the following content where &lt;code&gt;myproject&lt;/code&gt; is the name of your Django&amp;nbsp;app.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;web&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;gunicorn&lt;/span&gt; &lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;wsgi&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Install &lt;code&gt;gunicorn&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pipenv install gunicorn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Install the &lt;code&gt;django-heroku&lt;/code&gt; package&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pipenv install django-heroku
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add the following import statement to the top of &lt;code&gt;settings.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;django_heroku&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then add the following to the bottom of &lt;code&gt;settings.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Activate Django-Heroku.&lt;/span&gt;
+&lt;span class="n"&gt;django_heroku&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;4) Deploy to&amp;nbsp;Heroku&lt;/h2&gt;
+&lt;p&gt;Using the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt; lets create our app and the&amp;nbsp;database.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ heroku login
+$ heroku create &amp;lt;desired_app_name&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now lets push our code to&amp;nbsp;Heroku:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git add .
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;Ready to heroku this.&amp;quot;&lt;/span&gt;
+$ git push heroku master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finally, migrate your Database to the Heroku&amp;nbsp;app:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ heroku run python manage.py migrate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You should now be able to see your app in the Heroku Dashboard as well as a Dyno web process with the &lt;code&gt;ON&lt;/code&gt; indication.&lt;/p&gt;
+&lt;h2&gt;5) Import local database to Heroku&amp;nbsp;(Optional)&lt;/h2&gt;
+&lt;p&gt;If you are using a postgresql database locally you can easily import it to your newly created Heroku app. First create a backup of your local &lt;span class="caps"&gt;DB&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pg_dump -U USERNAME DATABASE &amp;gt; pg_db_dump.sql
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To import it to Heroku&amp;nbsp;run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;heroku pg:psql --app APPNAME &amp;lt; pg_db_dump.sql
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://devcenter.heroku.com/articles/getting-started-with-python"&gt;Getting Started on Heroku with&amp;nbsp;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://devcenter.heroku.com/articles/deploying-python"&gt;Deploying Python and Django Apps on&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://devcenter.heroku.com/articles/django-app-configuration"&gt;Configuring Django Apps for&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/heroku/django-heroku"&gt;django-heroku&amp;nbsp;Github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://devcenter.heroku.com/articles/git"&gt;Deploying with&amp;nbsp;Git&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Editing photos metadata</title><link href="https://janiceto.github.io/programming-notes/image-metadata.html" rel="alternate"></link><published>2018-12-14T10:43:00+00:00</published><updated>2018-12-14T10:43:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-12-14:/programming-notes/image-metadata.html</id><content type="html">&lt;p&gt;You can do it in one line in the Terminal using &lt;code&gt;jhead&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For example, adjust all &lt;span class="caps"&gt;EXIF&lt;/span&gt; times forward by 1&amp;nbsp;hour:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;jhead&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ta&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;00&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jpg&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Useful&amp;nbsp;links: &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.sentex.net/~mwandel/jhead/"&gt;jhead download&amp;nbsp;page&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.sentex.net/~mwandel/jhead/usage.html"&gt;jhead&amp;nbsp;documentation&lt;/a&gt;&lt;/p&gt;</content><category term="General"></category></entry><entry><title>VPS providers</title><link href="https://janiceto.github.io/programming-notes/vps-providers.html" rel="alternate"></link><published>2018-08-28T11:16:00+01:00</published><updated>2019-01-31T17:01:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-28:/programming-notes/vps-providers.html</id><summary type="html">&lt;p&gt;When you need to host your projects, you have several options&amp;nbsp;available:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Shared hosting&lt;/strong&gt;, where you share a server with lots of other users and have very limited control over the server. &lt;strong&gt;Dedicated hosting&lt;/strong&gt;, where you have complete control over a server, a very flexible option, but requires you to manage the whole server, worry about hardware failures and backups, and is typically expensive. A third option that is in between these two choices is a &lt;strong&gt;Virtual Private Server&lt;/strong&gt;, or &lt;strong&gt;&lt;span class="caps"&gt;VPS&lt;/span&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;VPSs virtualized nature provides several advantages such as instant reinstallation of the operating system, quick recovery and backup, and fast and simple hardware upgrades (the hardware is virtual, after&amp;nbsp;all).&lt;/p&gt;
+&lt;p&gt;Here is a list of several popular &lt;span class="caps"&gt;VPS&lt;/span&gt;&amp;nbsp;providers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/pricing/"&gt;digitalocean.com&lt;/a&gt; - from 5 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.linode.com"&gt;linode.com&lt;/a&gt; - from 5 $/month +&amp;nbsp;tax&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.heroku.com/pricing"&gt;heroku.com&lt;/a&gt; from 7 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://console.cloud.google.com/compute"&gt;Google&amp;nbsp;Cloudm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://aws.amazon.com/ec2/"&gt;&lt;span class="caps"&gt;AWS&lt;/span&gt; &lt;span class="caps"&gt;EC2&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Portugal based&amp;nbsp;providers:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.ovh.pt/vps/vps-ssd.xml"&gt;ovh.pt&lt;/a&gt; - from …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;When you need to host your projects, you have several options&amp;nbsp;available:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Shared hosting&lt;/strong&gt;, where you share a server with lots of other users and have very limited control over the server. &lt;strong&gt;Dedicated hosting&lt;/strong&gt;, where you have complete control over a server, a very flexible option, but requires you to manage the whole server, worry about hardware failures and backups, and is typically expensive. A third option that is in between these two choices is a &lt;strong&gt;Virtual Private Server&lt;/strong&gt;, or &lt;strong&gt;&lt;span class="caps"&gt;VPS&lt;/span&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;VPSs virtualized nature provides several advantages such as instant reinstallation of the operating system, quick recovery and backup, and fast and simple hardware upgrades (the hardware is virtual, after&amp;nbsp;all).&lt;/p&gt;
+&lt;p&gt;Here is a list of several popular &lt;span class="caps"&gt;VPS&lt;/span&gt;&amp;nbsp;providers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/pricing/"&gt;digitalocean.com&lt;/a&gt; - from 5 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.linode.com"&gt;linode.com&lt;/a&gt; - from 5 $/month +&amp;nbsp;tax&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.heroku.com/pricing"&gt;heroku.com&lt;/a&gt; from 7 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://console.cloud.google.com/compute"&gt;Google&amp;nbsp;Cloudm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://aws.amazon.com/ec2/"&gt;&lt;span class="caps"&gt;AWS&lt;/span&gt; &lt;span class="caps"&gt;EC2&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Portugal based&amp;nbsp;providers:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.ovh.pt/vps/vps-ssd.xml"&gt;ovh.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.flexi.pt/vps-servidor-virtual"&gt;flexi.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Installing Python 3.7 on Raspbian</title><link href="https://janiceto.github.io/programming-notes/python-raspbian.html" rel="alternate"></link><published>2018-08-27T21:14:00+01:00</published><updated>2018-08-27T21:14:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-27:/programming-notes/python-raspbian.html</id><summary type="html">&lt;p&gt;As of January 2018, Raspbian does not yet include the latest Python release, Python 3.6. This means we will have to build it ourselves, and here is how to do it. There is also an ansible role attached that automates it all for&amp;nbsp;you.&lt;/p&gt;
+&lt;p&gt;1) Install the required build-tools (some might already be installed on your&amp;nbsp;system).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
+$ sudo apt-get install build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If one of the packages cannot be found, try a newer version number (e.g. &lt;code&gt;libdb5.4-dev&lt;/code&gt; instead of &lt;code&gt;libdb5.3-dev&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;2) Download and install Python 3.6. When downloading the source code, select the most recent release of Python 3.6, available on the &lt;a href="https://www.python.org/downloads/source/"&gt;official site&lt;/a&gt;. Adjust the file names&amp;nbsp;accordingly.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
+$ tar xf Python-3.7.0 …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;As of January 2018, Raspbian does not yet include the latest Python release, Python 3.6. This means we will have to build it ourselves, and here is how to do it. There is also an ansible role attached that automates it all for&amp;nbsp;you.&lt;/p&gt;
+&lt;p&gt;1) Install the required build-tools (some might already be installed on your&amp;nbsp;system).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
+$ sudo apt-get install build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If one of the packages cannot be found, try a newer version number (e.g. &lt;code&gt;libdb5.4-dev&lt;/code&gt; instead of &lt;code&gt;libdb5.3-dev&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;2) Download and install Python 3.6. When downloading the source code, select the most recent release of Python 3.6, available on the &lt;a href="https://www.python.org/downloads/source/"&gt;official site&lt;/a&gt;. Adjust the file names&amp;nbsp;accordingly.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
+$ tar xf Python-3.7.0.tar.xz
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; Python-3.7.0
+$ ./configure
+$ make
+$ sudo make altinstall
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;3) Optionally: Delete the source code and uninstall the previously installed packages. When uninstalling the packages, make sure you only remove those that were not previously installed on your system. Also, remember to adjust version numbers if&amp;nbsp;necesarry.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo rm -r Python-3.7.0
+$ rm Python-3.7.0.tar.xz
+$ sudo apt-get --purge remove build-essential tk-dev
+$ sudo apt-get --purge remove libncurses5-dev libncursesw5-dev libreadline6-dev
+$ sudo apt-get --purge remove libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev
+$ sudo apt-get --purge remove libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+$ sudo apt-get autoremove
+$ sudo apt-get clean
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;https://liudr.wordpress.com/2016/02/04/install-python-on-raspberry-pi-or-debian/&lt;/li&gt;
+&lt;li&gt;https://gist.github.com/BMeu/af107b1f3d7cf1a2507c9c6429367a3b&lt;/li&gt;
+&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Regular expressions</title><link href="https://janiceto.github.io/programming-notes/regex.html" rel="alternate"></link><published>2018-08-08T13:48:00+01:00</published><updated>2018-08-08T13:48:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-08:/programming-notes/regex.html</id><content type="html">&lt;h2&gt;Regex for finding&amp;nbsp;URLs&lt;/h2&gt;
+&lt;p&gt;Regex if you want to ensure &lt;span class="caps"&gt;URL&lt;/span&gt; starts with &lt;span class="caps"&gt;HTTP&lt;/span&gt;/&lt;span class="caps"&gt;HTTPS&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.)&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;zA&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Z0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;+~#=&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="err"&gt;}\&lt;/span&gt;&lt;span class="p"&gt;.[&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="err"&gt;}\&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;zA&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Z0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;~#?&amp;amp;//=&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you do not require &lt;span class="caps"&gt;HTTP&lt;/span&gt;&amp;nbsp;protocol:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;zA&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Z0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;+~#=&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="err"&gt;}\&lt;/span&gt;&lt;span class="p"&gt;.[&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="err"&gt;}\&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;zA&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Z0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;~#?&amp;amp;//=&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Exemple usage in VSCode to find a &lt;span class="caps"&gt;URL&lt;/span&gt; and convert to Markdown link like, &lt;code&gt;[link](link)&lt;/code&gt;:&lt;/h4&gt;
+&lt;p&gt;Find: &lt;code&gt;(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;amp;//=]*))&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Replace: &lt;code&gt;[$1]($1)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Use &lt;code&gt;()&lt;/code&gt; to create a group and &lt;code&gt;$1&lt;/code&gt; to reference that&amp;nbsp;group.&lt;/p&gt;</content><category term="General"></category></entry><entry><title>Online Resources For Web Developers</title><link href="https://janiceto.github.io/programming-notes/web-dev-resources.html" rel="alternate"></link><published>2018-07-16T21:53:00+01:00</published><updated>2019-01-13T21:44:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-07-16:/programming-notes/web-dev-resources.html</id><summary type="html">&lt;h2&gt;&lt;span class="caps"&gt;GENERATORS&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Text Content Generator -&amp;nbsp;http://www.lipsum.com&lt;/li&gt;
+&lt;li&gt;Favicon Generator -&amp;nbsp;http://tools.dynamicdrive.com/favicon     &lt;/li&gt;
+&lt;li&gt;Data Generator -&amp;nbsp;https://mockaroo.com/                        &lt;/li&gt;
+&lt;li&gt;Mobile Mockup Generator -&amp;nbsp;https://mockuphone.com&lt;/li&gt;
+&lt;li&gt;Logo Generator -&amp;nbsp;https://www.logaster.com&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;UUID&lt;/span&gt; Generator -&amp;nbsp;https://www.uuidgenerator.net/&lt;/li&gt;
+&lt;li&gt;Hash Generator -&amp;nbsp;https://passwordsgenerator.net/sha256-hash-generator/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;FONTS&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Google Fonts -&amp;nbsp;https://fonts.google.com/&lt;/li&gt;
+&lt;li&gt;Font Joy -&amp;nbsp;https://fontjoy.com/&lt;/li&gt;
+&lt;li&gt;Font Pair -&amp;nbsp;https://fontpair.co/&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt; symbols -&amp;nbsp;https://www.toptal.com/designers/htmlarrows/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;IMAGE&lt;/span&gt; &lt;span class="caps"&gt;RESOURCES&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Free Stock Images -&amp;nbsp;https://www.pexels.com&lt;/li&gt;
+&lt;li&gt;Free Stock Images With Great &lt;span class="caps"&gt;API&lt;/span&gt; -&amp;nbsp;https://unsplash.com/&lt;/li&gt;
+&lt;li&gt;Free- Vectors, mockups -&amp;nbsp;https://www.freepik.com&lt;/li&gt;
+&lt;li&gt;Dummy Image Placeholders -&amp;nbsp;https://source.unsplash.com/&lt;/li&gt;
+&lt;li&gt;Dummy Image Placeholders -&amp;nbsp;https://placeholder.com&lt;/li&gt;
+&lt;li&gt;Free Icons -&amp;nbsp;https://www.iconfinder.com&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;COLOR&lt;/span&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;DESIGN&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Generate Color Palette from Image -&amp;nbsp;https://www.canva.com/color-palette/&lt;/li&gt;
+&lt;li&gt;Color Palette Generator -&amp;nbsp;https://coolors.co/app&lt;/li&gt;
+&lt;li&gt;Color Pallete Generator -&amp;nbsp;http://colormind.io/&lt;/li&gt;
+&lt;li&gt;Create Color Schemes -&amp;nbsp;https://color.hailpixel.com&lt;/li&gt;
+&lt;li&gt;Get Color Schemes of Websites …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h2&gt;&lt;span class="caps"&gt;GENERATORS&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Text Content Generator -&amp;nbsp;http://www.lipsum.com&lt;/li&gt;
+&lt;li&gt;Favicon Generator -&amp;nbsp;http://tools.dynamicdrive.com/favicon     &lt;/li&gt;
+&lt;li&gt;Data Generator -&amp;nbsp;https://mockaroo.com/                        &lt;/li&gt;
+&lt;li&gt;Mobile Mockup Generator -&amp;nbsp;https://mockuphone.com&lt;/li&gt;
+&lt;li&gt;Logo Generator -&amp;nbsp;https://www.logaster.com&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;UUID&lt;/span&gt; Generator -&amp;nbsp;https://www.uuidgenerator.net/&lt;/li&gt;
+&lt;li&gt;Hash Generator -&amp;nbsp;https://passwordsgenerator.net/sha256-hash-generator/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;FONTS&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Google Fonts -&amp;nbsp;https://fonts.google.com/&lt;/li&gt;
+&lt;li&gt;Font Joy -&amp;nbsp;https://fontjoy.com/&lt;/li&gt;
+&lt;li&gt;Font Pair -&amp;nbsp;https://fontpair.co/&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt; symbols -&amp;nbsp;https://www.toptal.com/designers/htmlarrows/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;IMAGE&lt;/span&gt; &lt;span class="caps"&gt;RESOURCES&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Free Stock Images -&amp;nbsp;https://www.pexels.com&lt;/li&gt;
+&lt;li&gt;Free Stock Images With Great &lt;span class="caps"&gt;API&lt;/span&gt; -&amp;nbsp;https://unsplash.com/&lt;/li&gt;
+&lt;li&gt;Free- Vectors, mockups -&amp;nbsp;https://www.freepik.com&lt;/li&gt;
+&lt;li&gt;Dummy Image Placeholders -&amp;nbsp;https://source.unsplash.com/&lt;/li&gt;
+&lt;li&gt;Dummy Image Placeholders -&amp;nbsp;https://placeholder.com&lt;/li&gt;
+&lt;li&gt;Free Icons -&amp;nbsp;https://www.iconfinder.com&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;COLOR&lt;/span&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;DESIGN&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Generate Color Palette from Image -&amp;nbsp;https://www.canva.com/color-palette/&lt;/li&gt;
+&lt;li&gt;Color Palette Generator -&amp;nbsp;https://coolors.co/app&lt;/li&gt;
+&lt;li&gt;Color Pallete Generator -&amp;nbsp;http://colormind.io/&lt;/li&gt;
+&lt;li&gt;Create Color Schemes -&amp;nbsp;https://color.hailpixel.com&lt;/li&gt;
+&lt;li&gt;Get Color Schemes of Websites -&amp;nbsp;http://stylifyme.com&lt;/li&gt;
+&lt;li&gt;Create Gradients -&amp;nbsp;https://uigradients.com&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;CSS&lt;/span&gt; Button Generator -&amp;nbsp;http://css3buttongenerator.com &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;IMAGE&lt;/span&gt; &lt;span class="caps"&gt;COMPRESSION&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Compress All Images -&amp;nbsp;https://compressor.io/compress&lt;/li&gt;
+&lt;li&gt;Compress &lt;span class="caps"&gt;JPG&lt;/span&gt; -&amp;nbsp;http://jpeg-optimizer.com/&lt;/li&gt;
+&lt;li&gt;Compress &lt;span class="caps"&gt;PNG&lt;/span&gt; -&amp;nbsp;https://tinypng.com/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;CODE&lt;/span&gt; &lt;span class="caps"&gt;OPTIMIZATION&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Minify &lt;span class="caps"&gt;JS&lt;/span&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;CSS&lt;/span&gt; -&amp;nbsp;http://minifier.org&lt;/li&gt;
+&lt;li&gt;Code Optimization Tools -&amp;nbsp;https://codebeautify.org&lt;/li&gt;
+&lt;li&gt;Code Diff Checker -&amp;nbsp;https://www.diffchecker.com&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;CONVERTERS&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class="caps"&gt;ES6&lt;/span&gt;+ &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;JSX&lt;/span&gt; Compiler -&amp;nbsp;https://babeljs.io/repl&lt;/li&gt;
+&lt;li&gt;Sass Converter -&amp;nbsp;https://www.sassmeister.com/           &lt;/li&gt;
+&lt;li&gt;Less Converter &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; More -&amp;nbsp;http://www.webtoolkitonline.com   &lt;/li&gt;
+&lt;li&gt;Markdown Editor -&amp;nbsp;https://stackedit.io&lt;/li&gt;
+&lt;li&gt;Jade Converter -&amp;nbsp;http://www.html2jade.org/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;VALIDATION&lt;/span&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;COMPATIBILITY&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Validate &lt;span class="caps"&gt;HTML&lt;/span&gt; -&amp;nbsp;https://validator.w3.org&lt;/li&gt;
+&lt;li&gt;Validate &lt;span class="caps"&gt;CSS&lt;/span&gt; -&amp;nbsp;https://jigsaw.w3.org/css-validator&lt;/li&gt;
+&lt;li&gt;Check Browser Compatibility -&amp;nbsp;https://caniuse.com/&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;ES6&lt;/span&gt;+ Compatibility Table -&amp;nbsp;https://kangax.github.io/compat-table/es6/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;IN&lt;/span&gt; &lt;span class="caps"&gt;BROWSER&lt;/span&gt; &lt;span class="caps"&gt;CODING&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Client Side Code -&amp;nbsp;https://codepen.io&lt;/li&gt;
+&lt;li&gt;Client Side Code -&amp;nbsp;https://jsfiddle.net&lt;/li&gt;
+&lt;li&gt;Client Side Code -&amp;nbsp;http://liveweave.com&lt;/li&gt;
+&lt;li&gt;Server Side Code -&amp;nbsp;https://repl.it&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;SNIPPET&lt;/span&gt; &lt;span class="caps"&gt;TOOLS&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Snippet Manager -&amp;nbsp;https://gist.github.com&lt;/li&gt;
+&lt;li&gt;Snippet Manager -&amp;nbsp;https://pastebin.com&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;WIREFRAME&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;In Browser Wireframing -&amp;nbsp;https://app.moqups.com&lt;/li&gt;
+&lt;li&gt;Very Basic In Browser Wireframing -&amp;nbsp;https://wireframe.cc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;RESPONSIVENESS&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Device Testing -&amp;nbsp;http://www.responsinator.com&lt;/li&gt;
+&lt;li&gt;What&amp;#8217;s My Browser Size -&amp;nbsp;https://www.webpagefx.com/tools/whats-my-browser-size/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;SPEED&lt;/span&gt; &lt;span class="caps"&gt;TEST&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Speed &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Performance Testing -&amp;nbsp;https://tools.keycdn.com/speed&lt;/li&gt;
+&lt;li&gt;Pingdom Speed Test -&amp;nbsp;https://tools.pingdom.com/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;OTHER&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Public &lt;span class="caps"&gt;API&lt;/span&gt; Resources -&amp;nbsp;https://github.com/toddmotto/public-apis?utm_source=mybridge&amp;amp;utm_medium=blog&amp;amp;utm_campaign=read_more&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt; Entity Lookup -&amp;nbsp;http://entity-lookup.leftlogic.com/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;https://gist.github.com/bradtraversy/61171a9b81586f5bc4c0ca1e2beb59ab&lt;/li&gt;
+&lt;li&gt;https://www.youtube.com/watch?v=4JC8ahZneYU&lt;/li&gt;
+&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Deploy a Django app in an Ubuntu VPS (DigitalOcean)</title><link href="https://janiceto.github.io/programming-notes/deploy-django.html" rel="alternate"></link><published>2018-06-06T23:29:00+01:00</published><updated>2018-06-13T14:31:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-06-06:/programming-notes/deploy-django.html</id><summary type="html">&lt;p&gt;This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to Gunicorn, giving us access to its security and performance features to serve our&amp;nbsp;apps.&lt;/p&gt;
+&lt;h2&gt;1) Initial Server&amp;nbsp;Setup&lt;/h2&gt;
+&lt;p&gt;Perform the initial server setup as detailed &lt;a href="server-setup.md"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;2) Install the Packages from the Ubuntu&amp;nbsp;Repositories&lt;/h2&gt;
+&lt;p&gt;We need to update the local apt package index and then download and install the packages. The packages we install depend on which version of Python your project will&amp;nbsp;use.&lt;/p&gt;
+&lt;p&gt;If you are using Django with Python 3,&amp;nbsp;type:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
+$ sudo apt-get install python3-pip python3-dev libpq-dev nginx
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will install pip, the Python development files needed to build Gunicorn later and the Nginx web …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to Gunicorn, giving us access to its security and performance features to serve our&amp;nbsp;apps.&lt;/p&gt;
+&lt;h2&gt;1) Initial Server&amp;nbsp;Setup&lt;/h2&gt;
+&lt;p&gt;Perform the initial server setup as detailed &lt;a href="server-setup.md"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;2) Install the Packages from the Ubuntu&amp;nbsp;Repositories&lt;/h2&gt;
+&lt;p&gt;We need to update the local apt package index and then download and install the packages. The packages we install depend on which version of Python your project will&amp;nbsp;use.&lt;/p&gt;
+&lt;p&gt;If you are using Django with Python 3,&amp;nbsp;type:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
+$ sudo apt-get install python3-pip python3-dev libpq-dev nginx
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will install pip, the Python development files needed to build Gunicorn later and the Nginx web&amp;nbsp;server.&lt;/p&gt;
+&lt;h2&gt;3) Install the&amp;nbsp;Database&lt;/h2&gt;
+&lt;p&gt;Install the database system and the libraries needed to interact with&amp;nbsp;it.&lt;/p&gt;
+&lt;h4&gt;For&amp;nbsp;Postgres:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install postgresql postgresql-contrib&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;For&amp;nbsp;MySQL&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install libmysqlclient-dev
+$ sudo apt-get install mysql-server mysql-client
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now let&amp;#8217;s create the Database and User but first verify that the MySQL service is&amp;nbsp;running:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ systemctl status mysql.service
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If the output is negative you can run &lt;code&gt;sudo systemctl start mysql&lt;/code&gt; to get &lt;code&gt;mysql.service&lt;/code&gt; started again. Now you can log in with your MySQL credentials using the following command. Where &lt;code&gt;-u&lt;/code&gt; is the flag for declaring your username and &lt;code&gt;-p&lt;/code&gt; is the flag that tells MySQL that this user requires a&amp;nbsp;password:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo mysql -u db_user -p
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;mysql&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;SHOW&lt;/span&gt; &lt;span class="k"&gt;DATABASES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;mysql&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;DATABASE&lt;/span&gt; &lt;span class="n"&gt;project_db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;mysql&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;SHOW&lt;/span&gt; &lt;span class="k"&gt;DATABASES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Whenever you&amp;#8217;d like to exit MySQL server, press &lt;span class="caps"&gt;CTRL&lt;/span&gt; +&amp;nbsp;D.&lt;/p&gt;
+&lt;h2&gt;4) Create a Python Virtual&amp;nbsp;Environment&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo -H pip3 install --upgrade pip
+$ sudo -H pip3 install virtualenv
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir ~/myproject
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~/myproject
+$ virtualenv venv
+$ &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note: Regardless of which version of Python you are using, when the virtual environment is activated, you should use the pip command (not&amp;nbsp;pip3).&lt;/p&gt;
+&lt;p&gt;Install the &lt;code&gt;mysqlclient&lt;/code&gt; library:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install mysqlclient
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;With your virtual environment active, install Django and&amp;nbsp;Gunicorn:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install django gunicorn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;5) Create Django&amp;nbsp;project&lt;/h2&gt;
+&lt;p&gt;Since we already have a project directory, we will tell Django to install the files here. It will create a second level directory with the actual code, which is normal, and place a management script in this directory. The key to this is that we are defining the directory explicitly instead of allowing Django to make decisions relative to our current&amp;nbsp;directory:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ django-admin startproject myproject ~/myproject
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;At this point, your project directory (~/myproject in our case) should have the following&amp;nbsp;content:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;Django&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt; &lt;span class="n"&gt;management&lt;/span&gt; &lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;Django&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt; &lt;span class="n"&gt;package&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;should&lt;/span&gt; &lt;span class="n"&gt;contain&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;wsgi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;myprojectenv&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;virtual&lt;/span&gt; &lt;span class="n"&gt;environment&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;created&lt;/span&gt; &lt;span class="n"&gt;earlier&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Go to the end of the &lt;code&gt;settings.py&lt;/code&gt; file and add &lt;code&gt;STATIC_ROOT&lt;/code&gt; as shown&amp;nbsp;below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Static files (CSS, JavaScript, Images)&lt;/span&gt;
+&lt;span class="c1"&gt;# https://docs.djangoproject.com/en/2.0/howto/static-files/&lt;/span&gt;
+
+&lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/static/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BASE_DIR&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;static&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add your server’s &lt;span class="caps"&gt;IP&lt;/span&gt; address between the square brackets and single quotes to the &lt;code&gt;ALLOWED_HOSTS&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# The simplest case: just add the domain name(s) and IP addresses of your Django server&lt;/span&gt;
+&lt;span class="c1"&gt;# ALLOWED_HOSTS = [ &amp;#39;example.com&amp;#39;, &amp;#39;203.0.113.5&amp;#39;]&lt;/span&gt;
+&lt;span class="c1"&gt;# To respond to &amp;#39;example.com&amp;#39; and any subdomains, start the domain with a dot&lt;/span&gt;
+&lt;span class="c1"&gt;# ALLOWED_HOSTS = [&amp;#39;.example.com&amp;#39;, &amp;#39;203.0.113.5&amp;#39;]&lt;/span&gt;
+&lt;span class="n"&gt;ALLOWED_HOSTS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;your_server_domain_or_IP&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;second_domain_or_IP&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Migrate the initial database schema to our database using the management&amp;nbsp;script:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;makemigrations&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;migrate&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Create an administrative user for the project by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;createsuperuser&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can collect all of the static content into the directory location we configured by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;collectstatic&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The static files will then be placed in a directory called static within your project&amp;nbsp;directory.&lt;/p&gt;
+&lt;h4&gt;Connect your Django app to&amp;nbsp;MySQL&lt;/h4&gt;
+&lt;p&gt;Navigate to the settings.py file and replace the current &lt;span class="caps"&gt;DATABASES&lt;/span&gt; lines with the following. We will configure your database dictionary so that it knows to use MySQL as your database backend and from what file to read your database connection&amp;nbsp;credentials:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Database&lt;/span&gt;
+&lt;span class="c1"&gt;# https://docs.djangoproject.com/en/2.0/ref/settings/#databases&lt;/span&gt;
+
+&lt;span class="n"&gt;DATABASES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;ENGINE&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;django.db.backends.mysql&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;OPTIONS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;read_default_file&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/etc/mysql/my.cnf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Next, let’s edit the config file so that it has your MySQL credentials. Use nano as sudo to edit the file and add the following&amp;nbsp;information:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo nano /etc/mysql/my.cnf
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[client]&lt;/span&gt;
+&lt;span class="na"&gt;database&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;db_name&lt;/span&gt;
+&lt;span class="na"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;db_user&lt;/span&gt;
+&lt;span class="na"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;db_password&lt;/span&gt;
+&lt;span class="na"&gt;default-character-set&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;utf8&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Where database name in our case is mysite, your username for the MySQL server is the one you’ve created, and the password is the MySQL server password you’ve created. Also, you’ll notice that utf8 is set as the default encoding, this is a common way to encode unicode data in MySQL. Once the file has been edited, we need to restart MySQL for the changes to take&amp;nbsp;effect.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ systemctl daemon-reload
+$ systemctl restart mysql
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Please note that restarting MySQL takes a few seconds, so please be patient. Now, let&amp;#8217;s test the MySQL connection to the application. We need to verify that the configurations in Django detect your MySQL server properly. We can do this by simply running the server. If it fails, it means that the connection isn’t working properly. Otherwise, the connection is&amp;nbsp;valid.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~/mysite/mysite/
+$ python manage.py runserver your-server-ip:8000
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;6) Setting up Gunicorn&amp;#8217;s ability to serve the&amp;nbsp;project&lt;/h2&gt;
+&lt;p&gt;The last thing we want to do before leaving our virtual environment is test Gunicorn to make sure that it can serve the application. We can do this by entering our project directory and using gunicorn to load the project&amp;#8217;s &lt;span class="caps"&gt;WSGI&lt;/span&gt;&amp;nbsp;module:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~/myproject
+$ gunicorn --bind &lt;span class="m"&gt;0&lt;/span&gt;.0.0.0:8000 myproject.wsgi
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will start Gunicorn on the same interface that the Django development server was running on. You can go back and test the app&amp;nbsp;again. &lt;/p&gt;
+&lt;p&gt;We passed Gunicorn a module by specifying the relative directory path to Django&amp;#8217;s wsgi.py file, which is the entry point to our application, using Python&amp;#8217;s module syntax. Inside of this file, a function called application is defined, which is used to communicate with the application. When you are finished testing, hit &lt;span class="caps"&gt;CTRL&lt;/span&gt;-C in the terminal window to stop Gunicorn. We&amp;#8217;re now finished configuring our Django application. We can back out of our virtual environment by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ deactivate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Create and open a systemd service file for Gunicorn with sudo privileges in your text&amp;nbsp;editor:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo nano /etc/systemd/system/gunicorn.service
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[Unit]&lt;/span&gt;
+&lt;span class="na"&gt;Description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;gunicorn daemon&lt;/span&gt;
+&lt;span class="na"&gt;After&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;network.target&lt;/span&gt;
+
+&lt;span class="k"&gt;[Service]&lt;/span&gt;
+&lt;span class="na"&gt;User&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;synergix&lt;/span&gt;
+&lt;span class="na"&gt;Group&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;www-data&lt;/span&gt;
+&lt;span class="na"&gt;WorkingDirectory&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;/home/synergix/myproject&lt;/span&gt;
+&lt;span class="na"&gt;ExecStart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;/home/synergix/myproject/myprojectenv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/synergix/myproject/myproject.sock myproject.wsgi:application&lt;/span&gt;
+
+&lt;span class="k"&gt;[Install]&lt;/span&gt;
+&lt;span class="na"&gt;WantedBy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;multi-user.target&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can now start the Gunicorn service we created and enable it so that it starts at&amp;nbsp;boot:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo systemctl start gunicorn
+$ sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; gunicorn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can confirm that the operation was successful by checking for the socket&amp;nbsp;file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo systemctl status gunicorn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Next, check for the existence of the myproject.sock file within your project&amp;nbsp;directory:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls /home/synergix/myproject
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If the systemctl status command indicated that an error occurred or if you do not find the myproject.sock file in the directory, it&amp;#8217;s an indication that Gunicorn was not able to start correctly. Check the Gunicorn process logs by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo journalctl -u gunicorn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;7) Configure Nginx to Proxy Pass to&amp;nbsp;Gunicorn&lt;/h2&gt;
+&lt;p&gt;Now that Gunicorn is set up, we need to configure Nginx to pass traffic to the process. Start by creating and opening a new server block in Nginx&amp;#8217;s sites-available&amp;nbsp;directory:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo nano /etc/nginx/sites-available/myproject
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Inside, open up a new server block. We will start by specifying that this block should listen on the normal port 80 and that it should respond to our server&amp;#8217;s domain name or &lt;span class="caps"&gt;IP&lt;/span&gt; address. Next, we will tell Nginx to ignore any problems with finding a favicon. We will also tell it where to find the static assets that we collected in our ~/myproject/static directory. All of these files have a standard &lt;span class="caps"&gt;URI&lt;/span&gt; prefix of &amp;#8220;/static&amp;#8221;, so we can create a location block to match those requests. Finally, we&amp;#8217;ll create a location / {} block to match all other requests. Inside of this location, we&amp;#8217;ll include the standard proxy_params file included with the Nginx installation and then we will pass the traffic to the socket that our Gunicorn process&amp;nbsp;created:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;server&lt;/span&gt; {
+    &lt;span class="nv"&gt;listen&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+    &lt;span class="nv"&gt;server_name&lt;/span&gt; &lt;span class="nv"&gt;server_domain_or_IP&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+
+    &lt;span class="nv"&gt;location&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;favicon&lt;/span&gt;.&lt;span class="nv"&gt;ico&lt;/span&gt; { &lt;span class="nv"&gt;access_log&lt;/span&gt; &lt;span class="nv"&gt;off&lt;/span&gt;&lt;span class="c1"&gt;; log_not_found off; }&lt;/span&gt;
+    &lt;span class="nv"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;static&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; {
+        &lt;span class="nv"&gt;root&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;sammy&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;myproject&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+    }
+
+    &lt;span class="nv"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; {
+        &lt;span class="k"&gt;include&lt;/span&gt; &lt;span class="nv"&gt;proxy_params&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+        &lt;span class="nv"&gt;proxy_pass&lt;/span&gt; &lt;span class="nv"&gt;http&lt;/span&gt;:&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nv"&gt;unix&lt;/span&gt;:&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;sammy&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;myproject&lt;/span&gt;.&lt;span class="nv"&gt;sock&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Save and close the file when you are finished. Now, we can enable the file by linking it to the sites-enabled&amp;nbsp;directory:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Test your Nginx configuration for syntax errors by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo nginx -t
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If no errors are reported, go ahead and restart Nginx by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo systemctl restart nginx
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finally, we need to open up our firewall to normal traffic on port 80. Since we no longer need access to the development server, we can remove the rule to open port 8000 as&amp;nbsp;well:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo ufw delete allow &lt;span class="m"&gt;8000&lt;/span&gt;
+$ sudo ufw allow &lt;span class="s1"&gt;&amp;#39;Nginx Full&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You should now be able to go to your server&amp;#8217;s domain or &lt;span class="caps"&gt;IP&lt;/span&gt; address to view your&amp;nbsp;application.&lt;/p&gt;
+&lt;h2&gt;8)&amp;nbsp;Troubleshooting&lt;/h2&gt;
+&lt;p&gt;Logs can help narrow down root causes. Check each of them in turn and look for messages indicating problem areas. The following logs may be&amp;nbsp;helpful:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check the Nginx process logs by typing: &lt;code&gt;sudo journalctl -u nginx&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Check the Nginx access logs by typing: &lt;code&gt;sudo less /var/log/nginx/access.log&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Check the Nginx error logs by typing: &lt;code&gt;sudo less /var/log/nginx/error.log&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Check the Gunicorn application logs by typing: &lt;code&gt;sudo journalctl -u gunicorn&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As you update your configuration or application, you will likely need to restart the processes to adjust to your changes. If you update your Django application, you can restart the Gunicorn process to pick up the changes by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo systemctl restart gunicorn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you change gunicorn systemd service file, reload the daemon and restart the process by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo systemctl daemon-reload
+$ sudo systemctl restart gunicorn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you change the Nginx server block configuration, test the configuration and then Nginx by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo nginx -t &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo systemctl restart nginx
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04"&gt;DigitalOcean - Setup Django, Postgres, nginx and Gunicorn on&amp;nbsp;Ubuntu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-uwsgi-and-nginx-on-ubuntu-16-04"&gt;DigitalOcean - Serve Django with uwsgi and ngix on&amp;nbsp;Ubuntu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-django-app-and-connect-it-to-a-database"&gt;DigitalOcean - Create Django app and connect to&amp;nbsp;database&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Initial Server Setup with Ubuntu 18.04</title><link href="https://janiceto.github.io/programming-notes/server-setup.html" rel="alternate"></link><published>2018-06-06T23:19:00+01:00</published><updated>2018-06-13T22:30:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-06-06:/programming-notes/server-setup.html</id><summary type="html">&lt;p&gt;When first creating a new Ubuntu 18.04 server, there are a few configuration steps that you should take early on as part of the basic&amp;nbsp;setup.&lt;/p&gt;
+&lt;h2&gt;1) Creating a New&amp;nbsp;User&lt;/h2&gt;
+&lt;p&gt;Once you are logged in as root, we&amp;#8217;re prepared to add the new user (synergix) account that we will use to log in from now&amp;nbsp;on.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;adduser synergix&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Enter a strong password and, optionally, fill in any of the additional information if you would like. This is not required and you can just hit &lt;span class="caps"&gt;ENTER&lt;/span&gt; in any field you wish to&amp;nbsp;skip.&lt;/p&gt;
+&lt;h2&gt;2) Granting Administrative&amp;nbsp;Privileges&lt;/h2&gt;
+&lt;p&gt;Set up what is known as &amp;#8220;superuser&amp;#8221; or root privileges for our normal account. This will allow our normal user to run commands with administrative privileges by putting the word &lt;code&gt;sudo&lt;/code&gt; before each command. As &lt;strong&gt;root&lt;/strong&gt;, run this command to add your new user to the sudo&amp;nbsp;group:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;usermod -aG sudo …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;When first creating a new Ubuntu 18.04 server, there are a few configuration steps that you should take early on as part of the basic&amp;nbsp;setup.&lt;/p&gt;
+&lt;h2&gt;1) Creating a New&amp;nbsp;User&lt;/h2&gt;
+&lt;p&gt;Once you are logged in as root, we&amp;#8217;re prepared to add the new user (synergix) account that we will use to log in from now&amp;nbsp;on.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;adduser synergix&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Enter a strong password and, optionally, fill in any of the additional information if you would like. This is not required and you can just hit &lt;span class="caps"&gt;ENTER&lt;/span&gt; in any field you wish to&amp;nbsp;skip.&lt;/p&gt;
+&lt;h2&gt;2) Granting Administrative&amp;nbsp;Privileges&lt;/h2&gt;
+&lt;p&gt;Set up what is known as &amp;#8220;superuser&amp;#8221; or root privileges for our normal account. This will allow our normal user to run commands with administrative privileges by putting the word &lt;code&gt;sudo&lt;/code&gt; before each command. As &lt;strong&gt;root&lt;/strong&gt;, run this command to add your new user to the sudo&amp;nbsp;group:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;usermod -aG sudo synergix&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;3) Setting Up a Basic&amp;nbsp;Firewall&lt;/h2&gt;
+&lt;p&gt;Ubuntu 18.04 servers can use the &lt;span class="caps"&gt;UFW&lt;/span&gt; firewall to make sure only connections to certain services are allowed. We can set up a basic firewall very easily using this&amp;nbsp;application.&lt;/p&gt;
+&lt;p&gt;Different applications can register their profiles with &lt;span class="caps"&gt;UFW&lt;/span&gt; upon installation. These profiles allow &lt;span class="caps"&gt;UFW&lt;/span&gt; to manage these applications by name. OpenSSH, the service allowing us to connect to our server now, has a profile registered with &lt;span class="caps"&gt;UFW&lt;/span&gt;. You can see this by&amp;nbsp;typing:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ufw app list&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Afterwards, we can enable the firewall by&amp;nbsp;typing:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ufw enable&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Type &amp;#8220;y&amp;#8221; and press &lt;span class="caps"&gt;ENTER&lt;/span&gt; to proceed. You can see that &lt;span class="caps"&gt;SSH&lt;/span&gt; connections are still allowed by&amp;nbsp;typing:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ufw status&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;As the firewall is currently blocking all connections except for &lt;span class="caps"&gt;SSH&lt;/span&gt;, if you install and configure additional services, you will need to adjust the firewall settings to allow acceptable traffic in. More info here:&amp;nbsp;https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands&lt;/p&gt;
+&lt;h2&gt;4) Enabling External Access for Your Regular&amp;nbsp;User&lt;/h2&gt;
+&lt;p&gt;Now that we have a regular user for daily use, we need to make sure we can &lt;span class="caps"&gt;SSH&lt;/span&gt; into the account directly. The process for configuring &lt;span class="caps"&gt;SSH&lt;/span&gt; access for your new user depends on whether your server&amp;#8217;s root account uses a password or &lt;span class="caps"&gt;SSH&lt;/span&gt; keys for&amp;nbsp;authentication.&lt;/p&gt;
+&lt;h4&gt;If the Root Account Uses Password&amp;nbsp;Authentication&lt;/h4&gt;
+&lt;p&gt;If you logged in to your root account using a password, then password authentication is enabled for &lt;span class="caps"&gt;SSH&lt;/span&gt;. You can &lt;span class="caps"&gt;SSH&lt;/span&gt; to your new user account by opening up a new terminal session and using &lt;span class="caps"&gt;SSH&lt;/span&gt; with your new&amp;nbsp;username:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ssh synergix@your_server_ip&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;After entering your regular user&amp;#8217;s password, you will be logged in. You will be prompted for your regular user password when using sudo for the first time each session (and periodically&amp;nbsp;afterwards).&lt;/p&gt;
+&lt;p&gt;To enhance your server&amp;#8217;s security, it is recommended to set up &lt;span class="caps"&gt;SSH&lt;/span&gt; keys instead of using password authentication:&amp;nbsp;https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1804&lt;/p&gt;
+&lt;h4&gt;If the Root Account Uses &lt;span class="caps"&gt;SSH&lt;/span&gt; Key&amp;nbsp;Authentication&lt;/h4&gt;
+&lt;p&gt;If you logged in to your root account using &lt;span class="caps"&gt;SSH&lt;/span&gt; keys, then password authentication is disabled for &lt;span class="caps"&gt;SSH&lt;/span&gt;. You will need to add a copy of your local public key to the new user&amp;#8217;s &lt;code&gt;~/.ssh/authorized_keys&lt;/code&gt; file to log in&amp;nbsp;successfully.&lt;/p&gt;
+&lt;p&gt;Since your public key is already in the root account&amp;#8217;s &lt;code&gt;~/.ssh/authorized_keys&lt;/code&gt; file on the server, we can copy that file and directory structure to our new user account in our existing&amp;nbsp;session.&lt;/p&gt;
+&lt;p&gt;The simplest way to copy the files with the correct ownership and permissions is with the &lt;code&gt;rsync&lt;/code&gt; command. This will copy the root user&amp;#8217;s .ssh directory, preserve the permissions, and modify the file owners, all in a single&amp;nbsp;command:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rsync --archive --chown=synergix:synergix ~/.ssh /home/synergix&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Now, open up a new terminal session and using &lt;span class="caps"&gt;SSH&lt;/span&gt; with your new&amp;nbsp;username:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ssh synergix@your_server_ip&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You should be logged in to the new user account without using a&amp;nbsp;password. &lt;/p&gt;
+&lt;h2&gt;5)&amp;nbsp;Other&lt;/h2&gt;
+&lt;p&gt;Chose the timezone by running: &lt;code&gt;sudo dpkg-reconfigure tzdata&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;References:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04&lt;/li&gt;
+&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Hiding Passwords and Secret Keys in Environment Variables</title><link href="https://janiceto.github.io/programming-notes/os-env-vars.html" rel="alternate"></link><published>2018-02-02T13:31:00+00:00</published><updated>2018-02-02T13:31:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-02-02:/programming-notes/os-env-vars.html</id><content type="html">&lt;h3&gt;Adding a Environment Variable&amp;nbsp;(Windows)&lt;/h3&gt;
+&lt;p&gt;System Menu &amp;gt; &lt;code&gt;Advanced System Settings&lt;/code&gt; &amp;gt; &lt;code&gt;Environment Variables...&lt;/code&gt; &amp;gt; in User Variables click &lt;code&gt;New...&lt;/code&gt; &amp;gt; insert variable name (VAR_NAME) and value&amp;nbsp;(VAR_VALUE)&lt;/p&gt;
+&lt;p&gt;When coding it may be necessary to restart your &lt;span class="caps"&gt;IDE&lt;/span&gt; or text&amp;nbsp;editor.&lt;/p&gt;
+&lt;h3&gt;Adding a Environment Variable (Linux and&amp;nbsp;Mac)&lt;/h3&gt;
+&lt;p&gt;Open the&amp;nbsp;terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; 
+$ nano .bash_profile
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To the file add the line and&amp;nbsp;save:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;VAR_NAME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;VAR_VALUE&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;When coding it may be necessary to restart your &lt;span class="caps"&gt;IDE&lt;/span&gt; or text&amp;nbsp;editor.&lt;/p&gt;
+&lt;h3&gt;Acessing your Environment Variables in&amp;nbsp;Python&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+
+&lt;span class="n"&gt;var1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;VAR_NAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="General"></category></entry><entry><title>Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)</title><link href="https://janiceto.github.io/programming-notes/ubuntu-vps.html" rel="alternate"></link><published>2018-01-25T14:14:00+00:00</published><updated>2018-01-25T14:14:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-01-25:/programming-notes/ubuntu-vps.html</id><summary type="html">&lt;p&gt;This page details the process of seting up a Ubuntu &lt;span class="caps"&gt;VPS&lt;/span&gt; (in this case a DigitalOcean dropplet using Ubuntu 16.04 was used) to serve a Flask based websiite. MySQL databases are&amp;nbsp;used.&lt;/p&gt;
+&lt;h2&gt;1) Install&amp;nbsp;Apache&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo apt-get install apache2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can do a spot check right away to verify that everything went as planned by visiting your server&amp;#8217;s public &lt;span class="caps"&gt;IP&lt;/span&gt; address in your web browser. You will see the default Ubuntu 16.04 Apache web&amp;nbsp;page.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;your_server_IP_address&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;How To Find your Server&amp;#8217;s Public &lt;span class="caps"&gt;IP&lt;/span&gt;&amp;nbsp;Address&lt;/h3&gt;
+&lt;p&gt;Usually, this is the address you use to connect to your server through &lt;span class="caps"&gt;SSH&lt;/span&gt;. However you can find the &lt;span class="caps"&gt;IP&lt;/span&gt; address from the command line by typing&amp;nbsp;this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nv"&gt;ip&lt;/span&gt; &lt;span class="nv"&gt;addr&lt;/span&gt; &lt;span class="k"&gt;show&lt;/span&gt; &lt;span class="nv"&gt;eth0&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;grep&lt;/span&gt; &lt;span class="nv"&gt;inet&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;awk&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;{ print $2; }&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;sed&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;s/\/.*$//&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Alternatively you can use &lt;code&gt;curl&lt;/code&gt; to contact an outside party to tell you how it sees …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This page details the process of seting up a Ubuntu &lt;span class="caps"&gt;VPS&lt;/span&gt; (in this case a DigitalOcean dropplet using Ubuntu 16.04 was used) to serve a Flask based websiite. MySQL databases are&amp;nbsp;used.&lt;/p&gt;
+&lt;h2&gt;1) Install&amp;nbsp;Apache&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo apt-get install apache2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can do a spot check right away to verify that everything went as planned by visiting your server&amp;#8217;s public &lt;span class="caps"&gt;IP&lt;/span&gt; address in your web browser. You will see the default Ubuntu 16.04 Apache web&amp;nbsp;page.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;your_server_IP_address&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;How To Find your Server&amp;#8217;s Public &lt;span class="caps"&gt;IP&lt;/span&gt;&amp;nbsp;Address&lt;/h3&gt;
+&lt;p&gt;Usually, this is the address you use to connect to your server through &lt;span class="caps"&gt;SSH&lt;/span&gt;. However you can find the &lt;span class="caps"&gt;IP&lt;/span&gt; address from the command line by typing&amp;nbsp;this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nv"&gt;ip&lt;/span&gt; &lt;span class="nv"&gt;addr&lt;/span&gt; &lt;span class="k"&gt;show&lt;/span&gt; &lt;span class="nv"&gt;eth0&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;grep&lt;/span&gt; &lt;span class="nv"&gt;inet&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;awk&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;{ print $2; }&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;sed&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;s/\/.*$//&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Alternatively you can use &lt;code&gt;curl&lt;/code&gt; to contact an outside party to tell you how it sees your server. You can do this by asking a specific server what your &lt;span class="caps"&gt;IP&lt;/span&gt; address&amp;nbsp;is:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install curl
+$ curl http://icanhazip.com
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;2) Install&amp;nbsp;MySQL&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install mysql-server mysql-client
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;During the installation, your server will ask you to select and confirm a password for the MySQL &amp;#8220;root&amp;#8221; user. This is an administrative account in MySQL that has increased privileges. Think of it as being similar to the root account for the server itself (the one you are configuring now is a MySQL-specific account, however). Make sure this is a strong, unique password, and do not leave it&amp;nbsp;blank.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Optional:&lt;/strong&gt; Run a simple security script that will remove some dangerous defaults and lock down access to our database system a little bit. See more info on this on reference&amp;nbsp;[2].&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mysql_secure_installation
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;3) Install and enable&amp;nbsp;mod_wsgi&lt;/h2&gt;
+&lt;p&gt;&lt;span class="caps"&gt;WSGI&lt;/span&gt; (Web Server Gateway Interface) is an interface between web servers and web apps for python. Mod_wsgi is an Apache &lt;span class="caps"&gt;HTTP&lt;/span&gt; server mod that enables Apache to serve Flask&amp;nbsp;applications.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; /var/www
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Copy in your Flask app directory struture. It should look like&amp;nbsp;this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="c1"&gt;----FlaskApp&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="c1"&gt;---------FlaskApp&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="c1"&gt;--------------static&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="c1"&gt;--------------templates&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="c1"&gt;--------------__init__.py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;4) Install Flask and&amp;nbsp;virtualenv&lt;/h2&gt;
+&lt;p&gt;Install &lt;code&gt;pip&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install python-pip 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Install &lt;code&gt;virtualenv&lt;/code&gt; and create a new virtual environment names &lt;code&gt;venv&lt;/code&gt; for the Flask&amp;nbsp;app&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip install virtualenv 
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; /var/www/FlaskApp/FlaskApp
+$ sudo virtualenv venv
+$ &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Install &lt;code&gt;Flask&lt;/code&gt; and other necessary Flask plug-ins and&amp;nbsp;extensions&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip install Flask 
+$ sudo pip install flask-mysqldb
+$ sudo pip install Flask-WTF
+$ sudo pip install passlib
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Test if the installation is successful and the app is&amp;nbsp;running:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo python __init__.py 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;It should display “Running on http://localhost:5000/” or &amp;#8220;Running on http://127.0.0.1:5000/&amp;#8221;. If you see this message, you have successfully configured the&amp;nbsp;app.&lt;/p&gt;
+&lt;p&gt;To deactivate the environment, give the following&amp;nbsp;command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ deactivate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;5) Configure and Enable a New Virtual&amp;nbsp;Host&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo nano /etc/apache2/sites-available/FlaskApp.conf
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add the following lines of code to the file to configure the virtual host. Be sure to change the ServerName to your domain or cloud server&amp;#8217;s &lt;span class="caps"&gt;IP&lt;/span&gt;&amp;nbsp;address:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class="err"&gt;*:80&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        ServerName mywebsite.com
+        ServerAlias www.mywebsite.com
+        ServerAdmin admin@mywebsite.com
+        WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
+        &lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="err"&gt;/var/www/FlaskApp/FlaskApp&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+            Order allow,deny
+            Allow from all
+        &lt;span class="nt"&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+        Alias /static /var/www/FlaskApp/FlaskApp/static
+        &lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="err"&gt;/var/www/FlaskApp/FlaskApp/static&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+            Order allow,deny
+            Allow from all
+        &lt;span class="nt"&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+        ErrorLog &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/error.log
+        LogLevel warn
+        CustomLog &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/access.log combined
+&lt;span class="nt"&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Enable the virtual host with the following&amp;nbsp;command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo a2ensite FlaskApp
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;6) Create the .wsgi&amp;nbsp;File&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; /var/www/FlaskApp
+$ sudo nano flaskapp.wsgi 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add the following lines of code to the flaskapp.wsgi&amp;nbsp;file:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/python&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;logging&lt;/span&gt;
+&lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;basicConfig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stderr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/var/www/FlaskApp/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;FlaskApp&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;
+&lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;secret_key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Add your secret key&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h2&gt;7) Restart&amp;nbsp;Apache&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo service apache2 restart 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To view your application, open your browser and navigate to the domain name or &lt;span class="caps"&gt;IP&lt;/span&gt; address that you entered in your virtual host&amp;nbsp;configuration.&lt;/p&gt;
+&lt;h2&gt;Final directory&amp;nbsp;structure&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="c1"&gt;--------FlaskApp&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="c1"&gt;----------------FlaskApp&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="c1"&gt;-----------------------static&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="c1"&gt;-----------------------templates&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="c1"&gt;-----------------------venv&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="c1"&gt;-----------------------__init__.py&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="c1"&gt;----------------flaskapp.wsgi&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Useful&amp;nbsp;references:&lt;/h2&gt;
+&lt;p&gt;1) &lt;a href="https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps"&gt;How To Deploy a Flask Application on an Ubuntu &lt;span class="caps"&gt;VPS&lt;/span&gt;&lt;/a&gt;
+2) &lt;a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04"&gt;How To Install Linux, Apache, MySQL, &lt;span class="caps"&gt;PHP&lt;/span&gt; (&lt;span class="caps"&gt;LAMP&lt;/span&gt;) stack on Ubuntu 16.04&lt;/a&gt;
+3) &lt;a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04"&gt;Initial Server Setup with Ubuntu 16.04&lt;/a&gt;
+4) &lt;a href="blob/master/python/flask.md"&gt;Building a Flask&amp;nbsp;site&lt;/a&gt;&lt;/p&gt;</content><category term="General"></category></entry><entry><title>Development environments</title><link href="https://janiceto.github.io/programming-notes/dev-environments.html" rel="alternate"></link><published>2017-09-29T14:40:00+01:00</published><updated>2017-10-04T13:28:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-09-29:/programming-notes/dev-environments.html</id><content type="html">&lt;p&gt;My prefered configurations and extensions in various development environments. Mostly focused on Python and web development. For Python I mostly use&amp;nbsp;Pycharm.&lt;/p&gt;
+&lt;h2&gt;Atom&lt;/h2&gt;
+&lt;h4&gt;Essentials&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Visual Studio&amp;nbsp;Code&lt;/h2&gt;
+&lt;h4&gt;Essentials&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python"&gt;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner"&gt;Code Runner&lt;/a&gt; for Python and&amp;nbsp;more&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer"&gt;Live Server&lt;/a&gt; for web&amp;nbsp;dev&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Other&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme"&gt;OneDark-Pro&amp;nbsp;theme&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=magicstack.MagicPython"&gt;Magic&amp;nbsp;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer"&gt;Bracket Pair&amp;nbsp;Colorizer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Git Version Control System</title><link href="https://janiceto.github.io/programming-notes/git.html" rel="alternate"></link><published>2017-09-11T10:41:00+01:00</published><updated>2018-08-30T13:55:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-09-11:/programming-notes/git.html</id><summary type="html">&lt;h2&gt;Instalation on a Debian-based distribution, such as&amp;nbsp;Ubuntu&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt update
+$ sudo apt install git-all
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Starting&amp;nbsp;repositories&lt;/h3&gt;
+&lt;p&gt;Clone an existing repository: &lt;code&gt;$ git clone ssh://user@domain.com/repo.git&lt;/code&gt; &lt;/p&gt;
+&lt;p&gt;Create a new local repository: &lt;code&gt;$ git init&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Local&amp;nbsp;changes&lt;/h3&gt;
+&lt;p&gt;Show changed files in your working directory: &lt;code&gt;$ git status&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Add all current changes to the next commit: &lt;code&gt;$ git add&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Add some changes in &lt;file&gt; to the next commit: &lt;code&gt;$ git add -p &amp;lt;file&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Commit all local changes in tracked files: &lt;code&gt;$ git commit -a -m "Changed something"&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Working with remote&amp;nbsp;repository&lt;/h3&gt;
+&lt;p&gt;Grab changes from remote: &lt;code&gt;$ git pull origin master&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;If your default branch is different than master, you will need to specify the branch name: &lt;code&gt;git pull origin my_default_branch_name&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Upload changes to remote: &lt;code&gt;$ git push origin master&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Remove a file from version&amp;nbsp;control&lt;/h3&gt;
+&lt;p&gt;Remove the file from the Git repository and from the&amp;nbsp;filesystem&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git rm file1.txt
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;remove file1.txt&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Instalation on a Debian-based distribution, such as&amp;nbsp;Ubuntu&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt update
+$ sudo apt install git-all
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Starting&amp;nbsp;repositories&lt;/h3&gt;
+&lt;p&gt;Clone an existing repository: &lt;code&gt;$ git clone ssh://user@domain.com/repo.git&lt;/code&gt; &lt;/p&gt;
+&lt;p&gt;Create a new local repository: &lt;code&gt;$ git init&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Local&amp;nbsp;changes&lt;/h3&gt;
+&lt;p&gt;Show changed files in your working directory: &lt;code&gt;$ git status&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Add all current changes to the next commit: &lt;code&gt;$ git add&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Add some changes in &lt;file&gt; to the next commit: &lt;code&gt;$ git add -p &amp;lt;file&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Commit all local changes in tracked files: &lt;code&gt;$ git commit -a -m "Changed something"&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Working with remote&amp;nbsp;repository&lt;/h3&gt;
+&lt;p&gt;Grab changes from remote: &lt;code&gt;$ git pull origin master&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;If your default branch is different than master, you will need to specify the branch name: &lt;code&gt;git pull origin my_default_branch_name&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Upload changes to remote: &lt;code&gt;$ git push origin master&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Remove a file from version&amp;nbsp;control&lt;/h3&gt;
+&lt;p&gt;Remove the file from the Git repository and from the&amp;nbsp;filesystem&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git rm file1.txt
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;remove file1.txt&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But if you want to remove the file only from the Git repository and not remove it from the filesystem,&amp;nbsp;use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git rm --cached file1.txt
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;remove file1.txt&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then push changes to remote&amp;nbsp;repo&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git push origin branch_name  
+&lt;/pre&gt;&lt;/div&gt;</content><category term="General"></category></entry><entry><title>Linux Crontab</title><link href="https://janiceto.github.io/programming-notes/crontab.html" rel="alternate"></link><published>2017-09-07T10:44:00+01:00</published><updated>2017-11-05T20:36:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-09-07:/programming-notes/crontab.html</id><summary type="html">&lt;p&gt;To view currently active crontab entries: &lt;code&gt;$ sudo crontab -l&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To enter the edit the crontab enter the following command in the terminal: &lt;code&gt;$ sudo crontab -e&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Don&amp;#8217;t use &lt;code&gt;sudo&lt;/code&gt; in a cron job. Instead edit root&amp;#8217;s crontab instead of your own, e.g. &lt;code&gt;sudo crontab -e&lt;/code&gt; and then enter commands without &lt;code&gt;sudo&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;At the bottom of the file enter one line for each task in the following&amp;nbsp;format:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;Minute&lt;/span&gt;   &lt;span class="n"&gt;Hour&lt;/span&gt;   &lt;span class="k"&gt;Day&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="k"&gt;Month&lt;/span&gt;       &lt;span class="k"&gt;Month&lt;/span&gt;          &lt;span class="k"&gt;Day&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;Week&lt;/span&gt;        &lt;span class="n"&gt;Command&lt;/span&gt;    
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;59&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;31&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="n"&gt;Jan&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nb"&gt;Dec&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="n"&gt;Sun&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Sat&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;               
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The command must use a complete link. Instead of the first five fields, one of eight special strings may&amp;nbsp;appear:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;string&lt;/th&gt;
+&lt;th&gt;meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;@reboot&lt;/td&gt;
+&lt;td&gt;Run once, at startup.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@yearly&lt;/td&gt;
+&lt;td&gt;Run once a year, &amp;#8220;0 0 1 1 *&amp;#8221;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@annually&lt;/td&gt;
+&lt;td&gt;(same as @yearly)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@monthly&lt;/td&gt;
+&lt;td&gt;Run once a month, &amp;#8220;0 0 1 * *&amp;#8221;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@weekly&lt;/td&gt;
+&lt;td&gt;Run once a week, &amp;#8220;0 …&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;</summary><content type="html">&lt;p&gt;To view currently active crontab entries: &lt;code&gt;$ sudo crontab -l&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To enter the edit the crontab enter the following command in the terminal: &lt;code&gt;$ sudo crontab -e&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Don&amp;#8217;t use &lt;code&gt;sudo&lt;/code&gt; in a cron job. Instead edit root&amp;#8217;s crontab instead of your own, e.g. &lt;code&gt;sudo crontab -e&lt;/code&gt; and then enter commands without &lt;code&gt;sudo&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;At the bottom of the file enter one line for each task in the following&amp;nbsp;format:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;Minute&lt;/span&gt;   &lt;span class="n"&gt;Hour&lt;/span&gt;   &lt;span class="k"&gt;Day&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="k"&gt;Month&lt;/span&gt;       &lt;span class="k"&gt;Month&lt;/span&gt;          &lt;span class="k"&gt;Day&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;Week&lt;/span&gt;        &lt;span class="n"&gt;Command&lt;/span&gt;    
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;59&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;31&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="n"&gt;Jan&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nb"&gt;Dec&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="n"&gt;Sun&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Sat&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;               
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The command must use a complete link. Instead of the first five fields, one of eight special strings may&amp;nbsp;appear:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;string&lt;/th&gt;
+&lt;th&gt;meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;@reboot&lt;/td&gt;
+&lt;td&gt;Run once, at startup.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@yearly&lt;/td&gt;
+&lt;td&gt;Run once a year, &amp;#8220;0 0 1 1 *&amp;#8221;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@annually&lt;/td&gt;
+&lt;td&gt;(same as @yearly)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@monthly&lt;/td&gt;
+&lt;td&gt;Run once a month, &amp;#8220;0 0 1 * *&amp;#8221;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@weekly&lt;/td&gt;
+&lt;td&gt;Run once a week, &amp;#8220;0 0 * * 0&amp;#8221;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@daily&lt;/td&gt;
+&lt;td&gt;Run once a day, &amp;#8220;0 0 * &lt;em&gt; &lt;/em&gt;&amp;#8220;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@midnight&lt;/td&gt;
+&lt;td&gt;(same as @daily)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@hourly&lt;/td&gt;
+&lt;td&gt;Run once an hour, &amp;#8220;0 * &lt;em&gt; * &lt;/em&gt;&amp;#8220;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4&gt;Example 1: Run a python script every day a&amp;nbsp;16:15&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="mi"&gt;15&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;projects&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;script1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Example 2: Run a python script every five days a&amp;nbsp;18:30&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;projects&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;script1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Helpfull&amp;nbsp;links:&lt;/h3&gt;
+&lt;p&gt;https://crontab.guru&lt;/p&gt;</content><category term="General"></category></entry><entry><title>Keep SSH sessions running after disconnecting</title><link href="https://janiceto.github.io/programming-notes/keep-ssh-running.html" rel="alternate"></link><published>2017-09-07T10:44:00+01:00</published><updated>2017-09-07T10:44:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-09-07:/programming-notes/keep-ssh-running.html</id><content type="html">&lt;h3&gt;Using&amp;nbsp;nohup&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nv"&gt;nohup&lt;/span&gt; &lt;span class="nv"&gt;long&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;running&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;process&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;
+$ &lt;span class="k"&gt;exit&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Using &lt;span class="caps"&gt;GNU&lt;/span&gt;&amp;nbsp;Screen&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nv"&gt;screen&lt;/span&gt;             # &lt;span class="nv"&gt;to&lt;/span&gt; &lt;span class="nv"&gt;start&lt;/span&gt; &lt;span class="nv"&gt;a&lt;/span&gt; &lt;span class="nv"&gt;screen&lt;/span&gt; &lt;span class="nv"&gt;session&lt;/span&gt;
+$ &lt;span class="nv"&gt;run&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;a&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;process&lt;/span&gt;
+&lt;span class="nv"&gt;CTRL&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nv"&gt;a&lt;/span&gt; , &lt;span class="nv"&gt;d&lt;/span&gt;           # &lt;span class="nv"&gt;to&lt;/span&gt; &lt;span class="nv"&gt;detatch&lt;/span&gt; &lt;span class="nv"&gt;from&lt;/span&gt; &lt;span class="nv"&gt;your&lt;/span&gt; &lt;span class="nv"&gt;screen&lt;/span&gt; &lt;span class="nv"&gt;session&lt;/span&gt;
+$ &lt;span class="k"&gt;exit&lt;/span&gt;               # &lt;span class="nv"&gt;to&lt;/span&gt; &lt;span class="k"&gt;disconnect&lt;/span&gt; &lt;span class="nv"&gt;from&lt;/span&gt; &lt;span class="nv"&gt;the&lt;/span&gt; &lt;span class="nv"&gt;server&lt;/span&gt;, &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="nv"&gt;run&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;a&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;process&lt;/span&gt; &lt;span class="nv"&gt;continues&lt;/span&gt;
+$ &lt;span class="nv"&gt;screen&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;r&lt;/span&gt;          # &lt;span class="nv"&gt;to&lt;/span&gt; &lt;span class="nv"&gt;resume&lt;/span&gt; &lt;span class="nv"&gt;the&lt;/span&gt; &lt;span class="nv"&gt;screen&lt;/span&gt; &lt;span class="nv"&gt;session&lt;/span&gt; &lt;span class="nv"&gt;when&lt;/span&gt; &lt;span class="nv"&gt;you&lt;/span&gt; &lt;span class="nv"&gt;come&lt;/span&gt; &lt;span class="nv"&gt;back&lt;/span&gt; &lt;span class="nv"&gt;to&lt;/span&gt; &lt;span class="nv"&gt;your&lt;/span&gt; &lt;span class="nv"&gt;laptop&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Using&amp;nbsp;tmux&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="n"&gt;tmux&lt;/span&gt;               &lt;span class="c1"&gt;# to start a screen session&lt;/span&gt;
+$ &lt;span class="n"&gt;run-a-process&lt;/span&gt;
+&lt;span class="n"&gt;Ctrl&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;then&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;        &lt;span class="c1"&gt;# to detatch from your session&lt;/span&gt;
+$ &lt;span class="n"&gt;tmux&lt;/span&gt; &lt;span class="n"&gt;attach&lt;/span&gt;        &lt;span class="c1"&gt;# to resume the session when you come back to your laptop&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="General"></category></entry><entry><title>Create a Windows batch script</title><link href="https://janiceto.github.io/programming-notes/batch-script.html" rel="alternate"></link><published>2017-09-07T10:43:00+01:00</published><updated>2017-09-07T10:43:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-09-07:/programming-notes/batch-script.html</id><summary type="html">&lt;p&gt;A batch file is a text file with the extension &lt;strong&gt;.bat&lt;/strong&gt; that contains one or more command line commands to be run&amp;nbsp;consecutively. &lt;/p&gt;
+&lt;h2&gt;Some usefull&amp;nbsp;commands:&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;@echo&lt;/strong&gt; - This parameter will allow you to view your working script in the command prompt. This parameter is useful for viewing your working code. If any issues arise from the batch file, you will be able to view the issues associated with your script using the echo function. Adding a following off to this parameter will allow you to quickly close your script after it has&amp;nbsp;finished.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;title&lt;/strong&gt; - This will provide a title for your batch script in your Command Prompt&amp;nbsp;window.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;cls&lt;/strong&gt; - Clears your command prompt, best used when extraneous code can make what you’re accessing had to&amp;nbsp;find.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;rem&lt;/strong&gt; &lt;span class="caps"&gt;OR&lt;/span&gt; &lt;strong&gt;::&lt;/strong&gt; - Shorthand for remark. Rem statements are not entered into your code. Instead, they are used to explain and give information regarding …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A batch file is a text file with the extension &lt;strong&gt;.bat&lt;/strong&gt; that contains one or more command line commands to be run&amp;nbsp;consecutively. &lt;/p&gt;
+&lt;h2&gt;Some usefull&amp;nbsp;commands:&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;@echo&lt;/strong&gt; - This parameter will allow you to view your working script in the command prompt. This parameter is useful for viewing your working code. If any issues arise from the batch file, you will be able to view the issues associated with your script using the echo function. Adding a following off to this parameter will allow you to quickly close your script after it has&amp;nbsp;finished.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;title&lt;/strong&gt; - This will provide a title for your batch script in your Command Prompt&amp;nbsp;window.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;cls&lt;/strong&gt; - Clears your command prompt, best used when extraneous code can make what you’re accessing had to&amp;nbsp;find.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;rem&lt;/strong&gt; &lt;span class="caps"&gt;OR&lt;/span&gt; &lt;strong&gt;::&lt;/strong&gt; - Shorthand for remark. Rem statements are not entered into your code. Instead, they are used to explain and give information regarding the&amp;nbsp;code.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;%%a&lt;/strong&gt; - Each file in the&amp;nbsp;folder.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(“.\”)&lt;/strong&gt; - The root folder. When using the command prompt, one must direct the prompt to a particular directory before changing a files name, deleting a file, and so on. With batch files, you only need to paste your .bat file into the directory of your&amp;nbsp;choosing.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;pause&lt;/strong&gt; - Allows a break in the logical chain of your .bat file. This allows for users to read over command lines before proceeding with the code. The phrase “Press any key to continue…” will denote a&amp;nbsp;pause.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;start “” [website]&lt;/strong&gt; - Will head to a website of your choice using your default web&amp;nbsp;browser.&lt;/p&gt;
+&lt;p&gt;A complete list can be found &lt;a href="https://en.wikibooks.org/wiki/Windows_Batch_Scripting"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Useful batch&amp;nbsp;files:&lt;/h2&gt;
+&lt;h3&gt;Start Flask&amp;nbsp;server&lt;/h3&gt;
+&lt;p&gt;The following script starts a Flask development server provided the batch file is located in the project root&amp;nbsp;directory.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;off&lt;/span&gt;
+&lt;span class="nv"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nv"&gt;localhost&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;
+&lt;span class="k"&gt;call&lt;/span&gt; &lt;span class="nl"&gt;venv&lt;/span&gt;\&lt;span class="nv"&gt;Scripts&lt;/span&gt;\&lt;span class="nv"&gt;activate&lt;/span&gt;.&lt;span class="nv"&gt;bat&lt;/span&gt;
+&lt;span class="nv"&gt;start&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt; &lt;span class="nv"&gt;dashboard&lt;/span&gt;\&lt;span class="nv"&gt;__init__&lt;/span&gt;.&lt;span class="nv"&gt;py&lt;/span&gt;
+&lt;span class="k"&gt;pause&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="General"></category></entry></feed>

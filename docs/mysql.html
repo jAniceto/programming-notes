@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<link rel="shortcut icon" type="image/png" href="https://janiceto.github.io/programming-notes/images/favicon.png"/>
+		<title>Annotatio</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58056773-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-58056773-5');
+	</script>
+	</head>
+	
+	<body class="theme-flat">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="https://janiceto.github.io/programming-notes">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of codding notes and snippets from my journey to self taught programming. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/data-analysis.html">Data Analysis</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/general.html">General</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/python.html">Python</a>
+			
+		</nav>
+
+		<p>by José Aniceto</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Using MySQL in&nbsp;Python</h1>
+	<span class="post-date">sex 04 agosto 2017, last updated qua 06 setembro 2017</span>
+	<h3>Some basic MySQL&nbsp;commands</h3>
+<p>In MySQL a <code>DATABASE</code> is composed by one or more <code>TABLE</code>s. Typically you create a database for each&nbsp;project.</p>
+<h5>To create a new MySQL database named <code>database_name</code> (the starting point of a new project using&nbsp;MySQL):</h5>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">database_name</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Show all databases:  <code>SHOW DATABASES;</code></p>
+<h5>To start using a database you&nbsp;must:</h5>
+<p><code>USE database_name;</code></p>
+<h5>To create a new table named users (an&nbsp;example):</h5>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">users</span><span class="p">(</span><span class="n">id</span> <span class="nb">INT</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="n">AUTO_INCREMENT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">email</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">username</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span> <span class="n">password</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">register_date</span> <span class="k">TIMESTAMP</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Show all tables:  <code>SHOW TABLES;</code></p>
+<p>Get info on a <span class="caps">TABLE</span> (in this example users): <code>DESCRIBE users;</code></p>
+<h5>Add data to table via&nbsp;command:</h5>
+<div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">users</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+
+<h5>Typical&nbsp;queries:</h5>
+<p><code>SELECT * FROM users;</code>  Select all rows from users&nbsp;table</p>
+<h2>Copying a database to another&nbsp;server</h2>
+<ol>
+<li>One the server where the <span class="caps">DB</span> is located make a backup file by running the following command (on Windows it may be necessary to <code>cd Program Files/MySQL/MySQL Server 5.1/bin</code> first: </li>
+</ol>
+<p><code>mysqldump -u root -p database_name &gt; C:\Users\USER\Desktop\database_name.sql</code></p>
+<p>Alternatively: <code>mysqldump -u[root] -p[password] database_123 &gt; C:\Users\USER\Desktop\database_123.sql</code></p>
+<p>If getting an &#8220;Access Denied&#8221; it message probably means you are outputing to a directory where you have no permission to create&nbsp;files.</p>
+<ol>
+<li>On the second server create a new database using the same database&nbsp;name:</li>
+</ol>
+<p><code>mysql -u root -p</code> to start the MySQL&nbsp;shell</p>
+<p><code>CREATE DATABASE database_123;</code> to create the new <span class="caps">DB</span></p>
+<ol>
+<li>Copy the created backup to the second server and import&nbsp;it:</li>
+</ol>
+<p><code>mysql -u[root] -p[password] database_name &lt; database_name.sql</code></p>
+<h2>Usage in&nbsp;Python</h2>
+<h4>Configuring in MySQL in&nbsp;Flask:</h4>
+<div class="highlight"><pre><span></span><span class="c1"># Config MySQL</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;MYSQL_HOST&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;MYSQL_USER&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;root&#39;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;MYSQL_PASSWORD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;mypassword&#39;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;MYSQL_DB&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;flaskappdb&#39;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;MYSQL_CURSORCLASS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;DictCursor&#39;</span>  <span class="c1"># useful to return queries as dictionaries</span>
+
+<span class="c1"># Initialize MySQL</span>
+<span class="n">mysql</span> <span class="o">=</span> <span class="n">MySQL</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Create cursor:  <code>cursor = mysql.connection.cursor()</code></p>
+<p>Execute a MySQL command:  <code>cursor.execute( command )</code></p>
+<p>Add data:  <code>cursor.execute("INSERT INTO users(name, email, username, password) VALUES(%s, %s, %s, %s)", (x, x, x, x))</code></p>
+<p>Commit to database:  <code>mysql.connection.commit()</code></p>
+<p>Close:  <code>cursor.close()</code></p>
+<h4>Check <span class="caps">DB</span> for a&nbsp;login:</h4>
+<div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE username = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">username</span><span class="p">])</span><span class="err">`</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+</pre></div>
+	<br><br><br>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'annotatio';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<link rel="shortcut icon" type="image/png" href="https://janiceto.github.io/programming-notes/images/favicon.png"/>
+		<title>Annotatio</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58056773-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-58056773-5');
+	</script>
+	</head>
+	
+	<body class="theme-flat">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="https://janiceto.github.io/programming-notes">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of codding notes and snippets from my journey to self taught programming. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/data-analysis.html">Data Analysis</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/general.html">General</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/python.html">Python</a>
+			
+		</nav>
+
+		<p>by José Aniceto</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Image manipulation in&nbsp;Python</h1>
+	<span class="post-date">sáb 12 agosto 2017</span>
+	<p>The <strong>Python Imaging Library</strong> (<span class="caps">PIL</span>) development has stagnated, with its last release in 2009. Luckily, there’s an actively-developed fork of <span class="caps">PIL</span> called <strong>Pillow</strong>.
+<strong>Pillow</strong> is easier to install, runs on all operating systems, and supports Python&nbsp;3.</p>
+<h2>Pillow</h2>
+<ul>
+<li>Pillow and <span class="caps">PIL</span> cannot co-exist in the same environment. Before installing Pillow, please uninstall <span class="caps">PIL</span>.</li>
+<li>Pillow &gt;= 2.0.0 supports Python versions 2.6, 2.7, 3.2, 3.3,&nbsp;3.4</li>
+<li>Before installing Pillow, you’ll have to install Pillow’s prerequisites. <a href="https://pillow.readthedocs.io/en/3.0.0/installation.html">Instructions here</a>.</li>
+</ul>
+<h3>Instalation:</h3>
+<p><strong>Windows</strong>: </p>
+<p><code>$ pip install Pillow</code></p>
+<p><strong>Linux (Debian or Ubuntu)</strong>: </p>
+<p>Make sure you have Python’s development libraries installed. In Debian or Ubuntu: <code>$ sudo apt-get install python3-dev python3-setuptools</code>
+Prerequisites are installed on Ubuntu 12.04 <span class="caps">LTS</span> or Raspian Wheezy 7.0 with: <code>$ sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev python-tk</code></p>
+<p><code>$ pip install Pillow</code></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageFilter</span>
+<span class="c1">#Read image</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span> <span class="s1">&#39;image.jpg&#39;</span> <span class="p">)</span>
+<span class="c1">#Display image</span>
+<span class="n">im</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1">#Applying a filter to the image</span>
+<span class="n">im_sharp</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span> <span class="n">ImageFilter</span><span class="o">.</span><span class="n">SHARPEN</span> <span class="p">)</span>
+<span class="c1">#Saving the filtered image to a new file</span>
+<span class="n">im_sharp</span><span class="o">.</span><span class="n">save</span><span class="p">(</span> <span class="s1">&#39;image_sharpened.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;JPEG&#39;</span> <span class="p">)</span>
+
+<span class="c1">#Splitting the image into its respective bands, i.e. Red, Green,</span>
+<span class="c1">#and Blue for RGB</span>
+<span class="n">r</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">im_sharp</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+<span class="c1">#Viewing EXIF data embedded in image</span>
+<span class="n">exif_data</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">_getexif</span><span class="p">()</span>
+<span class="n">exif_data</span>
+</pre></div>
+	<br><br><br>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'annotatio';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+		</div>
+	</body>
+</html>
