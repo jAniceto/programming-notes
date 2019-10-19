@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<link rel="shortcut icon" type="image/png" href="https://janiceto.github.io/programming-notes-blog/images/favicon.png"/>
+		<title>Annotatio</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58056773-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-58056773-5');
+	</script>
+	</head>
+	
+	<body class="theme-flat">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="https://janiceto.github.io/programming-notes-blog">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of codding notes and snippets from my journey to self taught programming. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/general.html">General</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/python.html">Python</a>
+			
+		</nav>
+
+		<p>by José Aniceto</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Deploy a Django app in an Ubuntu <span class="caps">VPS</span>&nbsp;(DigitalOcean)</h1>
+	<span class="post-date">Wed 06 June 2018, last updated Wed 13 June 2018</span>
+	<p>This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to Gunicorn, giving us access to its security and performance features to serve our&nbsp;apps.</p>
+<h2>1) Initial Server&nbsp;Setup</h2>
+<p>Perform the initial server setup as detailed <a href="server-setup.md">here</a>.</p>
+<h2>2) Install the Packages from the Ubuntu&nbsp;Repositories</h2>
+<p>We need to update the local apt package index and then download and install the packages. The packages we install depend on which version of Python your project will&nbsp;use.</p>
+<p>If you are using Django with Python 3,&nbsp;type:</p>
+<div class="highlight"><pre><span></span>$ sudo apt-get update
+$ sudo apt-get install python3-pip python3-dev libpq-dev nginx
+</pre></div>
+
+
+<p>This will install pip, the Python development files needed to build Gunicorn later and the Nginx web&nbsp;server.</p>
+<h2>3) Install the&nbsp;Database</h2>
+<p>Install the database system and the libraries needed to interact with&nbsp;it.</p>
+<h4>For&nbsp;Postgres:</h4>
+<div class="highlight"><pre><span></span>$ sudo apt-get install postgresql postgresql-contrib<span class="sb">`</span>
+</pre></div>
+
+
+<h4>For&nbsp;MySQL</h4>
+<div class="highlight"><pre><span></span>$ sudo apt-get install libmysqlclient-dev
+$ sudo apt-get install mysql-server mysql-client
+</pre></div>
+
+
+<p>Now let&#8217;s create the Database and User but first verify that the MySQL service is&nbsp;running:</p>
+<div class="highlight"><pre><span></span>$ systemctl status mysql.service
+</pre></div>
+
+
+<p>If the output is negative you can run <code>sudo systemctl start mysql</code> to get <code>mysql.service</code> started again. Now you can log in with your MySQL credentials using the following command. Where <code>-u</code> is the flag for declaring your username and <code>-p</code> is the flag that tells MySQL that this user requires a&nbsp;password:</p>
+<div class="highlight"><pre><span></span>$ sudo mysql -u db_user -p
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">SHOW</span> <span class="k">DATABASES</span><span class="p">;</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">project_db</span><span class="p">;</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">SHOW</span> <span class="k">DATABASES</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Whenever you&#8217;d like to exit MySQL server, press <span class="caps">CTRL</span> +&nbsp;D.</p>
+<h2>4) Create a Python Virtual&nbsp;Environment</h2>
+<div class="highlight"><pre><span></span>$ sudo -H pip3 install --upgrade pip
+$ sudo -H pip3 install virtualenv
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>$ mkdir ~/myproject
+$ <span class="nb">cd</span> ~/myproject
+$ virtualenv venv
+$ <span class="nb">source</span> venv/bin/activate
+</pre></div>
+
+
+<p>Note: Regardless of which version of Python you are using, when the virtual environment is activated, you should use the pip command (not&nbsp;pip3).</p>
+<p>Install the <code>mysqlclient</code> library:</p>
+<div class="highlight"><pre><span></span>$ pip install mysqlclient
+</pre></div>
+
+
+<p>With your virtual environment active, install Django and&nbsp;Gunicorn:</p>
+<div class="highlight"><pre><span></span>$ pip install django gunicorn
+</pre></div>
+
+
+<h2>5) Create Django&nbsp;project</h2>
+<p>Since we already have a project directory, we will tell Django to install the files here. It will create a second level directory with the actual code, which is normal, and place a management script in this directory. The key to this is that we are defining the directory explicitly instead of allowing Django to make decisions relative to our current&nbsp;directory:</p>
+<div class="highlight"><pre><span></span>$ django-admin startproject myproject ~/myproject
+</pre></div>
+
+
+<p>At this point, your project directory (~/myproject in our case) should have the following&nbsp;content:</p>
+<div class="highlight"><pre><span></span>~/myproject/manage.py: A Django project management script.
+~/myproject/myproject/: The Django project package. This should contain the __init__.py, settings.py, urls.py, and wsgi.py files.
+~/myproject/myprojectenv/: The virtual environment directory we created earlier.
+</pre></div>
+
+
+<p>Go to the end of the <code>settings.py</code> file and add <code>STATIC_ROOT</code> as shown&nbsp;below:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Static files (CSS, JavaScript, Images)</span>
+<span class="c1"># https://docs.djangoproject.com/en/2.0/howto/static-files/</span>
+
+<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s1">&#39;/static/&#39;</span>
+<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;static&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Add your server’s <span class="caps">IP</span> address between the square brackets and single quotes to the <code>ALLOWED_HOSTS</code>:</p>
+<div class="highlight"><pre><span></span><span class="c1"># The simplest case: just add the domain name(s) and IP addresses of your Django server</span>
+<span class="c1"># ALLOWED_HOSTS = [ &#39;example.com&#39;, &#39;203.0.113.5&#39;]</span>
+<span class="c1"># To respond to &#39;example.com&#39; and any subdomains, start the domain with a dot</span>
+<span class="c1"># ALLOWED_HOSTS = [&#39;.example.com&#39;, &#39;203.0.113.5&#39;]</span>
+<span class="n">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;your_server_domain_or_IP&#39;</span><span class="p">,</span> <span class="s1">&#39;second_domain_or_IP&#39;</span><span class="p">,</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Migrate the initial database schema to our database using the management&nbsp;script:</p>
+<div class="highlight"><pre><span></span>(venv) $ python ~/myproject/manage.py makemigrations
+(venv) $ python ~/myproject/manage.py migrate
+</pre></div>
+
+
+<p>Create an administrative user for the project by&nbsp;typing:</p>
+<div class="highlight"><pre><span></span>(venv) $ ~/myproject/manage.py createsuperuser
+</pre></div>
+
+
+<p>We can collect all of the static content into the directory location we configured by&nbsp;typing:</p>
+<div class="highlight"><pre><span></span>(venv) $ ~/myproject/manage.py collectstatic
+</pre></div>
+
+
+<p>The static files will then be placed in a directory called static within your project&nbsp;directory.</p>
+<h4>Connect your Django app to&nbsp;MySQL</h4>
+<p>Navigate to the settings.py file and replace the current <span class="caps">DATABASES</span> lines with the following. We will configure your database dictionary so that it knows to use MySQL as your database backend and from what file to read your database connection&nbsp;credentials:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Database</span>
+<span class="c1"># https://docs.djangoproject.com/en/2.0/ref/settings/#databases</span>
+
+<span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s1">&#39;django.db.backends.mysql&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;OPTIONS&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;read_default_file&#39;</span><span class="p">:</span> <span class="s1">&#39;/etc/mysql/my.cnf&#39;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Next, let’s edit the config file so that it has your MySQL credentials. Use nano as sudo to edit the file and add the following&nbsp;information:</p>
+<div class="highlight"><pre><span></span>$ sudo nano /etc/mysql/my.cnf
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="k">[client]</span>
+<span class="na">database</span> <span class="o">=</span> <span class="s">db_name</span>
+<span class="na">user</span> <span class="o">=</span> <span class="s">db_user</span>
+<span class="na">password</span> <span class="o">=</span> <span class="s">db_password</span>
+<span class="na">default-character-set</span> <span class="o">=</span> <span class="s">utf8</span>
+</pre></div>
+
+
+<p>Where database name in our case is mysite, your username for the MySQL server is the one you’ve created, and the password is the MySQL server password you’ve created. Also, you’ll notice that utf8 is set as the default encoding, this is a common way to encode unicode data in MySQL. Once the file has been edited, we need to restart MySQL for the changes to take&nbsp;effect.</p>
+<div class="highlight"><pre><span></span>$ systemctl daemon-reload
+$ systemctl restart mysql
+</pre></div>
+
+
+<p>Please note that restarting MySQL takes a few seconds, so please be patient. Now, let&#8217;s test the MySQL connection to the application. We need to verify that the configurations in Django detect your MySQL server properly. We can do this by simply running the server. If it fails, it means that the connection isn’t working properly. Otherwise, the connection is&nbsp;valid.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/mysite/mysite/
+$ python manage.py runserver your-server-ip:8000
+</pre></div>
+
+
+<h2>6) Setting up Gunicorn&#8217;s ability to serve the&nbsp;project</h2>
+<p>The last thing we want to do before leaving our virtual environment is test Gunicorn to make sure that it can serve the application. We can do this by entering our project directory and using gunicorn to load the project&#8217;s <span class="caps">WSGI</span>&nbsp;module:</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/myproject
+$ gunicorn --bind <span class="m">0</span>.0.0.0:8000 myproject.wsgi
+</pre></div>
+
+
+<p>This will start Gunicorn on the same interface that the Django development server was running on. You can go back and test the app&nbsp;again. </p>
+<p>We passed Gunicorn a module by specifying the relative directory path to Django&#8217;s wsgi.py file, which is the entry point to our application, using Python&#8217;s module syntax. Inside of this file, a function called application is defined, which is used to communicate with the application. When you are finished testing, hit <span class="caps">CTRL</span>-C in the terminal window to stop Gunicorn. We&#8217;re now finished configuring our Django application. We can back out of our virtual environment by&nbsp;typing:</p>
+<div class="highlight"><pre><span></span>$ deactivate
+</pre></div>
+
+
+<p>Create and open a systemd service file for Gunicorn with sudo privileges in your text&nbsp;editor:</p>
+<div class="highlight"><pre><span></span>$ sudo nano /etc/systemd/system/gunicorn.service
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">gunicorn daemon</span>
+<span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+
+<span class="k">[Service]</span>
+<span class="na">User</span><span class="o">=</span><span class="s">synergix</span>
+<span class="na">Group</span><span class="o">=</span><span class="s">www-data</span>
+<span class="na">WorkingDirectory</span><span class="o">=</span><span class="s">/home/synergix/myproject</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/home/synergix/myproject/myprojectenv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/synergix/myproject/myproject.sock myproject.wsgi:application</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</pre></div>
+
+
+<p>We can now start the Gunicorn service we created and enable it so that it starts at&nbsp;boot:</p>
+<div class="highlight"><pre><span></span>$ sudo systemctl start gunicorn
+$ sudo systemctl <span class="nb">enable</span> gunicorn
+</pre></div>
+
+
+<p>We can confirm that the operation was successful by checking for the socket&nbsp;file.</p>
+<div class="highlight"><pre><span></span>$ sudo systemctl status gunicorn
+</pre></div>
+
+
+<p>Next, check for the existence of the myproject.sock file within your project&nbsp;directory:</p>
+<div class="highlight"><pre><span></span>$ ls /home/synergix/myproject
+</pre></div>
+
+
+<p>If the systemctl status command indicated that an error occurred or if you do not find the myproject.sock file in the directory, it&#8217;s an indication that Gunicorn was not able to start correctly. Check the Gunicorn process logs by&nbsp;typing:</p>
+<div class="highlight"><pre><span></span>$ sudo journalctl -u gunicorn
+</pre></div>
+
+
+<h2>7) Configure Nginx to Proxy Pass to&nbsp;Gunicorn</h2>
+<p>Now that Gunicorn is set up, we need to configure Nginx to pass traffic to the process. Start by creating and opening a new server block in Nginx&#8217;s sites-available&nbsp;directory:</p>
+<div class="highlight"><pre><span></span>$ sudo nano /etc/nginx/sites-available/myproject
+</pre></div>
+
+
+<p>Inside, open up a new server block. We will start by specifying that this block should listen on the normal port 80 and that it should respond to our server&#8217;s domain name or <span class="caps">IP</span> address. Next, we will tell Nginx to ignore any problems with finding a favicon. We will also tell it where to find the static assets that we collected in our ~/myproject/static directory. All of these files have a standard <span class="caps">URI</span> prefix of &#8220;/static&#8221;, so we can create a location block to match those requests. Finally, we&#8217;ll create a location / {} block to match all other requests. Inside of this location, we&#8217;ll include the standard proxy_params file included with the Nginx installation and then we will pass the traffic to the socket that our Gunicorn process&nbsp;created:</p>
+<div class="highlight"><pre><span></span><span class="nt">server</span> <span class="p">{</span>
+    <span class="err">listen</span> <span class="err">80</span><span class="p">;</span>
+    <span class="err">server_name</span> <span class="err">server_domain_or_IP</span><span class="p">;</span>
+
+    <span class="err">location</span> <span class="err">=</span> <span class="err">/favicon.ico</span> <span class="err">{</span> <span class="err">access_log</span> <span class="err">off</span><span class="p">;</span> <span class="err">log_not_found</span> <span class="err">off</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nt">location</span> <span class="o">/</span><span class="nt">static</span><span class="o">/</span> <span class="p">{</span>
+        <span class="err">root</span> <span class="err">/home/sammy/myproject</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">location</span> <span class="o">/</span> <span class="p">{</span>
+        <span class="err">include</span> <span class="err">proxy_params</span><span class="p">;</span>
+        <span class="err">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">unix</span><span class="o">:/</span><span class="n">home</span><span class="o">/</span><span class="n">sammy</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="n">myproject</span><span class="o">.</span><span class="n">sock</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>Save and close the file when you are finished. Now, we can enable the file by linking it to the sites-enabled&nbsp;directory:</p>
+<div class="highlight"><pre><span></span>$ sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled
+</pre></div>
+
+
+<p>Test your Nginx configuration for syntax errors by&nbsp;typing:</p>
+<div class="highlight"><pre><span></span>$ sudo nginx -t
+</pre></div>
+
+
+<p>If no errors are reported, go ahead and restart Nginx by&nbsp;typing:</p>
+<div class="highlight"><pre><span></span>$ sudo systemctl restart nginx
+</pre></div>
+
+
+<p>Finally, we need to open up our firewall to normal traffic on port 80. Since we no longer need access to the development server, we can remove the rule to open port 8000 as&nbsp;well:</p>
+<div class="highlight"><pre><span></span>$ sudo ufw delete allow <span class="m">8000</span>
+$ sudo ufw allow <span class="s1">&#39;Nginx Full&#39;</span>
+</pre></div>
+
+
+<p>You should now be able to go to your server&#8217;s domain or <span class="caps">IP</span> address to view your&nbsp;application.</p>
+<h2>8)&nbsp;Troubleshooting</h2>
+<p>Logs can help narrow down root causes. Check each of them in turn and look for messages indicating problem areas. The following logs may be&nbsp;helpful:</p>
+<ul>
+<li>Check the Nginx process logs by typing: <code>sudo journalctl -u nginx</code></li>
+<li>Check the Nginx access logs by typing: <code>sudo less /var/log/nginx/access.log</code></li>
+<li>Check the Nginx error logs by typing: <code>sudo less /var/log/nginx/error.log</code></li>
+<li>Check the Gunicorn application logs by typing: <code>sudo journalctl -u gunicorn</code></li>
+</ul>
+<p>As you update your configuration or application, you will likely need to restart the processes to adjust to your changes. If you update your Django application, you can restart the Gunicorn process to pick up the changes by&nbsp;typing:</p>
+<div class="highlight"><pre><span></span>$ sudo systemctl restart gunicorn
+</pre></div>
+
+
+<p>If you change gunicorn systemd service file, reload the daemon and restart the process by&nbsp;typing:</p>
+<div class="highlight"><pre><span></span>$ sudo systemctl daemon-reload
+$ sudo systemctl restart gunicorn
+</pre></div>
+
+
+<p>If you change the Nginx server block configuration, test the configuration and then Nginx by&nbsp;typing:</p>
+<div class="highlight"><pre><span></span>$ sudo nginx -t <span class="o">&amp;&amp;</span> sudo systemctl restart nginx
+</pre></div>
+
+
+<h2>References</h2>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04">DigitalOcean - Setup Django, Postgres, nginx and Gunicorn on&nbsp;Ubuntu</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-uwsgi-and-nginx-on-ubuntu-16-04">DigitalOcean - Serve Django with uwsgi and ngix on&nbsp;Ubuntu</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-django-app-and-connect-it-to-a-database">DigitalOcean - Create Django app and connect to&nbsp;database</a></li>
+</ul>
+	<br><br><br>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'annotatio';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+		</div>
+	</body>
+</html>

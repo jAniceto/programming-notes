@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<link rel="shortcut icon" type="image/png" href="https://janiceto.github.io/programming-notes-blog/images/favicon.png"/>
+		<title>Annotatio</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58056773-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-58056773-5');
+	</script>
+	</head>
+	
+	<body class="theme-flat">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="https://janiceto.github.io/programming-notes-blog">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of codding notes and snippets from my journey to self taught programming. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/general.html">General</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/python.html">Python</a>
+			
+		</nav>
+
+		<p>by José Aniceto</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Building a Django&nbsp;site</h1>
+	<span class="post-date">Tue 03 April 2018, last updated Mon 09 July 2018</span>
+	<h2>Installing&nbsp;Django</h2>
+<p><code>pip install Django</code></p>
+<h2>Start&nbsp;project</h2>
+<p>Navigate via the terminal or command prompt to an area where you want to work on your project, then&nbsp;do:</p>
+<p><code>django-admin startproject mysite</code></p>
+<p>This will create a directory called mysite. Within that directory, you have another one called mysite, along with a manage.py file. The manage.py file lets you easily interact with your project via the command line. The contents of the second mysite directory contain your settings and urls mainly. Broken&nbsp;down:</p>
+<div class="highlight"><pre><span></span>/mysite/  REM Simple container, Call whatever you want.
+    manage.py  REM Lets you interact with your project via the command line.
+    /mysite/  REM Actual project directory.
+        __init__.py  REM Tells python this is a Python package.
+        settings.py  REM Settings for the project.
+        urls.py  REM URL rules. Django docs aptly describes as your table of contents.
+        wsgi.py  REM WSGI magic begins here. Worry about this when it comes time to actually deploy to a server.
+</pre></div>
+
+
+<p>The paradigm of Django is that either a website is an app, or a collection of apps in most cases. We currently have our website, called &#8220;mysite&#8221; for now. For now, run the following via the command line or terminal to run the local development server, which you can reach at&nbsp;http://127.0.0.1:8000. </p>
+<div class="highlight"><pre><span></span>cd mysite
+python manage.py runserver
+</pre></div>
+
+
+<h3>Create an&nbsp;app</h3>
+<p><code>python manage.py startapp webapp</code></p>
+<p>Now a new directory exists, called webapp. In here, we see a lot of similar files, and some new&nbsp;ones:</p>
+<div class="highlight"><pre><span></span>webapp/
+    migrations/ 
+    __init__.py
+    admin.py
+    apps.py
+    models.py
+    tests.py
+    views.py
+</pre></div>
+
+
+<p>Next, we need to include our new app in our installed&nbsp;applications:</p>
+<p>Open the <code>mysite/settings.py</code> file and add the <code>'webapp'</code> line:</p>
+<div class="highlight"><pre><span></span><span class="c1"># ...this is just a slice of code within settings.py </span>
+<span class="c1"># do not delete the other code</span>
+<span class="c1"># just add &#39;webapp&#39; to the list.</span>
+<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;webapp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<h3>Make migrations&nbsp;(databases)</h3>
+<p>Whenever you define new models, you need to&nbsp;migrate: </p>
+<p><code>python manage.py makemigrations</code></p>
+<p>The <code>makemigrations</code> command tells Django that you&#8217;ve made some model changes, and you want to save them as a migration. Migrations are used any time you want Django to recognize changes to the models and database schema. <strong>Adding data to an existing database table, for example, is not something that needs a migration, changing that table&#8217;s structure (by changing the model), would require a migration.</strong> You can also tell Django you want to make migrations for only a specific app, like: <code>python manage.py makemigrations webapp</code></p>
+<p>Once you&#8217;ve made migrations, nothing has actually happened yet. You can run a migrate, but there is one more check you can make. This will output the proposed <span class="caps">SQL</span> that will be run for you by Django when you migrate. The <code>0001</code> is the migration <span class="caps">ID</span>. You can see this on the <code>0001_initial.py</code> file in the migrations folder of your&nbsp;app.</p>
+<p><code>python manage.py sqlmigrate webapp 0001</code> (Optional)</p>
+<p>If all looks good, you can run the <code>migrate</code> command. This will actually perform the migrations. If this is your first time doing this, you should see quite a bit has been&nbsp;migrated.</p>
+<p><code>python manage.py migrate</code></p>
+<h3>Admin control&nbsp;panel</h3>
+<p>To access the admin page, you visit /admin/, assuming the admin app is indeed installed. To login to the admin panel you need to create an&nbsp;user:</p>
+<p><code>python manage.py createsuperuser</code></p>
+<p>To register a model create a webapp/admin.py file, and in it&nbsp;put:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">webapp.models</span> <span class="kn">import</span> <span class="n">Post</span>
+
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Post</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Here, we are importing the admin, the Post model, and then we&#8217;re registering the Post&nbsp;model.</p>
+<h2>Using MySQL&nbsp;database</h2>
+<p>By default Django works with SQLite database management system. First, create the MySQL database using the MySQL&nbsp;shell: </p>
+<p><code>CREATE DATABASE django_db;</code></p>
+<p>To use MySQL in Django, instead of SQLite, do the&nbsp;following:</p>
+<p><code>pip install mysqlclient</code></p>
+<p>Go to the main <code>settings.py</code> file and modify the <span class="caps">DATABASES</span> section&nbsp;to:</p>
+<div class="highlight"><pre><span></span><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s1">&#39;django.db.backends.mysql&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="s1">&#39;django_db&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;USER&#39;</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="s1">&#39;123456&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;HOST&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;PORT&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Now you can run the migrate command to create all tables Django needs: <code>python manage.py migrate</code></p>
+<h2>Django authentication&nbsp;system</h2>
+<p>Base project struture for this&nbsp;section:</p>
+<div class="highlight"><pre><span></span>mysite/
+  manage.py
+
+  mysite/
+    __init__.py
+    settings.py
+    urls.py
+    wsgi.py
+
+  app1/
+    __init__.py
+    admin.py
+    apps.py
+    migrations/
+    models.py
+    tests.py
+    views.py
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># mysite/urls.py</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># mysite/urls.py</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="o">...</span>
+  <span class="n">path</span><span class="p">(</span><span class="s1">&#39;accounts/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">django</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">urls</span><span class="p">))</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<h2>Performing <span class="caps">AJAX</span> <span class="caps">POST</span> Requests in&nbsp;Django</h2>
+<p>Ref:&nbsp;http://coreymaynard.com/blog/performing-ajax-post-requests-in-django/</p>
+<p>A common pitfall that shows up when developing a Django application is when you try and make your first <span class="caps">POST</span> request to your server from <span class="caps">AJAX</span>. As a response you receive a helpful 403 <span class="caps">FORBIDDEN</span> notice, and not much other information. There&#8217;s a fairly simple way of handling this issue in a seamless&nbsp;fashion,.</p>
+<p>Firstly, let&#8217;s discuss the actual problem that is causing this. Django comes with a security feature called Cross Site Request Forgery protection. A <span class="caps">CSRF</span> attack is when some external malicious site contains a link with some JavaScript that is intended to perform an action on your web site using the credentials of a logged-in-user who visited the malicious site in their browser. To protect against this, Django adds a <span class="caps">CSRF</span> token to every request that must be included with every unsafe <span class="caps">HTTP</span> request method (<span class="caps">POST</span>, <span class="caps">PUT</span>, and <span class="caps">DELETE</span>). This random string is verified upon every request, and if it is not valid (or not present) the server will respond with 403 <span class="caps">FORBIDDEN</span>.</p>
+<p>So, assuming you already have a Django project all setup and ready to go, we&#8217;re going to create a view and a template to show the <span class="caps">POST</span> request in action. Just to keep things simple, we&#8217;re going to do this in a separate app, so go ahead and create a new app and add it to your INSTALLED_APPS list. Inside of that app let&#8217;s modify the views file and make it look like&nbsp;this:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">TemplateView</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">class</span> <span class="nc">PostExample</span><span class="p">(</span><span class="n">TemplateView</span><span class="p">):</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;start.html&#39;</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span><span class="p">}),</span> <span class="n">mimetype</span><span class="o">=</span><span class="s2">&quot;application/json&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>What we&#8217;re doing here is creating an incredibly basic view that on a <span class="caps">GET</span> request will respond with the <code>start.html</code> template and on a post request will respond with a hard coded <span class="caps">JSON</span> dictionary. Now we need to add the <span class="caps">URL</span> for this view to the&nbsp;project:</p>
+<div class="highlight"><pre><span></span><span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^$&#39;</span><span class="p">,</span> <span class="n">PostExample</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;test-start&#39;</span><span class="p">),</span>
+</pre></div>
+
+
+<p>The template we&#8217;re going to develop here will be equally simple, let&#8217;s start with the&nbsp;following:</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{ STATIC_URL }}js/jquery-1.11.1.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#post&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;foo&#39;</span><span class="o">:</span> <span class="s1">&#39;bar&#39;</span>
+        <span class="p">}</span>
+
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dataType&quot;</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/test/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="nx">data</span><span class="p">,</span>
+            <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+            <span class="p">},</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>PostExample<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>Post Request<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>If you were to go to that page and click the link, you instead of a lovely <span class="caps">JSON</span> response you would see the 403 <span class="caps">FORBIDDEN</span> notice. Let&#8217;s take care of that. The way to solve this is by overriding the jQuery beforeSend method on an <span class="caps">AJAX</span> query and grabbing the <span class="caps">CSRF</span> token embedded in the request and including it in the <span class="caps">POST</span> headers. Create a new JavaScript file and add the following to it, and make sure to include it into your&nbsp;template:</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">getCookie</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">cookieValue</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">cookies</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">cookies</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">cookie</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">cookies</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+            <span class="c1">// Does this cookie string begin with the name we want?</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">name</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nx">cookieValue</span> <span class="o">=</span> <span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">cookieValue</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajaxSetup</span><span class="p">({</span>
+    <span class="nx">beforeSend</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">xhr</span><span class="p">,</span> <span class="nx">settings</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="sr">/^http:.*/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">settings</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span> <span class="o">||</span> <span class="sr">/^https:.*/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">settings</span><span class="p">.</span><span class="nx">url</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="c1">// Only send the token to relative URLs i.e. locally.</span>
+            <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">&quot;X-CSRFToken&quot;</span><span class="p">,</span> <span class="nx">getCookie</span><span class="p">(</span><span class="s1">&#39;csrftoken&#39;</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>With that being done, all you have to do is add the <span class="caps">CSRF</span> token into the template like&nbsp;this:</p>
+<div class="highlight"><pre><span></span>{% raw %}{% csrf_token %}{% endraw %}
+</pre></div>
+
+
+<p>That takes care of it! You can now make <span class="caps">AJAX</span> <span class="caps">POST</span> requests from within your application, without doing any specific work on a per instance&nbsp;basis.</p>
+	<br><br><br>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'annotatio';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+		</div>
+	</body>
+</html>

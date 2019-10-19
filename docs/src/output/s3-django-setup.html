@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<link rel="shortcut icon" type="image/png" href="https://janiceto.github.io/programming-notes-blog/images/favicon.png"/>
+		<title>Annotatio</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58056773-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-58056773-5');
+	</script>
+	</head>
+	
+	<body class="theme-flat">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="https://janiceto.github.io/programming-notes-blog">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of codding notes and snippets from my journey to self taught programming. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/general.html">General</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/python.html">Python</a>
+			
+		</nav>
+
+		<p>by José Aniceto</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Set up Amazon S3 to serve Django Static and Media&nbsp;files</h1>
+	<span class="post-date">Thu 31 January 2019, last updated Sun 03 February 2019</span>
+	<p>Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django&nbsp;App. </p>
+<h2>1) Sign up to <span class="caps">AWS</span> S3 and create <span class="caps">IAM</span>&nbsp;user</h2>
+<p>After signing up to Amazon <span class="caps">AWS</span> we need to create a user using the <strong><span class="caps">IAM</span></strong> service. This way you can restrict the access to the bucket. Each user will have its own access id and key. To do&nbsp;this:</p>
+<ul>
+<li>
+<p>In the <strong>Services</strong> dropdown select <strong><span class="caps">IAM</span></strong>.</p>
+</li>
+<li>
+<p>Click on <strong>Users</strong> and select <strong>Add User</strong>.</p>
+</li>
+<li>
+<p>Type the name of the user and make sure that <strong>Programmatic access</strong> is selected under <strong>Access type</strong> as you will need this to provide upload access for your S3 bucket. Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Select <strong>Attatch existing policies directly</strong>.</p>
+</li>
+<li>
+<p>From the list that appears select <strong>AmazonS3FullAccess</strong> and again click on <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Click on <strong>Create User</strong>.</p>
+</li>
+<li>
+<p>This will create the user and generate an access id and key for the user. The id-key pair can only be downloaded at this step so do that by clicking on <strong>Download .csv</strong>. Keep it&nbsp;secret.</p>
+</li>
+<li>
+<p>From the Users Dashboard click on the user you have just created. Make a note of <strong>User <span class="caps">ARN</span></strong>. You will be using this&nbsp;later.</p>
+</li>
+</ul>
+<h2>2) Create a S3&nbsp;Bucket</h2>
+<ul>
+<li>
+<p>From the Services dropdown select s3. This opens up the dashboard for the S3&nbsp;buckets.</p>
+</li>
+<li>
+<p>Click on <strong>Create Bucket</strong>.</p>
+</li>
+<li>
+<p>Select the region you&nbsp;want.</p>
+</li>
+</ul>
+<p><em>Note: Try to create  a bucket in the same region where your app is running to take advantage of <span class="caps">AWS</span>&#8217;s free in-region data transfer&nbsp;rates.</em></p>
+<ul>
+<li>Give your bucket a name and click on next that brings you to the <strong>Set Properties</strong> tab. Click on <strong>Next</strong> a couple more times and then click on <strong>Create Bucket</strong> to create your&nbsp;bucket.</li>
+</ul>
+<h2>3) Set up Bucket&nbsp;permissions</h2>
+<p>Now let&#8217;s define the policy for allowing restricted access to our&nbsp;bucket.</p>
+<ul>
+<li>
+<p>Click on the name of the bucket that you just&nbsp;created.</p>
+</li>
+<li>
+<p>Click on the <strong>Permissions</strong>&nbsp;tab.</p>
+</li>
+<li>
+<p>Since you have to set the permissions for access, click on <strong>Bucket Policy</strong>.</p>
+</li>
+<li>
+<p>On the bottom left click on <strong><span class="caps">AWS</span> Policy Generator</strong> which opens up the tool Amazon provides for quick policy&nbsp;generation. </p>
+</li>
+</ul>
+<p>Now we have to generate two policy rules. The first one is to allow our hosted website to access your files from the&nbsp;bucket:</p>
+<div class="highlight"><pre><span></span>Select Type of Policy : S3 Bucket Policy
+Effect : Allow
+Principal : *      //This gives everybody access
+AWS Service : Amazon S3
+Actions : GetObject
+Amazon Resource Name : arn:aws:s3:::&lt;your bucket name&gt;/* 
+</pre></div>
+
+
+<p>The <code>*</code> at the end siginifies that access is being given to all the&nbsp;files.</p>
+<p>After setting the values as mentioned above click on <strong>Add Statement</strong>. Do not click on <strong>Generate Policy</strong> yet as you have to create a policy to allow the Django application to put files into the bucket on deployment. The policy will be as&nbsp;follows:</p>
+<div class="highlight"><pre><span></span>Select Type of Policy : S3 Bucket Policy
+Effect : Allow
+Principal : &lt;User ARN&gt;     //This is the user arn that you kept a note of earlier.
+AWS Service : Amazon S3
+Actions : *    //I gave full access, though I think GetObject, PutObject will be better. Will try it out soon. 
+Amazon Resource Name : arn:aws:s3:::&lt;your bucket name&gt;/*,arn:aws:s3:::&lt;your bucket name&gt;  // Gives full access to buckets and its contents.
+</pre></div>
+
+
+<p>After setting the values mentioned above click on <strong>Add Statement</strong> and then <strong>Generate Policy</strong> . This will show you the policy which you can copy, paste in the dialogue box on S3 dashboard and click on <strong>Save</strong>.</p>
+<h2>4) Providing S3 access to your Heroku&nbsp;app</h2>
+<p>The last step for setting up the Bucket access is providing the application hosted on Heroku, access to the bucket content. This can be done by setting up the <strong><span class="caps">CORS</span> configuration</strong>. To do this click on the <strong><span class="caps">CORS</span> Configuration</strong> tab and click on Save. The default configuration will suffice. Something like&nbsp;this:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;CORSConfiguration&gt;</span>
+    <span class="nt">&lt;CORSRule&gt;</span>
+        <span class="nt">&lt;AllowedOrigin&gt;</span>*<span class="nt">&lt;/AllowedOrigin&gt;</span>
+        <span class="nt">&lt;AllowedMethod&gt;</span>GET<span class="nt">&lt;/AllowedMethod&gt;</span>
+        <span class="nt">&lt;MaxAgeSeconds&gt;</span>3000<span class="nt">&lt;/MaxAgeSeconds&gt;</span>
+        <span class="nt">&lt;AllowedHeader&gt;</span>Authorization<span class="nt">&lt;/AllowedHeader&gt;</span>
+    <span class="nt">&lt;/CORSRule&gt;</span>
+<span class="nt">&lt;/CORSConfiguration&gt;</span>
+</pre></div>
+
+
+<p>You have the bucket access set up. Now all you have to do is set up your Django application to access the bucket which is fairly easy. The first step to achieve the goal will be to install Boto3 and DjangoStorages. Nifty APIs to make working with S3 buckets easy. This can be easily done using&nbsp;pip.</p>
+<div class="highlight"><pre><span></span>pip install django-storages boto3
+pip freeze &gt;&gt; requirements.txt
+</pre></div>
+
+
+<p>and add <code>storages</code> to the list of INSTALLED_APPS in the <code>settings.py</code> file.</p>
+<div class="highlight"><pre><span></span>INSTALLED_APPS = (
+          ...,
+          &#39;storages&#39;,
+     )
+</pre></div>
+
+
+<p>Next you have to add the following settings to the <code>settings.py</code> file in your&nbsp;application.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Set S3 as the place to store your files.</span>
+<span class="n">DEFAULT_FILE_STORAGE</span> <span class="o">=</span> 
+<span class="n">storages</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">s3boto3</span><span class="o">.</span><span class="n">S3Boto3Storage</span><span class="s2">&quot;</span>
+<span class="n">STATICFILES_STORAGE</span> <span class="o">=</span> <span class="s2">&quot;storages.backends.s3boto3.S3Boto3Storage&quot;</span>
+<span class="n">AWS_ACCESS_KEY_ID</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;AWS_ACCESS_KEY_ID&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">AWS_SECRET_ACCESS_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;AWS_SECRET_ACCESS_KEY&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">AWS_STORAGE_BUCKET_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;AWS_STORAGE_BUCKET_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">AWS_QUERYSTRING_AUTH</span> <span class="o">=</span> <span class="bp">False</span> <span class="c1"># This will make sure that the file URL does not have unnecessary parameters like your access key.</span>
+<span class="n">AWS_S3_CUSTOM_DOMAIN</span> <span class="o">=</span> <span class="n">AWS_STORAGE_BUCKET_NAME</span> <span class="o">+</span> <span class="s1">&#39;.s3.amazonaws.com&#39;</span>
+
+<span class="c1"># Static media settings</span>
+<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s1">&#39;https://&#39;</span> <span class="o">+</span> <span class="n">AWS_STORAGE_BUCKET_NAME</span> <span class="o">+</span> <span class="s1">&#39;.s3.amazonaws.com/&#39;</span>
+<span class="n">MEDIA_URL</span> <span class="o">=</span> <span class="n">STATIC_URL</span> <span class="o">+</span> <span class="s1">&#39;media/&#39;</span>
+<span class="n">STATICFILES_DIRS</span> <span class="o">=</span> <span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s2">&quot;static&quot;</span><span class="p">),</span> <span class="p">)</span>
+<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="s1">&#39;staticfiles&#39;</span>
+<span class="n">ADMIN_MEDIA_PREFIX</span> <span class="o">=</span> <span class="n">STATIC_URL</span> <span class="o">+</span> <span class="s1">&#39;admin/&#39;</span>
+<span class="n">STATICFILES_FINDERS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s1">&#39;django.contrib.staticfiles.finders.FileSystemFinder&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.staticfiles.finders.AppDirectoriesFinder&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>Now, make sure the main <code>urls.py</code> file does include the url configuration for your media&nbsp;files:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="o">...</span>
+<span class="p">]</span> <span class="o">+</span> <span class="n">static</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">MEDIA_URL</span><span class="p">,</span> <span class="n">document_root</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">MEDIA_ROOT</span><span class="p">)</span>
+</pre></div>
+
+
+<p>And as a last step there should be a folder called static in the root of your application (same level as the manage.py file). Git does not allow you to commit empty folders so you can inlcude a readme file in there to commit the&nbsp;folder.</p>
+<p>If you are using Heroku before pushing your code&nbsp;use:</p>
+<div class="highlight"><pre><span></span>heroku config:set DISABLE_COLLECTSTATIC=1
+</pre></div>
+
+
+<p>to disable collectstatic running automatically as your static folder is not yet present on the server and an error will be thrown regarding the same. You can now push all changes to Heroku&nbsp;with</p>
+<div class="highlight"><pre><span></span>git push heroku master
+</pre></div>
+
+
+<p>or if you want to push from a different&nbsp;branch:</p>
+<div class="highlight"><pre><span></span>git push heroku testbranch:master
+</pre></div>
+
+
+<p>You can now run the <code>collectstatic</code> command manually&nbsp;using:</p>
+<div class="highlight"><pre><span></span>heroku run python manage.py collectstatic --noinput
+</pre></div>
+
+
+<p>If you get the following&nbsp;error:</p>
+<div class="highlight"><pre><span></span><span class="n">UserWarning</span><span class="o">:</span> <span class="n">The</span> <span class="k">default</span> <span class="n">behavior</span> <span class="n">of</span> <span class="n">S3Boto3Storage</span> <span class="k">is</span> <span class="n">insecure</span> <span class="n">and</span> <span class="n">will</span> <span class="n">change</span> <span class="k">in</span> <span class="n">django</span><span class="o">-</span><span class="n">storages</span> <span class="mf">2.0</span><span class="o">.</span> <span class="n">By</span> <span class="k">default</span> <span class="n">files</span> <span class="n">and</span> <span class="k">new</span> <span class="n">buckets</span> <span class="n">are</span> <span class="n">saved</span> <span class="k">with</span> <span class="n">an</span> <span class="n">ACL</span> <span class="n">of</span> <span class="s1">&#39;public-read&#39;</span> <span class="o">(</span><span class="n">globally</span> <span class="n">publicly</span> <span class="n">readable</span><span class="o">).</span> <span class="n">Version</span> <span class="mf">2.0</span> <span class="n">will</span> <span class="k">default</span> <span class="n">to</span> <span class="n">using</span> <span class="n">the</span> <span class="n">bucket</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">ACL</span><span class="o">.</span> <span class="n">To</span> <span class="n">opt</span> <span class="n">into</span> <span class="n">the</span> <span class="k">new</span> <span class="n">behavior</span> <span class="kd">set</span> <span class="n">AWS_DEFAULT_ACL</span> <span class="o">=</span> <span class="n">None</span><span class="o">,</span> <span class="n">otherwise</span> <span class="n">to</span> <span class="n">silence</span> <span class="k">this</span> <span class="n">warning</span> <span class="n">explicitly</span> <span class="kd">set</span> <span class="n">AWS_DEFAULT_ACL</span><span class="o">.</span> <span class="s2">&quot;The default behavior of S3Boto3Storage is insecure and will change &quot;</span>
+<span class="o">...</span>
+<span class="n">AccessDenied</span>
+</pre></div>
+
+
+<p>add the following variable to <code>settings.py</code>: </p>
+<div class="highlight"><pre><span></span>AWS_DEFAULT_ACL = None
+</pre></div>
+
+
+<p>One important point before you go on this adventure. At the moment all the media files (files that are uploaded by the user) used in our models have the property <code>upload_to</code> set for them and as a result don&#8217;t overwrite the static&nbsp;files. </p>
+<p>We are now ready to serve static and media files from the S3&nbsp;bucket!</p>
+<h3>References</h3>
+<ul>
+<li><a href="https://medium.com/@manibatra23/setting-up-amazon-s3-bucket-for-serving-django-static-and-media-files-3e781ab325d5">Setting up Amazon S3 Bucket for serving Django Static and Media&nbsp;files</a></li>
+<li><a href="https://www.caktusgroup.com/blog/2014/11/10/Using-Amazon-S3-to-store-your-Django-sites-static-and-media-files/">Using Amazon S3 to Store your Django Site&#8217;s Static and Media&nbsp;Files</a></li>
+<li><a href="https://simpleisbetterthancomplex.com/tutorial/2017/08/01/how-to-setup-amazon-s3-in-a-django-project.html">How to Setup Amazon S3 in a Django&nbsp;Project</a></li>
+</ul>
+	<br><br><br>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'annotatio';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+		</div>
+	</body>
+</html>

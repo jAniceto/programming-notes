@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<link rel="shortcut icon" type="image/png" href="https://janiceto.github.io/programming-notes-blog/images/favicon.png"/>
+		<title>Annotatio</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58056773-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-58056773-5');
+	</script>
+	</head>
+	
+	<body class="theme-flat">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="https://janiceto.github.io/programming-notes-blog">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of codding notes and snippets from my journey to self taught programming. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/general.html">General</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/python.html">Python</a>
+			
+		</nav>
+
+		<p>by José Aniceto</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Caching&nbsp;data</h1>
+	<span class="post-date">Sun 03 December 2017</span>
+	<p>You have three&nbsp;options:</p>
+<ol>
+<li>Cookies: https://developer.mozilla.org/en-<span class="caps">US</span>/docs/<span class="caps">DOM</span>/document.cookie</li>
+<li>DOMStorage (sessionStorage or localStorage): https://developer.mozilla.org/en-<span class="caps">US</span>/docs/<span class="caps">DOM</span>/Storage</li>
+<li>If your users are logged in, you could persist data in your server&#8217;s <span class="caps">DB</span> that is keyed to a user (or&nbsp;group)</li>
+</ol>
+<h3>Using localStorage (persistent over&nbsp;sessions)</h3>
+<p>Writing&nbsp;:</p>
+<div class="highlight"><pre><span></span><span class="nx">localStorage</span><span class="p">[</span><span class="s1">&#39;myKey&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;somestring&#39;</span><span class="p">;</span> <span class="c1">// only strings</span>
+</pre></div>
+
+
+<p>Reading&nbsp;:</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="nx">localStorage</span><span class="p">[</span><span class="s1">&#39;myKey&#39;</span><span class="p">]</span> <span class="o">||</span> <span class="s1">&#39;defaultValue&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>If you need to store complex structures, you might serialize them in <span class="caps">JSON</span>. For example&nbsp;:</p>
+<p>Reading&nbsp;:</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">stored</span> <span class="o">=</span> <span class="nx">localStorage</span><span class="p">[</span><span class="s1">&#39;myKey&#39;</span><span class="p">];</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">stored</span><span class="p">)</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">stored</span><span class="p">);</span>
+<span class="k">else</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="p">{</span><span class="nx">a</span><span class="o">:</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="nx">b</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]};</span>
+</pre></div>
+
+
+<p>Writing&nbsp;:</p>
+<div class="highlight"><pre><span></span><span class="nx">localStorage</span><span class="p">[</span><span class="s1">&#39;myKey&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">myVar</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Note that you may use more than one key. They&#8217;ll all be retrieved by all pages on the same&nbsp;domain.</p>
+<p>Unless you want to be compatible with <span class="caps">IE7</span>, you have no reason to use the obsolete and small&nbsp;cookies.</p>
+<h3>References</h3>
+<p>https://stackoverflow.com/questions/14266730/js-how-to-cache-a-variable</p>
+	<br><br><br>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'annotatio';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+		</div>
+	</body>
+</html>

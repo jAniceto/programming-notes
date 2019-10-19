@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<link rel="shortcut icon" type="image/png" href="https://janiceto.github.io/programming-notes-blog/images/favicon.png"/>
+		<title>Annotatio</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58056773-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-58056773-5');
+	</script>
+	</head>
+	
+	<body class="theme-flat">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="https://janiceto.github.io/programming-notes-blog">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of codding notes and snippets from my journey to self taught programming. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/general.html">General</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/python.html">Python</a>
+			
+		</nav>
+
+		<p>by José Aniceto</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Installing Python 3.7 on&nbsp;Raspbian</h1>
+	<span class="post-date">Mon 27 August 2018</span>
+	<p>As of January 2018, Raspbian does not yet include the latest Python release, Python 3.6. This means we will have to build it ourselves, and here is how to do it. There is also an ansible role attached that automates it all for&nbsp;you.</p>
+<p>1) Install the required build-tools (some might already be installed on your&nbsp;system).</p>
+<div class="highlight"><pre><span></span>$ sudo apt-get update
+$ sudo apt-get install build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+</pre></div>
+
+
+<p>If one of the packages cannot be found, try a newer version number (e.g. <code>libdb5.4-dev</code> instead of <code>libdb5.3-dev</code>).</p>
+<p>2) Download and install Python 3.6. When downloading the source code, select the most recent release of Python 3.6, available on the <a href="https://www.python.org/downloads/source/">official site</a>. Adjust the file names&nbsp;accordingly.</p>
+<div class="highlight"><pre><span></span>$ wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
+$ tar xf Python-3.7.0.tar.xz
+$ <span class="nb">cd</span> Python-3.7.0
+$ ./configure
+$ make
+$ sudo make altinstall
+</pre></div>
+
+
+<p>3) Optionally: Delete the source code and uninstall the previously installed packages. When uninstalling the packages, make sure you only remove those that were not previously installed on your system. Also, remember to adjust version numbers if&nbsp;necesarry.</p>
+<div class="highlight"><pre><span></span>$ sudo rm -r Python-3.7.0
+$ rm Python-3.7.0.tar.xz
+$ sudo apt-get --purge remove build-essential tk-dev
+$ sudo apt-get --purge remove libncurses5-dev libncursesw5-dev libreadline6-dev
+$ sudo apt-get --purge remove libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev
+$ sudo apt-get --purge remove libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+$ sudo apt-get autoremove
+$ sudo apt-get clean
+</pre></div>
+
+
+<h3>References</h3>
+<ul>
+<li>https://liudr.wordpress.com/2016/02/04/install-python-on-raspberry-pi-or-debian/</li>
+<li>https://gist.github.com/BMeu/af107b1f3d7cf1a2507c9c6429367a3b</li>
+</ul>
+	<br><br><br>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'annotatio';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+		</div>
+	</body>
+</html>

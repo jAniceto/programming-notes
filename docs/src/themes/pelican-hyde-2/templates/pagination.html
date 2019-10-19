@@ -1,0 +1,9 @@
+{% if DEFAULT_PAGINATION %}
+{% if articles_page.has_previous() %}
+<a href="{{ SITEURL }}/{{ articles_previous_page.url }}" class="pagination-item older">Newer</a>
+{% endif %}
+
+{% if articles_page.has_next() %}
+<a href="{{ SITEURL }}/{{ articles_next_page.url }}" class="pagination-item newer">Older</a>
+{% endif %}
+{% endif %}

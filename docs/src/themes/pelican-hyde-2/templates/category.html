@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="category-list">
+        <h1 class="post-title">{{ category }}</h1>
+        <br>
+				
+        {% for article in articles %}
+        <div>
+            <span class="date-category">{{ article.locale_date }}</span> &nbsp; &nbsp;
+            <a class="read-more" href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+        </div>
+        {% endfor %}
+
+	</div>
+{% endblock %}

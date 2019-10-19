@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<link rel="shortcut icon" type="image/png" href="https://janiceto.github.io/programming-notes-blog/images/favicon.png"/>
+		<title>Annotatio</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58056773-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-58056773-5');
+	</script>
+	</head>
+	
+	<body class="theme-flat">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="https://janiceto.github.io/programming-notes-blog">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of codding notes and snippets from my journey to self taught programming. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/general.html">General</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/python.html">Python</a>
+			
+		</nav>
+
+		<p>by José Aniceto</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Filter a table or list by typing in search&nbsp;box</h1>
+	<span class="post-date">Tue 28 August 2018</span>
+	<h2>Using a <span class="caps">JS</span>&nbsp;library:</h2>
+<ul>
+<li><a href="http://listjs.com/">listjs.com</a></li>
+</ul>
+<h2>From&nbsp;scratch:</h2>
+<h3>For a&nbsp;table</h3>
+<p>1) <span class="caps">HTML</span> </p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myInput&quot;</span> <span class="na">onkeyup</span><span class="o">=</span><span class="s">&quot;myFunction()&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Search for names..&quot;</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">table</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myTable&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;header&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:60%;&quot;</span><span class="p">&gt;</span>Name<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:40%;&quot;</span><span class="p">&gt;</span>Country<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Alfreds Futterkiste<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Germany<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Berglunds snabbkop<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Sweden<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Island Trading<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>UK<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Koniglich Essen<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Germany<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>2) <span class="caps">CSS</span> </p>
+<div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">myInput</span> <span class="p">{</span>
+    <span class="k">background-image</span><span class="p">:</span> <span class="nb">url</span><span class="p">(</span><span class="s1">&#39;/css/searchicon.png&#39;</span><span class="p">);</span> <span class="c">/* Add a search icon to input */</span>
+    <span class="k">background-position</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Position the search icon */</span>
+    <span class="k">background-repeat</span><span class="p">:</span> <span class="kc">no-repeat</span><span class="p">;</span> <span class="c">/* Do not repeat the icon image */</span>
+    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span> <span class="c">/* Full-width */</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Increase font-size */</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">12</span><span class="kt">px</span> <span class="mi">40</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Add some padding */</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#ddd</span><span class="p">;</span> <span class="c">/* Add a grey border */</span>
+    <span class="k">margin-bottom</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Add some space below the input */</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">myTable</span> <span class="p">{</span>
+    <span class="k">border-collapse</span><span class="p">:</span> <span class="kc">collapse</span><span class="p">;</span> <span class="c">/* Collapse borders */</span>
+    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span> <span class="c">/* Full-width */</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#ddd</span><span class="p">;</span> <span class="c">/* Add a grey border */</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Increase font-size */</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">myTable</span> <span class="nt">th</span><span class="o">,</span> <span class="p">#</span><span class="nn">myTable</span> <span class="nt">td</span> <span class="p">{</span>
+    <span class="k">text-align</span><span class="p">:</span> <span class="kc">left</span><span class="p">;</span> <span class="c">/* Left-align text */</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Add padding */</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">myTable</span> <span class="nt">tr</span> <span class="p">{</span>
+    <span class="c">/* Add a bottom border to all table rows */</span>
+    <span class="k">border-bottom</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#ddd</span><span class="p">;</span> 
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">myTable</span> <span class="nt">tr</span><span class="p">.</span><span class="nc">header</span><span class="o">,</span> <span class="p">#</span><span class="nn">myTable</span> <span class="nt">tr</span><span class="p">:</span><span class="nd">hover</span> <span class="p">{</span>
+    <span class="c">/* Add a grey background color to the table header and on hover */</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="mh">#f1f1f1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>3)&nbsp;Javascript </p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<span class="kd">function</span> <span class="nx">myFunction</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Declare variables </span>
+  <span class="kd">var</span> <span class="nx">input</span><span class="p">,</span> <span class="nx">filter</span><span class="p">,</span> <span class="nx">table</span><span class="p">,</span> <span class="nx">tr</span><span class="p">,</span> <span class="nx">td</span><span class="p">,</span> <span class="nx">i</span><span class="p">;</span>
+  <span class="nx">input</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myInput&quot;</span><span class="p">);</span>
+  <span class="nx">filter</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+  <span class="nx">table</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myTable&quot;</span><span class="p">);</span>
+  <span class="nx">tr</span> <span class="o">=</span> <span class="nx">table</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;tr&quot;</span><span class="p">);</span>
+
+  <span class="c1">// Loop through all table rows, and hide those who don&#39;t match the search query</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">tr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">td</span> <span class="o">=</span> <span class="nx">tr</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;td&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">td</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">td</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">().</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">filter</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">tr</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">tr</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span> 
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>Remove <code>toUpperCase()</code> if you want to perform a case-sensitive&nbsp;search.</p>
+</li>
+<li>
+<p>Change <code>tr[i].getElementsByTagName('td')[0]</code> to <code>[1]</code> if you want to search for &#8220;Country&#8221; (index 1) instead of &#8220;Name&#8221; (index&nbsp;0).</p>
+</li>
+</ul>
+<h3>For a&nbsp;list</h3>
+<p>1) <span class="caps">HTML</span> </p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myInput&quot;</span> <span class="na">onkeyup</span><span class="o">=</span><span class="s">&quot;myFunction()&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Search for names..&quot;</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">ul</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myUL&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Adele<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Agnes<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Billy<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Bob<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Calvin<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Christina<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Cindy<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>2) <span class="caps">CSS</span> </p>
+<div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">myInput</span> <span class="p">{</span>
+    <span class="k">background-image</span><span class="p">:</span> <span class="nb">url</span><span class="p">(</span><span class="s1">&#39;/css/searchicon.png&#39;</span><span class="p">);</span> <span class="c">/* Add a search icon to input */</span>
+    <span class="k">background-position</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Position the search icon */</span>
+    <span class="k">background-repeat</span><span class="p">:</span> <span class="kc">no-repeat</span><span class="p">;</span> <span class="c">/* Do not repeat the icon image */</span>
+    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span> <span class="c">/* Full-width */</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Increase font-size */</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">12</span><span class="kt">px</span> <span class="mi">40</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Add some padding */</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#ddd</span><span class="p">;</span> <span class="c">/* Add a grey border */</span>
+    <span class="k">margin-bottom</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Add some space below the input */</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">myUL</span> <span class="p">{</span>
+    <span class="c">/* Remove default list styling */</span>
+    <span class="k">list-style-type</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">myUL</span> <span class="nt">li</span> <span class="nt">a</span> <span class="p">{</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#ddd</span><span class="p">;</span> <span class="c">/* Add a border to all links */</span>
+    <span class="k">margin-top</span><span class="p">:</span> <span class="mi">-1</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Prevent double borders */</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="mh">#f6f6f6</span><span class="p">;</span> <span class="c">/* Grey background color */</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Add some padding */</span>
+    <span class="k">text-decoration</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span> <span class="c">/* Remove default text underline */</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Increase the font-size */</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">black</span><span class="p">;</span> <span class="c">/* Add a black text color */</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">block</span><span class="p">;</span> <span class="c">/* Make it into a block element to fill the whole list */</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">myUL</span> <span class="nt">li</span> <span class="nt">a</span><span class="p">:</span><span class="nd">hover</span><span class="p">:</span><span class="nd">not</span><span class="o">(</span><span class="p">.</span><span class="nc">header</span><span class="o">)</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="mh">#eee</span><span class="p">;</span> <span class="c">/* Add a hover effect to all links, except for headers */</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>3)&nbsp;Javascript </p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<span class="kd">function</span> <span class="nx">myFunction</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Declare variables</span>
+    <span class="kd">var</span> <span class="nx">input</span><span class="p">,</span> <span class="nx">filter</span><span class="p">,</span> <span class="nx">ul</span><span class="p">,</span> <span class="nx">li</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">i</span><span class="p">;</span>
+    <span class="nx">input</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;myInput&#39;</span><span class="p">);</span>
+    <span class="nx">filter</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+    <span class="nx">ul</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myUL&quot;</span><span class="p">);</span>
+    <span class="nx">li</span> <span class="o">=</span> <span class="nx">ul</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">);</span>
+
+    <span class="c1">// Loop through all list items, and hide those who don&#39;t match the search query</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">li</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">a</span> <span class="o">=</span> <span class="nx">li</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">().</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">filter</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">li</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">li</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+	<br><br><br>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'annotatio';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+		</div>
+	</body>
+</html>

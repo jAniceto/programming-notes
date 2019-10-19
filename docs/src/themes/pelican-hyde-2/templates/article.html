@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="post">
+	<h1 class="post-title">{{ article.title }}</h1>
+	<span class="post-date">{{ article.locale_date }}{% if article.locale_modified %}, last updated {{article.locale_modified}}{% endif %}</span>
+	{{ article.content }}
+	<br><br><br>
+	{% include 'fragments/disqus.html' %}
+</div>
+{% endblock %}
+
