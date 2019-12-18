@@ -1,7 +1,7 @@
 Title: Linux Crontab
 Date: 2017-09-07 10:44
 Authors: José Aniceto
-Modified: 2017-11-05 20:36
+Modified: 2019-04-07 19:24
 
 To view currently active crontab entries: `$ sudo crontab -l`
 
@@ -37,6 +37,18 @@ string        | meaning
 #### Example 2: Run a python script every five days a 18:30
 ```
 30 18 */5 * * sudo python /home/pi/projects/script1.py
+```
+
+### Crontab log
+
+On a default installation the cron jobs get logged to
+```
+$ /var/log/syslog
+```
+
+You can see just cron jobs in that logfile by running
+```
+$ grep CRON /var/log/syslog
 ```
 
 

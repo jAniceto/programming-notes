@@ -61,6 +61,109 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/create-exe.html#create-exe">
+					<a href="https://janiceto.github.io/programming-notes/create-exe.html#create-exe">Create a standalone exacutable from a Python&nbsp;scripy</a>
+				</h1>
+				<span class="post-date">seg 27 agosto 2018</span>
+				<p>
+					<h2>Using&nbsp;pyinstaller</h2>
+<p>To install pyinstaller on your pc (more details can be found here:&nbsp;https://www.pyinstaller.org/)</p>
+<p><code>pip install pyinstaller</code></p>
+<p>Use cmd to go to your program directory and to turn it into a exe&nbsp;folder</p>
+<p><code>pyinstaller yourprogram.py</code></p>
+<p>What I&nbsp;run:</p>
+<p><code>pyinstaller -F --windowed --icon=myapp.ico SumExcel.py</code></p>
+<p>This makes it a single exe (without the folders with all dependables) but is slightly slower, minimizes the console window sine I have a <span class="caps">GUI</span>, and gives it a snazzy icon that I had saved (you have to copy over the icon, or have an exception incase it isn&#8217;t&nbsp;found)</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/create-exe.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/regex.html#regex">
+					<a href="https://janiceto.github.io/programming-notes/regex.html#regex">Regular&nbsp;expressions</a>
+				</h1>
+				<span class="post-date">qua 08 agosto 2018</span>
+				<p>
+					<h2>Regex for finding&nbsp;URLs</h2>
+<p>Regex if you want to ensure <span class="caps">URL</span> starts with <span class="caps">HTTP</span>/<span class="caps">HTTPS</span>:</p>
+<div class="highlight"><pre><span></span><span class="n">https</span><span class="o">?</span><span class="p">:</span><span class="err">\</span><span class="o">/</span><span class="err">\</span><span class="o">/</span><span class="p">(</span><span class="n">www</span><span class="err">\</span><span class="p">.)</span><span class="o">?</span><span class="p">[</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z0</span><span class="o">-</span><span class="mi">9</span><span class="o">@</span><span class="p">:</span><span class="o">%</span><span class="p">.</span><span class="n">_</span><span class="err">\</span><span class="o">+~#=</span><span class="p">]</span><span class="err">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">256</span><span class="err">}\</span><span class="p">.[</span><span class="n">a</span><span class="o">-</span><span class="n">z</span><span class="p">]</span><span class="err">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="err">}\</span><span class="n">b</span><span class="p">([</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z0</span><span class="o">-</span><span class="mi">9</span><span class="o">@</span><span class="p">:</span><span class="o">%</span><span class="n">_</span><span class="err">\</span><span class="o">+</span><span class="p">.</span><span class="o">~#?&amp;//=</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
+</pre></div>
+
+
+<p>If you do not require <span class="caps">HTTP</span>&nbsp;protocol:</p>
+<div class="highlight"><pre><span></span><span class="p">[</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z0</span><span class="o">-</span><span class="mi">9</span><span class="o">@</span><span class="p">:</span><span class="o">%</span><span class="p">.</span><span class="n">_</span><span class="err">\</span><span class="o">+~#=</span><span class="p">]</span><span class="err">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">256</span><span class="err">}\</span><span class="p">.[</span><span class="n">a</span><span class="o">-</span><span class="n">z</span><span class="p">]</span><span class="err">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="err">}\</span><span class="n">b</span><span class="p">([</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z0</span><span class="o">-</span><span class="mi">9</span><span class="o">@</span><span class="p">:</span><span class="o">%</span><span class="n">_</span><span class="err">\</span><span class="o">+</span><span class="p">.</span><span class="o">~#?&amp;//=</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
+</pre></div>
+
+
+<h4>Exemple usage in VSCode to find a <span class="caps">URL</span> and convert to Markdown link like, <code>[link](link)</code>:</h4>
+<p>Find: <code>(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;//=]*))</code></p>
+<p>Replace: <code>[$1]($1)</code></p>
+<p>Use <code>()</code> to create a group and <code>$1</code> to reference that&nbsp;group.</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/regex.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/matlab.html#matlab">
+					<a href="https://janiceto.github.io/programming-notes/matlab.html#matlab">Run Matlab programs in&nbsp;Python</a>
+				</h1>
+				<span class="post-date">qui 26 julho 2018</span>
+				<p>
+					<p>This example shows how to create a Python package using a <span class="caps">MATLAB</span> function. You can then pass the generated package to the developer who is responsible for integrating it into an application. The target system does not require a licensed copy of <span class="caps">MATLAB</span>.</p>
+<h2>Requirements</h2>
+<ul>
+<li>A Matlab version with a license for <span class="caps">MATLAB</span> Compiler or <span class="caps">MATLAB</span> Compiler <span class="caps">SDK</span> to compile the Python&nbsp;package.</li>
+<li>The target computer (where the final application will run) does not require Matlab or a Matlab Licence. However, it requires the Matlab Runtime (free, <a href="https://www.mathworks.com/products/compiler/matlab-runtime.html">download here</a>) of the same version of the Matlab used to compile the application. For instance, if the package was compiled in Matlab 2018a the target computer must have Matlab Runtime version 2018a&nbsp;installed</li>
+</ul>
+<h2>1) Create a Python package for the Maltab&nbsp;Application</h2>
+<p>For this example let&#8217;s create a simple Matlab function and save it as <code>makesqr.m</code>:</p>
+<div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>y <span class="p">=</span><span class="w"> </span><span class="nf">makesqr</span><span class="p">(</span>x<span class="p">)</span><span class="w"></span>
+
+<span class="n">y …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/matlab.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/web-dev-resources.html#web-dev-resources">
+					<a href="https://janiceto.github.io/programming-notes/web-dev-resources.html#web-dev-resources">Online Resources For Web&nbsp;Developers</a>
+				</h1>
+				<span class="post-date">seg 16 julho 2018</span>
+				<p>
+					<h2><span class="caps">GENERATORS</span>:</h2>
+<ul>
+<li>Text Content Generator -&nbsp;http://www.lipsum.com</li>
+<li>Favicon Generator -&nbsp;http://tools.dynamicdrive.com/favicon     </li>
+<li>Data Generator -&nbsp;https://mockaroo.com/                        </li>
+<li>Mobile Mockup Generator -&nbsp;https://mockuphone.com</li>
+<li>Logo Generator -&nbsp;https://www.logaster.com</li>
+<li><span class="caps">UUID</span> Generator -&nbsp;https://www.uuidgenerator.net/</li>
+<li>Hash Generator -&nbsp;https://passwordsgenerator.net/sha256-hash-generator/</li>
+</ul>
+<h2><span class="caps">FONTS</span></h2>
+<ul>
+<li>Google Fonts -&nbsp;https://fonts.google.com/</li>
+<li>Font Joy -&nbsp;https://fontjoy.com/</li>
+<li>Font Pair -&nbsp;https://fontpair.co/</li>
+<li><span class="caps">HTML</span> symbols -&nbsp;https://www.toptal.com/designers/htmlarrows/</li>
+</ul>
+<h2><span class="caps">IMAGE</span> <span class="caps">RESOURCES</span>:</h2>
+<ul>
+<li>Free Stock Images -&nbsp;https://www.pexels.com</li>
+<li>Free Stock Images With Great <span class="caps">API</span> -&nbsp;https://unsplash.com/</li>
+<li>Free- Vectors, mockups -&nbsp;https://www.freepik.com</li>
+<li>Dummy Image Placeholders -&nbsp;https://source.unsplash.com/</li>
+<li>Dummy Image Placeholders -&nbsp;https://placeholder.com</li>
+<li>Free Icons -&nbsp;https://www.iconfinder.com</li>
+</ul>
+<h2><span class="caps">COLOR</span> <span class="amp">&amp;</span> <span class="caps">DESIGN</span>:</h2>
+<ul>
+<li>Generate Color Palette from Image -&nbsp;https://www.canva.com/color-palette/</li>
+<li>Color Palette Generator -&nbsp;https://coolors.co/app</li>
+<li>Color Pallete Generator -&nbsp;http://colormind.io/</li>
+<li>Create Color Schemes -&nbsp;https://color.hailpixel.com</li>
+<li>Get Color Schemes of Websites …</li></ul>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/web-dev-resources.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/deploy-django.html#deploy-django">
 					<a href="https://janiceto.github.io/programming-notes/deploy-django.html#deploy-django">Deploy a Django app in an Ubuntu <span class="caps">VPS</span>&nbsp;(DigitalOcean)</a>
 				</h1>
@@ -105,6 +208,13 @@ $ sudo apt-get install python3-pip python3-dev libpq-dev nginx
 				<span class="post-date">dom 03 junho 2018</span>
 				<p>
 					<p>A collection of several code snippets of common or useful operation in&nbsp;Python.</p>
+<h2>Get list of attributes (methods) of an&nbsp;object</h2>
+<p>Get a list of attributes (methods) of an object with <code>dir(object)</code></p>
+<p>To see everything except hidden/dunder methods you can&nbsp;do:</p>
+<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">((</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">d</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)))</span>
+</pre></div>
+
+
 <h2>Remove dictionary from&nbsp;list</h2>
 <p>Here&#8217;s how to remove a specific dictionary, or several dictionaries, from a list of dictionaries by a specific key. In the example below we are removing from the list all dictionaries which have and <code>id</code> key of <code>2</code>.</p>
 <div class="highlight"><pre><span></span><span class="n">thelist</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;paul&#39;</span><span class="p">},</span>
@@ -126,15 +236,7 @@ $ sudo apt-get install python3-pip python3-dev libpq-dev nginx
 
 
 <p>With list&nbsp;comprehension:</p>
-<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
-<span class="n">out</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-<span class="c1"># [1, 4, 9, 16]</span>
-</pre></div>
-
-
-<h2>Lambda&nbsp;Functions</h2>
-<p>Lambda functions are used for creating small, one-time and anonymous function objects in Python. Basically, they let you create a function, without creating a function. Note …</p>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3 …</span></pre></div>
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes/snippets.html">Continue reading »</a>
 			</div>
@@ -218,137 +320,6 @@ $ sudo apt-get install python3-pip python3-dev libpq-dev nginx
 <div class="highlight"><pre><span></span><span class="n">times</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># how …</span></pre></div>
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes/progress-bar.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/os-env-vars.html#os-env-vars">
-					<a href="https://janiceto.github.io/programming-notes/os-env-vars.html#os-env-vars">Hiding Passwords and Secret Keys in Environment&nbsp;Variables</a>
-				</h1>
-				<span class="post-date">sex 02 fevereiro 2018</span>
-				<p>
-					<h3>Adding a Environment Variable&nbsp;(Windows)</h3>
-<p>System Menu &gt; <code>Advanced System Settings</code> &gt; <code>Environment Variables...</code> &gt; in User Variables click <code>New...</code> &gt; insert variable name (VAR_NAME) and value&nbsp;(VAR_VALUE)</p>
-<p>When coding it may be necessary to restart your <span class="caps">IDE</span> or text&nbsp;editor.</p>
-<h3>Adding a Environment Variable (Linux and&nbsp;Mac)</h3>
-<p>Open the&nbsp;terminal:</p>
-<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> 
-$ nano .bash_profile
-</pre></div>
-
-
-<p>To the file add the line and&nbsp;save:</p>
-<div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">VAR_NAME</span><span class="o">=</span><span class="ss">&quot;VAR_VALUE&quot;</span>
-</pre></div>
-
-
-<p>When coding it may be necessary to restart your <span class="caps">IDE</span> or text&nbsp;editor.</p>
-<h3>Acessing your Environment Variables in&nbsp;Python</h3>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="n">var1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;VAR_NAME&#39;</span><span class="p">)</span>
-</pre></div>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/os-env-vars.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/ubuntu-vps.html#ubuntu-vps">
-					<a href="https://janiceto.github.io/programming-notes/ubuntu-vps.html#ubuntu-vps">Deploy a Flask Application on an Ubuntu <span class="caps">VPS</span>&nbsp;(DigitalOcean)</a>
-				</h1>
-				<span class="post-date">qui 25 janeiro 2018</span>
-				<p>
-					<p>This page details the process of seting up a Ubuntu <span class="caps">VPS</span> (in this case a DigitalOcean dropplet using Ubuntu 16.04 was used) to serve a Flask based websiite. MySQL databases are&nbsp;used.</p>
-<h2>1) Install&nbsp;Apache</h2>
-<div class="highlight"><pre><span></span>$ sudo apt-get update
-$ sudo apt-get upgrade
-$ sudo apt-get install apache2
-</pre></div>
-
-
-<p>You can do a spot check right away to verify that everything went as planned by visiting your server&#8217;s public <span class="caps">IP</span> address in your web browser. You will see the default Ubuntu 16.04 Apache web&nbsp;page.</p>
-<div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">your_server_IP_address</span>
-</pre></div>
-
-
-<h3>How To Find your Server&#8217;s Public <span class="caps">IP</span>&nbsp;Address</h3>
-<p>Usually, this is the address you use to connect to your server through <span class="caps">SSH</span>. However you can find the <span class="caps">IP</span> address from the command line by typing&nbsp;this:</p>
-<div class="highlight"><pre><span></span>$ <span class="nv">ip</span> <span class="nv">addr</span> <span class="k">show</span> <span class="nv">eth0</span> <span class="o">|</span> <span class="nv">grep</span> <span class="nv">inet</span> <span class="o">|</span> <span class="nv">awk</span> <span class="s1">&#39;</span><span class="s">{ print $2; }</span><span class="s1">&#39;</span> <span class="o">|</span> <span class="nv">sed</span> <span class="s1">&#39;</span><span class="s">s/\/.*$//</span><span class="s1">&#39;</span>
-</pre></div>
-
-
-<p>Alternatively you can use <code>curl</code> to contact an outside party to tell you how it sees …</p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/ubuntu-vps.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/datatables.html#datatables">
-					<a href="https://janiceto.github.io/programming-notes/datatables.html#datatables">DataTables <span class="caps">JS</span>&nbsp;Library</a>
-				</h1>
-				<span class="post-date">dom 21 janeiro 2018</span>
-				<p>
-					<p><a href="https://datatables.net/manual/index">Documentation&nbsp;here</a></p>
-<h3>Requirements:</h3>
-<ul>
-<li>JQuery</li>
-</ul>
-<h3>Usage:</h3>
-<p>Include the <span class="caps">CSS</span> and <span class="caps">JS</span> code for DataTables to the head and bottom of the body of your website, respectively. <span class="caps">CSS</span> is not&nbsp;required.</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span> <span class="s">&quot;{{ url_for(&#39;static&#39;,filename=&#39;style.css&#39;) }}&quot;</span><span class="p">&gt;</span> 
-
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</pre></div>
-
-
-<p>Use the single function bellow to call to initialise the tabl. Do not forget to add an id tag to the&nbsp;table.</p>
-<div class="highlight"><pre><span></span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myTable&#39;</span><span class="p">).</span><span class="nx">DataTable</span><span class="p">();</span>
-<span class="p">});</span>
-</pre></div>
-
-
-<p>Add options like&nbsp;so:</p>
-<div class="highlight"><pre><span></span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myTable&#39;</span><span class="p">).</span><span class="nx">DataTable</span><span class="p">(</span> <span class="p">{</span>
-    <span class="s2">&quot;columnDefs&quot;</span><span class="o">:</span> <span class="p">[</span>
-      <span class="p">{</span> <span class="s2">&quot;orderable&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="s2">&quot;targets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;paging&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="s2">&quot;order&quot;</span><span class="o">:</span> <span class="p">[[</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;asc&quot;</span> <span class="p">]]</span>
-  <span class="p">}</span> <span class="p">);</span>
-<span class="p">}</span> <span class="p">);</span>
-</pre></div>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/datatables.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/slice-notation.html#slice-notation">
-					<a href="https://janiceto.github.io/programming-notes/slice-notation.html#slice-notation">Slice&nbsp;notation</a>
-				</h1>
-				<span class="post-date">sex 15 dezembro 2017</span>
-				<p>
-					<p>The <span class="caps">ASCII</span> art diagram is helpful too for remembering how slices&nbsp;work:</p>
-<div class="highlight"><pre><span></span> <span class="o">+</span><span class="c1">---+---+---+---+---+---+</span>
- <span class="o">|</span> <span class="n">P</span> <span class="o">|</span> <span class="n">y</span> <span class="o">|</span> <span class="n">t</span> <span class="o">|</span> <span class="n">h</span> <span class="o">|</span> <span class="n">o</span> <span class="o">|</span> <span class="n">n</span> <span class="o">|</span>
- <span class="o">+</span><span class="c1">---+---+---+---+---+---+</span>
- <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>   <span class="mi">4</span>   <span class="mi">5</span>   <span class="mi">6</span>
-<span class="o">-</span><span class="mi">6</span>  <span class="o">-</span><span class="mi">5</span>  <span class="o">-</span><span class="mi">4</span>  <span class="o">-</span><span class="mi">3</span>  <span class="o">-</span><span class="mi">2</span>  <span class="o">-</span><span class="mi">1</span>
-</pre></div>
-
-
-<p>One way to remember how slices work is to think of the indices as pointing <em>between</em> characters, with the left edge of the first character numbered 0. Then the right edge of the last character of a string of <em>n</em> characters has index <em>n</em>.</p>
-<div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span> <span class="c1"># items start through end-1</span>
-<span class="n">a</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span>    <span class="c1"># items start through the rest of the array</span>
-<span class="n">a</span><span class="p">[:</span><span class="n">end</span><span class="p">]</span>      <span class="c1"># items from the beginning through end-1</span>
-<span class="n">a</span><span class="p">[:]</span>         <span class="c1"># a copy of the whole array</span>
-</pre></div>
-
-
-<p>There is also the <code>step</code> value, which can be used with any of the&nbsp;above:</p>
-<div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">:</span><span class="n">step</span><span class="p">]</span> <span class="c1"># start through not past end, by step</span>
-</pre></div>
-
-
-<p>The key point to remember is that the <code>:end</code> value represents the first value that is <em>not …</em></p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/slice-notation.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

@@ -61,7 +61,7 @@
 </div>		<div class="content container">
 <div class="post">
 	<h1 class="post-title">Deploy a Django app to&nbsp;Heroku</h1>
-	<span class="post-date">ter 22 janeiro 2019, last updated sex 01 fevereiro 2019</span>
+	<span class="post-date">ter 22 janeiro 2019, last updated qua 29 maio 2019</span>
 	<h3>Index:</h3>
 <ul>
 <li><a href="#requirements">Requirements</a></li>
@@ -127,6 +127,11 @@ $ heroku create &lt;desired_app_name&gt;
 <div class="highlight"><pre><span></span>$ git add .
 $ git commit -m <span class="s2">&quot;Ready to heroku this.&quot;</span>
 $ git push heroku master
+</pre></div>
+
+
+<p>Note: If you wish to depoly from a local branch other than <code>master</code>, e.g. <code>testbranch</code> then&nbsp;use:</p>
+<div class="highlight"><pre><span></span>$ git push heroku testbranch:master
 </pre></div>
 
 

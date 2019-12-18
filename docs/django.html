@@ -61,7 +61,7 @@
 </div>		<div class="content container">
 <div class="post">
 	<h1 class="post-title">Building a Django&nbsp;site</h1>
-	<span class="post-date">ter 03 abril 2018, last updated seg 09 julho 2018</span>
+	<span class="post-date">ter 03 abril 2018, last updated sáb 16 fevereiro 2019</span>
 	<h2>Installing&nbsp;Django</h2>
 <p><code>pip install Django</code></p>
 <h2>Start&nbsp;project</h2>
@@ -99,12 +99,12 @@
 
 
 <p>Next, we need to include our new app in our installed&nbsp;applications:</p>
-<p>Open the <code>mysite/settings.py</code> file and add the <code>'webapp'</code> line:</p>
+<p>Open the <code>mysite/settings.py</code> file and add the <code>'webapp.apps.WebappConfig'</code> line:</p>
 <div class="highlight"><pre><span></span><span class="c1"># ...this is just a slice of code within settings.py </span>
 <span class="c1"># do not delete the other code</span>
 <span class="c1"># just add &#39;webapp&#39; to the list.</span>
 <span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;webapp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;webapp.apps.WebappConfig&#39;</span><span class="p">,</span>  <span class="c1"># &lt;app_name&gt;.apps.&lt;AppName&gt;Config</span>
     <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>

@@ -61,7 +61,7 @@
 </div>		<div class="content container">
 <div class="post">
 	<h1 class="post-title">Collection of useful Django snippets for several&nbsp;purposes</h1>
-	<span class="post-date">ter 08 janeiro 2019, last updated ter 22 janeiro 2019</span>
+	<span class="post-date">ter 08 janeiro 2019, last updated dom 17 março 2019</span>
 	<h3>Index</h3>
 <ul>
 <li><a href="#create-a-slug">Create a&nbsp;slug</a></li>
@@ -70,6 +70,8 @@
 <li><a href="#provide-data-to-db-via-django-python-shell">Provide data to <span class="caps">DB</span> via Django Python&nbsp;Shell</a></li>
 <li><a href="#create-script-with-access-to-django-shell">Create script with access to Django&nbsp;shell</a></li>
 <li><a href="#migrate-django-from-sqlite-to-postgresql">Migrate Django from SQLite to&nbsp;PostgreSQL</a></li>
+<li><a href="#using-django-messages-with-bootstrap">Using Django Messages with&nbsp;Bootstrap</a></li>
+<li><a href="#override-form-__init__-method">Override form <code>__init__</code> method</a></li>
 </ul>
 <hr>
 <h3>Create a&nbsp;slug</h3>
@@ -206,13 +208,91 @@
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">django.contrib.contenttypes.models</span> <span class="kn">import</span> <span class="n">ContentType</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">ContentType</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">quit</span><span class="p">()</span>
-<span class="sb">````</span>
-
-<span class="mi">5</span><span class="p">)</span> <span class="n">Finally</span><span class="p">:</span>
 </pre></div>
 
 
-<p>python manage.py loaddata datadump.json&nbsp;&#8220;`</p>
+<p>5)&nbsp;Finally:</p>
+<div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">loaddata</span> <span class="n">datadump</span><span class="p">.</span><span class="n">json</span>
+</pre></div>
+
+
+<hr>
+<h3>Using Django Messages with&nbsp;Bootstrap</h3>
+<p>Configure the Django Messages Framework to work with Bootstrap by changing the <code>MESSAGE_TAGS</code>. In the <code>settings.py</code> file:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.messages</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">messages</span>
+
+<span class="n">MESSAGE_TAGS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">messages</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">.</span><span class="n">INFO</span><span class="p">:</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">:</span> <span class="s1">&#39;success&#39;</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">.</span><span class="n">WARNING</span><span class="p">:</span> <span class="s1">&#39;warning&#39;</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">.</span><span class="n">ERROR</span><span class="p">:</span> <span class="s1">&#39;danger&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>In your <span class="caps">HTML</span> base template insert the section where messages will&nbsp;display:</p>
+<div class="highlight"><pre><span></span>{% if messages %}
+  {% for message in messages %}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-{{ message.tags }} alert-dismissible&quot;</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;alert&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;close&quot;</span> <span class="na">data-dismiss</span><span class="o">=</span><span class="s">&quot;alert&quot;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&quot;Close&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">&gt;</span><span class="ni">&amp;times;</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+      {{ message }}
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  {% endfor %}
+{% endif %}
+</pre></div>
+
+
+<p>To use messages do the following in <code>views.py</code>:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span>
+
+<span class="n">messages</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> SQL statements were executed.&#39;</span> <span class="o">%</span> <span class="n">count</span><span class="p">)</span>
+<span class="n">messages</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Three credits remain in your account.&#39;</span><span class="p">)</span>
+<span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Profile details updated.&#39;</span><span class="p">)</span>
+<span class="n">messages</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Your account expires in three days.&#39;</span><span class="p">)</span>
+<span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Document deleted.&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<hr>
+<h3>Override form <code>__init__</code> method</h3>
+<p>You can change how a form is created base on logic from a view by modifying the form <code>__init__</code> method.</p>
+<div class="highlight"><pre><span></span><span class="c1"># forms.py</span>
+
+<span class="k">class</span> <span class="nc">TransactionForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Transaction</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="s1">&#39;split&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Override init method so that the split field only shows in forms of account with more than one user</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">multiple_users</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;multiple_users&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TransactionForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">multiple_users</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;split&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>In the <code>views.py</code> file you pass the <code>multiple_users</code> variable to the form&nbsp;class</p>
+<div class="highlight"><pre><span></span><span class="c1"># views.py</span>
+
+<span class="k">def</span> <span class="nf">transaction_new</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">account_id</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">TransactionForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">multiple_users</span><span class="o">=</span><span class="n">multiple_users</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">transaction</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;transaction_new&#39;</span><span class="p">,</span> <span class="n">account_id</span><span class="o">=</span><span class="n">account_id</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">form</span> <span class="o">=</span> <span class="n">TransactionForm</span><span class="p">(</span><span class="n">multiple_users</span><span class="o">=</span><span class="n">multiple_users</span><span class="p">)</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;expense_tracker/new_transaction.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</pre></div>
+
+
+<hr>
 	<br><br><br>
 	<div id="disqus_thread"></div>
 		<script type="text/javascript">

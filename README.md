@@ -1,7 +1,11 @@
 # Programming Notes
 Programming notes, snippets and examples in one place.
     
+## ARTICLES
+
 ## DATA ANALYSIS
+* [Geo ploting with Basemap](/data-analysis/basemap.md)
+* [Data Visualization](/data-analysis/data-viz.md)
 * [Matplotlib](/data-analysis/matplotlib.md)
 * [Saving Scikit-learn model for reuse](/data-analysis/save-model.md)
 * [Seaborn](/data-analysis/seaborn.md)
@@ -39,6 +43,7 @@ Programming notes, snippets and examples in one place.
 * [Filter a table or list by typing in search box](/javascript/filter-search.md)
 
 ## PYTHON
+* [Argument parsing using the argparse module](/python/arg-parse.md)
 * [*args and **kwargs](/python/args-kwargs.md)
 * [Web scrapping with Beautiful Soup 4](/python/beautifulsoup4.md)
 * [Sorting lists](/python/builtin-functions.md)
@@ -50,6 +55,7 @@ Programming notes, snippets and examples in one place.
 * [Building a Django site](/python/django.md)
 * [Sending e-mails with Python](/python/email.md)
 * [Building a Flask site](/python/flask.md)
+* [Graphical user interface in Python](/python/gui.md)
 * [Hosting Python scripts and services](/python/hosting.md)
 * [Image manipulation in Python](/python/image-manipulation.md)
 * [Imports in Python](/python/imports.md)

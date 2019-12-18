@@ -1,7 +1,7 @@
 Title: Collection of useful Django snippets for several purposes
 Date: 2019-01-08 10:32
 Authors: José Aniceto
-Modified: 2019-01-22 22:48
+Modified: 2019-03-17 20:09
 
 ### Index
 * [Create a slug](#create-a-slug)
@@ -10,6 +10,8 @@ Modified: 2019-01-22 22:48
 * [Provide data to DB via Django Python Shell](#provide-data-to-db-via-django-python-shell)
 * [Create script with access to Django shell](#create-script-with-access-to-django-shell)
 * [Migrate Django from SQLite to PostgreSQL](#migrate-django-from-sqlite-to-postgresql)
+* [Using Django Messages with Bootstrap](#using-django-messages-with-bootstrap)
+* [Override form `__init__` method](#override-form-__init__-method)
 
 ---
 
@@ -159,9 +161,92 @@ python manage.py shell
 >>> from django.contrib.contenttypes.models import ContentType
 >>> ContentType.objects.all().delete()
 >>> quit()
-````
+```
 
 5) Finally:
 ```
 python manage.py loaddata datadump.json
 ```
+
+---
+
+### Using Django Messages with Bootstrap
+
+Configure the Django Messages Framework to work with Bootstrap by changing the `MESSAGE_TAGS`. In the `settings.py` file:
+```python
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'info',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',
+}
+```
+
+In your HTML base template insert the section where messages will display:
+```html
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+```
+
+To use messages do the following in `views.py`:
+```python
+from django.contrib import messages
+
+messages.debug(request, '%s SQL statements were executed.' % count)
+messages.info(request, 'Three credits remain in your account.')
+messages.success(request, 'Profile details updated.')
+messages.warning(request, 'Your account expires in three days.')
+messages.error(request, 'Document deleted.')
+```
+
+---
+
+### Override form `__init__` method
+You can change how a form is created base on logic from a view by modifying the form `__init__` method.
+
+```python
+# forms.py
+
+class TransactionForm(forms.ModelForm):
+
+    class Meta:
+        model = Transaction
+        fields = ('category', 'name', 'value', 'split')
+
+    # Override init method so that the split field only shows in forms of account with more than one user
+    def __init__(self, *args, **kwargs):
+        multiple_users = kwargs.pop('multiple_users', True)
+        super(TransactionForm, self).__init__(*args, **kwargs)
+        if not multiple_users:
+            del self.fields['split']
+```
+
+In the `views.py` file you pass the `multiple_users` variable to the form class
+
+```python
+# views.py
+
+def transaction_new(request, account_id):
+    if request.method == "POST":
+        form = TransactionForm(request.POST, multiple_users=multiple_users)
+        if form.is_valid():
+            transaction.save()
+            return redirect('transaction_new', account_id=account_id)
+        else:
+            form = TransactionForm(multiple_users=multiple_users)
+    context = {...}
+	return render(request, 'expense_tracker/new_transaction.html', context)
+```
+
+---

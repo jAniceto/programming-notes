@@ -1,5 +1,289 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio</title><link href="https://janiceto.github.io/programming-notes/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes/feeds/all.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes/</id><updated>2019-10-19T12:08:00+01:00</updated><entry><title>Matplotlib</title><link href="https://janiceto.github.io/programming-notes/matplotlib.html" rel="alternate"></link><published>2019-10-19T12:08:00+01:00</published><updated>2019-10-19T12:08:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-10-19:/programming-notes/matplotlib.html</id><summary type="html">&lt;p&gt;Index: 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio</title><link href="https://janiceto.github.io/programming-notes/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes/feeds/all.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes/</id><updated>2019-12-18T14:09:00+00:00</updated><entry><title>Geo ploting with Basemap</title><link href="https://janiceto.github.io/programming-notes/basemap.html" rel="alternate"></link><published>2019-12-18T14:09:00+00:00</published><updated>2019-12-18T14:09:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-12-18:/programming-notes/basemap.html</id><summary type="html">&lt;p&gt;The matplotlib basemap toolkit is a library for plotting 2D data on maps in&amp;nbsp;Python.&lt;/p&gt;
+&lt;h2&gt;Basemap&amp;nbsp;installation&lt;/h2&gt;
+&lt;p&gt;The recommended installation method for Basemap is using Anaconda and the conda-forge channel. In the Anaconda Prompt&amp;nbsp;run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ conda install -c anaconda basemap
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You might also need to run the following command to install &lt;a href="https://proj.org/install.html"&gt;&lt;span class="caps"&gt;PROJ&lt;/span&gt;&lt;/a&gt;, which is a required dependency of&amp;nbsp;Basemap:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ conda install -c conda-forge proj
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If the installation was sucessful you should now be able to run the following import in the Python (Anaconda) prompt without any&amp;nbsp;errors:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;mpl_toolkits.basemap&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Basemap&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Ploting a simple&amp;nbsp;map&lt;/h2&gt;
+&lt;p&gt;Let&amp;#8217;s plot a simple world&amp;nbsp;map.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;mpl_toolkits.basemap&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Basemap&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+
+&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Basemap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;projection&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;mill&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;llcrnrlat&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;90&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;urcrnrlat&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;90&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;llcrnrlon&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;urcrnrlon&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;resolution&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Draw map features&lt;/span&gt;
+&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drawcoastlines&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fillcontinents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#072B57&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;lake_color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#FFFFFF&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Draw parallels and meridians&lt;/span&gt;
+&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drawparallels&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arange …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;The matplotlib basemap toolkit is a library for plotting 2D data on maps in&amp;nbsp;Python.&lt;/p&gt;
+&lt;h2&gt;Basemap&amp;nbsp;installation&lt;/h2&gt;
+&lt;p&gt;The recommended installation method for Basemap is using Anaconda and the conda-forge channel. In the Anaconda Prompt&amp;nbsp;run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ conda install -c anaconda basemap
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You might also need to run the following command to install &lt;a href="https://proj.org/install.html"&gt;&lt;span class="caps"&gt;PROJ&lt;/span&gt;&lt;/a&gt;, which is a required dependency of&amp;nbsp;Basemap:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ conda install -c conda-forge proj
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If the installation was sucessful you should now be able to run the following import in the Python (Anaconda) prompt without any&amp;nbsp;errors:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;mpl_toolkits.basemap&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Basemap&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Ploting a simple&amp;nbsp;map&lt;/h2&gt;
+&lt;p&gt;Let&amp;#8217;s plot a simple world&amp;nbsp;map.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;mpl_toolkits.basemap&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Basemap&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+
+&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Basemap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;projection&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;mill&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;llcrnrlat&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;90&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;urcrnrlat&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;90&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;llcrnrlon&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;urcrnrlon&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;resolution&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Draw map features&lt;/span&gt;
+&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drawcoastlines&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fillcontinents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#072B57&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;lake_color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#FFFFFF&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Draw parallels and meridians&lt;/span&gt;
+&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drawparallels&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;90.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mf"&gt;91.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mf"&gt;30.&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drawmeridians&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;180.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mf"&gt;181.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mf"&gt;60.&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drawmapboundary&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fill_color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#FFFFFF&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Basemap Example!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;projection='mill'&lt;/code&gt; is the map projection. There are multiple projections availlable. Check &lt;a href="https://matplotlib.org/basemap/users/mapsetup.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;llcrnrlat&lt;/code&gt;, &lt;code&gt;llcrnrlon&lt;/code&gt;, &lt;code&gt;urcrnrlat&lt;/code&gt;, and &lt;code&gt;urcrnrlon&lt;/code&gt; are the latitude and longitude values of the lower left and upper right corners of the&amp;nbsp;map.&lt;/p&gt;
+&lt;p&gt;There are three resolution levels: &lt;code&gt;resolution='c'&lt;/code&gt; (used above) is crude resolution but faster render time. There is also &lt;code&gt;resolution='l'&lt;/code&gt; for low resolution and &lt;code&gt;resolution='h'&lt;/code&gt; for high resolution, which represent increasing map resolution and increased render time. Unless coastlines or lakes are really important to you crude resolution is usually&amp;nbsp;enough.&lt;/p&gt;
+&lt;h2&gt;Drawing other map&amp;nbsp;features:&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drawcountries&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# draw countries&lt;/span&gt;
+&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drawstates&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# draw states&lt;/span&gt;
+&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drawrivers&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# draw rivers&lt;/span&gt;
+&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bluemarble&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# satellite style map&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Ploting&amp;nbsp;coordinates&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;mpl_toolkits.basemap&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Basemap&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
+
+&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Basemap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;projection&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;mill&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;llcrnrlat&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;90&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;urcrnrlat&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;90&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;llcrnrlon&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;urcrnrlon&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;resolution&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drawcoastlines&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fillcontinents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#072B57&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;lake_color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#FFFFFF&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drawmapboundary&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fill_color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#FFFFFF&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;lat&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lon&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;29.7630&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;95.3630&lt;/span&gt;  &lt;span class="c1"&gt;# define the coordinates&lt;/span&gt;
+&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lon&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lat&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# convert to Basemap system using your map&lt;/span&gt;
+&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ro&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;markersize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="o"&gt;=.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# plot and specify marker size and marker fill transparency&lt;/span&gt;
+
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Basemap Example!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;References:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://anaconda.org/anaconda/basemap"&gt;Basemap installation via&amp;nbsp;Anaconda&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://proj.org/install.html"&gt;&lt;span class="caps"&gt;PROJ&lt;/span&gt; installation&amp;nbsp;instructions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pythonprogramming.net/geographical-plotting-basemap-tutorial/"&gt;pythonprogramming.net&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Data Analysis"></category></entry><entry><title>Data Visualization</title><link href="https://janiceto.github.io/programming-notes/data-viz.html" rel="alternate"></link><published>2019-12-10T14:27:00+00:00</published><updated>2019-12-10T14:27:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-12-10:/programming-notes/data-viz.html</id><content type="html">&lt;h2&gt;Plotting&amp;nbsp;libraries&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://matplotlib.org/"&gt;Matplotlib&lt;/a&gt;: Python de facto 2D plotting&amp;nbsp;library.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://seaborn.pydata.org/"&gt;seaborn&lt;/a&gt;: Based on matplotlib, it provides a high-level interface for drawing attractive and informative statistical&amp;nbsp;graphics.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://altair-viz.github.io/"&gt;Altair&lt;/a&gt;: A declarative statistical visualization library for Python, based on Vega and&amp;nbsp;Vega-Lite&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Web&amp;nbsp;ready&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://docs.bokeh.org/en/latest/"&gt;Bokeh &lt;/a&gt;: Creates interactive, web-ready plots, which can be easily output as &lt;span class="caps"&gt;JSON&lt;/span&gt; objects, &lt;span class="caps"&gt;HTML&lt;/span&gt; documents, or interactive web&amp;nbsp;applications.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://plot.ly/python/"&gt;Plotly&lt;/a&gt;: Makes interactive plots, but it offers some charts you won&amp;#8217;t find in most libraries, like contour plots, dendograms, and 3D&amp;nbsp;charts.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Geo&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://python-visualization.github.io/folium/"&gt;Folium&lt;/a&gt;: Folium makes it easy to visualize data that’s been manipulated in Python on an interactive &lt;a href="https://leafletjs.com/"&gt;&lt;code&gt;leaflet.js&lt;/code&gt;&lt;/a&gt;&amp;nbsp;map.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://matplotlib.org/basemap/users/index.html"&gt;Basemap&lt;/a&gt;: A matplotlib toolkit library for plotting 2D data on maps in&amp;nbsp;Python.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Data Analysis"></category></entry><entry><title>Graphical user interface in Python</title><link href="https://janiceto.github.io/programming-notes/gui.html" rel="alternate"></link><published>2019-12-04T10:55:00+00:00</published><updated>2019-12-04T10:55:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-12-04:/programming-notes/gui.html</id><content type="html">&lt;h3&gt;For simple command line&amp;nbsp;programs&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/chriskiehl/Gooey"&gt;Gooey&lt;/a&gt; - Turn (almost) any Python command line program into a full &lt;span class="caps"&gt;GUI&lt;/span&gt;&amp;nbsp;application&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span class="caps"&gt;GUI&lt;/span&gt;&amp;nbsp;libraries&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://wiki.python.org/moin/TkInter"&gt;TkInter&lt;/a&gt; - Python&amp;#8217;s de-facto standard &lt;span class="caps"&gt;GUI&lt;/span&gt; available in the standard&amp;nbsp;library&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://pysimplegui.readthedocs.io/en/latest/"&gt;PySimpleGUI&lt;/a&gt; - Transforms tkinter, Qt, Remi, WxPython into portable people-friendly Pythonic&amp;nbsp;interfaces&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://kivy.org/"&gt;Kivy&lt;/a&gt; - Cross-platform &lt;span class="caps"&gt;GUI&lt;/span&gt; library supporting both desktop operating systems (Windows, macOS, Linux) and mobile devices (Android,&amp;nbsp;iOS).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://riverbankcomputing.com/software/pyqt/intro"&gt;PyQt5&lt;/a&gt;, &lt;a href="https://pypi.org/project/QtPy/"&gt;QtPy&lt;/a&gt;, &lt;a href="https://wiki.qt.io/PySide"&gt;PySide&lt;/a&gt; - There are Python bindings available for the Qt toolkit (using either PyQt or PySide). PyQt is currently more mature than PySide, but you must buy a PyQt license if you want to write proprietary applications. PySide is free for all&amp;nbsp;applications.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Other&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://streamlit.io/docs/"&gt;Streamlit&lt;/a&gt; - Makes it easy to build beautiful apps for machine&amp;nbsp;learning.&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Python"></category></entry><entry><title>Argument parsing using the argparse module</title><link href="https://janiceto.github.io/programming-notes/arg-parse.html" rel="alternate"></link><published>2019-11-22T17:47:00+00:00</published><updated>2019-11-22T17:47:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-11-22:/programming-notes/arg-parse.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;argparse&lt;/strong&gt; is a Python Standard Library module to write user-friendly command-line interfaces. The program defines what arguments it requires, and argparse will figure out how to parse those out of sys.argv. The argparse module also automatically generates help and usage messages and issues errors when users give the program invalid&amp;nbsp;arguments&lt;/p&gt;
+&lt;h3&gt;Initialize&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;argparse&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Instantiate the parser&lt;/span&gt;
+&lt;span class="n"&gt;parser&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;argparse&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ArgumentParser&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Optional app description&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Add&amp;nbsp;Arguments&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Required positional argument&lt;/span&gt;
+&lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_argument&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pos_arg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;A required integer positional argument&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Optional positional argument&lt;/span&gt;
+&lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_argument&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;opt_pos_arg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nargs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;?&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;An optional integer positional argument&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Optional argument&lt;/span&gt;
+&lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_argument&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;--opt_arg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;An optional integer argument&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Switch&lt;/span&gt;
+&lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_argument&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;--switch&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;action&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;store_true&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;A boolean switch&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Parse&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse_args&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Access&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Argument values:&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pos_arg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;opt_pos_arg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;opt_arg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Check&amp;nbsp;Values&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pos_arg&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;pos_arg cannot be larger …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;argparse&lt;/strong&gt; is a Python Standard Library module to write user-friendly command-line interfaces. The program defines what arguments it requires, and argparse will figure out how to parse those out of sys.argv. The argparse module also automatically generates help and usage messages and issues errors when users give the program invalid&amp;nbsp;arguments&lt;/p&gt;
+&lt;h3&gt;Initialize&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;argparse&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Instantiate the parser&lt;/span&gt;
+&lt;span class="n"&gt;parser&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;argparse&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ArgumentParser&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Optional app description&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Add&amp;nbsp;Arguments&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Required positional argument&lt;/span&gt;
+&lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_argument&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pos_arg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;A required integer positional argument&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Optional positional argument&lt;/span&gt;
+&lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_argument&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;opt_pos_arg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nargs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;?&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;An optional integer positional argument&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Optional argument&lt;/span&gt;
+&lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_argument&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;--opt_arg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;An optional integer argument&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Switch&lt;/span&gt;
+&lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_argument&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;--switch&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;action&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;store_true&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;A boolean switch&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Parse&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse_args&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Access&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Argument values:&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pos_arg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;opt_pos_arg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;opt_arg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Check&amp;nbsp;Values&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pos_arg&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;pos_arg cannot be larger than 10&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Usage&lt;/h3&gt;
+&lt;p&gt;Assuming the Python code above is saved into a file called &lt;code&gt;prog.py&lt;/code&gt;.&lt;/p&gt;
+&lt;h4&gt;Correct&amp;nbsp;use:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python prog.py &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt; --opt_arg &lt;span class="m"&gt;3&lt;/span&gt; --switch
+
+Argument values:
+&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="m"&gt;2&lt;/span&gt;
+&lt;span class="m"&gt;3&lt;/span&gt;
+True
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Incorrect&amp;nbsp;arguments:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;prog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;--opt_arg 3 --switch&lt;/span&gt;
+&lt;span class="k"&gt;usage&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;convert&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;-h&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;--opt_arg OPT_ARG&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;--switch&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pos_arg&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;opt_pos_arg&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;prog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;py&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nl"&gt;error&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;argument&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nl"&gt;pos_arg&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;invalid&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;value&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;prog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;--opt_arg 3&lt;/span&gt;
+&lt;span class="n"&gt;Argument&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;values&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;False&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;usage&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;prog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;-h&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;--opt_arg OPT_ARG&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;--switch&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pos_arg&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;opt_pos_arg&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="nf"&gt;convert&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nl"&gt;error&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pos_arg&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cannot&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;be&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;larger&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;than&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Full&amp;nbsp;help&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python prog.py -h
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://docs.python.org/3/library/argparse.html"&gt;Python&amp;nbsp;docs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://stackoverflow.com/a/30493366"&gt;Stack Overflow&amp;nbsp;answer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Python"></category></entry><entry><title>Matplotlib</title><link href="https://janiceto.github.io/programming-notes/matplotlib.html" rel="alternate"></link><published>2019-10-19T12:08:00+01:00</published><updated>2019-10-19T12:08:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-10-19:/programming-notes/matplotlib.html</id><summary type="html">&lt;p&gt;Index: 
 * &lt;a href="#adding-labels-to-a-bar-chart"&gt;Adding labels to a bar&amp;nbsp;chart&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Adding labels to a bar&amp;nbsp;chart&lt;/h2&gt;
 &lt;h3&gt;For a vertical bar&amp;nbsp;chart:&lt;/h3&gt;
@@ -480,7 +764,7 @@
 &lt;p&gt;Format options available in the &lt;a href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior"&gt;datetime documentation&lt;/a&gt; and at &lt;a href="http://strftime.org/"&gt;strftime.org&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;To summarize:
 * &lt;code&gt;strptime&lt;/code&gt; = &amp;#8220;string parse time&amp;#8221;
-* &lt;code&gt;strftime&lt;/code&gt; = &amp;#8220;string format&amp;nbsp;time&amp;#8221;&lt;/p&gt;</content><category term="Python"></category></entry><entry><title>Set up Amazon S3 to serve Django Static and Media files</title><link href="https://janiceto.github.io/programming-notes/s3-django-setup.html" rel="alternate"></link><published>2019-01-31T12:10:00+00:00</published><updated>2019-02-03T20:46:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-31:/programming-notes/s3-django-setup.html</id><summary type="html">&lt;p&gt;Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django&amp;nbsp;App. &lt;/p&gt;
+* &lt;code&gt;strftime&lt;/code&gt; = &amp;#8220;string format&amp;nbsp;time&amp;#8221;&lt;/p&gt;</content><category term="Python"></category></entry><entry><title>Set up Amazon S3 to serve Django Static and Media files</title><link href="https://janiceto.github.io/programming-notes/s3-django-setup.html" rel="alternate"></link><published>2019-01-31T12:10:00+00:00</published><updated>2019-02-20T14:01:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-31:/programming-notes/s3-django-setup.html</id><summary type="html">&lt;p&gt;Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django&amp;nbsp;App. &lt;/p&gt;
 &lt;h2&gt;1) Sign up to &lt;span class="caps"&gt;AWS&lt;/span&gt; S3 and create &lt;span class="caps"&gt;IAM&lt;/span&gt;&amp;nbsp;user&lt;/h2&gt;
 &lt;p&gt;After signing up to Amazon &lt;span class="caps"&gt;AWS&lt;/span&gt; we need to create a user using the &lt;strong&gt;&lt;span class="caps"&gt;IAM&lt;/span&gt;&lt;/strong&gt; service. This way you can restrict the access to the bucket. Each user will have its own access id and key. To do&amp;nbsp;this:&lt;/p&gt;
 &lt;ul&gt;
@@ -615,12 +899,13 @@
 
 &lt;p&gt;Next you have to add the following settings to the &lt;code&gt;settings.py&lt;/code&gt; file in your&amp;nbsp;application.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Set S3 as the place to store your files.&lt;/span&gt;
-&lt;span class="n"&gt;DEFAULT_FILE_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 
-&lt;span class="n"&gt;storages&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;backends&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;s3boto3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S3Boto3Storage&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_FILE_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;storages.backends.s3boto3.S3Boto3Storage&amp;quot;&lt;/span&gt;
 &lt;span class="n"&gt;STATICFILES_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;storages.backends.s3boto3.S3Boto3Storage&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_ACCESS_KEY_ID&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_SECRET_ACCESS_KEY&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_STORAGE_BUCKET_NAME&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_S3_FILE_OVERWRITE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;AWS_DEFAULT_ACL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_ACCESS_KEY_ID&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_SECRET_ACCESS_KEY&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_STORAGE_BUCKET_NAME&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;AWS_QUERYSTRING_AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="c1"&gt;# This will make sure that the file URL does not have unnecessary parameters like your access key.&lt;/span&gt;
 &lt;span class="n"&gt;AWS_S3_CUSTOM_DOMAIN&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.s3.amazonaws.com&amp;#39;&lt;/span&gt;
 
@@ -686,7 +971,7 @@
 &lt;li&gt;&lt;a href="https://medium.com/@manibatra23/setting-up-amazon-s3-bucket-for-serving-django-static-and-media-files-3e781ab325d5"&gt;Setting up Amazon S3 Bucket for serving Django Static and Media&amp;nbsp;files&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.caktusgroup.com/blog/2014/11/10/Using-Amazon-S3-to-store-your-Django-sites-static-and-media-files/"&gt;Using Amazon S3 to Store your Django Site&amp;#8217;s Static and Media&amp;nbsp;Files&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://simpleisbetterthancomplex.com/tutorial/2017/08/01/how-to-setup-amazon-s3-in-a-django-project.html"&gt;How to Setup Amazon S3 in a Django&amp;nbsp;Project&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Deploy a Django app to Heroku</title><link href="https://janiceto.github.io/programming-notes/deploy-django-heroku.html" rel="alternate"></link><published>2019-01-22T14:45:00+00:00</published><updated>2019-02-01T23:11:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-22:/programming-notes/deploy-django-heroku.html</id><summary type="html">&lt;h3&gt;Index:&lt;/h3&gt;
+&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Deploy a Django app to Heroku</title><link href="https://janiceto.github.io/programming-notes/deploy-django-heroku.html" rel="alternate"></link><published>2019-01-22T14:45:00+00:00</published><updated>2019-05-29T22:48:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-22:/programming-notes/deploy-django-heroku.html</id><summary type="html">&lt;h3&gt;Index:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#requirements"&gt;Requirements&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#install-the-heroku-cli"&gt;Install the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
@@ -781,6 +1066,11 @@ $ git push heroku master
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;Note: If you wish to depoly from a local branch other than &lt;code&gt;master&lt;/code&gt;, e.g. &lt;code&gt;testbranch&lt;/code&gt; then&amp;nbsp;use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git push heroku testbranch:master
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;Finally, migrate your Database to the Heroku&amp;nbsp;app:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ heroku run python manage.py migrate
 &lt;/pre&gt;&lt;/div&gt;
@@ -805,7 +1095,7 @@ $ git push heroku master
 &lt;li&gt;&lt;a href="https://devcenter.heroku.com/articles/django-app-configuration"&gt;Configuring Django Apps for&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/heroku/django-heroku"&gt;django-heroku&amp;nbsp;Github&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://devcenter.heroku.com/articles/git"&gt;Deploying with&amp;nbsp;Git&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Collection of useful Django snippets for several purposes</title><link href="https://janiceto.github.io/programming-notes/django-snippets.html" rel="alternate"></link><published>2019-01-08T10:32:00+00:00</published><updated>2019-01-22T22:48:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-08:/programming-notes/django-snippets.html</id><summary type="html">&lt;h3&gt;Index&lt;/h3&gt;
+&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Collection of useful Django snippets for several purposes</title><link href="https://janiceto.github.io/programming-notes/django-snippets.html" rel="alternate"></link><published>2019-01-08T10:32:00+00:00</published><updated>2019-03-17T20:09:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-08:/programming-notes/django-snippets.html</id><summary type="html">&lt;h3&gt;Index&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#create-a-slug"&gt;Create a&amp;nbsp;slug&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#send-email"&gt;Send&amp;nbsp;email&lt;/a&gt;&lt;/li&gt;
@@ -813,6 +1103,8 @@ $ git push heroku master
 &lt;li&gt;&lt;a href="#provide-data-to-db-via-django-python-shell"&gt;Provide data to &lt;span class="caps"&gt;DB&lt;/span&gt; via Django Python&amp;nbsp;Shell&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#create-script-with-access-to-django-shell"&gt;Create script with access to Django&amp;nbsp;shell&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#migrate-django-from-sqlite-to-postgresql"&gt;Migrate Django from SQLite to&amp;nbsp;PostgreSQL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#using-django-messages-with-bootstrap"&gt;Using Django Messages with&amp;nbsp;Bootstrap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#override-form-__init__-method"&gt;Override form &lt;code&gt;__init__&lt;/code&gt; method&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h3&gt;Create a&amp;nbsp;slug&lt;/h3&gt;
@@ -836,7 +1128,7 @@ $ git push heroku master
 
 &lt;hr&gt;
 &lt;h3&gt;Send&amp;nbsp;email&lt;/h3&gt;
-&lt;p&gt;If &lt;code&gt;html_message&lt;/code&gt; keyword argument is provided, the resulting email will be a multipart/alternative email with &lt;code&gt;message&lt;/code&gt; as the text/plain content type …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Index&lt;/h3&gt;
+&lt;p&gt;If &lt;code&gt;html_message&lt;/code&gt; keyword argument is provided, the resulting email will be a multipart/alternative …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Index&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#create-a-slug"&gt;Create a&amp;nbsp;slug&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#send-email"&gt;Send&amp;nbsp;email&lt;/a&gt;&lt;/li&gt;
@@ -844,6 +1136,8 @@ $ git push heroku master
 &lt;li&gt;&lt;a href="#provide-data-to-db-via-django-python-shell"&gt;Provide data to &lt;span class="caps"&gt;DB&lt;/span&gt; via Django Python&amp;nbsp;Shell&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#create-script-with-access-to-django-shell"&gt;Create script with access to Django&amp;nbsp;shell&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#migrate-django-from-sqlite-to-postgresql"&gt;Migrate Django from SQLite to&amp;nbsp;PostgreSQL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#using-django-messages-with-bootstrap"&gt;Using Django Messages with&amp;nbsp;Bootstrap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#override-form-__init__-method"&gt;Override form &lt;code&gt;__init__&lt;/code&gt; method&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h3&gt;Create a&amp;nbsp;slug&lt;/h3&gt;
@@ -980,13 +1274,91 @@ $ git push heroku master
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.contenttypes.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ContentType&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;ContentType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delete&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;quit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="sb"&gt;````&lt;/span&gt;
-
-&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;Finally&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;python manage.py loaddata datadump.json&amp;nbsp;&amp;#8220;`&lt;/p&gt;</content><category term="Python"></category></entry><entry><title>Editing photos metadata</title><link href="https://janiceto.github.io/programming-notes/image-metadata.html" rel="alternate"></link><published>2018-12-14T10:43:00+00:00</published><updated>2018-12-14T10:43:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-12-14:/programming-notes/image-metadata.html</id><content type="html">&lt;p&gt;You can do it in one line in the Terminal using &lt;code&gt;jhead&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;5)&amp;nbsp;Finally:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;loaddata&lt;/span&gt; &lt;span class="n"&gt;datadump&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h3&gt;Using Django Messages with&amp;nbsp;Bootstrap&lt;/h3&gt;
+&lt;p&gt;Configure the Django Messages Framework to work with Bootstrap by changing the &lt;code&gt;MESSAGE_TAGS&lt;/code&gt;. In the &lt;code&gt;settings.py&lt;/code&gt; file:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.messages&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;constants&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;messages&lt;/span&gt;
+
+&lt;span class="n"&gt;MESSAGE_TAGS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;messages&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;info&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;messages&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;INFO&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;info&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;messages&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SUCCESS&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;success&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;messages&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;WARNING&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;warning&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;messages&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ERROR&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;danger&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In your &lt;span class="caps"&gt;HTML&lt;/span&gt; base template insert the section where messages will&amp;nbsp;display:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% if messages %}
+  {% for message in messages %}
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;alert alert-{{ message.tags }} alert-dismissible&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;role&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;alert&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;button&lt;/span&gt; &lt;span class="na"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;button&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;close&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;data-dismiss&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;alert&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;aria-label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Close&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt; &lt;span class="na"&gt;aria-hidden&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;times;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;button&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+      {{ message }}
+    &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  {% endfor %}
+{% endif %}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To use messages do the following in &lt;code&gt;views.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;messages&lt;/span&gt;
+
+&lt;span class="n"&gt;messages&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt; SQL statements were executed.&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;messages&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Three credits remain in your account.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;messages&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;success&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Profile details updated.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;messages&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;warning&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Your account expires in three days.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;messages&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Document deleted.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h3&gt;Override form &lt;code&gt;__init__&lt;/code&gt; method&lt;/h3&gt;
+&lt;p&gt;You can change how a form is created base on logic from a view by modifying the form &lt;code&gt;__init__&lt;/code&gt; method.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# forms.py&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;TransactionForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ModelForm&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Transaction&lt;/span&gt;
+        &lt;span class="n"&gt;fields&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;category&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;value&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;split&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Override init method so that the split field only shows in forms of account with more than one user&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;multiple_users&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;multiple_users&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TransactionForm&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;multiple_users&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;del&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;split&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In the &lt;code&gt;views.py&lt;/code&gt; file you pass the &lt;code&gt;multiple_users&lt;/code&gt; variable to the form&amp;nbsp;class&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# views.py&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;transaction_new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;account_id&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TransactionForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;POST&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;multiple_users&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;multiple_users&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_valid&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+            &lt;span class="n"&gt;transaction&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;redirect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;transaction_new&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;account_id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;account_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TransactionForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;multiple_users&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;multiple_users&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;expense_tracker/new_transaction.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;</content><category term="Python"></category></entry><entry><title>Editing photos metadata</title><link href="https://janiceto.github.io/programming-notes/image-metadata.html" rel="alternate"></link><published>2018-12-14T10:43:00+00:00</published><updated>2018-12-14T10:43:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-12-14:/programming-notes/image-metadata.html</id><content type="html">&lt;p&gt;You can do it in one line in the Terminal using &lt;code&gt;jhead&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;For example, adjust all &lt;span class="caps"&gt;EXIF&lt;/span&gt; times forward by 1&amp;nbsp;hour:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;jhead&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ta&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;00&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jpg&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -1880,7 +2252,14 @@ $ sudo systemctl restart gunicorn
 &lt;h2&gt;References:&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04&lt;/li&gt;
-&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Useful Python code snippets</title><link href="https://janiceto.github.io/programming-notes/snippets.html" rel="alternate"></link><published>2018-06-03T14:27:00+01:00</published><updated>2018-06-06T13:49:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-06-03:/programming-notes/snippets.html</id><summary type="html">&lt;p&gt;A collection of several code snippets of common or useful operation in&amp;nbsp;Python.&lt;/p&gt;
+&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Useful Python code snippets</title><link href="https://janiceto.github.io/programming-notes/snippets.html" rel="alternate"></link><published>2018-06-03T14:27:00+01:00</published><updated>2019-03-12T14:41:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-06-03:/programming-notes/snippets.html</id><summary type="html">&lt;p&gt;A collection of several code snippets of common or useful operation in&amp;nbsp;Python.&lt;/p&gt;
+&lt;h2&gt;Get list of attributes (methods) of an&amp;nbsp;object&lt;/h2&gt;
+&lt;p&gt;Get a list of attributes (methods) of an object with &lt;code&gt;dir(object)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To see everything except hidden/dunder methods you can&amp;nbsp;do:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;dir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;startswith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;_&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h2&gt;Remove dictionary from&amp;nbsp;list&lt;/h2&gt;
 &lt;p&gt;Here&amp;#8217;s how to remove a specific dictionary, or several dictionaries, from a list of dictionaries by a specific key. In the example below we are removing from the list all dictionaries which have and &lt;code&gt;id&lt;/code&gt; key of &lt;code&gt;2&lt;/code&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;thelist&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;paul&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
@@ -1902,15 +2281,14 @@ $ sudo systemctl restart gunicorn
 
 
 &lt;p&gt;With list&amp;nbsp;comprehension:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c1"&gt;# [1, 4, 9, 16]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3 …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;A collection of several code snippets of common or useful operation in&amp;nbsp;Python.&lt;/p&gt;
+&lt;h2&gt;Get list of attributes (methods) of an&amp;nbsp;object&lt;/h2&gt;
+&lt;p&gt;Get a list of attributes (methods) of an object with &lt;code&gt;dir(object)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To see everything except hidden/dunder methods you can&amp;nbsp;do:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;dir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;startswith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;_&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;Lambda&amp;nbsp;Functions&lt;/h2&gt;
-&lt;p&gt;Lambda functions are used for creating small, one-time and anonymous function objects in Python. Basically, they let you create a function, without creating a function. Note …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A collection of several code snippets of common or useful operation in&amp;nbsp;Python.&lt;/p&gt;
 &lt;h2&gt;Remove dictionary from&amp;nbsp;list&lt;/h2&gt;
 &lt;p&gt;Here&amp;#8217;s how to remove a specific dictionary, or several dictionaries, from a list of dictionaries by a specific key. In the example below we are removing from the list all dictionaries which have and &lt;code&gt;id&lt;/code&gt; key of &lt;code&gt;2&lt;/code&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;thelist&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;paul&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
@@ -2073,7 +2451,7 @@ $ sudo systemctl restart gunicorn
 &lt;li&gt;&lt;code&gt;csv.QUOTE_MINIMAL&lt;/code&gt; - Quote fields with special&amp;nbsp;characters&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;csv.QUOTE_NONNUMERIC&lt;/code&gt; - Quote all fields that are not integers or&amp;nbsp;floats&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;csv.QUOTE_NONE&lt;/code&gt; - Do not quote anything on&amp;nbsp;output&lt;/li&gt;
-&lt;/ul&gt;</content><category term="Python"></category></entry><entry><title>Building a Django site</title><link href="https://janiceto.github.io/programming-notes/django.html" rel="alternate"></link><published>2018-04-03T17:23:00+01:00</published><updated>2018-07-09T17:48:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-04-03:/programming-notes/django.html</id><summary type="html">&lt;h2&gt;Installing&amp;nbsp;Django&lt;/h2&gt;
+&lt;/ul&gt;</content><category term="Python"></category></entry><entry><title>Building a Django site</title><link href="https://janiceto.github.io/programming-notes/django.html" rel="alternate"></link><published>2018-04-03T17:23:00+01:00</published><updated>2019-02-16T20:16:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-04-03:/programming-notes/django.html</id><summary type="html">&lt;h2&gt;Installing&amp;nbsp;Django&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;pip install Django&lt;/code&gt;&lt;/p&gt;
 &lt;h2&gt;Start&amp;nbsp;project&lt;/h2&gt;
 &lt;p&gt;Navigate via the terminal or command prompt to an area where you want to work on your project, then&amp;nbsp;do:&lt;/p&gt;
@@ -2122,12 +2500,12 @@ $ sudo systemctl restart gunicorn
 
 
 &lt;p&gt;Next, we need to include our new app in our installed&amp;nbsp;applications:&lt;/p&gt;
-&lt;p&gt;Open the &lt;code&gt;mysite/settings.py&lt;/code&gt; file and add the &lt;code&gt;'webapp'&lt;/code&gt; line:&lt;/p&gt;
+&lt;p&gt;Open the &lt;code&gt;mysite/settings.py&lt;/code&gt; file and add the &lt;code&gt;'webapp.apps.WebappConfig'&lt;/code&gt; line:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# ...this is just a slice of code within settings.py &lt;/span&gt;
 &lt;span class="c1"&gt;# do not delete the other code&lt;/span&gt;
 &lt;span class="c1"&gt;# just add &amp;#39;webapp&amp;#39; to the list.&lt;/span&gt;
 &lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;webapp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;webapp.apps.WebappConfig&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="c1"&gt;# &amp;lt;app_name&amp;gt;.apps.&amp;lt;AppName&amp;gt;Config&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;django.contrib.admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;django.contrib.auth&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;django.contrib.contenttypes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -3682,7 +4060,7 @@ $ git clone &amp;lt;git url&amp;gt;
 
 
 &lt;h2&gt;Useful&amp;nbsp;references&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://nikolak.com/deploying-python-code-to-vps/"&gt;Running python scripts on a &lt;span class="caps"&gt;VPS&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</content><category term="Python"></category></entry><entry><title>Linux Crontab</title><link href="https://janiceto.github.io/programming-notes/crontab.html" rel="alternate"></link><published>2017-09-07T10:44:00+01:00</published><updated>2017-11-05T20:36:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-09-07:/programming-notes/crontab.html</id><summary type="html">&lt;p&gt;To view currently active crontab entries: &lt;code&gt;$ sudo crontab -l&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://nikolak.com/deploying-python-code-to-vps/"&gt;Running python scripts on a &lt;span class="caps"&gt;VPS&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</content><category term="Python"></category></entry><entry><title>Linux Crontab</title><link href="https://janiceto.github.io/programming-notes/crontab.html" rel="alternate"></link><published>2017-09-07T10:44:00+01:00</published><updated>2019-04-07T19:24:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-09-07:/programming-notes/crontab.html</id><summary type="html">&lt;p&gt;To view currently active crontab entries: &lt;code&gt;$ sudo crontab -l&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;To enter the edit the crontab enter the following command in the terminal: &lt;code&gt;$ sudo crontab -e&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Don&amp;#8217;t use &lt;code&gt;sudo&lt;/code&gt; in a cron job. Instead edit root&amp;#8217;s crontab instead of your own, e.g. &lt;code&gt;sudo crontab -e&lt;/code&gt; and then enter commands without &lt;code&gt;sudo&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;At the bottom of the file enter one line for each task in the following&amp;nbsp;format:&lt;/p&gt;
@@ -3777,6 +4155,17 @@ $ git clone &amp;lt;git url&amp;gt;
 
 &lt;h4&gt;Example 2: Run a python script every five days a&amp;nbsp;18:30&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;projects&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;script1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Crontab&amp;nbsp;log&lt;/h3&gt;
+&lt;p&gt;On a default installation the cron jobs get logged&amp;nbsp;to&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ /var/log/syslog
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can see just cron jobs in that logfile by&amp;nbsp;running&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ grep CRON /var/log/syslog
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -4808,29 +5197,42 @@ Prerequisites are installed on Ubuntu 12.04 &lt;span class="caps"&gt;LTS&lt;/spa
 &lt;span class="c1"&gt;# and message to send - here it is sent as one string.&lt;/span&gt;
 &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sendmail&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;me&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_string&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
 &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="Python"></category></entry><entry><title>Virtual enviroments</title><link href="https://janiceto.github.io/programming-notes/virtual-environments.html" rel="alternate"></link><published>2017-08-02T22:57:00+01:00</published><updated>2018-12-15T01:51:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-08-02:/programming-notes/virtual-environments.html</id><summary type="html">&lt;h2&gt;Pipenv&lt;/h2&gt;
-&lt;p&gt;Installing Pipenv: &lt;code&gt;$ pip install pipenv&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;To upgrade Pipenv at any time run: &lt;code&gt;$ pip install --upgrade pipenv&lt;/code&gt;&lt;/p&gt;
-&lt;h3&gt;Installing packages for your&amp;nbsp;project&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; myproject
-$ pipenv install requests
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Pipenv will install the excellent Requests library and create a Pipfile for you in your project’s directory. The Pipfile is used to track which dependencies your project needs in case you need to re-install them, such as when you share your project with&amp;nbsp;others.&lt;/p&gt;
-&lt;h3&gt;Using installed&amp;nbsp;packages&lt;/h3&gt;
-&lt;p&gt;Import your packages normally in your scripts. Then you can run the script using &lt;code&gt;pipenv run&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pipenv run python main.py
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Using &lt;code&gt;$ pipenv run&lt;/code&gt; ensures that your installed packages are available to your script. It’s also possible to spawn a new shell that ensures all commands have access to your installed packages with &lt;code&gt;$ pipenv shell&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Documentation: &lt;a href="https://pipenv.readthedocs.io/en/latest/"&gt;Pipenv&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2&gt;Virtual environment using &lt;strong&gt;virtualenv&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Install: &lt;code&gt;$ pip install virtualenv&lt;/code&gt;&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="Python"></category></entry><entry><title>Virtual enviroments</title><link href="https://janiceto.github.io/programming-notes/virtual-environments.html" rel="alternate"></link><published>2017-08-02T22:57:00+01:00</published><updated>2019-04-24T14:08:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-08-02:/programming-notes/virtual-environments.html</id><summary type="html">&lt;h2&gt;Main packages to handle virtual&amp;nbsp;environments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#venv-(standard-library)"&gt;venv (Standard&amp;nbsp;Library)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#pipenv"&gt;Pipenv&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#virtualenv-package"&gt;virtualenv&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;venv (Standard&amp;nbsp;Library)&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;venv&lt;/code&gt; already comes with the Python Standard Library so no installation is&amp;nbsp;required.&lt;/p&gt;
 &lt;h3&gt;Create a new virtual&amp;nbsp;enviroment:&lt;/h3&gt;
-&lt;p&gt;My prefered method is …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Pipenv&lt;/h2&gt;
+&lt;p&gt;To create a new virtual environment: &lt;code&gt;$ python -m venv env_name&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;A new folder appears in your current location containinng the new Python installation. The environemnt uses the same Python version as the one used to create&amp;nbsp;it.&lt;/p&gt;
+&lt;p&gt;To activate the virtual environment: &lt;code&gt;$ env_name/Scripts/activate.bat&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Once the virtual environment is activated, when you install a package with &lt;code&gt;pip install package&lt;/code&gt;, it will only be installed in the&amp;nbsp;environment.&lt;/p&gt;
+&lt;p&gt;To deactivate the virtual environment: &lt;code&gt;$ deactivate&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To create a requirements file for your project: &lt;code&gt;$ pip freeze &amp;gt; requirements.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To delete the virtual environment completly just delete the enviroment folder (&lt;code&gt;env_name&lt;/code&gt;) or run: &lt;code&gt;$ rmdir env_name /s&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To install packages from an existing &lt;code&gt;requirements.txt&lt;/code&gt; file: &lt;code&gt;pip install -r requirements.txt …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Main packages to handle virtual&amp;nbsp;environments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#venv-(standard-library)"&gt;venv (Standard&amp;nbsp;Library)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#pipenv"&gt;Pipenv&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#virtualenv-package"&gt;virtualenv&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;venv (Standard&amp;nbsp;Library)&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;venv&lt;/code&gt; already comes with the Python Standard Library so no installation is&amp;nbsp;required.&lt;/p&gt;
+&lt;h3&gt;Create a new virtual&amp;nbsp;enviroment:&lt;/h3&gt;
+&lt;p&gt;To create a new virtual environment: &lt;code&gt;$ python -m venv env_name&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;A new folder appears in your current location containinng the new Python installation. The environemnt uses the same Python version as the one used to create&amp;nbsp;it.&lt;/p&gt;
+&lt;p&gt;To activate the virtual environment: &lt;code&gt;$ env_name/Scripts/activate.bat&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Once the virtual environment is activated, when you install a package with &lt;code&gt;pip install package&lt;/code&gt;, it will only be installed in the&amp;nbsp;environment.&lt;/p&gt;
+&lt;p&gt;To deactivate the virtual environment: &lt;code&gt;$ deactivate&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To create a requirements file for your project: &lt;code&gt;$ pip freeze &amp;gt; requirements.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To delete the virtual environment completly just delete the enviroment folder (&lt;code&gt;env_name&lt;/code&gt;) or run: &lt;code&gt;$ rmdir env_name /s&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To install packages from an existing &lt;code&gt;requirements.txt&lt;/code&gt; file: &lt;code&gt;pip install -r requirements.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Create a virtual environment with access to the packages in the global installation of&amp;nbsp;Python: &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ python -m venv env_name --system-site-packages&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;Pipenv&lt;/h2&gt;
 &lt;p&gt;Installing Pipenv: &lt;code&gt;$ pip install pipenv&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;To upgrade Pipenv at any time run: &lt;code&gt;$ pip install --upgrade pipenv&lt;/code&gt;&lt;/p&gt;
 &lt;h3&gt;Installing packages for your&amp;nbsp;project&lt;/h3&gt;
@@ -4847,9 +5249,15 @@ $ pipenv install requests
 
 
 &lt;p&gt;Using &lt;code&gt;$ pipenv run&lt;/code&gt; ensures that your installed packages are available to your script. It’s also possible to spawn a new shell that ensures all commands have access to your installed packages with &lt;code&gt;$ pipenv shell&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;Other&amp;nbsp;commands:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pipenv --rm&lt;/code&gt;: Removes the virtual environment&amp;nbsp;compleatly&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pipenv --python 3.6.5&lt;/code&gt;: Specify Python&amp;nbsp;version&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pipenv --venv&lt;/code&gt;: Shows virtual environment&amp;nbsp;path&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pipenv graph&lt;/code&gt;: Dependencies&amp;nbsp;tree&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Documentation: &lt;a href="https://pipenv.readthedocs.io/en/latest/"&gt;Pipenv&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2&gt;Virtual environment using &lt;strong&gt;virtualenv&lt;/strong&gt;&lt;/h2&gt;
+&lt;h2&gt;virtualenv&amp;nbsp;package&lt;/h2&gt;
 &lt;p&gt;Install: &lt;code&gt;$ pip install virtualenv&lt;/code&gt;&lt;/p&gt;
 &lt;h3&gt;Create a new virtual&amp;nbsp;enviroment:&lt;/h3&gt;
 &lt;p&gt;My prefered method is to create the environment in the respective project folder and naming it &lt;strong&gt;venv&lt;/strong&gt;. Another alternative is to have a folder where you place all your virtualenvironments and name them according to their respective&amp;nbsp;project.&lt;/p&gt;

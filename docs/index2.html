@@ -61,6 +61,118 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/jupyter-notebooks.html#jupyter-notebooks">
+					<a href="https://janiceto.github.io/programming-notes/jupyter-notebooks.html#jupyter-notebooks">Jupyter&nbsp;Notebooks</a>
+				</h1>
+				<span class="post-date">ter 12 fevereiro 2019</span>
+				<p>
+					<h2>Instalation</h2>
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">jupyter</span>
+</pre></div>
+
+
+<h2>Usage</h2>
+<p>Starting the Notebook&nbsp;Server:</p>
+<div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span>
+</pre></div>
+
+
+<p>Open a specific&nbsp;Notebook:</p>
+<div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span> <span class="n">notebook</span><span class="p">.</span><span class="n">ipynb</span>
+</pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/jupyter-notebooks.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/basics.html#basics">
+					<a href="https://janiceto.github.io/programming-notes/basics.html#basics">Basic Javascript&nbsp;concepts</a>
+				</h1>
+				<span class="post-date">sex 08 fevereiro 2019</span>
+				<p>
+					<h2>Variables</h2>
+<p>There are three main keywords used to define variables in JavaScript:
+- <code>const</code>: defines a constant variable that cannot be redefined later
+- <code>let</code>: defines a variable is local to the scope of the innermost pair of curly braces surrounding it
+- <code>var</code>: defines a variable that is local to the function it is defined&nbsp;in</p>
+<p>Here is an example showcasing these different ways to define&nbsp;variables:</p>
+<div class="highlight"><pre><span></span><span class="c1">// This variable exists even outside the loop</span>
+<span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="s1">&#39;Hello!&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">alert</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Because <code>var</code> was used to define message, there will be no errors running this&nbsp;code.</p>
+<div class="highlight"><pre><span></span><span class="c1">// This variable does not exist outside the loop</span>
+<span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="s1">&#39;Hello!&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">alert</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Because <code>let</code> was used to define message, it cannot be passed to alert, which is outside the scope of message. If this were in an <span class="caps">HTML</span> page, when the page was opened, no alert would pop up. If the console were …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/basics.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/datetime.html#datetime">
+					<a href="https://janiceto.github.io/programming-notes/datetime.html#datetime">Datetime&nbsp;module</a>
+				</h1>
+				<span class="post-date">dom 03 fevereiro 2019</span>
+				<p>
+					<p>The <code>datetime</code> module is a standard library module that supplies classes for manipulating dates and times. While date and time arithmetic is supported, the focus of the implementation is on efficient attribute extraction for output formatting and&nbsp;manipulation.</p>
+<p>The <code>datetime</code> module has three types for storing a point in&nbsp;time:</p>
+<ul>
+<li><code>date</code> for year, month, day of&nbsp;month</li>
+<li><code>time</code> for hours, minutes, seconds, microseconds, time zone&nbsp;info</li>
+<li><code>datetime</code> combines <code>date</code> and <code>time</code>. It has the methods <code>date()</code> and <code>time()</code> to get the corresponding date and time objects, and there&#8217;s a handy <code>combine</code> function to combine date and time into a&nbsp;datetime.</li>
+</ul>
+<h2>Parsing and formatting date&nbsp;strings</h2>
+<p><code>datetime.strptime</code> is the main routine for parsing strings into datetimes. It can handle all sorts of formats, with the format determined by a format string you give&nbsp;it:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">datetime_object</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s1">&#39;Jun 1 2005  1:33PM&#39;</span><span class="p">,</span> <span class="s1">&#39;%b </span><span class="si">%d</span><span class="s1"> %Y …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/datetime.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/s3-django-setup.html#s3-django-setup">
+					<a href="https://janiceto.github.io/programming-notes/s3-django-setup.html#s3-django-setup">Set up Amazon S3 to serve Django Static and Media&nbsp;files</a>
+				</h1>
+				<span class="post-date">qui 31 janeiro 2019</span>
+				<p>
+					<p>Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django&nbsp;App. </p>
+<h2>1) Sign up to <span class="caps">AWS</span> S3 and create <span class="caps">IAM</span>&nbsp;user</h2>
+<p>After signing up to Amazon <span class="caps">AWS</span> we need to create a user using the <strong><span class="caps">IAM</span></strong> service. This way you can restrict the access to the bucket. Each user will have its own access id and key. To do&nbsp;this:</p>
+<ul>
+<li>
+<p>In the <strong>Services</strong> dropdown select <strong><span class="caps">IAM</span></strong>.</p>
+</li>
+<li>
+<p>Click on <strong>Users</strong> and select <strong>Add User</strong>.</p>
+</li>
+<li>
+<p>Type the name of the user and make sure that <strong>Programmatic access</strong> is selected under <strong>Access type</strong> as you will need this to provide upload access for your S3 bucket. Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Select <strong>Attatch existing policies directly</strong>.</p>
+</li>
+<li>
+<p>From the list that appears select <strong>AmazonS3FullAccess</strong> and again click on <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Click on <strong>Create User</strong>.</p>
+</li>
+<li>
+<p>This will create the user and generate an access …</p></li></ul>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/s3-django-setup.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/deploy-django-heroku.html#deploy-django-heroku">
 					<a href="https://janiceto.github.io/programming-notes/deploy-django-heroku.html#deploy-django-heroku">Deploy a Django app to&nbsp;Heroku</a>
 				</h1>
@@ -111,6 +223,8 @@
 <li><a href="#provide-data-to-db-via-django-python-shell">Provide data to <span class="caps">DB</span> via Django Python&nbsp;Shell</a></li>
 <li><a href="#create-script-with-access-to-django-shell">Create script with access to Django&nbsp;shell</a></li>
 <li><a href="#migrate-django-from-sqlite-to-postgresql">Migrate Django from SQLite to&nbsp;PostgreSQL</a></li>
+<li><a href="#using-django-messages-with-bootstrap">Using Django Messages with&nbsp;Bootstrap</a></li>
+<li><a href="#override-form-__init__-method">Override form <code>__init__</code> method</a></li>
 </ul>
 <hr>
 <h3>Create a&nbsp;slug</h3>
@@ -134,7 +248,7 @@
 
 <hr>
 <h3>Send&nbsp;email</h3>
-<p>If <code>html_message</code> keyword argument is provided, the resulting email will be a multipart/alternative email with <code>message</code> as the text/plain content type …</p>
+<p>If <code>html_message</code> keyword argument is provided, the resulting email will be a multipart/alternative …</p>
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes/django-snippets.html">Continue reading »</a>
 			</div>
@@ -254,109 +368,6 @@ $ sudo apt-get install build-essential tk-dev libncurses5-dev libncursesw5-dev l
 $ tar xf Python-3.7.0 …</pre></div>
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes/python-raspbian.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/create-exe.html#create-exe">
-					<a href="https://janiceto.github.io/programming-notes/create-exe.html#create-exe">Create a standalone exacutable from a Python&nbsp;scripy</a>
-				</h1>
-				<span class="post-date">seg 27 agosto 2018</span>
-				<p>
-					<h2>Using&nbsp;pyinstaller</h2>
-<p>To install pyinstaller on your pc (more details can be found here:&nbsp;https://www.pyinstaller.org/)</p>
-<p><code>pip install pyinstaller</code></p>
-<p>Use cmd to go to your program directory and to turn it into a exe&nbsp;folder</p>
-<p><code>pyinstaller yourprogram.py</code></p>
-<p>What I&nbsp;run:</p>
-<p><code>pyinstaller -F --windowed --icon=myapp.ico SumExcel.py</code></p>
-<p>This makes it a single exe (without the folders with all dependables) but is slightly slower, minimizes the console window sine I have a <span class="caps">GUI</span>, and gives it a snazzy icon that I had saved (you have to copy over the icon, or have an exception incase it isn&#8217;t&nbsp;found)</p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/create-exe.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/regex.html#regex">
-					<a href="https://janiceto.github.io/programming-notes/regex.html#regex">Regular&nbsp;expressions</a>
-				</h1>
-				<span class="post-date">qua 08 agosto 2018</span>
-				<p>
-					<h2>Regex for finding&nbsp;URLs</h2>
-<p>Regex if you want to ensure <span class="caps">URL</span> starts with <span class="caps">HTTP</span>/<span class="caps">HTTPS</span>:</p>
-<div class="highlight"><pre><span></span><span class="n">https</span><span class="o">?</span><span class="p">:</span><span class="err">\</span><span class="o">/</span><span class="err">\</span><span class="o">/</span><span class="p">(</span><span class="n">www</span><span class="err">\</span><span class="p">.)</span><span class="o">?</span><span class="p">[</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z0</span><span class="o">-</span><span class="mi">9</span><span class="o">@</span><span class="p">:</span><span class="o">%</span><span class="p">.</span><span class="n">_</span><span class="err">\</span><span class="o">+~#=</span><span class="p">]</span><span class="err">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">256</span><span class="err">}\</span><span class="p">.[</span><span class="n">a</span><span class="o">-</span><span class="n">z</span><span class="p">]</span><span class="err">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="err">}\</span><span class="n">b</span><span class="p">([</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z0</span><span class="o">-</span><span class="mi">9</span><span class="o">@</span><span class="p">:</span><span class="o">%</span><span class="n">_</span><span class="err">\</span><span class="o">+</span><span class="p">.</span><span class="o">~#?&amp;//=</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
-</pre></div>
-
-
-<p>If you do not require <span class="caps">HTTP</span>&nbsp;protocol:</p>
-<div class="highlight"><pre><span></span><span class="p">[</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z0</span><span class="o">-</span><span class="mi">9</span><span class="o">@</span><span class="p">:</span><span class="o">%</span><span class="p">.</span><span class="n">_</span><span class="err">\</span><span class="o">+~#=</span><span class="p">]</span><span class="err">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">256</span><span class="err">}\</span><span class="p">.[</span><span class="n">a</span><span class="o">-</span><span class="n">z</span><span class="p">]</span><span class="err">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="err">}\</span><span class="n">b</span><span class="p">([</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z0</span><span class="o">-</span><span class="mi">9</span><span class="o">@</span><span class="p">:</span><span class="o">%</span><span class="n">_</span><span class="err">\</span><span class="o">+</span><span class="p">.</span><span class="o">~#?&amp;//=</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
-</pre></div>
-
-
-<h4>Exemple usage in VSCode to find a <span class="caps">URL</span> and convert to Markdown link like, <code>[link](link)</code>:</h4>
-<p>Find: <code>(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;//=]*))</code></p>
-<p>Replace: <code>[$1]($1)</code></p>
-<p>Use <code>()</code> to create a group and <code>$1</code> to reference that&nbsp;group.</p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/regex.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/matlab.html#matlab">
-					<a href="https://janiceto.github.io/programming-notes/matlab.html#matlab">Run Matlab programs in&nbsp;Python</a>
-				</h1>
-				<span class="post-date">qui 26 julho 2018</span>
-				<p>
-					<p>This example shows how to create a Python package using a <span class="caps">MATLAB</span> function. You can then pass the generated package to the developer who is responsible for integrating it into an application. The target system does not require a licensed copy of <span class="caps">MATLAB</span>.</p>
-<h2>Requirements</h2>
-<ul>
-<li>A Matlab version with a license for <span class="caps">MATLAB</span> Compiler or <span class="caps">MATLAB</span> Compiler <span class="caps">SDK</span> to compile the Python&nbsp;package.</li>
-<li>The target computer (where the final application will run) does not require Matlab or a Matlab Licence. However, it requires the Matlab Runtime (free, <a href="https://www.mathworks.com/products/compiler/matlab-runtime.html">download here</a>) of the same version of the Matlab used to compile the application. For instance, if the package was compiled in Matlab 2018a the target computer must have Matlab Runtime version 2018a&nbsp;installed</li>
-</ul>
-<h2>1) Create a Python package for the Maltab&nbsp;Application</h2>
-<p>For this example let&#8217;s create a simple Matlab function and save it as <code>makesqr.m</code>:</p>
-<div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>y <span class="p">=</span><span class="w"> </span><span class="nf">makesqr</span><span class="p">(</span>x<span class="p">)</span><span class="w"></span>
-
-<span class="n">y …</span></pre></div>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/matlab.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/web-dev-resources.html#web-dev-resources">
-					<a href="https://janiceto.github.io/programming-notes/web-dev-resources.html#web-dev-resources">Online Resources For Web&nbsp;Developers</a>
-				</h1>
-				<span class="post-date">seg 16 julho 2018</span>
-				<p>
-					<h2><span class="caps">GENERATORS</span>:</h2>
-<ul>
-<li>Text Content Generator -&nbsp;http://www.lipsum.com</li>
-<li>Favicon Generator -&nbsp;http://tools.dynamicdrive.com/favicon     </li>
-<li>Data Generator -&nbsp;https://mockaroo.com/                        </li>
-<li>Mobile Mockup Generator -&nbsp;https://mockuphone.com</li>
-<li>Logo Generator -&nbsp;https://www.logaster.com</li>
-<li><span class="caps">UUID</span> Generator -&nbsp;https://www.uuidgenerator.net/</li>
-<li>Hash Generator -&nbsp;https://passwordsgenerator.net/sha256-hash-generator/</li>
-</ul>
-<h2><span class="caps">FONTS</span></h2>
-<ul>
-<li>Google Fonts -&nbsp;https://fonts.google.com/</li>
-<li>Font Joy -&nbsp;https://fontjoy.com/</li>
-<li>Font Pair -&nbsp;https://fontpair.co/</li>
-<li><span class="caps">HTML</span> symbols -&nbsp;https://www.toptal.com/designers/htmlarrows/</li>
-</ul>
-<h2><span class="caps">IMAGE</span> <span class="caps">RESOURCES</span>:</h2>
-<ul>
-<li>Free Stock Images -&nbsp;https://www.pexels.com</li>
-<li>Free Stock Images With Great <span class="caps">API</span> -&nbsp;https://unsplash.com/</li>
-<li>Free- Vectors, mockups -&nbsp;https://www.freepik.com</li>
-<li>Dummy Image Placeholders -&nbsp;https://source.unsplash.com/</li>
-<li>Dummy Image Placeholders -&nbsp;https://placeholder.com</li>
-<li>Free Icons -&nbsp;https://www.iconfinder.com</li>
-</ul>
-<h2><span class="caps">COLOR</span> <span class="amp">&amp;</span> <span class="caps">DESIGN</span>:</h2>
-<ul>
-<li>Generate Color Palette from Image -&nbsp;https://www.canva.com/color-palette/</li>
-<li>Color Palette Generator -&nbsp;https://coolors.co/app</li>
-<li>Color Pallete Generator -&nbsp;http://colormind.io/</li>
-<li>Create Color Schemes -&nbsp;https://color.hailpixel.com</li>
-<li>Get Color Schemes of Websites …</li></ul>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/web-dev-resources.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

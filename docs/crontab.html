@@ -61,7 +61,7 @@
 </div>		<div class="content container">
 <div class="post">
 	<h1 class="post-title">Linux&nbsp;Crontab</h1>
-	<span class="post-date">qui 07 setembro 2017, last updated dom 05 novembro 2017</span>
+	<span class="post-date">qui 07 setembro 2017, last updated dom 07 abril 2019</span>
 	<p>To view currently active crontab entries: <code>$ sudo crontab -l</code></p>
 <p>To enter the edit the crontab enter the following command in the terminal: <code>$ sudo crontab -e</code></p>
 <p><strong>Note:</strong> Don&#8217;t use <code>sudo</code> in a cron job. Instead edit root&#8217;s crontab instead of your own, e.g. <code>sudo crontab -e</code> and then enter commands without <code>sudo</code>.</p>
@@ -121,6 +121,17 @@
 
 <h4>Example 2: Run a python script every five days a&nbsp;18:30</h4>
 <div class="highlight"><pre><span></span><span class="mi">30</span> <span class="mi">18</span> <span class="o">*/</span><span class="mi">5</span> <span class="o">*</span> <span class="o">*</span> <span class="n">sudo</span> <span class="n">python</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">pi</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">script1</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+
+
+<h3>Crontab&nbsp;log</h3>
+<p>On a default installation the cron jobs get logged&nbsp;to</p>
+<div class="highlight"><pre><span></span>$ /var/log/syslog
+</pre></div>
+
+
+<p>You can see just cron jobs in that logfile by&nbsp;running</p>
+<div class="highlight"><pre><span></span>$ grep CRON /var/log/syslog
 </pre></div>
 
 

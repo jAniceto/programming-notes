@@ -61,6 +61,137 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/os-env-vars.html#os-env-vars">
+					<a href="https://janiceto.github.io/programming-notes/os-env-vars.html#os-env-vars">Hiding Passwords and Secret Keys in Environment&nbsp;Variables</a>
+				</h1>
+				<span class="post-date">sex 02 fevereiro 2018</span>
+				<p>
+					<h3>Adding a Environment Variable&nbsp;(Windows)</h3>
+<p>System Menu &gt; <code>Advanced System Settings</code> &gt; <code>Environment Variables...</code> &gt; in User Variables click <code>New...</code> &gt; insert variable name (VAR_NAME) and value&nbsp;(VAR_VALUE)</p>
+<p>When coding it may be necessary to restart your <span class="caps">IDE</span> or text&nbsp;editor.</p>
+<h3>Adding a Environment Variable (Linux and&nbsp;Mac)</h3>
+<p>Open the&nbsp;terminal:</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> 
+$ nano .bash_profile
+</pre></div>
+
+
+<p>To the file add the line and&nbsp;save:</p>
+<div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">VAR_NAME</span><span class="o">=</span><span class="ss">&quot;VAR_VALUE&quot;</span>
+</pre></div>
+
+
+<p>When coding it may be necessary to restart your <span class="caps">IDE</span> or text&nbsp;editor.</p>
+<h3>Acessing your Environment Variables in&nbsp;Python</h3>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">var1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;VAR_NAME&#39;</span><span class="p">)</span>
+</pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/os-env-vars.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/ubuntu-vps.html#ubuntu-vps">
+					<a href="https://janiceto.github.io/programming-notes/ubuntu-vps.html#ubuntu-vps">Deploy a Flask Application on an Ubuntu <span class="caps">VPS</span>&nbsp;(DigitalOcean)</a>
+				</h1>
+				<span class="post-date">qui 25 janeiro 2018</span>
+				<p>
+					<p>This page details the process of seting up a Ubuntu <span class="caps">VPS</span> (in this case a DigitalOcean dropplet using Ubuntu 16.04 was used) to serve a Flask based websiite. MySQL databases are&nbsp;used.</p>
+<h2>1) Install&nbsp;Apache</h2>
+<div class="highlight"><pre><span></span>$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo apt-get install apache2
+</pre></div>
+
+
+<p>You can do a spot check right away to verify that everything went as planned by visiting your server&#8217;s public <span class="caps">IP</span> address in your web browser. You will see the default Ubuntu 16.04 Apache web&nbsp;page.</p>
+<div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">your_server_IP_address</span>
+</pre></div>
+
+
+<h3>How To Find your Server&#8217;s Public <span class="caps">IP</span>&nbsp;Address</h3>
+<p>Usually, this is the address you use to connect to your server through <span class="caps">SSH</span>. However you can find the <span class="caps">IP</span> address from the command line by typing&nbsp;this:</p>
+<div class="highlight"><pre><span></span>$ <span class="nv">ip</span> <span class="nv">addr</span> <span class="k">show</span> <span class="nv">eth0</span> <span class="o">|</span> <span class="nv">grep</span> <span class="nv">inet</span> <span class="o">|</span> <span class="nv">awk</span> <span class="s1">&#39;</span><span class="s">{ print $2; }</span><span class="s1">&#39;</span> <span class="o">|</span> <span class="nv">sed</span> <span class="s1">&#39;</span><span class="s">s/\/.*$//</span><span class="s1">&#39;</span>
+</pre></div>
+
+
+<p>Alternatively you can use <code>curl</code> to contact an outside party to tell you how it sees …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/ubuntu-vps.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/datatables.html#datatables">
+					<a href="https://janiceto.github.io/programming-notes/datatables.html#datatables">DataTables <span class="caps">JS</span>&nbsp;Library</a>
+				</h1>
+				<span class="post-date">dom 21 janeiro 2018</span>
+				<p>
+					<p><a href="https://datatables.net/manual/index">Documentation&nbsp;here</a></p>
+<h3>Requirements:</h3>
+<ul>
+<li>JQuery</li>
+</ul>
+<h3>Usage:</h3>
+<p>Include the <span class="caps">CSS</span> and <span class="caps">JS</span> code for DataTables to the head and bottom of the body of your website, respectively. <span class="caps">CSS</span> is not&nbsp;required.</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span> <span class="s">&quot;{{ url_for(&#39;static&#39;,filename=&#39;style.css&#39;) }}&quot;</span><span class="p">&gt;</span> 
+
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>Use the single function bellow to call to initialise the tabl. Do not forget to add an id tag to the&nbsp;table.</p>
+<div class="highlight"><pre><span></span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myTable&#39;</span><span class="p">).</span><span class="nx">DataTable</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>Add options like&nbsp;so:</p>
+<div class="highlight"><pre><span></span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myTable&#39;</span><span class="p">).</span><span class="nx">DataTable</span><span class="p">(</span> <span class="p">{</span>
+    <span class="s2">&quot;columnDefs&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="s2">&quot;orderable&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="s2">&quot;targets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;paging&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;order&quot;</span><span class="o">:</span> <span class="p">[[</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;asc&quot;</span> <span class="p">]]</span>
+  <span class="p">}</span> <span class="p">);</span>
+<span class="p">}</span> <span class="p">);</span>
+</pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/datatables.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/slice-notation.html#slice-notation">
+					<a href="https://janiceto.github.io/programming-notes/slice-notation.html#slice-notation">Slice&nbsp;notation</a>
+				</h1>
+				<span class="post-date">sex 15 dezembro 2017</span>
+				<p>
+					<p>The <span class="caps">ASCII</span> art diagram is helpful too for remembering how slices&nbsp;work:</p>
+<div class="highlight"><pre><span></span> <span class="o">+</span><span class="c1">---+---+---+---+---+---+</span>
+ <span class="o">|</span> <span class="n">P</span> <span class="o">|</span> <span class="n">y</span> <span class="o">|</span> <span class="n">t</span> <span class="o">|</span> <span class="n">h</span> <span class="o">|</span> <span class="n">o</span> <span class="o">|</span> <span class="n">n</span> <span class="o">|</span>
+ <span class="o">+</span><span class="c1">---+---+---+---+---+---+</span>
+ <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>   <span class="mi">4</span>   <span class="mi">5</span>   <span class="mi">6</span>
+<span class="o">-</span><span class="mi">6</span>  <span class="o">-</span><span class="mi">5</span>  <span class="o">-</span><span class="mi">4</span>  <span class="o">-</span><span class="mi">3</span>  <span class="o">-</span><span class="mi">2</span>  <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+
+
+<p>One way to remember how slices work is to think of the indices as pointing <em>between</em> characters, with the left edge of the first character numbered 0. Then the right edge of the last character of a string of <em>n</em> characters has index <em>n</em>.</p>
+<div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span> <span class="c1"># items start through end-1</span>
+<span class="n">a</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span>    <span class="c1"># items start through the rest of the array</span>
+<span class="n">a</span><span class="p">[:</span><span class="n">end</span><span class="p">]</span>      <span class="c1"># items from the beginning through end-1</span>
+<span class="n">a</span><span class="p">[:]</span>         <span class="c1"># a copy of the whole array</span>
+</pre></div>
+
+
+<p>There is also the <code>step</code> value, which can be used with any of the&nbsp;above:</p>
+<div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">:</span><span class="n">step</span><span class="p">]</span> <span class="c1"># start through not past end, by step</span>
+</pre></div>
+
+
+<p>The key point to remember is that the <code>:end</code> value represents the first value that is <em>not …</em></p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/slice-notation.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/magic-methods.html#magic-methods">
 					<a href="https://janiceto.github.io/programming-notes/magic-methods.html#magic-methods">Introduction</a>
 				</h1>
@@ -246,152 +377,6 @@ https://stackoverflow.com/questions/18761776/sort-list-of-dictionaries-by-multip
 </ul>
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes/dev-environments.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/classes.html#classes">
-					<a href="https://janiceto.github.io/programming-notes/classes.html#classes">Classes and <span class="caps">OOP</span> (Object Oriented&nbsp;Programming)</a>
-				</h1>
-				<span class="post-date">qua 13 setembro 2017</span>
-				<p>
-					<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># &lt;-- class variable</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>  <span class="c1"># &lt;-- instance variable</span>
-
-    <span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># &lt;- instance method</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>  <span class="c1"># &lt;-- class method</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">foobar</span><span class="p">():</span>   <span class="c1"># &lt;-- function</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">Foo</span><span class="o">.</span><span class="n">foo</span><span class="p">())</span>
-</pre></div>
-
-
-<p>A function and a method are not the same thing, and a class and an instance are not the same thing, which is why a class variable/method and an instance variable/method are very definitely not the same&nbsp;things.</p>
-<p>A class is like a blueprint, it tells you about some thing you want to make. An instance is the thing that gets&nbsp;made. </p>
-<p>For example, if you write up a blueprint for an airplane, the blueprint is like when you define a class. The airplanes that get made from that blueprint are like instances of a&nbsp;class. </p>
-<p>Defining a class looks like&nbsp;this:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Airplane …</span></pre></div>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/classes.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/git.html#git">
-					<a href="https://janiceto.github.io/programming-notes/git.html#git">Git Version Control&nbsp;System</a>
-				</h1>
-				<span class="post-date">seg 11 setembro 2017</span>
-				<p>
-					<h2>Instalation on a Debian-based distribution, such as&nbsp;Ubuntu</h2>
-<div class="highlight"><pre><span></span>$ sudo apt update
-$ sudo apt install git-all
-</pre></div>
-
-
-<h3>Starting&nbsp;repositories</h3>
-<p>Clone an existing repository: <code>$ git clone ssh://user@domain.com/repo.git</code> </p>
-<p>Create a new local repository: <code>$ git init</code></p>
-<h3>Local&nbsp;changes</h3>
-<p>Show changed files in your working directory: <code>$ git status</code></p>
-<p>Add all current changes to the next commit: <code>$ git add</code></p>
-<p>Add some changes in <file> to the next commit: <code>$ git add -p &lt;file&gt;</code></p>
-<p>Commit all local changes in tracked files: <code>$ git commit -a -m "Changed something"</code></p>
-<h3>Working with remote&nbsp;repository</h3>
-<p>Grab changes from remote: <code>$ git pull origin master</code></p>
-<p>If your default branch is different than master, you will need to specify the branch name: <code>git pull origin my_default_branch_name</code></p>
-<p>Upload changes to remote: <code>$ git push origin master</code></p>
-<h3>Remove a file from version&nbsp;control</h3>
-<p>Remove the file from the Git repository and from the&nbsp;filesystem</p>
-<div class="highlight"><pre><span></span>$ git rm file1.txt
-$ git commit -m <span class="s2">&quot;remove file1.txt&quot;</span>
-</pre></div>
-
-
-<p>But …</p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/git.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/hosting.html#hosting">
-					<a href="https://janiceto.github.io/programming-notes/hosting.html#hosting">Hosting Python scripts and&nbsp;services</a>
-				</h1>
-				<span class="post-date">qui 07 setembro 2017</span>
-				<p>
-					<h2>Hosting&nbsp;options:</h2>
-<ul>
-<li><a href="https://cloud.google.com/appengine/">Google App Engine</a> (Free&nbsp;Tier)</li>
-<li><a href="https://aws.amazon.com/ec2">Amazon <span class="caps">EC2</span></a> (Free&nbsp;Tier)</li>
-<li><a href="https://www.pythonanywhere.com">Python Anywhaere</a> (Free&nbsp;Tier)</li>
-<li><a href="https://www.heroku.com/">Heroku</a> (Free Tier disconects when inactive, 7$/month&nbsp;Min)</li>
-<li><a href="https://www.digitalocean.com">Digital Ocean</a> (5$/month Min, 50$ credit from Github Student&nbsp;Pack)</li>
-<li><a href="https://www.linode.com/">Linode</a> (5$/month&nbsp;Min)</li>
-</ul>
-<h2>Useful&nbsp;Software</h2>
-<ul>
-<li><a href="https://www.putty.org/">PuTTY</a> - for <span class="caps">SSH</span>&nbsp;access</li>
-<li><a href="https://winscp.net/eng/index.php">WinSCP</a> - To transfer files to the&nbsp;server</li>
-<li><a href="https://filezilla-project.org/">FileZilla</a> - An alternative to&nbsp;WinSCP</li>
-<li><a href="">git</a> - For pulling code from remote&nbsp;repository</li>
-</ul>
-<h4>Using&nbsp;git</h4>
-<div class="highlight"><pre><span></span>$ apt-get install git
-$ git clone &lt;git url&gt;
-</pre></div>
-
-
-<h2>Useful&nbsp;references</h2>
-<p><a href="https://nikolak.com/deploying-python-code-to-vps/">Running python scripts on a <span class="caps">VPS</span></a></p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/hosting.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/crontab.html#crontab">
-					<a href="https://janiceto.github.io/programming-notes/crontab.html#crontab">Linux&nbsp;Crontab</a>
-				</h1>
-				<span class="post-date">qui 07 setembro 2017</span>
-				<p>
-					<p>To view currently active crontab entries: <code>$ sudo crontab -l</code></p>
-<p>To enter the edit the crontab enter the following command in the terminal: <code>$ sudo crontab -e</code></p>
-<p><strong>Note:</strong> Don&#8217;t use <code>sudo</code> in a cron job. Instead edit root&#8217;s crontab instead of your own, e.g. <code>sudo crontab -e</code> and then enter commands without <code>sudo</code>.</p>
-<p>At the bottom of the file enter one line for each task in the following&nbsp;format:</p>
-<div class="highlight"><pre><span></span><span class="k">Minute</span>   <span class="n">Hour</span>   <span class="k">Day</span> <span class="k">of</span> <span class="k">Month</span>       <span class="k">Month</span>          <span class="k">Day</span> <span class="k">of</span> <span class="n">Week</span>        <span class="n">Command</span>    
-<span class="p">(</span><span class="mi">0</span><span class="o">-</span><span class="mi">59</span><span class="p">)</span>  <span class="p">(</span><span class="mi">0</span><span class="o">-</span><span class="mi">23</span><span class="p">)</span>     <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">31</span><span class="p">)</span>    <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">12</span> <span class="k">or</span> <span class="n">Jan</span><span class="o">-</span><span class="nb">Dec</span><span class="p">)</span>  <span class="p">(</span><span class="mi">0</span><span class="o">-</span><span class="mi">6</span> <span class="k">or</span> <span class="n">Sun</span><span class="o">-</span><span class="n">Sat</span><span class="p">)</span>               
-</pre></div>
-
-
-<p>The command must use a complete link. Instead of the first five fields, one of eight special strings may&nbsp;appear:</p>
-<table>
-<thead>
-<tr>
-<th>string</th>
-<th>meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>@reboot</td>
-<td>Run once, at startup.</td>
-</tr>
-<tr>
-<td>@yearly</td>
-<td>Run once a year, &#8220;0 0 1 1 *&#8221;.</td>
-</tr>
-<tr>
-<td>@annually</td>
-<td>(same as @yearly)</td>
-</tr>
-<tr>
-<td>@monthly</td>
-<td>Run once a month, &#8220;0 0 1 * *&#8221;.</td>
-</tr>
-<tr>
-<td>@weekly</td>
-<td>Run once a week, &#8220;0 …</td></tr></tbody></table>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/crontab.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

@@ -61,7 +61,7 @@
 </div>		<div class="content container">
 <div class="post">
 	<h1 class="post-title">Set up Amazon S3 to serve Django Static and Media&nbsp;files</h1>
-	<span class="post-date">qui 31 janeiro 2019, last updated dom 03 fevereiro 2019</span>
+	<span class="post-date">qui 31 janeiro 2019, last updated qua 20 fevereiro 2019</span>
 	<p>Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django&nbsp;App. </p>
 <h2>1) Sign up to <span class="caps">AWS</span> S3 and create <span class="caps">IAM</span>&nbsp;user</h2>
 <p>After signing up to Amazon <span class="caps">AWS</span> we need to create a user using the <strong><span class="caps">IAM</span></strong> service. This way you can restrict the access to the bucket. Each user will have its own access id and key. To do&nbsp;this:</p>
@@ -174,12 +174,13 @@
 
 <p>Next you have to add the following settings to the <code>settings.py</code> file in your&nbsp;application.</p>
 <div class="highlight"><pre><span></span><span class="c1"># Set S3 as the place to store your files.</span>
-<span class="n">DEFAULT_FILE_STORAGE</span> <span class="o">=</span> 
-<span class="n">storages</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">s3boto3</span><span class="o">.</span><span class="n">S3Boto3Storage</span><span class="s2">&quot;</span>
+<span class="n">DEFAULT_FILE_STORAGE</span> <span class="o">=</span> <span class="s2">&quot;storages.backends.s3boto3.S3Boto3Storage&quot;</span>
 <span class="n">STATICFILES_STORAGE</span> <span class="o">=</span> <span class="s2">&quot;storages.backends.s3boto3.S3Boto3Storage&quot;</span>
-<span class="n">AWS_ACCESS_KEY_ID</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;AWS_ACCESS_KEY_ID&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="n">AWS_SECRET_ACCESS_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;AWS_SECRET_ACCESS_KEY&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="n">AWS_STORAGE_BUCKET_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;AWS_STORAGE_BUCKET_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">AWS_S3_FILE_OVERWRITE</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">AWS_DEFAULT_ACL</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">AWS_ACCESS_KEY_ID</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;AWS_ACCESS_KEY_ID&quot;</span><span class="p">)</span>
+<span class="n">AWS_SECRET_ACCESS_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;AWS_SECRET_ACCESS_KEY&quot;</span><span class="p">)</span>
+<span class="n">AWS_STORAGE_BUCKET_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;AWS_STORAGE_BUCKET_NAME&quot;</span><span class="p">)</span>
 <span class="n">AWS_QUERYSTRING_AUTH</span> <span class="o">=</span> <span class="bp">False</span> <span class="c1"># This will make sure that the file URL does not have unnecessary parameters like your access key.</span>
 <span class="n">AWS_S3_CUSTOM_DOMAIN</span> <span class="o">=</span> <span class="n">AWS_STORAGE_BUCKET_NAME</span> <span class="o">+</span> <span class="s1">&#39;.s3.amazonaws.com&#39;</span>
 

@@ -1,7 +1,7 @@
 Title: Deploy a Django app to Heroku
 Date: 2019-01-22 14:45
 Authors: José Aniceto
-Modified: 2019-02-01 23:11
+Modified: 2019-05-29 22:48
 
 ### Index:
 * [Requirements](#requirements)
@@ -79,6 +79,11 @@ Now lets push our code to Heroku:
 $ git add .
 $ git commit -m "Ready to heroku this."
 $ git push heroku master
+```
+
+Note: If you wish to depoly from a local branch other than `master`, e.g. `testbranch` then use:
+```bash
+$ git push heroku testbranch:master
 ```
 
 Finally, migrate your Database to the Heroku app:

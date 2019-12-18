@@ -1,7 +1,7 @@
 Title: Building a Django site
 Date: 2018-04-03 17:23
 Authors: José Aniceto
-Modified: 2018-07-09 17:48
+Modified: 2019-02-16 20:16
 
 ## Installing Django
 
@@ -51,14 +51,14 @@ webapp/
 
 Next, we need to include our new app in our installed applications:
 
-Open the `mysite/settings.py` file and add the `'webapp'` line:
+Open the `mysite/settings.py` file and add the `'webapp.apps.WebappConfig'` line:
 
 ```python
 # ...this is just a slice of code within settings.py 
 # do not delete the other code
 # just add 'webapp' to the list.
 INSTALLED_APPS = [
-    'webapp',
+    'webapp.apps.WebappConfig',  # <app_name>.apps.<AppName>Config
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

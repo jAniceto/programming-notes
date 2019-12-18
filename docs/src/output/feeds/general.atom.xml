@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - General</title><link href="https://janiceto.github.io/programming-notes/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes/feeds/general.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes/</id><updated>2019-02-03T20:46:00+00:00</updated><entry><title>Set up Amazon S3 to serve Django Static and Media files</title><link href="https://janiceto.github.io/programming-notes/s3-django-setup.html" rel="alternate"></link><published>2019-01-31T12:10:00+00:00</published><updated>2019-02-03T20:46:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-31:/programming-notes/s3-django-setup.html</id><summary type="html">&lt;p&gt;Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django&amp;nbsp;App. &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - General</title><link href="https://janiceto.github.io/programming-notes/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes/feeds/general.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes/</id><updated>2019-05-29T22:48:00+01:00</updated><entry><title>Set up Amazon S3 to serve Django Static and Media files</title><link href="https://janiceto.github.io/programming-notes/s3-django-setup.html" rel="alternate"></link><published>2019-01-31T12:10:00+00:00</published><updated>2019-02-20T14:01:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-31:/programming-notes/s3-django-setup.html</id><summary type="html">&lt;p&gt;Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django&amp;nbsp;App. &lt;/p&gt;
 &lt;h2&gt;1) Sign up to &lt;span class="caps"&gt;AWS&lt;/span&gt; S3 and create &lt;span class="caps"&gt;IAM&lt;/span&gt;&amp;nbsp;user&lt;/h2&gt;
 &lt;p&gt;After signing up to Amazon &lt;span class="caps"&gt;AWS&lt;/span&gt; we need to create a user using the &lt;strong&gt;&lt;span class="caps"&gt;IAM&lt;/span&gt;&lt;/strong&gt; service. This way you can restrict the access to the bucket. Each user will have its own access id and key. To do&amp;nbsp;this:&lt;/p&gt;
 &lt;ul&gt;
@@ -134,12 +134,13 @@
 
 &lt;p&gt;Next you have to add the following settings to the &lt;code&gt;settings.py&lt;/code&gt; file in your&amp;nbsp;application.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Set S3 as the place to store your files.&lt;/span&gt;
-&lt;span class="n"&gt;DEFAULT_FILE_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 
-&lt;span class="n"&gt;storages&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;backends&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;s3boto3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S3Boto3Storage&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_FILE_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;storages.backends.s3boto3.S3Boto3Storage&amp;quot;&lt;/span&gt;
 &lt;span class="n"&gt;STATICFILES_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;storages.backends.s3boto3.S3Boto3Storage&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_ACCESS_KEY_ID&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_SECRET_ACCESS_KEY&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_STORAGE_BUCKET_NAME&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_S3_FILE_OVERWRITE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;AWS_DEFAULT_ACL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_ACCESS_KEY_ID&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_SECRET_ACCESS_KEY&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_STORAGE_BUCKET_NAME&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;AWS_QUERYSTRING_AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="c1"&gt;# This will make sure that the file URL does not have unnecessary parameters like your access key.&lt;/span&gt;
 &lt;span class="n"&gt;AWS_S3_CUSTOM_DOMAIN&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.s3.amazonaws.com&amp;#39;&lt;/span&gt;
 
@@ -205,7 +206,7 @@
 &lt;li&gt;&lt;a href="https://medium.com/@manibatra23/setting-up-amazon-s3-bucket-for-serving-django-static-and-media-files-3e781ab325d5"&gt;Setting up Amazon S3 Bucket for serving Django Static and Media&amp;nbsp;files&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.caktusgroup.com/blog/2014/11/10/Using-Amazon-S3-to-store-your-Django-sites-static-and-media-files/"&gt;Using Amazon S3 to Store your Django Site&amp;#8217;s Static and Media&amp;nbsp;Files&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://simpleisbetterthancomplex.com/tutorial/2017/08/01/how-to-setup-amazon-s3-in-a-django-project.html"&gt;How to Setup Amazon S3 in a Django&amp;nbsp;Project&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Deploy a Django app to Heroku</title><link href="https://janiceto.github.io/programming-notes/deploy-django-heroku.html" rel="alternate"></link><published>2019-01-22T14:45:00+00:00</published><updated>2019-02-01T23:11:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-22:/programming-notes/deploy-django-heroku.html</id><summary type="html">&lt;h3&gt;Index:&lt;/h3&gt;
+&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Deploy a Django app to Heroku</title><link href="https://janiceto.github.io/programming-notes/deploy-django-heroku.html" rel="alternate"></link><published>2019-01-22T14:45:00+00:00</published><updated>2019-05-29T22:48:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-22:/programming-notes/deploy-django-heroku.html</id><summary type="html">&lt;h3&gt;Index:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#requirements"&gt;Requirements&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#install-the-heroku-cli"&gt;Install the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
@@ -297,6 +298,11 @@ $ heroku create &amp;lt;desired_app_name&amp;gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git add .
 $ git commit -m &lt;span class="s2"&gt;&amp;quot;Ready to heroku this.&amp;quot;&lt;/span&gt;
 $ git push heroku master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note: If you wish to depoly from a local branch other than &lt;code&gt;master&lt;/code&gt;, e.g. &lt;code&gt;testbranch&lt;/code&gt; then&amp;nbsp;use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git push heroku testbranch:master
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1167,7 +1173,7 @@ $ git commit -m &lt;span class="s2"&gt;&amp;quot;remove file1.txt&amp;quot;&lt;/
 
 &lt;p&gt;Then push changes to remote&amp;nbsp;repo&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git push origin branch_name  
-&lt;/pre&gt;&lt;/div&gt;</content><category term="General"></category></entry><entry><title>Linux Crontab</title><link href="https://janiceto.github.io/programming-notes/crontab.html" rel="alternate"></link><published>2017-09-07T10:44:00+01:00</published><updated>2017-11-05T20:36:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-09-07:/programming-notes/crontab.html</id><summary type="html">&lt;p&gt;To view currently active crontab entries: &lt;code&gt;$ sudo crontab -l&lt;/code&gt;&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="General"></category></entry><entry><title>Linux Crontab</title><link href="https://janiceto.github.io/programming-notes/crontab.html" rel="alternate"></link><published>2017-09-07T10:44:00+01:00</published><updated>2019-04-07T19:24:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-09-07:/programming-notes/crontab.html</id><summary type="html">&lt;p&gt;To view currently active crontab entries: &lt;code&gt;$ sudo crontab -l&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;To enter the edit the crontab enter the following command in the terminal: &lt;code&gt;$ sudo crontab -e&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Don&amp;#8217;t use &lt;code&gt;sudo&lt;/code&gt; in a cron job. Instead edit root&amp;#8217;s crontab instead of your own, e.g. &lt;code&gt;sudo crontab -e&lt;/code&gt; and then enter commands without &lt;code&gt;sudo&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;At the bottom of the file enter one line for each task in the following&amp;nbsp;format:&lt;/p&gt;
@@ -1262,6 +1268,17 @@ $ git commit -m &lt;span class="s2"&gt;&amp;quot;remove file1.txt&amp;quot;&lt;/
 
 &lt;h4&gt;Example 2: Run a python script every five days a&amp;nbsp;18:30&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;projects&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;script1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Crontab&amp;nbsp;log&lt;/h3&gt;
+&lt;p&gt;On a default installation the cron jobs get logged&amp;nbsp;to&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ /var/log/syslog
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can see just cron jobs in that logfile by&amp;nbsp;running&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ grep CRON /var/log/syslog
 &lt;/pre&gt;&lt;/div&gt;
 
 

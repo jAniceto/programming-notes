@@ -1,9 +1,21 @@
 Title: Useful Python code snippets
 Date: 2018-06-03 14:27
 Authors: José Aniceto
-Modified: 2018-06-06 13:49
+Modified: 2019-03-12 14:41
 
 A collection of several code snippets of common or useful operation in Python.
+
+
+## Get list of attributes (methods) of an object
+
+Get a list of attributes (methods) of an object with `dir(object)`
+
+To see everything except hidden/dunder methods you can do:
+
+```python
+print((d for d in dir(obj) if not d.startswith('_')))
+```
+
 
 ## Remove dictionary from list
 

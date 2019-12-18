@@ -61,8 +61,15 @@
 </div>		<div class="content container">
 <div class="post">
 	<h1 class="post-title">Useful Python code&nbsp;snippets</h1>
-	<span class="post-date">dom 03 junho 2018, last updated qua 06 junho 2018</span>
+	<span class="post-date">dom 03 junho 2018, last updated ter 12 março 2019</span>
 	<p>A collection of several code snippets of common or useful operation in&nbsp;Python.</p>
+<h2>Get list of attributes (methods) of an&nbsp;object</h2>
+<p>Get a list of attributes (methods) of an object with <code>dir(object)</code></p>
+<p>To see everything except hidden/dunder methods you can&nbsp;do:</p>
+<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">((</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">d</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)))</span>
+</pre></div>
+
+
 <h2>Remove dictionary from&nbsp;list</h2>
 <p>Here&#8217;s how to remove a specific dictionary, or several dictionaries, from a list of dictionaries by a specific key. In the example below we are removing from the list all dictionaries which have and <code>id</code> key of <code>2</code>.</p>
 <div class="highlight"><pre><span></span><span class="n">thelist</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;paul&#39;</span><span class="p">},</span>
