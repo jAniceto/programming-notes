@@ -1,7 +1,20 @@
 # Matplotlib
 
 Index: 
+* [Set font](#set-font)
 * [Adding labels to a bar chart](#adding-labels-to-a-bar-chart)
+
+
+## Set font
+
+```python
+from matplotlib import rcParams
+
+rcParams['font.family'] = 'serif'
+rcParams['font.sans-serif'] = ['cmb10', 'Adobe Caslon Pro', 'Palatino Linotype']
+```
+
+A list of available fonts can be found [here](http://jonathansoma.com/lede/data-studio/matplotlib/list-all-fonts-available-in-matplotlib-plus-samples/).
 
 
 ## Adding labels to a bar chart
@@ -144,3 +157,4 @@ add_value_labels(ax)
 ```
 
 ![barh](https://i.stack.imgur.com/hkyjD.png)
+
