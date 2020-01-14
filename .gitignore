@@ -6,3 +6,7 @@ update_script.py
 
 .idea/
 __pycache__/
+
+
+# Book built output
+_book docs/
