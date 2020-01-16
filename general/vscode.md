@@ -9,6 +9,7 @@
 
 ## General use extensions
 - [Code Runner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner) - Run C, C++, Java, JS, PHP, Python, Perl, Ruby, Go and much more
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) - Spelling checker for source code
 
 
 ## Python extensions
