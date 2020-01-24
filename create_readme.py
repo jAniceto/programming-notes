@@ -7,7 +7,7 @@ SUBTITLE = 'Programming notes, snippets and examples in one place.'
 
 DISCLAIMER = 'These notes contain excerpts, code snippets and examples from various sources including, but not limited to, Python Docs, The Hitchhiker’s Guide to Python and Stack Overflow users. Sources were not collected as this notes were intended for personal use.'
 
-EXCLUDE_DIRS = ['.git', '.idea', '__pycache__']
+EXCLUDE_DIRS = ['.git', '.idea', '__pycache__', 'articles', 'docs']
 
 
 def get_md_files(directory):

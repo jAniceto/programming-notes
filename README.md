@@ -1,16 +1,12 @@
 # Programming Notes
 Programming notes, snippets and examples in one place.
     
-## ARTICLES
-
 ## DATA ANALYSIS
 * [Geo ploting with Basemap](/data-analysis/basemap.md)
 * [Data Visualization](/data-analysis/data-viz.md)
 * [Matplotlib](/data-analysis/matplotlib.md)
 * [Saving Scikit-learn model for reuse](/data-analysis/save-model.md)
 * [Seaborn](/data-analysis/seaborn.md)
-
-## DOCS
 
 ## GENERAL
 * [Create a Windows batch script](/general/batch-script.md)
@@ -28,6 +24,8 @@ Programming notes, snippets and examples in one place.
 * [Initial Server Setup with Ubuntu 18.04](/general/server-setup.md)
 * [Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)](/general/ubuntu-vps.md)
 * [VPS providers](/general/vps-providers.md)
+* [VSCode shortcuts for Windows](/general/vscode-shortcut.md)
+* [Visual Studio Code setup](/general/vscode.md)
 * [Online Resources For Web Developers](/general/web-dev-resources.md)
 
 ## HTML CSS
@@ -43,6 +41,7 @@ Programming notes, snippets and examples in one place.
 * [Filter a table or list by typing in search box](/javascript/filter-search.md)
 
 ## PYTHON
+* [Anaconda](/python/anaconda.md)
 * [Argument parsing using the argparse module](/python/arg-parse.md)
 * [*args and **kwargs](/python/args-kwargs.md)
 * [Web scrapping with Beautiful Soup 4](/python/beautifulsoup4.md)
