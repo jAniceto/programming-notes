@@ -1,4 +1,4 @@
-# Filter a table or list by typing in search box
+# Filter, sort and layout
 
 ## Using a JS library:
 
