@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'José Aniceto'
 SITENAME = 'Annotatio'
-BIO = 'A collection of codding notes and snippets from my journey to self taught programming.'
+BIO = 'A collection of personal coding notes and snippets.'
 SITEURL = ''
 
 PATH = 'content'
