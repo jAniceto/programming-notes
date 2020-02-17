@@ -1,5 +1,365 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - General</title><link href="https://janiceto.github.io/programming-notes/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes/feeds/general.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes/</id><updated>2019-05-29T22:48:00+01:00</updated><entry><title>Set up Amazon S3 to serve Django Static and Media files</title><link href="https://janiceto.github.io/programming-notes/s3-django-setup.html" rel="alternate"></link><published>2019-01-31T12:10:00+00:00</published><updated>2019-02-20T14:01:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-31:/programming-notes/s3-django-setup.html</id><summary type="html">&lt;p&gt;Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django&amp;nbsp;App. &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - General</title><link href="https://janiceto.github.io/programming-notes/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes/feeds/general.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes/</id><updated>2020-01-24T15:50:00+00:00</updated><entry><title>Visual Studio Code setup</title><link href="https://janiceto.github.io/programming-notes/vscode.html" rel="alternate"></link><published>2020-01-24T15:50:00+00:00</published><updated>2020-01-24T15:50:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2020-01-24:/programming-notes/vscode.html</id><content type="html">&lt;h2&gt;Themes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme"&gt;Material&amp;nbsp;Theme&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=rickynormandeau.mariana-pro"&gt;Mariana&amp;nbsp;Pro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme"&gt;One Dark Pro&lt;/a&gt; - Atom&amp;#8217;s iconic One Dark&amp;nbsp;theme&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;General use&amp;nbsp;extensions&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner"&gt;Code Runner&lt;/a&gt; - Run C, C++, Java, &lt;span class="caps"&gt;JS&lt;/span&gt;, &lt;span class="caps"&gt;PHP&lt;/span&gt;, Python, Perl, Ruby, Go and much&amp;nbsp;more&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker"&gt;Code Spell Checker&lt;/a&gt; - Spelling checker for source&amp;nbsp;code&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Python&amp;nbsp;extensions&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python"&gt;Python&lt;/a&gt; - Linting, Debugging, Intellisense, formatting,&amp;nbsp;etc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;LaTeX&amp;nbsp;extensions&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop"&gt;LaTeX Workshop&lt;/a&gt; - LaTeX typesetting efficiency with preview, compile, autocomplete, colorize, and&amp;nbsp;more&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=tecosaur.latex-utilities"&gt;LaTeX Utilities&lt;/a&gt; - Add-on to LaTeX Workshop that provides some extra, non-essential,&amp;nbsp;features.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt;/&lt;span class="caps"&gt;CSS&lt;/span&gt;/Javascript&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer"&gt;Live Server&lt;/a&gt; - Launch a development local Server with live reload feature for static &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; dynamic&amp;nbsp;pages&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome"&gt;Debugger for Chrome&lt;/a&gt; - Debug your JavaScript code in the Chrome&amp;nbsp;browser&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode"&gt;Prettier&lt;/a&gt; - Code&amp;nbsp;formatter&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Markdown&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint"&gt;markdownlint&lt;/a&gt; - Markdown linting and style&amp;nbsp;checking&lt;/li&gt;
+&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>VSCode shortcuts for Windows</title><link href="https://janiceto.github.io/programming-notes/vscode-shortcut.html" rel="alternate"></link><published>2020-01-24T15:50:00+00:00</published><updated>2020-01-24T15:50:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2020-01-24:/programming-notes/vscode-shortcut.html</id><summary type="html">&lt;h2&gt;Open/View&lt;/h2&gt;
+&lt;p&gt;Open Command&amp;nbsp;Pallete&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Shift+Ctrl+P
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Access&amp;nbsp;Settings&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+,
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Toggle&amp;nbsp;Terminal&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Create New&amp;nbsp;Terminal&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Shift&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;Ctrl&lt;/span&gt;&lt;span class="o"&gt;+`&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Toggle&amp;nbsp;Sidebar&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+B
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Open New&amp;nbsp;Window/Instance&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Shift+Ctrl+N
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Close&amp;nbsp;Window&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+W
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Working With&amp;nbsp;Files&lt;/h2&gt;
+&lt;p&gt;Sidebar&amp;nbsp;Focus&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Shift+Ctrl+E
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Open File/Folder From&amp;nbsp;Sidebar&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Ctrl&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;Down&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Change File&amp;nbsp;Tabs&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+PageUP
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Quick File&amp;nbsp;Open&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+P
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Open File From&amp;nbsp;Explorer&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+O
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;New&amp;nbsp;File&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+N
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Save&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+S
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Save&amp;nbsp;As&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Shift+Ctrl+S
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Close&amp;nbsp;File&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+W
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Delete&amp;nbsp;File&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Ctrl&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="k"&gt;Delete&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Reopen&amp;nbsp;Files&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Shift&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;Ctrl&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Zoom&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl++ &lt;span class="c1"&gt;# Zoom in&lt;/span&gt;
+Ctrl+- &lt;span class="c1"&gt;# Zoom out&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Spilt&amp;nbsp;Editor&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Code&amp;nbsp;Editing&lt;/h2&gt;
+&lt;p&gt;Go To Start &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; End Of&amp;nbsp;Line&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+Right
+Ctrl+Left
+
+home
+end
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Move By&amp;nbsp;Word&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Alt+Right
+Alt+Left
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Go To Start &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; End Of&amp;nbsp;File&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+Home
+Ctrl+End
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Cut, Copy &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Past&amp;nbsp;Line&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+X &lt;span class="c1"&gt;# Cut&lt;/span&gt;
+Ctrl+C &lt;span class="c1"&gt;# Copy&lt;/span&gt;
+Ctrl+V &lt;span class="c1"&gt;# Paste&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Move Line Up &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt;&amp;nbsp;Down&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Alt+Up …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;Open/View&lt;/h2&gt;
+&lt;p&gt;Open Command&amp;nbsp;Pallete&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Shift+Ctrl+P
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Access&amp;nbsp;Settings&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+,
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Toggle&amp;nbsp;Terminal&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Create New&amp;nbsp;Terminal&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Shift&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;Ctrl&lt;/span&gt;&lt;span class="o"&gt;+`&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Toggle&amp;nbsp;Sidebar&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+B
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Open New&amp;nbsp;Window/Instance&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Shift+Ctrl+N
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Close&amp;nbsp;Window&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+W
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Working With&amp;nbsp;Files&lt;/h2&gt;
+&lt;p&gt;Sidebar&amp;nbsp;Focus&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Shift+Ctrl+E
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Open File/Folder From&amp;nbsp;Sidebar&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Ctrl&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;Down&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Change File&amp;nbsp;Tabs&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+PageUP
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Quick File&amp;nbsp;Open&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+P
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Open File From&amp;nbsp;Explorer&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+O
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;New&amp;nbsp;File&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+N
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Save&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+S
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Save&amp;nbsp;As&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Shift+Ctrl+S
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Close&amp;nbsp;File&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+W
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Delete&amp;nbsp;File&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Ctrl&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="k"&gt;Delete&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Reopen&amp;nbsp;Files&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Shift&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;Ctrl&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Zoom&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl++ &lt;span class="c1"&gt;# Zoom in&lt;/span&gt;
+Ctrl+- &lt;span class="c1"&gt;# Zoom out&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Spilt&amp;nbsp;Editor&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Code&amp;nbsp;Editing&lt;/h2&gt;
+&lt;p&gt;Go To Start &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; End Of&amp;nbsp;Line&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+Right
+Ctrl+Left
+
+home
+end
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Move By&amp;nbsp;Word&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Alt+Right
+Alt+Left
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Go To Start &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; End Of&amp;nbsp;File&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+Home
+Ctrl+End
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Cut, Copy &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Past&amp;nbsp;Line&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+X &lt;span class="c1"&gt;# Cut&lt;/span&gt;
+Ctrl+C &lt;span class="c1"&gt;# Copy&lt;/span&gt;
+Ctrl+V &lt;span class="c1"&gt;# Paste&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Move Line Up &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt;&amp;nbsp;Down&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Alt+Up
+Alt+Down
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Copy Line Up &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt;&amp;nbsp;Down&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Shift+Alt+Up
+Shift+Alt+Down
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Remove&amp;nbsp;Line&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Shift+Ctrl+K
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Insert&amp;nbsp;Line&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+Enter &lt;span class="c1"&gt;# Insert below&lt;/span&gt;
+Shift+Ctrl+Enter &lt;span class="c1"&gt;# Insert above&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Jump To Matching&amp;nbsp;Bracket&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Shift+Ctrl+&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add Line&amp;nbsp;Comment&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add Block&amp;nbsp;Comment&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Shift+Alt+A
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Highlight&amp;nbsp;Code&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Shift+Any Direction
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Select Next&amp;nbsp;Match&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+D
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;De-select&amp;nbsp;Match&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+U
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add&amp;nbsp;Cursor&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Alt+Click
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Go to Entity (Functions, vars,&amp;nbsp;etc)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ctrl+Shift+O
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf"&gt;Official list of commands for&amp;nbsp;Windows&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="General"></category></entry><entry><title>Set up Amazon S3 to serve Django Static and Media files</title><link href="https://janiceto.github.io/programming-notes/s3-django-setup.html" rel="alternate"></link><published>2019-01-31T12:10:00+00:00</published><updated>2019-02-20T14:01:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-31:/programming-notes/s3-django-setup.html</id><summary type="html">&lt;p&gt;Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django&amp;nbsp;App. &lt;/p&gt;
 &lt;h2&gt;1) Sign up to &lt;span class="caps"&gt;AWS&lt;/span&gt; S3 and create &lt;span class="caps"&gt;IAM&lt;/span&gt;&amp;nbsp;user&lt;/h2&gt;
 &lt;p&gt;After signing up to Amazon &lt;span class="caps"&gt;AWS&lt;/span&gt; we need to create a user using the &lt;strong&gt;&lt;span class="caps"&gt;IAM&lt;/span&gt;&lt;/strong&gt; service. This way you can restrict the access to the bucket. Each user will have its own access id and key. To do&amp;nbsp;this:&lt;/p&gt;
 &lt;ul&gt;

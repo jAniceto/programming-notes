@@ -5,7 +5,11 @@ Authors: José Aniceto
 
 ## Using a JS library:
 
-* [listjs.com](http://listjs.com/)
+* [List JS](http://listjs.com/)
+* [Isotope](https://isotope.metafizzy.co/)
+* [SortableJS](https://sortablejs.github.io/Sortable/)
+* [Magnet](http://docs.haundodesign.com/magnet/getting-started/)
+* [Muuri](https://haltu.github.io/muuri/)
 
 
 ## From scratch: 

@@ -123,7 +123,11 @@
 &lt;span class="p"&gt;});&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content><category term="Javascript"></category></entry><entry><title>Filter a table or list by typing in search box</title><link href="https://janiceto.github.io/programming-notes/filter-search.html" rel="alternate"></link><published>2018-08-28T11:27:00+01:00</published><updated>2018-08-28T11:27:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-28:/programming-notes/filter-search.html</id><summary type="html">&lt;h2&gt;Using a &lt;span class="caps"&gt;JS&lt;/span&gt;&amp;nbsp;library:&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="http://listjs.com/"&gt;listjs.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://listjs.com/"&gt;List &lt;span class="caps"&gt;JS&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://isotope.metafizzy.co/"&gt;Isotope&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://sortablejs.github.io/Sortable/"&gt;SortableJS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://docs.haundodesign.com/magnet/getting-started/"&gt;Magnet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://haltu.github.io/muuri/"&gt;Muuri&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;From&amp;nbsp;scratch:&lt;/h2&gt;
 &lt;h3&gt;For a&amp;nbsp;table&lt;/h3&gt;
@@ -164,12 +168,13 @@
     &lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Increase font-size */&lt;/span&gt;
     &lt;span class="k"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Add some padding */&lt;/span&gt;
     &lt;span class="k"&gt;border&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="kc"&gt;solid&lt;/span&gt; &lt;span class="mh"&gt;#ddd&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Add a grey border */&lt;/span&gt;
-    &lt;span class="k"&gt;margin-bottom&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Add some space below the input */&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;myTable …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;Using a &lt;span class="caps"&gt;JS&lt;/span&gt;&amp;nbsp;library:&lt;/h2&gt;
+    &lt;span class="k"&gt;margin-bottom&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Add some space …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;Using a &lt;span class="caps"&gt;JS&lt;/span&gt;&amp;nbsp;library:&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="http://listjs.com/"&gt;listjs.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://listjs.com/"&gt;List &lt;span class="caps"&gt;JS&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://isotope.metafizzy.co/"&gt;Isotope&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://sortablejs.github.io/Sortable/"&gt;SortableJS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://docs.haundodesign.com/magnet/getting-started/"&gt;Magnet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://haltu.github.io/muuri/"&gt;Muuri&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;From&amp;nbsp;scratch:&lt;/h2&gt;
 &lt;h3&gt;For a&amp;nbsp;table&lt;/h3&gt;

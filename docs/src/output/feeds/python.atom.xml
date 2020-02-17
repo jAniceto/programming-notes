@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - Python</title><link href="https://janiceto.github.io/programming-notes/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes/feeds/python.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes/</id><updated>2019-12-04T10:55:00+00:00</updated><entry><title>Graphical user interface in Python</title><link href="https://janiceto.github.io/programming-notes/gui.html" rel="alternate"></link><published>2019-12-04T10:55:00+00:00</published><updated>2019-12-04T10:55:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-12-04:/programming-notes/gui.html</id><content type="html">&lt;h3&gt;For simple command line&amp;nbsp;programs&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - Python</title><link href="https://janiceto.github.io/programming-notes/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes/feeds/python.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes/</id><updated>2020-01-24T15:50:00+00:00</updated><entry><title>Anaconda</title><link href="https://janiceto.github.io/programming-notes/anaconda.html" rel="alternate"></link><published>2020-01-24T15:50:00+00:00</published><updated>2020-01-24T15:50:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2020-01-24:/programming-notes/anaconda.html</id><content type="html">&lt;h2&gt;Add a folder to the Anaconda&amp;nbsp;path&lt;/h2&gt;
+&lt;p&gt;By adding a folder to the Anaconda path you can call its Python scripts from any location in the Anaconda&amp;nbsp;Prompt. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;your_folder&lt;/span&gt;
+&lt;span class="n"&gt;conda&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;develop&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;or &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;conda&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;develop&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;https://stackoverflow.com/a/37008663/5240904&lt;/p&gt;</content><category term="Python"></category></entry><entry><title>Graphical user interface in Python</title><link href="https://janiceto.github.io/programming-notes/gui.html" rel="alternate"></link><published>2019-12-04T10:55:00+00:00</published><updated>2019-12-04T10:55:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-12-04:/programming-notes/gui.html</id><content type="html">&lt;h3&gt;For simple command line&amp;nbsp;programs&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/chriskiehl/Gooey"&gt;Gooey&lt;/a&gt; - Turn (almost) any Python command line program into a full &lt;span class="caps"&gt;GUI&lt;/span&gt;&amp;nbsp;application&lt;/li&gt;
 &lt;/ul&gt;
