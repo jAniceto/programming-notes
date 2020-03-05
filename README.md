@@ -10,19 +10,14 @@ Programming notes, snippets and examples in one place.
 
 ## GENERAL
 * [Create a Windows batch script](/general/batch-script.md)
-* [Linux Crontab](/general/crontab.md)
 * [Deploy a Django app to Heroku](/general/deploy-django-heroku.md)
 * [Deploy a Django app in an Ubuntu VPS (DigitalOcean)](/general/deploy-django.md)
-* [Development environments](/general/dev-environments.md)
 * [Git Version Control System](/general/git.md)
 * [Editing photos metadata](/general/image-metadata.md)
-* [Keep SSH sessions running after disconnecting](/general/keep-ssh-running.md)
 * [Hiding Passwords and Secret Keys in Environment Variables](/general/os-env-vars.md)
 * [Installing Python 3.7 on Raspbian](/general/python-raspbian.md)
 * [Regular expressions](/general/regex.md)
 * [Set up Amazon S3 to serve Django Static and Media files](/general/s3-django-setup.md)
-* [Initial Server Setup with Ubuntu 18.04](/general/server-setup.md)
-* [Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)](/general/ubuntu-vps.md)
 * [VPS providers](/general/vps-providers.md)
 * [VSCode shortcuts for Windows](/general/vscode-shortcut.md)
 * [Visual Studio Code setup](/general/vscode.md)
@@ -38,7 +33,14 @@ Programming notes, snippets and examples in one place.
 * [Basic Javascript concepts](/javascript/basics.md)
 * [Caching data](/javascript/cache-data.md)
 * [DataTables JS Library](/javascript/DataTables.md)
-* [Filter a table or list by typing in search box](/javascript/filter-search.md)
+* [Filter, sort and layout](/javascript/filter-search.md)
+
+## LINUX
+* [Linux Crontab](/linux/crontab.md)
+* [Keep SSH sessions running after disconnecting](/linux/keep-ssh-running.md)
+* [Set `$PATH` variable in Ubuntu](/linux/path.md)
+* [Initial Server Setup with Ubuntu 18.04](/linux/server-setup.md)
+* [Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)](/linux/ubuntu-vps.md)
 
 ## PYTHON
 * [Anaconda](/python/anaconda.md)
@@ -50,6 +52,7 @@ Programming notes, snippets and examples in one place.
 * [Create a standalone exacutable from a Python scripy](/python/create-exe.md)
 * [CSV files](/python/csv.md)
 * [Datetime module](/python/datetime.md)
+* [Create a REST API with Django Rest Framework](/python/django-rest-api.md)
 * [Collection of useful Django snippets for several purposes](/python/django-snippets.md)
 * [Building a Django site](/python/django.md)
 * [Sending e-mails with Python](/python/email.md)
