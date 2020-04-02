@@ -2,6 +2,11 @@
 
 Saving the model with Pickle or Joblib allows you to recover the full Scikit-learn estimator object however some compatibility issues may occur if using different versions of sklearn. Other methods of saving models can deploy the model for prediction, usually by using tools supporting open model interchange formats but do not allow the recovery of the full Scikit-learn estimator object.
 
+## Index
+* [Using Joblib](#using-joblib)
+* [Using Pickle](#using-pickle)
+* [Saving a complete ML pipeline](#saving-a-complete-ml-pipeline)
+
 
 ## Using Joblib
 
@@ -60,6 +65,32 @@ clf2.predict(X[0:1])
 
 y[0]
 ```
+
+## Saving a complete ML pipeline
+
+Often it is useful, not only saving the ML model, but also other required component lique the scaler used. In the following you can use `joblib` or `pickle`. The point is to create a pipeline so that you don't have to separately call the scaler.
+
+Create the pipeline:
+```python
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.externals import joblib
+
+pipeline = make_pipeline(MinMaxScaler(),YOUR_ML_MODEL() )
+
+model = pipeline.fit(X_train, y_train)
+```
+
+Save:
+```python
+joblib.dump(model, 'filename.mod') 
+```
+
+Load:
+```python
+model = joblib.load('filename.mod')
+```
+
 
 ## References:
 - [Scikit-learn docs](https://scikit-learn.org/stable/modules/model_persistence.html)
