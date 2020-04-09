@@ -1,0 +1,39 @@
+/* 
+CONTENT 
+- Sidebar styles
+- Category pages styles
+*/
+
+
+/* Sidebar styles */
+.sidebar {
+  text-align: left;
+}
+
+.sidebar-about .profile-picture {
+  margin: 0;
+  border: 2px solid #ffffff;
+  max-width: 5rem;
+}
+
+.sidebar-about h1 {
+  font-size: 3rem;
+}
+
+.sidebar-about .lead {
+  font-size: 1.2rem;
+}
+
+/* Category pages styles */
+.category-list > div {
+  margin-bottom: 0.4em
+}
+
+.date-category {
+  color: #9a9a9a;
+  font-size: 0.7em;
+}
+
+h1.post-title {
+  color: #1ABC9C;
+}

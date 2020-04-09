@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<link rel="shortcut icon" type="image/png" href="https://janiceto.github.io/programming-notes/images/favicon.png"/>
+		<title>Annotatio</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58056773-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-58056773-5');
+	</script>
+	</head>
+	
+	<body class="theme-flat">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="https://janiceto.github.io/programming-notes">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of personal coding notes and snippets. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/data-analysis.html">Data Analysis</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/general.html">General</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/python.html">Python</a>
+			
+		</nav>
+
+		<p>by José Aniceto</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Argument parsing using the argparse&nbsp;module</h1>
+	<span class="post-date">sex 22 novembro 2019, last updated sex 03 abril 2020</span>
+	<p><strong>argparse</strong> is a Python Standard Library module to write user-friendly command-line interfaces. The program defines what arguments it requires, and argparse will figure out how to parse those out of sys.argv. The argparse module also automatically generates help and usage messages and issues errors when users give the program invalid&nbsp;arguments</p>
+<h3>Initialize</h3>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="c1"># Instantiate the parser</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s1">&#39;Optional app name&#39;</span><span class="p">,</span> 
+                                 <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Optional app description&#39;</span><span class="p">,</span> 
+                                 <span class="n">epilog</span><span class="o">=</span><span class="s1">&#39;Enjoy the program!&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>By default, the <strong>argparse</strong> uses the value of the sys.argv[0] element to set the name of the program (name of the Python script). However, you can specify the name of your program just by using the <code>prog</code> keyword.</p>
+<p>You can customize the text displayed before and after the arguments help text using the <code>description</code> and <code>epilog</code> keywords.</p>
+<h3>Add&nbsp;Arguments</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Required positional argument</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;pos_arg&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;A required integer positional argument&#39;</span><span class="p">)</span>
+
+<span class="c1"># Optional positional argument</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;opt_pos_arg&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;An optional integer positional argument&#39;</span><span class="p">)</span>
+
+<span class="c1"># Optional argument</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--opt_arg&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;An optional integer argument&#39;</span><span class="p">)</span>
+
+<span class="c1"># Switch</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--switch&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;A boolean switch&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>Parse</h3>
+<div class="highlight"><pre><span></span><span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+</pre></div>
+
+
+<h3>Access</h3>
+<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Argument values:&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">pos_arg</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">opt_pos_arg</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">opt_arg</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">switch</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>Check&nbsp;Values</h3>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">pos_arg</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;pos_arg cannot be larger than 10&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>Usage</h3>
+<p>Assuming the Python code above is saved into a file called <code>prog.py</code>.</p>
+<h4>Correct&nbsp;use:</h4>
+<div class="highlight"><pre><span></span>$ python prog.py <span class="m">1</span> <span class="m">2</span> --opt_arg <span class="m">3</span> --switch
+
+Argument values:
+<span class="m">1</span>
+<span class="m">2</span>
+<span class="m">3</span>
+True
+</pre></div>
+
+
+<h4>Incorrect&nbsp;arguments:</h4>
+<div class="highlight"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="n">python</span><span class="w"> </span><span class="n">prog</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="c1">--opt_arg 3 --switch</span>
+<span class="k">usage</span><span class="err">:</span><span class="w"> </span><span class="nf">convert</span><span class="w"> </span><span class="o">[</span><span class="n">-h</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">--opt_arg OPT_ARG</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">--switch</span><span class="o">]</span><span class="w"> </span><span class="n">pos_arg</span><span class="w"> </span><span class="o">[</span><span class="n">opt_pos_arg</span><span class="o">]</span><span class="w"></span>
+<span class="n">prog</span><span class="p">.</span><span class="nl">py</span><span class="p">:</span><span class="w"> </span><span class="nl">error</span><span class="p">:</span><span class="w"> </span><span class="n">argument</span><span class="w"> </span><span class="nl">pos_arg</span><span class="p">:</span><span class="w"> </span><span class="n">invalid</span><span class="w"> </span><span class="nc">int</span><span class="w"> </span><span class="k">value</span><span class="err">:</span><span class="w"> </span><span class="s1">&#39;foo&#39;</span><span class="w"></span>
+
+<span class="err">$</span><span class="w"> </span><span class="n">python</span><span class="w"> </span><span class="n">prog</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="c1">--opt_arg 3</span>
+<span class="n">Argument</span><span class="w"> </span><span class="k">values</span><span class="err">:</span><span class="w"></span>
+<span class="mi">11</span><span class="w"></span>
+<span class="mi">2</span><span class="w"></span>
+<span class="mi">3</span><span class="w"></span>
+<span class="k">False</span><span class="w"></span>
+<span class="k">usage</span><span class="err">:</span><span class="w"> </span><span class="n">python</span><span class="w"> </span><span class="n">prog</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="o">[</span><span class="n">-h</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">--opt_arg OPT_ARG</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">--switch</span><span class="o">]</span><span class="w"> </span><span class="n">pos_arg</span><span class="w"> </span><span class="o">[</span><span class="n">opt_pos_arg</span><span class="o">]</span><span class="w"></span>
+<span class="nf">convert</span><span class="err">:</span><span class="w"> </span><span class="nl">error</span><span class="p">:</span><span class="w"> </span><span class="n">pos_arg</span><span class="w"> </span><span class="n">cannot</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">larger</span><span class="w"> </span><span class="k">than</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+</pre></div>
+
+
+<h4>Full&nbsp;help</h4>
+<div class="highlight"><pre><span></span>$ python prog.py -h
+</pre></div>
+
+
+<h3>References:</h3>
+<ul>
+<li><a href="https://docs.python.org/3/library/argparse.html">Python&nbsp;docs</a></li>
+<li><a href="https://stackoverflow.com/a/30493366">Stack Overflow&nbsp;answer</a></li>
+<li><a href="https://realpython.com/command-line-interfaces-python-argparse/">Real Python - How to Build Command Line Interfaces in Python With&nbsp;argparse</a></li>
+</ul>
+	<br><br><br>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'annotatio';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+		</div>
+	</body>
+</html>

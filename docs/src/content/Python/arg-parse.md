@@ -1,7 +1,7 @@
 Title: Argument parsing using the argparse module
 Date: 2019-11-22 17:47
 Authors: José Aniceto
-
+Modified: 2020-04-03 15:42
 
 **argparse** is a Python Standard Library module to write user-friendly command-line interfaces. The program defines what arguments it requires, and argparse will figure out how to parse those out of sys.argv. The argparse module also automatically generates help and usage messages and issues errors when users give the program invalid arguments
 
@@ -13,8 +13,14 @@ Authors: José Aniceto
 import argparse
 
 # Instantiate the parser
-parser = argparse.ArgumentParser(description='Optional app description')
+parser = argparse.ArgumentParser(prog='Optional app name', 
+                                 description='Optional app description', 
+                                 epilog='Enjoy the program!')
 ```
+
+By default, the **argparse** uses the value of the sys.argv[0] element to set the name of the program (name of the Python script). However, you can specify the name of your program just by using the `prog` keyword.
+
+You can customize the text displayed before and after the arguments help text using the `description` and `epilog` keywords.
 
 ### Add Arguments
 
@@ -102,3 +108,4 @@ $ python prog.py -h
 
 - [Python docs](https://docs.python.org/3/library/argparse.html)
 - [Stack Overflow answer](https://stackoverflow.com/a/30493366)
+- [Real Python - How to Build Command Line Interfaces in Python With argparse](https://realpython.com/command-line-interfaces-python-argparse/)

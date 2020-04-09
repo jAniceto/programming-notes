@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<link rel="shortcut icon" type="image/png" href="https://janiceto.github.io/programming-notes/images/favicon.png"/>
+		<title>Annotatio</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58056773-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-58056773-5');
+	</script>
+	</head>
+	
+	<body class="theme-flat">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="https://janiceto.github.io/programming-notes">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of personal coding notes and snippets. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/data-analysis.html">Data Analysis</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/general.html">General</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/python.html">Python</a>
+			
+		</nav>
+
+		<p>by José Aniceto</p>
+	</div>
+</div>		<div class="content container">
+	<div class="posts">
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/batch-script.html#batch-script">
+					<a href="https://janiceto.github.io/programming-notes/batch-script.html#batch-script">Create a Windows batch&nbsp;script</a>
+				</h1>
+				<span class="post-date">qui 07 setembro 2017</span>
+				<p>
+					<p>A batch file is a text file with the extension <strong>.bat</strong> that contains one or more command line commands to be run&nbsp;consecutively. </p>
+<h2>Some usefull&nbsp;commands:</h2>
+<p><strong>@echo</strong> - This parameter will allow you to view your working script in the command prompt. This parameter is useful for viewing your working code. If any issues arise from the batch file, you will be able to view the issues associated with your script using the echo function. Adding a following off to this parameter will allow you to quickly close your script after it has&nbsp;finished.</p>
+<p><strong>title</strong> - This will provide a title for your batch script in your Command Prompt&nbsp;window.</p>
+<p><strong>cls</strong> - Clears your command prompt, best used when extraneous code can make what you’re accessing had to&nbsp;find.</p>
+<p><strong>rem</strong> <span class="caps">OR</span> <strong>::</strong> - Shorthand for remark. Rem statements are not entered into your code. Instead, they are used to explain and give information regarding …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/batch-script.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/css-selectors.html#css-selectors">
+					<a href="https://janiceto.github.io/programming-notes/css-selectors.html#css-selectors"><span class="caps">CSS</span>&nbsp;selectors</a>
+				</h1>
+				<span class="post-date">ter 15 agosto 2017</span>
+				<p>
+					<p>In <span class="caps">CSS</span>, selectors are patterns used to select the element(s) you want to&nbsp;style.</p>
+<p>The &#8220;<span class="caps">CSS</span>&#8221; column indicates in which <span class="caps">CSS</span> version the property is defined (<span class="caps">CSS1</span>, <span class="caps">CSS2</span>, or <span class="caps">CSS3</span>).</p>
+<table>
+<thead>
+<tr>
+<th>Selector</th>
+<th>Example</th>
+<th>Example description</th>
+<th><span class="caps">CSS</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.class</td>
+<td>.intro</td>
+<td>Selects all elements with class=&#8221;intro&#8221;</td>
+<td>1</td>
+</tr>
+<tr>
+<td>#id</td>
+<td>#firstname</td>
+<td>Selects the element with id=&#8221;firstname&#8221;</td>
+<td>1</td>
+</tr>
+<tr>
+<td>*</td>
+<td>*</td>
+<td>Selects all elements</td>
+<td>2</td>
+</tr>
+<tr>
+<td>element</td>
+<td>p</td>
+<td>Selects all&lt;p&gt; elements</td>
+<td>1</td>
+</tr>
+<tr>
+<td>element,element</td>
+<td>div, p</td>
+<td>Selects all &lt;div&gt; elements and all &lt;p&gt; elements</td>
+<td>1</td>
+</tr>
+<tr>
+<td>element element</td>
+<td>div p</td>
+<td>Selects all &lt;p&gt; elements inside &lt;div&gt; elements</td>
+<td>1</td>
+</tr>
+<tr>
+<td>element&gt;element</td>
+<td>div &gt; p</td>
+<td>Selects all &lt;p&gt; elements where the parent is a &lt;div&gt; element</td>
+<td>2</td>
+</tr>
+<tr>
+<td>element+element</td>
+<td>div + p</td>
+<td>Selects all &lt;p&gt; elements that are placed immediately after &lt;div&gt; elements</td>
+<td>2</td>
+</tr>
+<tr>
+<td>element1~element2</td>
+<td>p ~ ul</td>
+<td>Selects every &lt;ul&gt; element that are preceded by a &lt;p&gt; element</td>
+<td>3</td>
+</tr>
+<tr>
+<td>:active</td>
+<td>a:active</td>
+<td>Selects the active link</td>
+<td>1</td>
+</tr>
+<tr>
+<td>::after</td>
+<td>p::after</td>
+<td>Insert …</td></tr></tbody></table>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/css-selectors.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/stravalib.html#stravalib">
+					<a href="https://janiceto.github.io/programming-notes/stravalib.html#stravalib">Interfacing with Strava <span class="caps">API</span> using&nbsp;stavalib</a>
+				</h1>
+				<span class="post-date">sáb 12 agosto 2017</span>
+				<p>
+					<h3>Instalation:</h3>
+<p><code>$ pip install stravalib</code></p>
+<h3>Usage:</h3>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">stravalib</span> <span class="kn">import</span> <span class="n">Client</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="s1">&#39;fgd456fgs5dgs546dfg&#39;</span><span class="p">)</span>
+<span class="n">athlete</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_athlete</span><span class="p">()</span>  <span class="c1"># Get your athlete profile</span>
+<span class="n">athlete2</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_athlete</span><span class="p">(</span><span class="mi">227615</span><span class="p">)</span>  <span class="c1"># By providing an athlete ID you can access other people</span>
+</pre></div>
+
+
+<p>To get a given activity, use the get_activity function and provide&nbsp;activity_id:</p>
+<div class="highlight"><pre><span></span><span class="n">activity</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_activity</span><span class="p">(</span><span class="mi">207650614</span><span class="p">)</span>
+
+<span class="c1"># Activity object has many basic properties such as type and distance.</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;type={0.type} distance={1} km&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">activity</span><span class="p">,</span> <span class="n">unithelper</span><span class="o">.</span><span class="n">kilometers</span><span class="p">(</span><span class="n">activity</span><span class="o">.</span><span class="n">distance</span><span class="p">)))</span>
+</pre></div>
+
+
+<p>Activity&nbsp;information:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Activities can have many streams, you can request desired stream types</span>
+<span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;latlng&#39;</span><span class="p">,</span> <span class="s1">&#39;altitude&#39;</span><span class="p">,</span> <span class="s1">&#39;heartrate&#39;</span><span class="p">,</span> <span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="p">]</span>
+
+<span class="n">streams</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_activity_streams</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="n">types</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">)</span>
+
+<span class="c1">#  Result is a dictionary object.  The dict&#39;s key are the stream type.</span>
+<span class="k">if</span> <span class="s1">&#39;altitude&#39;</span> <span class="ow">in</span> <span class="n">streams</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">streams</span><span class="p">[</span><span class="s1">&#39;altitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+
+<p>List of&nbsp;Activities:</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">activity</span> <span class="ow">in</span> <span class="n">client</span><span class="o">.</span><span class="n">get_activities</span><span class="p">(</span><span class="n">after</span> <span class="o">=</span> <span class="s2">&quot;2010-01-01T00:00:00Z&quot;</span><span class="p">,</span>  <span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>  <span class="c1"># To get newest to oldest use before argument.</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0.name} {0.moving_time …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/stravalib.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/image-manipulation.html#image-manipulation">
+					<a href="https://janiceto.github.io/programming-notes/image-manipulation.html#image-manipulation">Image manipulation in&nbsp;Python</a>
+				</h1>
+				<span class="post-date">sáb 12 agosto 2017</span>
+				<p>
+					<p>The <strong>Python Imaging Library</strong> (<span class="caps">PIL</span>) development has stagnated, with its last release in 2009. Luckily, there’s an actively-developed fork of <span class="caps">PIL</span> called <strong>Pillow</strong>.
+<strong>Pillow</strong> is easier to install, runs on all operating systems, and supports Python&nbsp;3.</p>
+<h2>Pillow</h2>
+<ul>
+<li>Pillow and <span class="caps">PIL</span> cannot co-exist in the same environment. Before installing Pillow, please uninstall <span class="caps">PIL</span>.</li>
+<li>Pillow &gt;= 2.0.0 supports Python versions 2.6, 2.7, 3.2, 3.3,&nbsp;3.4</li>
+<li>Before installing Pillow, you’ll have to install Pillow’s prerequisites. <a href="https://pillow.readthedocs.io/en/3.0.0/installation.html">Instructions here</a>.</li>
+</ul>
+<h3>Instalation:</h3>
+<p><strong>Windows</strong>: </p>
+<p><code>$ pip install Pillow</code></p>
+<p><strong>Linux (Debian or Ubuntu)</strong>: </p>
+<p>Make sure you have Python’s development libraries installed. In Debian or Ubuntu: <code>$ sudo apt-get install python3-dev python3-setuptools</code>
+Prerequisites are installed on Ubuntu 12.04 <span class="caps">LTS</span> or Raspian Wheezy 7.0 with: <code>$ sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev python-tk</code></p>
+<p><code>$ pip install Pillow</code></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageFilter</span>
+<span class="c1">#Read image</span>
+<span class="n">im …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/image-manipulation.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/string-formatting.html#string-formatting">
+					<a href="https://janiceto.github.io/programming-notes/string-formatting.html#string-formatting">String formatting in&nbsp;Python</a>
+				</h1>
+				<span class="post-date">qui 10 agosto 2017</span>
+				<p>
+					<h3>F-strings (Python&nbsp;&gt;=3.6)</h3>
+<div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Test&quot;</span>
+<span class="n">f</span><span class="s1">&#39;My app name is {name}.&#39;</span>  <span class="c1"># &#39;My app name is Test.</span>
+</pre></div>
+
+
+<h3>New method (Python&nbsp;&gt;=2.6)</h3>
+<div class="highlight"><pre><span></span><span class="s1">&#39;{} {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">)</span>  <span class="c1"># Output: &#39;one two&#39;</span>
+<span class="s1">&#39;{} {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Output: &#39;1 2&#39;</span>
+</pre></div>
+
+
+<h3>Old&nbsp;method</h3>
+<div class="highlight"><pre><span></span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">)</span>  <span class="c1"># Output: &#39;one two&#39;</span>
+<span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Output: &#39;1 2&#39;</span>
+</pre></div>
+
+
+<h3>Number&nbsp;formatting</h3>
+<p>The following table shows various ways to format numbers using str.format(), including examples for both float formatting and&nbsp;integers.</p>
+<p>To run examples use <code>print("FORMAT".format(NUMBER))</code>. So to get the output of the first example, you would run: <code>print("{:.2f}".format(3.1415926))</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Number</th>
+<th>Format</th>
+<th>Output</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.1415926</td>
+<td class="2f"></td>
+<td>3.14</td>
+<td>2 decimal places</td>
+</tr>
+<tr>
+<td>3.1415926</td>
+<td _.2f="+.2f"></td>
+<td>+3.14</td>
+<td>2 decimal places with sign</td>
+</tr>
+<tr>
+<td>-1</td>
+<td _.2f="+.2f"></td>
+<td>-1.00</td>
+<td>2 decimal places with sign</td>
+</tr>
+<tr>
+<td>2.71828</td>
+<td class="0f"></td>
+<td>3</td>
+<td>No decimal places</td>
+</tr>
+<tr>
+<td>5</td>
+<td 0_2d="0&gt;2d"></td>
+<td>05</td>
+<td>Pad number with zeros (left padding, width 2)</td>
+</tr>
+<tr>
+<td>5</td>
+<td x_4d="x&lt;4d"></td>
+<td>5xxx</td>
+<td>Pad number with x’s (right padding …</td></tr></tbody></table>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/string-formatting.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/store-dicts.html#store-dicts">
+					<a href="https://janiceto.github.io/programming-notes/store-dicts.html#store-dicts">Storing dictionaries for later use: <span class="caps">JSON</span> and&nbsp;Pickle</a>
+				</h1>
+				<span class="post-date">qua 09 agosto 2017</span>
+				<p>
+					<h2><span class="caps">JSON</span></h2>
+<p><strong>Saving:</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Supply extra arguments like sort_keys or indent to get a pretty result. The argument sort_keys will sort the keys alphabetically and indent will indent your data structure with indent=N&nbsp;spaces.</p>
+<div class="highlight"><pre><span></span><span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Loading:</strong></p>
+<div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+</pre></div>
+
+
+<h4>json.dump() vs json.dumps(), json.load() vs&nbsp;json.loads()</h4>
+<p>If you want to dump the <span class="caps">JSON</span> into a file/socket or whatever, then you should go for <code>dump()</code>. If you only need it as a string (for printing, parsing or whatever) then use <code>dumps()</code> (dump string). The functions with an <code>s</code> take string parameters. The others take file&nbsp;streams.</p>
+<hr>
+<h2>Pickle</h2>
+<p><strong>Saving:</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cPickle</span> <span class="kn">as</span> <span class="nn">pickle</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.p&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Loading:</strong></p>
+<div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.p&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/store-dicts.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/flask.html#flask">
+					<a href="https://janiceto.github.io/programming-notes/flask.html#flask">Building a Flask&nbsp;site</a>
+				</h1>
+				<span class="post-date">seg 07 agosto 2017</span>
+				<p>
+					<h3>Installing Flask and other usefull Python&nbsp;modules</h3>
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">Flask</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">flask</span><span class="o">-</span><span class="n">mysqldb</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">Flask</span><span class="o">-</span><span class="n">WTF</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">passlib</span>
+</pre></div>
+
+
+<h3>Project file&nbsp;structure</h3>
+<div class="highlight"><pre><span></span><span class="o">/</span><span class="n">flask</span><span class="o">-</span><span class="n">site</span>
+    <span class="o">/</span><span class="n">venv</span>
+    <span class="o">/</span><span class="n">flask</span><span class="o">-</span><span class="n">site</span>
+        <span class="n">__init__</span><span class="p">.</span><span class="n">py</span>
+        <span class="o">/</span><span class="k">static</span>
+            <span class="n">style</span><span class="p">.</span><span class="n">css</span>
+        <span class="o">/</span><span class="n">templates</span>
+            <span class="n">layout</span><span class="p">.</span><span class="n">html</span>
+            <span class="k">index</span><span class="p">.</span><span class="n">html</span>
+            <span class="n">about</span><span class="p">.</span><span class="n">html</span>
+            <span class="p">...</span>
+</pre></div>
+
+
+<h3>The <code>__init__.py</code> file</h3>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">flash</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">logging</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="c1"># Home page route</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">)</span>
+
+<span class="c1"># About page route</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/about&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">about</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;about.html&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">secret_key</span> <span class="o">=</span> <span class="s1">&#39;secret123&#39;</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/flask.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/mysql.html#mysql">
+					<a href="https://janiceto.github.io/programming-notes/mysql.html#mysql">Using MySQL in&nbsp;Python</a>
+				</h1>
+				<span class="post-date">sex 04 agosto 2017</span>
+				<p>
+					<h3>Some basic MySQL&nbsp;commands</h3>
+<p>In MySQL a <code>DATABASE</code> is composed by one or more <code>TABLE</code>s. Typically you create a database for each&nbsp;project.</p>
+<h5>To create a new MySQL database named <code>database_name</code> (the starting point of a new project using&nbsp;MySQL):</h5>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">database_name</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Show all databases:  <code>SHOW DATABASES;</code></p>
+<h5>To start using a database you&nbsp;must:</h5>
+<p><code>USE database_name;</code></p>
+<h5>To create a new table named users (an&nbsp;example):</h5>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">users</span><span class="p">(</span><span class="n">id</span> <span class="nb">INT</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="n">AUTO_INCREMENT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">email</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">username</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span> <span class="n">password</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">register_date</span> <span class="k">TIMESTAMP</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Show all tables:  <code>SHOW TABLES;</code></p>
+<p>Get info on a <span class="caps">TABLE</span> (in this example users): <code>DESCRIBE users;</code></p>
+<h5>Add data to table via&nbsp;command:</h5>
+<div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">users</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+
+<h5>Typical&nbsp;queries:</h5>
+<p><code>SELECT * FROM users;</code>  Select all rows from users&nbsp;table</p>
+<h2>Copying a database to another&nbsp;server</h2>
+<ol>
+<li>One the server where the <span class="caps">DB</span> is …</li></ol>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/mysql.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/email.html#email">
+					<a href="https://janiceto.github.io/programming-notes/email.html#email">Sending e-mails with&nbsp;Python</a>
+				</h1>
+				<span class="post-date">sex 04 agosto 2017</span>
+				<p>
+					<p>In all examples I am using a gmail server to send emails. If you are not using a gmail address you need to insert the respective smtp server and possibly the&nbsp;port.</p>
+<ul>
+<li>Gmail: smtp.gmail.com, port&nbsp;587</li>
+<li>Hotmail: smtp.live.com, port&nbsp;587</li>
+<li>Outlook: smtp-mail.outlook.com, port&nbsp;587</li>
+</ul>
+<h3>Very basic&nbsp;example</h3>
+<p>This is a very barebones example. No subject is added to the&nbsp;email. </p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">smtplib</span>
+
+<span class="n">sender</span> <span class="o">=</span> <span class="s1">&#39;sender@gmail.com&#39;</span>
+<span class="n">pwd</span> <span class="o">=</span> <span class="s1">&#39;senderpassword&#39;</span>  <span class="c1"># password for sender email</span>
+<span class="n">receiver</span> <span class="o">=</span> <span class="s1">&#39;receiver@gmail.com&#39;</span>
+<span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Hi there!&#39;</span>
+
+<span class="n">server</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">(</span><span class="s1">&#39;smtp.gmail.com&#39;</span><span class="p">,</span> <span class="mi">587</span><span class="p">)</span>  <span class="c1"># smtp server and port for the sender email</span>
+<span class="n">server</span><span class="o">.</span><span class="n">ehlo</span><span class="p">()</span>
+<span class="n">server</span><span class="o">.</span><span class="n">starttls</span><span class="p">()</span>  <span class="c1"># starts a TLS encrypted connection</span>
+<span class="n">server</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">pwd</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">receiver</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Mail sent!&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<hr>
+<h3>More complete&nbsp;case</h3>
+<p>This uses the Python email library to help compose the email. You can add the subject to the&nbsp;email. </p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">smtplib</span>
+<span class="kn">from</span> <span class="nn">email.message …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/email.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/virtual-environments.html#virtual-environments">
+					<a href="https://janiceto.github.io/programming-notes/virtual-environments.html#virtual-environments">Virtual&nbsp;enviroments</a>
+				</h1>
+				<span class="post-date">qua 02 agosto 2017</span>
+				<p>
+					<h2>Main packages to handle virtual&nbsp;environments</h2>
+<ul>
+<li><a href="#venv-(standard-library)">venv (Standard&nbsp;Library)</a></li>
+<li><a href="#pipenv">Pipenv</a></li>
+<li><a href="#virtualenv-package">virtualenv</a></li>
+</ul>
+<h2>venv (Standard&nbsp;Library)</h2>
+<p><code>venv</code> already comes with the Python Standard Library so no installation is&nbsp;required.</p>
+<h3>Create a new virtual&nbsp;enviroment:</h3>
+<p>To create a new virtual environment: <code>$ python -m venv env_name</code></p>
+<p>A new folder appears in your current location containinng the new Python installation. The environemnt uses the same Python version as the one used to create&nbsp;it.</p>
+<p>To activate the virtual environment: <code>$ env_name/Scripts/activate.bat</code></p>
+<p>Once the virtual environment is activated, when you install a package with <code>pip install package</code>, it will only be installed in the&nbsp;environment.</p>
+<p>To deactivate the virtual environment: <code>$ deactivate</code></p>
+<p>To create a requirements file for your project: <code>$ pip freeze &gt; requirements.txt</code></p>
+<p>To delete the virtual environment completly just delete the enviroment folder (<code>env_name</code>) or run: <code>$ rmdir env_name /s</code></p>
+<p>To install packages from an existing <code>requirements.txt</code> file: <code>pip install -r requirements.txt …</code></p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/virtual-environments.html">Continue reading »</a>
+			</div>
+	</div>
+	<div class="pagination">
+		<!-- <span class="pagination-item older">Older</span>
+		<span class="pagination-item newer">Newer</span> -->
+<a href="https://janiceto.github.io/programming-notes/index5.html" class="pagination-item older">Newer</a>
+
+<a href="https://janiceto.github.io/programming-notes/index7.html" class="pagination-item newer">Older</a>
+	</div>
+		</div>
+	</body>
+</html>

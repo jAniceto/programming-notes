@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<link rel="shortcut icon" type="image/png" href="https://janiceto.github.io/programming-notes/images/favicon.png"/>
+		<title>Annotatio</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58056773-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-58056773-5');
+	</script>
+	</head>
+	
+	<body class="theme-flat">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="https://janiceto.github.io/programming-notes">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of personal coding notes and snippets. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/data-analysis.html">Data Analysis</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/general.html">General</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/python.html">Python</a>
+			
+		</nav>
+
+		<p>by José Aniceto</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Git Version Control&nbsp;System</h1>
+	<span class="post-date">seg 11 setembro 2017, last updated qui 30 agosto 2018</span>
+	<h2>Instalation on a Debian-based distribution, such as&nbsp;Ubuntu</h2>
+<div class="highlight"><pre><span></span>$ sudo apt update
+$ sudo apt install git-all
+</pre></div>
+
+
+<h3>Starting&nbsp;repositories</h3>
+<p>Clone an existing repository: <code>$ git clone ssh://user@domain.com/repo.git</code> </p>
+<p>Create a new local repository: <code>$ git init</code></p>
+<h3>Local&nbsp;changes</h3>
+<p>Show changed files in your working directory: <code>$ git status</code></p>
+<p>Add all current changes to the next commit: <code>$ git add</code></p>
+<p>Add some changes in <file> to the next commit: <code>$ git add -p &lt;file&gt;</code></p>
+<p>Commit all local changes in tracked files: <code>$ git commit -a -m "Changed something"</code></p>
+<h3>Working with remote&nbsp;repository</h3>
+<p>Grab changes from remote: <code>$ git pull origin master</code></p>
+<p>If your default branch is different than master, you will need to specify the branch name: <code>git pull origin my_default_branch_name</code></p>
+<p>Upload changes to remote: <code>$ git push origin master</code></p>
+<h3>Remove a file from version&nbsp;control</h3>
+<p>Remove the file from the Git repository and from the&nbsp;filesystem</p>
+<div class="highlight"><pre><span></span>$ git rm file1.txt
+$ git commit -m <span class="s2">&quot;remove file1.txt&quot;</span>
+</pre></div>
+
+
+<p>But if you want to remove the file only from the Git repository and not remove it from the filesystem,&nbsp;use:</p>
+<div class="highlight"><pre><span></span>$ git rm --cached file1.txt
+$ git commit -m <span class="s2">&quot;remove file1.txt&quot;</span>
+</pre></div>
+
+
+<p>Then push changes to remote&nbsp;repo</p>
+<div class="highlight"><pre><span></span>$ git push origin branch_name  
+</pre></div>
+	<br><br><br>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'annotatio';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+		</div>
+	</body>
+</html>

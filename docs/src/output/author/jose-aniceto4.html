@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<link rel="shortcut icon" type="image/png" href="https://janiceto.github.io/programming-notes/images/favicon.png"/>
+		<title>Annotatio - Articles by José Aniceto</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58056773-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-58056773-5');
+	</script>
+	</head>
+	
+	<body class="theme-flat">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="https://janiceto.github.io/programming-notes">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of personal coding notes and snippets. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/data-analysis.html">Data Analysis</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/general.html">General</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/python.html">Python</a>
+			
+		</nav>
+
+		<p>by José Aniceto</p>
+	</div>
+</div>		<div class="content container">
+	<div class="posts">
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/server-setup.html#server-setup">
+					<a href="https://janiceto.github.io/programming-notes/server-setup.html#server-setup">Initial Server Setup with Ubuntu&nbsp;18.04</a>
+				</h1>
+				<span class="post-date">qua 06 junho 2018</span>
+				<p>
+					<p>When first creating a new Ubuntu 18.04 server, there are a few configuration steps that you should take early on as part of the basic&nbsp;setup.</p>
+<h2>1) Creating a New&nbsp;User</h2>
+<p>Once you are logged in as root, we&#8217;re prepared to add the new user (synergix) account that we will use to log in from now&nbsp;on.</p>
+<p><code>adduser synergix</code></p>
+<p>Enter a strong password and, optionally, fill in any of the additional information if you would like. This is not required and you can just hit <span class="caps">ENTER</span> in any field you wish to&nbsp;skip.</p>
+<h2>2) Granting Administrative&nbsp;Privileges</h2>
+<p>Set up what is known as &#8220;superuser&#8221; or root privileges for our normal account. This will allow our normal user to run commands with administrative privileges by putting the word <code>sudo</code> before each command. As <strong>root</strong>, run this command to add your new user to the sudo&nbsp;group:</p>
+<p><code>usermod -aG sudo …</code></p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/server-setup.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/snippets.html#snippets">
+					<a href="https://janiceto.github.io/programming-notes/snippets.html#snippets">Useful Python code&nbsp;snippets</a>
+				</h1>
+				<span class="post-date">dom 03 junho 2018</span>
+				<p>
+					<p>A collection of several code snippets of common or useful operation in&nbsp;Python.</p>
+<h2>Get list of attributes (methods) of an&nbsp;object</h2>
+<p>Get a list of attributes (methods) of an object with <code>dir(object)</code></p>
+<p>To see everything except hidden/dunder methods you can&nbsp;do:</p>
+<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">((</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">d</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)))</span>
+</pre></div>
+
+
+<h2>Remove dictionary from&nbsp;list</h2>
+<p>Here&#8217;s how to remove a specific dictionary, or several dictionaries, from a list of dictionaries by a specific key. In the example below we are removing from the list all dictionaries which have and <code>id</code> key of <code>2</code>.</p>
+<div class="highlight"><pre><span></span><span class="n">thelist</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;paul&#39;</span><span class="p">},</span>
+           <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;john&#39;</span><span class="p">}]</span>
+
+<span class="n">thelist</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">thelist</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+
+<h2>List&nbsp;Comprehension</h2>
+<p>Without list&nbsp;comprehension:</p>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<span class="c1"># [1, 4, 9, 16]</span>
+</pre></div>
+
+
+<p>With list&nbsp;comprehension:</p>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3 …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/snippets.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/csv.html#csv">
+					<a href="https://janiceto.github.io/programming-notes/csv.html#csv"><span class="caps">CSV</span>&nbsp;files</a>
+				</h1>
+				<span class="post-date">qui 19 abril 2018</span>
+				<p>
+					<p><span class="caps">CSV</span> (Comma Separated Values) is a very popular import and export data format used in spreadsheets and databases. Each line in a <span class="caps">CSV</span> file is a data record. Each record consists of one or more fields, separated by commas. While <span class="caps">CSV</span> is a very simple data format, there can be many differecies, such as different delimiters, new lines, or quoting&nbsp;characters.</p>
+<h2>Reading <span class="caps">CSV</span>&nbsp;files</h2>
+<p>Reading of <span class="caps">CSV</span> files into&nbsp;memory:</p>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">example1</span><span class="p">.</span><span class="n">csv</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">2014</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="n">red</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">2014</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">green</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">2014</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">blue</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;example1.csv&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="n">readCSV</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">readCSV</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">],)</span>
+</pre></div>
+
+
+<h3>DictReader</h3>
+<p>The <code>csv.DictReader</code> class operates like a regular reader but maps the information read into a dictionary. The keys for the dictionary can be passed in with the fieldnames parameter …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/csv.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/django.html#django">
+					<a href="https://janiceto.github.io/programming-notes/django.html#django">Building a Django&nbsp;site</a>
+				</h1>
+				<span class="post-date">ter 03 abril 2018</span>
+				<p>
+					<h2>Installing&nbsp;Django</h2>
+<p><code>pip install Django</code></p>
+<h2>Start&nbsp;project</h2>
+<p>Navigate via the terminal or command prompt to an area where you want to work on your project, then&nbsp;do:</p>
+<p><code>django-admin startproject mysite</code></p>
+<p>This will create a directory called mysite. Within that directory, you have another one called mysite, along with a manage.py file. The manage.py file lets you easily interact with your project via the command line. The contents of the second mysite directory contain your settings and urls mainly. Broken&nbsp;down:</p>
+<div class="highlight"><pre><span></span><span class="o">/</span><span class="nv">mysite</span><span class="o">/</span>  <span class="nv">REM</span> <span class="nv">Simple</span> <span class="nv">container</span>, <span class="k">Call</span> <span class="nl">whatever</span> <span class="nv">you</span> <span class="nv">want</span>.
+    <span class="nv">manage</span>.<span class="nv">py</span>  <span class="nv">REM</span> <span class="nv">Lets</span> <span class="nv">you</span> <span class="nv">interact</span> <span class="nv">with</span> <span class="nv">your</span> <span class="nv">project</span> <span class="nv">via</span> <span class="nv">the</span> <span class="nv">command</span> <span class="nv">line</span>.
+    <span class="o">/</span><span class="nv">mysite</span><span class="o">/</span>  <span class="nv">REM</span> <span class="nv">Actual</span> <span class="nv">project</span> <span class="nv">directory</span>.
+        <span class="nv">__init__</span>.<span class="nv">py</span>  <span class="nv">REM</span> <span class="nv">Tells</span> <span class="nv">python</span> <span class="nv">this</span> <span class="nv">is</span> <span class="nv">a</span> <span class="nv">Python</span> <span class="nv">package</span>.
+        <span class="nv">settings</span>.<span class="nv">py</span>  <span class="nv">REM</span> <span class="nv">Settings</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">project</span>.
+        <span class="nv">urls</span>.<span class="nv">py</span>  <span class="nv">REM</span> <span class="nv">URL</span> <span class="nv">rules</span>. <span class="nv">Django</span> <span class="nv">docs</span> <span class="nv">aptly</span> <span class="nv">describes</span> <span class="nv">as</span> <span class="nv">your</span> <span class="nv">table</span> <span class="nv">of</span> <span class="nv">contents</span>.
+        <span class="nv">wsgi</span>.<span class="nv">py</span>  <span class="nv">REM</span> <span class="nv">WSGI</span> <span class="nv">magic</span> <span class="nv">begins</span> <span class="nv">here</span>. <span class="nv">Worry</span> <span class="nv">about</span> <span class="nv">this</span> <span class="nv">when …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/django.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/progress-bar.html#progress-bar">
+					<a href="https://janiceto.github.io/programming-notes/progress-bar.html#progress-bar">Progress&nbsp;Bars</a>
+				</h1>
+				<span class="post-date">qua 28 fevereiro 2018</span>
+				<p>
+					<h2>Basic progress&nbsp;bar</h2>
+<p>There are many progressbars out there for Python, but they are dependencies, and this can be really annoying, especially when it is hard to install pip&nbsp;libraries.</p>
+<p>To make any progressbar, you need to know the string option <code>\r</code>. What makes <code>\r</code> unique is that it will go to the start of&nbsp;printing.</p>
+<p>For example, if you were to do <code>print('Hello World!')</code>, it would print Hello World!. To visualize it, it is more&nbsp;like</p>
+<div class="highlight"><pre><span></span><span class="n">Hello</span> <span class="n">World</span><span class="o">!</span>
+            <span class="o">^</span>
+</pre></div>
+
+
+<p>The cursor is at the character after the !. If we were to use <code>\r</code>, the cursor would go to the front. In our example, it would&nbsp;mean</p>
+<div class="highlight"><pre><span></span><span class="n">Hello</span> <span class="n">World</span><span class="o">!</span>
+<span class="o">^</span>
+</pre></div>
+
+
+<p>See how the cursor is at the h? If it were to print anything, it would overwrite the character&nbsp;h.</p>
+<p>Theoretically, if we want to make a progressbar, we have to print a string multiple times with <code>\r</code>.</p>
+<div class="highlight"><pre><span></span><span class="n">times</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># how …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/progress-bar.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/os-env-vars.html#os-env-vars">
+					<a href="https://janiceto.github.io/programming-notes/os-env-vars.html#os-env-vars">Hiding Passwords and Secret Keys in Environment&nbsp;Variables</a>
+				</h1>
+				<span class="post-date">sex 02 fevereiro 2018</span>
+				<p>
+					<h3>Adding a Environment Variable&nbsp;(Windows)</h3>
+<p>System Menu &gt; <code>Advanced System Settings</code> &gt; <code>Environment Variables...</code> &gt; in User Variables click <code>New...</code> &gt; insert variable name (VAR_NAME) and value&nbsp;(VAR_VALUE)</p>
+<p>When coding it may be necessary to restart your <span class="caps">IDE</span> or text&nbsp;editor.</p>
+<h3>Adding a Environment Variable (Linux and&nbsp;Mac)</h3>
+<p>Open the&nbsp;terminal:</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> 
+$ nano .bash_profile
+</pre></div>
+
+
+<p>To the file add the line and&nbsp;save:</p>
+<div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">VAR_NAME</span><span class="o">=</span><span class="ss">&quot;VAR_VALUE&quot;</span>
+</pre></div>
+
+
+<p>When coding it may be necessary to restart your <span class="caps">IDE</span> or text&nbsp;editor.</p>
+<h3>Acessing your Environment Variables in&nbsp;Python</h3>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">var1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;VAR_NAME&#39;</span><span class="p">)</span>
+</pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/os-env-vars.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/ubuntu-vps.html#ubuntu-vps">
+					<a href="https://janiceto.github.io/programming-notes/ubuntu-vps.html#ubuntu-vps">Deploy a Flask Application on an Ubuntu <span class="caps">VPS</span>&nbsp;(DigitalOcean)</a>
+				</h1>
+				<span class="post-date">qui 25 janeiro 2018</span>
+				<p>
+					<p>This page details the process of seting up a Ubuntu <span class="caps">VPS</span> (in this case a DigitalOcean dropplet using Ubuntu 16.04 was used) to serve a Flask based websiite. MySQL databases are&nbsp;used.</p>
+<h2>1) Install&nbsp;Apache</h2>
+<div class="highlight"><pre><span></span>$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo apt-get install apache2
+</pre></div>
+
+
+<p>You can do a spot check right away to verify that everything went as planned by visiting your server&#8217;s public <span class="caps">IP</span> address in your web browser. You will see the default Ubuntu 16.04 Apache web&nbsp;page.</p>
+<div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">your_server_IP_address</span>
+</pre></div>
+
+
+<h3>How To Find your Server&#8217;s Public <span class="caps">IP</span>&nbsp;Address</h3>
+<p>Usually, this is the address you use to connect to your server through <span class="caps">SSH</span>. However you can find the <span class="caps">IP</span> address from the command line by typing&nbsp;this:</p>
+<div class="highlight"><pre><span></span>$ <span class="nv">ip</span> <span class="nv">addr</span> <span class="k">show</span> <span class="nv">eth0</span> <span class="o">|</span> <span class="nv">grep</span> <span class="nv">inet</span> <span class="o">|</span> <span class="nv">awk</span> <span class="s1">&#39;</span><span class="s">{ print $2; }</span><span class="s1">&#39;</span> <span class="o">|</span> <span class="nv">sed</span> <span class="s1">&#39;</span><span class="s">s/\/.*$//</span><span class="s1">&#39;</span>
+</pre></div>
+
+
+<p>Alternatively you can use <code>curl</code> to contact an outside party to tell you how it sees …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/ubuntu-vps.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/datatables.html#datatables">
+					<a href="https://janiceto.github.io/programming-notes/datatables.html#datatables">DataTables <span class="caps">JS</span>&nbsp;Library</a>
+				</h1>
+				<span class="post-date">dom 21 janeiro 2018</span>
+				<p>
+					<p><a href="https://datatables.net/manual/index">Documentation&nbsp;here</a></p>
+<h3>Requirements:</h3>
+<ul>
+<li>JQuery</li>
+</ul>
+<h3>Usage:</h3>
+<p>Include the <span class="caps">CSS</span> and <span class="caps">JS</span> code for DataTables to the head and bottom of the body of your website, respectively. <span class="caps">CSS</span> is not&nbsp;required.</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span> <span class="s">&quot;{{ url_for(&#39;static&#39;,filename=&#39;style.css&#39;) }}&quot;</span><span class="p">&gt;</span> 
+
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>Use the single function bellow to call to initialise the tabl. Do not forget to add an id tag to the&nbsp;table.</p>
+<div class="highlight"><pre><span></span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myTable&#39;</span><span class="p">).</span><span class="nx">DataTable</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>Add options like&nbsp;so:</p>
+<div class="highlight"><pre><span></span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myTable&#39;</span><span class="p">).</span><span class="nx">DataTable</span><span class="p">(</span> <span class="p">{</span>
+    <span class="s2">&quot;columnDefs&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="s2">&quot;orderable&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="s2">&quot;targets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;paging&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;order&quot;</span><span class="o">:</span> <span class="p">[[</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;asc&quot;</span> <span class="p">]]</span>
+  <span class="p">}</span> <span class="p">);</span>
+<span class="p">}</span> <span class="p">);</span>
+</pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/datatables.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/slice-notation.html#slice-notation">
+					<a href="https://janiceto.github.io/programming-notes/slice-notation.html#slice-notation">Slice&nbsp;notation</a>
+				</h1>
+				<span class="post-date">sex 15 dezembro 2017</span>
+				<p>
+					<p>The <span class="caps">ASCII</span> art diagram is helpful too for remembering how slices&nbsp;work:</p>
+<div class="highlight"><pre><span></span> <span class="o">+</span><span class="c1">---+---+---+---+---+---+</span>
+ <span class="o">|</span> <span class="n">P</span> <span class="o">|</span> <span class="n">y</span> <span class="o">|</span> <span class="n">t</span> <span class="o">|</span> <span class="n">h</span> <span class="o">|</span> <span class="n">o</span> <span class="o">|</span> <span class="n">n</span> <span class="o">|</span>
+ <span class="o">+</span><span class="c1">---+---+---+---+---+---+</span>
+ <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>   <span class="mi">4</span>   <span class="mi">5</span>   <span class="mi">6</span>
+<span class="o">-</span><span class="mi">6</span>  <span class="o">-</span><span class="mi">5</span>  <span class="o">-</span><span class="mi">4</span>  <span class="o">-</span><span class="mi">3</span>  <span class="o">-</span><span class="mi">2</span>  <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+
+
+<p>One way to remember how slices work is to think of the indices as pointing <em>between</em> characters, with the left edge of the first character numbered 0. Then the right edge of the last character of a string of <em>n</em> characters has index <em>n</em>.</p>
+<div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span> <span class="c1"># items start through end-1</span>
+<span class="n">a</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span>    <span class="c1"># items start through the rest of the array</span>
+<span class="n">a</span><span class="p">[:</span><span class="n">end</span><span class="p">]</span>      <span class="c1"># items from the beginning through end-1</span>
+<span class="n">a</span><span class="p">[:]</span>         <span class="c1"># a copy of the whole array</span>
+</pre></div>
+
+
+<p>There is also the <code>step</code> value, which can be used with any of the&nbsp;above:</p>
+<div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">:</span><span class="n">step</span><span class="p">]</span> <span class="c1"># start through not past end, by step</span>
+</pre></div>
+
+
+<p>The key point to remember is that the <code>:end</code> value represents the first value that is <em>not …</em></p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/slice-notation.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/magic-methods.html#magic-methods">
+					<a href="https://janiceto.github.io/programming-notes/magic-methods.html#magic-methods">Introduction</a>
+				</h1>
+				<span class="post-date">ter 12 dezembro 2017</span>
+				<p>
+					<p>This guide is the culmination of a few months&#8217; worth of blog posts. The subject is <strong>magic methods</strong>.</p>
+<p>What are magic methods? They&#8217;re everything in object-oriented Python. They&#8217;re special methods that you can define to add &#8220;magic&#8221; to your classes. They&#8217;re always surrounded by double underscores (e.g. <code>__init__</code> or <code>__lt__</code>). They&#8217;re also not as well documented as they need to be. All of the magic methods for Python appear in the same section in the Python docs, but they&#8217;re scattered about and only loosely organized. There&#8217;s hardly an example to be found in that section (and that may very well be by design, since they&#8217;re all detailed in the <em>language reference</em>, along with boring syntax descriptions,&nbsp;etc.).</p>
+<p>So, to fix what I perceived as a flaw in Python&#8217;s documentation, I set out to provide some more plain-English, example-driven documentation for Python …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/magic-methods.html">Continue reading »</a>
+			</div>
+	</div>
+	<div class="pagination">
+		<!-- <span class="pagination-item older">Older</span>
+		<span class="pagination-item newer">Newer</span> -->
+<a href="https://janiceto.github.io/programming-notes/author/jose-aniceto3.html" class="pagination-item older">Newer</a>
+
+<a href="https://janiceto.github.io/programming-notes/author/jose-aniceto5.html" class="pagination-item newer">Older</a>
+	</div>
+		</div>
+	</body>
+</html>

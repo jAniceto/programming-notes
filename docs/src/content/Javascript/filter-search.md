@@ -1,7 +1,7 @@
-Title: Filter a table or list by typing in search box
+Title: Filter, sort and layout
 Date: 2018-08-28 11:27
 Authors: José Aniceto
-
+Modified: 2020-02-02 22:52
 
 ## Using a JS library:
 

@@ -4,6 +4,7 @@ Programming notes, snippets and examples in one place.
 ## DATA ANALYSIS
 * [Geo ploting with Basemap](/data-analysis/basemap.md)
 * [Data Visualization](/data-analysis/data-viz.md)
+* [Jupyter Notebooks](/data-analysis/jupyter-notebooks.md)
 * [Matplotlib](/data-analysis/matplotlib.md)
 * [Saving Scikit-learn model for reuse](/data-analysis/save-model.md)
 * [Seaborn](/data-analysis/seaborn.md)
@@ -34,6 +35,7 @@ Programming notes, snippets and examples in one place.
 * [Caching data](/javascript/cache-data.md)
 * [DataTables JS Library](/javascript/DataTables.md)
 * [Filter, sort and layout](/javascript/filter-search.md)
+* [React](/javascript/react.md)
 
 ## LINUX
 * [Linux Crontab](/linux/crontab.md)
@@ -49,7 +51,7 @@ Programming notes, snippets and examples in one place.
 * [Web scrapping with Beautiful Soup 4](/python/beautifulsoup4.md)
 * [Sorting lists](/python/builtin-functions.md)
 * [Classes and OOP (Object Oriented Programming)](/python/classes.md)
-* [Create a standalone exacutable from a Python scripy](/python/create-exe.md)
+* [Create a standalone exacutable using `pyinstaller`](/python/create-exe.md)
 * [CSV files](/python/csv.md)
 * [Datetime module](/python/datetime.md)
 * [Create a REST API with Django Rest Framework](/python/django-rest-api.md)
@@ -61,7 +63,6 @@ Programming notes, snippets and examples in one place.
 * [Hosting Python scripts and services](/python/hosting.md)
 * [Image manipulation in Python](/python/image-manipulation.md)
 * [Imports in Python](/python/imports.md)
-* [Jupyter Notebooks](/python/jupyter-notebooks.md)
 * [Introduction](/python/magic-methods.md)
 * [Run Matlab programs in Python](/python/matlab.md)
 * [Using MySQL in Python](/python/mysql.md)
@@ -74,4 +75,4 @@ Programming notes, snippets and examples in one place.
 * [Virtual enviroments](/python/virtual-environments.md)
 
 
-These notes contain excerpts, code snippets and examples from various sources including, but not limited to, Python Docs, The Hitchhiker’s Guide to Python and Stack Overflow users. Sources were not collected as this notes were intended for personal use.
+These notes contain excerpts, code snippets and examples from various sources including, but not limited to, Python Docs, The Hitchhiker’s Guide to Python, Real Python and Stack Overflow users.

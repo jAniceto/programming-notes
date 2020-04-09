@@ -5,7 +5,9 @@ Authors: José Aniceto
 
 The matplotlib basemap toolkit is a library for plotting 2D data on maps in Python.
 
-## Basemap installation
+## Installation
+
+#### Option 1:
 
 The recommended installation method for Basemap is using Anaconda and the conda-forge channel. In the Anaconda Prompt run:
 ```
@@ -18,6 +20,21 @@ $ conda install -c conda-forge proj
 ```
 
 If the installation was sucessful you should now be able to run the following import in the Python (Anaconda) prompt without any errors:
+```python
+from mpl_toolkits.basemap import Basemap
+```
+
+#### Option 2:
+
+If you are on Windows you can also install the binaries directly. This worked better for me than installing through Anaconda and conda-forge. Download the [Basemap](https://www.lfd.uci.edu/~gohlke/pythonlibs/#basemap) and [PROJ](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyproj) binaries. Make sure you download the correct binary for your Python version. For instance, if you have Python 3.7 64-bit make sure to download the `pyproj‑2.4.2.post1‑cp37‑cp37m‑win_amd64.whl` and `basemap‑1.2.1‑cp37‑cp37m‑win_amd64.whl` files. The `cp37` indicates Python version and `amd64` the 64-bit version. You can now install both libraries with pip.
+
+```
+$ pip install pyproj‑2.4.2.post1‑cp37‑cp37m‑win_amd64.whl
+$ pip install basemap‑1.2.1‑cp37‑cp37m‑win_amd64.whl
+```
+
+Test the instalation by running:
+
 ```python
 from mpl_toolkits.basemap import Basemap
 ```

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<link rel="shortcut icon" type="image/png" href="https://janiceto.github.io/programming-notes/images/favicon.png"/>
+		<title>Annotatio</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58056773-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-58056773-5');
+	</script>
+	</head>
+	
+	<body class="theme-flat">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="https://janiceto.github.io/programming-notes">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of personal coding notes and snippets. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/data-analysis.html">Data Analysis</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/general.html">General</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/python.html">Python</a>
+			
+		</nav>
+
+		<p>by José Aniceto</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Matplotlib</h1>
+	<span class="post-date">sáb 19 outubro 2019</span>
+	<p>Index: 
+* <a href="#set-font">Set font</a>
+* <a href="#adding-labels-to-a-bar-chart">Adding labels to a bar&nbsp;chart</a></p>
+<h2>Set&nbsp;font</h2>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span>
+
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif&#39;</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cmb10&#39;</span><span class="p">,</span> <span class="s1">&#39;Adobe Caslon Pro&#39;</span><span class="p">,</span> <span class="s1">&#39;Palatino Linotype&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>A list of available fonts can be found <a href="http://jonathansoma.com/lede/data-studio/matplotlib/list-all-fonts-available-in-matplotlib-plus-samples/">here</a>.</p>
+<h2>Adding labels to a bar&nbsp;chart</h2>
+<h3>For a vertical bar&nbsp;chart:</h3>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Bring some raw data.</span>
+<span class="n">frequencies</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">244</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># In my original code I create a series and run on that,</span>
+<span class="c1"># so for consistency I create a series from the list.</span>
+<span class="n">freq_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">frequencies</span><span class="p">)</span>
+
+<span class="n">x_labels</span> <span class="o">=</span> <span class="p">[</span><span class="mf">108300.0</span><span class="p">,</span> <span class="mf">110540.0</span><span class="p">,</span> <span class="mf">112780.0</span><span class="p">,</span> <span class="mf">115020.0</span><span class="p">,</span> <span class="mf">117260.0</span><span class="p">,</span> <span class="mf">119500.0</span><span class="p">,</span>
+            <span class="mf">121740.0</span><span class="p">,</span> <span class="mf">123980.0</span><span class="p">,</span> <span class="mf">126220.0</span><span class="p">,</span> <span class="mf">128460.0</span><span class="p">,</span> <span class="mf">130700.0</span><span class="p">]</span>
+
+<span class="c1"># Plot the figure.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">freq_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Amount Frequency&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Amount ($)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">x_labels</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">add_value_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add labels to the end of each bar in a bar chart.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        ax (matplotlib.axes.Axes): The matplotlib object containing the axes</span>
+<span class="sd">            of the plot to annotate.</span>
+<span class="sd">        spacing (int): The distance between the labels and the bars.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># For each bar: Place a label</span>
+    <span class="k">for</span> <span class="n">rect</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+        <span class="c1"># Get X and Y placement of label from rect.</span>
+        <span class="n">y_value</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+        <span class="n">x_value</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">rect</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span>
+
+        <span class="c1"># Number of points between bar and label. Change to your liking.</span>
+        <span class="n">space</span> <span class="o">=</span> <span class="n">spacing</span>
+        <span class="c1"># Vertical alignment for positive values</span>
+        <span class="n">va</span> <span class="o">=</span> <span class="s1">&#39;bottom&#39;</span>
+
+        <span class="c1"># If value of bar is negative: Place label below bar</span>
+        <span class="k">if</span> <span class="n">y_value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Invert space to place label below</span>
+            <span class="n">space</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="c1"># Vertically align label at top</span>
+            <span class="n">va</span> <span class="o">=</span> <span class="s1">&#39;top&#39;</span>
+
+        <span class="c1"># Use Y value as label and format number with one decimal place</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;{:.1f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">y_value</span><span class="p">)</span>
+
+        <span class="c1"># Create annotation</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+            <span class="n">label</span><span class="p">,</span>                      <span class="c1"># Use `label` as label</span>
+            <span class="p">(</span><span class="n">x_value</span><span class="p">,</span> <span class="n">y_value</span><span class="p">),</span>         <span class="c1"># Place label at end of the bar</span>
+            <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">space</span><span class="p">),</span>          <span class="c1"># Vertically shift label by `space`</span>
+            <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span> <span class="c1"># Interpret `xytext` as offset in points</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>                <span class="c1"># Horizontally center label</span>
+            <span class="n">va</span><span class="o">=</span><span class="n">va</span><span class="p">)</span>                      <span class="c1"># Vertically align label differently for</span>
+                                        <span class="c1"># positive and negative values.</span>
+
+
+<span class="c1"># Call the function above. All the magic happens there.</span>
+<span class="n">add_value_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="barh" src="https://i.stack.imgur.com/aUbHd.png"></p>
+<h3>And for an horizontal bar&nbsp;chart:</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Bring some raw data.</span>
+<span class="n">frequencies</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">244</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">freq_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">frequencies</span><span class="p">)</span>
+
+<span class="n">y_labels</span> <span class="o">=</span> <span class="p">[</span><span class="mf">108300.0</span><span class="p">,</span> <span class="mf">110540.0</span><span class="p">,</span> <span class="mf">112780.0</span><span class="p">,</span> <span class="mf">115020.0</span><span class="p">,</span> <span class="mf">117260.0</span><span class="p">,</span> <span class="mf">119500.0</span><span class="p">,</span> 
+            <span class="mf">121740.0</span><span class="p">,</span> <span class="mf">123980.0</span><span class="p">,</span> <span class="mf">126220.0</span><span class="p">,</span> <span class="mf">128460.0</span><span class="p">,</span> <span class="mf">130700.0</span><span class="p">]</span>
+
+<span class="c1"># Plot the figure.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">freq_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Amount Frequency&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Amount ($)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">y_labels</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span> <span class="c1"># expand xlim to make labels easier to read</span>
+
+<span class="k">def</span> <span class="nf">add_value_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add labels to the end of each bar in a bar chart.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        ax (matplotlib.axes.Axes): The matplotlib object containing the axes of the plot to annotate.</span>
+<span class="sd">        spacing (int): The distance between the labels and the bars.</span>
+<span class="sd">        precision (int): Float precision to use in the annotation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># For each bar: Place a label</span>
+    <span class="k">for</span> <span class="n">rect</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+        <span class="c1"># Get X and Y placement of label from rect.</span>
+        <span class="n">x_value</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span>
+        <span class="n">y_value</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">get_y</span><span class="p">()</span> <span class="o">+</span> <span class="n">rect</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span>
+
+        <span class="c1"># Number of points between bar and label. Change to your liking.</span>
+        <span class="n">space</span> <span class="o">=</span> <span class="n">spacing</span>
+        <span class="c1"># Vertical alignment for positive values</span>
+        <span class="n">ha</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span>
+
+        <span class="c1"># If value of bar is negative: Place label left of bar</span>
+        <span class="k">if</span> <span class="n">x_value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Invert space to place label to the left</span>
+            <span class="n">space</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="c1"># Horizontally align label at right</span>
+            <span class="n">ha</span> <span class="o">=</span> <span class="s1">&#39;right&#39;</span>
+
+        <span class="c1"># Use X value as label and format number with one decimal place</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;{:.{prec}f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x_value</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="n">precision</span><span class="p">)</span>
+
+        <span class="c1"># Create annotation</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+            <span class="n">label</span><span class="p">,</span>                      <span class="c1"># Use `label` as label</span>
+            <span class="p">(</span><span class="n">x_value</span><span class="p">,</span> <span class="n">y_value</span><span class="p">),</span>         <span class="c1"># Place label at end of the bar</span>
+            <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">space</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>          <span class="c1"># Horizontally shift label by `space`</span>
+            <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span> <span class="c1"># Interpret `xytext` as offset in points</span>
+            <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>                <span class="c1"># Vertically center label</span>
+            <span class="n">ha</span><span class="o">=</span><span class="n">ha</span><span class="p">,</span>                      <span class="c1"># Horizontally align label differently for positive and negative values</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Call the function above. All the magic happens there.</span>
+<span class="n">add_value_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="barh" src="https://i.stack.imgur.com/hkyjD.png"></p>
+	<br><br><br>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'annotatio';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+		</div>
+	</body>
+</html>

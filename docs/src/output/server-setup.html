@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<link rel="shortcut icon" type="image/png" href="https://janiceto.github.io/programming-notes/images/favicon.png"/>
+		<title>Annotatio</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes/theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58056773-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-58056773-5');
+	</script>
+	</head>
+	
+	<body class="theme-flat">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="https://janiceto.github.io/programming-notes">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of personal coding notes and snippets. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/data-analysis.html">Data Analysis</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/general.html">General</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes/category/python.html">Python</a>
+			
+		</nav>
+
+		<p>by José Aniceto</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Initial Server Setup with Ubuntu&nbsp;18.04</h1>
+	<span class="post-date">qua 06 junho 2018, last updated qua 13 junho 2018</span>
+	<p>When first creating a new Ubuntu 18.04 server, there are a few configuration steps that you should take early on as part of the basic&nbsp;setup.</p>
+<h2>1) Creating a New&nbsp;User</h2>
+<p>Once you are logged in as root, we&#8217;re prepared to add the new user (synergix) account that we will use to log in from now&nbsp;on.</p>
+<p><code>adduser synergix</code></p>
+<p>Enter a strong password and, optionally, fill in any of the additional information if you would like. This is not required and you can just hit <span class="caps">ENTER</span> in any field you wish to&nbsp;skip.</p>
+<h2>2) Granting Administrative&nbsp;Privileges</h2>
+<p>Set up what is known as &#8220;superuser&#8221; or root privileges for our normal account. This will allow our normal user to run commands with administrative privileges by putting the word <code>sudo</code> before each command. As <strong>root</strong>, run this command to add your new user to the sudo&nbsp;group:</p>
+<p><code>usermod -aG sudo synergix</code></p>
+<h2>3) Setting Up a Basic&nbsp;Firewall</h2>
+<p>Ubuntu 18.04 servers can use the <span class="caps">UFW</span> firewall to make sure only connections to certain services are allowed. We can set up a basic firewall very easily using this&nbsp;application.</p>
+<p>Different applications can register their profiles with <span class="caps">UFW</span> upon installation. These profiles allow <span class="caps">UFW</span> to manage these applications by name. OpenSSH, the service allowing us to connect to our server now, has a profile registered with <span class="caps">UFW</span>. You can see this by&nbsp;typing:</p>
+<p><code>ufw app list</code></p>
+<p>Afterwards, we can enable the firewall by&nbsp;typing:</p>
+<p><code>ufw enable</code></p>
+<p>Type &#8220;y&#8221; and press <span class="caps">ENTER</span> to proceed. You can see that <span class="caps">SSH</span> connections are still allowed by&nbsp;typing:</p>
+<p><code>ufw status</code></p>
+<p>As the firewall is currently blocking all connections except for <span class="caps">SSH</span>, if you install and configure additional services, you will need to adjust the firewall settings to allow acceptable traffic in. More info here:&nbsp;https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands</p>
+<h2>4) Enabling External Access for Your Regular&nbsp;User</h2>
+<p>Now that we have a regular user for daily use, we need to make sure we can <span class="caps">SSH</span> into the account directly. The process for configuring <span class="caps">SSH</span> access for your new user depends on whether your server&#8217;s root account uses a password or <span class="caps">SSH</span> keys for&nbsp;authentication.</p>
+<h4>If the Root Account Uses Password&nbsp;Authentication</h4>
+<p>If you logged in to your root account using a password, then password authentication is enabled for <span class="caps">SSH</span>. You can <span class="caps">SSH</span> to your new user account by opening up a new terminal session and using <span class="caps">SSH</span> with your new&nbsp;username:</p>
+<p><code>ssh synergix@your_server_ip</code></p>
+<p>After entering your regular user&#8217;s password, you will be logged in. You will be prompted for your regular user password when using sudo for the first time each session (and periodically&nbsp;afterwards).</p>
+<p>To enhance your server&#8217;s security, it is recommended to set up <span class="caps">SSH</span> keys instead of using password authentication:&nbsp;https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1804</p>
+<h4>If the Root Account Uses <span class="caps">SSH</span> Key&nbsp;Authentication</h4>
+<p>If you logged in to your root account using <span class="caps">SSH</span> keys, then password authentication is disabled for <span class="caps">SSH</span>. You will need to add a copy of your local public key to the new user&#8217;s <code>~/.ssh/authorized_keys</code> file to log in&nbsp;successfully.</p>
+<p>Since your public key is already in the root account&#8217;s <code>~/.ssh/authorized_keys</code> file on the server, we can copy that file and directory structure to our new user account in our existing&nbsp;session.</p>
+<p>The simplest way to copy the files with the correct ownership and permissions is with the <code>rsync</code> command. This will copy the root user&#8217;s .ssh directory, preserve the permissions, and modify the file owners, all in a single&nbsp;command:</p>
+<p><code>rsync --archive --chown=synergix:synergix ~/.ssh /home/synergix</code></p>
+<p>Now, open up a new terminal session and using <span class="caps">SSH</span> with your new&nbsp;username:</p>
+<p><code>ssh synergix@your_server_ip</code></p>
+<p>You should be logged in to the new user account without using a&nbsp;password. </p>
+<h2>5)&nbsp;Other</h2>
+<p>Chose the timezone by running: <code>sudo dpkg-reconfigure tzdata</code></p>
+<h2>References:</h2>
+<ul>
+<li>https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04</li>
+</ul>
+	<br><br><br>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'annotatio';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+		</div>
+	</body>
+</html>
