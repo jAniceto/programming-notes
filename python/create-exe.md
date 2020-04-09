@@ -1,4 +1,4 @@
-# Create a standalone exacutable from a Python using `pyinstaller`
+# Create a standalone exacutable using `pyinstaller`
 
 It's pretty straight forward:
 1. Create an entry-point script that calls your main function.
