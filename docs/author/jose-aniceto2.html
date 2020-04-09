@@ -44,7 +44,7 @@
 					Annotatio
 				</a>
 			</h1>
-			<p class="lead">A collection of codding notes and snippets from my journey to self taught programming. </p>
+			<p class="lead">A collection of personal coding notes and snippets. </p>
 			<p></p>
 		</div>
 		<nav class="sidebar-nav">
@@ -61,27 +61,220 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/jupyter-notebooks.html#jupyter-notebooks">
-					<a href="https://janiceto.github.io/programming-notes/jupyter-notebooks.html#jupyter-notebooks">Jupyter&nbsp;Notebooks</a>
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/matplotlib.html#matplotlib">
+					<a href="https://janiceto.github.io/programming-notes/matplotlib.html#matplotlib">Matplotlib</a>
 				</h1>
-				<span class="post-date">ter 12 fevereiro 2019</span>
+				<span class="post-date">sáb 19 outubro 2019</span>
 				<p>
-					<h2>Instalation</h2>
-<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">jupyter</span>
+					<p>Index: 
+* <a href="#set-font">Set font</a>
+* <a href="#adding-labels-to-a-bar-chart">Adding labels to a bar&nbsp;chart</a></p>
+<h2>Set&nbsp;font</h2>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span>
+
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif&#39;</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cmb10&#39;</span><span class="p">,</span> <span class="s1">&#39;Adobe Caslon Pro&#39;</span><span class="p">,</span> <span class="s1">&#39;Palatino Linotype&#39;</span><span class="p">]</span>
 </pre></div>
 
 
-<h2>Usage</h2>
-<p>Starting the Notebook&nbsp;Server:</p>
-<div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span>
-</pre></div>
+<p>A list of available fonts can be found <a href="http://jonathansoma.com/lede/data-studio/matplotlib/list-all-fonts-available-in-matplotlib-plus-samples/">here</a>.</p>
+<h2>Adding labels to a bar&nbsp;chart</h2>
+<h3>For a vertical bar&nbsp;chart:</h3>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
+<span class="c1"># Bring some raw data.</span>
+<span class="n">frequencies</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">244</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
-<p>Open a specific&nbsp;Notebook:</p>
-<div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span> <span class="n">notebook</span><span class="p">.</span><span class="n">ipynb</span>
-</pre></div>
+<span class="c1"># In my original code I create a series and run on that,</span>
+<span class="c1"># so for consistency I create a series from the list.</span>
+<span class="n">freq_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">frequencies</span><span class="p">)</span>
+
+<span class="n">x_labels</span> <span class="o">=</span> <span class="p">[</span><span class="mf">108300.0</span><span class="p">,</span> <span class="mf">110540.0</span><span class="p">,</span> <span class="mf">112780.0</span><span class="p">,</span> <span class="mf">115020.0</span><span class="p">,</span> <span class="mf">117260.0</span><span class="p">,</span> <span class="mf">119500.0</span><span class="p">,</span>
+            <span class="mf">121740.0</span><span class="p">,</span> <span class="mf">123980.0</span><span class="p">,</span> <span class="mf">126220.0</span><span class="p">,</span> <span class="mf">128460.0</span><span class="p">,</span> <span class="mf">130700.0</span><span class="p">]</span>
+
+<span class="c1"># Plot the figure.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">freq_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Amount Frequency&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Amount ($)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency …</span></pre></div>
 				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/jupyter-notebooks.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/matplotlib.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/save-model.html#save-model">
+					<a href="https://janiceto.github.io/programming-notes/save-model.html#save-model">Saving Scikit-learn model for&nbsp;reuse</a>
+				</h1>
+				<span class="post-date">sáb 19 outubro 2019</span>
+				<p>
+					<p>Saving the model with Pickle or Joblib allows you to recover the full Scikit-learn estimator object however some compatibility issues may occur if using different versions of sklearn. Other methods of saving models can deploy the model for prediction, usually by using tools supporting open model interchange formats but do not allow the recovery of the full Scikit-learn estimator&nbsp;object.</p>
+<h2>Index</h2>
+<ul>
+<li><a href="#using-joblib">Using&nbsp;Joblib</a></li>
+<li><a href="#using-pickle">Using&nbsp;Pickle</a></li>
+<li><a href="#saving-a-complete-ml-pipeline">Saving a complete <span class="caps">ML</span>&nbsp;pipeline</a></li>
+</ul>
+<h2>Using&nbsp;Joblib</h2>
+<p>Joblib is part of the SciPy ecosystem and provides utilities for pipelining Python jobs. It provides utilities for saving and loading Python objects that make use of NumPy data structures, efficiently. This can be useful for some machine learning algorithms that require a lot of parameters or store the entire dataset (like k-Nearest&nbsp;Neighbors).</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">SVC</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Saving and …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/save-model.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/seaborn.html#seaborn">
+					<a href="https://janiceto.github.io/programming-notes/seaborn.html#seaborn">Seaborn</a>
+				</h1>
+				<span class="post-date">sáb 19 outubro 2019</span>
+				<p>
+					<h2>Change overal&nbsp;asthetics</h2>
+<p>Scaling plot elements, like line widths. In increasing&nbsp;size:</p>
+<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;paper&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;notebook&quot;</span><span class="p">)</span>  <span class="c1"># default</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;poster&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Scaling overall text&nbsp;size:</p>
+<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>References:</h3>
+<ul>
+<li><a href="https://seaborn.pydata.org/tutorial/aesthetics.html">https://seaborn.pydata.org/tutorial/aesthetics.html</a></li>
+</ul>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/seaborn.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/seo-meta-tags.html#seo-meta-tags">
+					<a href="https://janiceto.github.io/programming-notes/seo-meta-tags.html#seo-meta-tags">Meta tags for <span class="caps">SEO</span></a>
+				</h1>
+				<span class="post-date">qua 03 julho 2019</span>
+				<p>
+					<h3>Title&nbsp;tag</h3>
+<p>Title tags are usually used by search engines to determine the subject of a particular page and display it in&nbsp;SERPs.</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Your Fantastic Title<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h3>Meta description&nbsp;tag</h3>
+<p>Meta description is a short paragraph of text in the <span class="caps">HTML</span> <head> section of a page. It is usually displayed in a <span class="caps">SERP</span> snippet after website&#8217;s title and <span class="caps">URL</span>.</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;description&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;Your gorgeous description&quot;</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h3>Open Graph&nbsp;tags</h3>
+<p>Open Graph (<span class="caps">OG</span>) tags meta tags in <span class="caps">HTML</span> <head> section of a page that allow any webpage to become a rich object in social&nbsp;networks.</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&quot;og:title&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;The Rock&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&quot;og:type&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;website&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&quot;og:url&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;http://www.imdb.com/title/tt0117500/&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&quot;og:image&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;http://ia.media-imdb.com/images/rock.jpg&quot;</span> <span class="p">/&gt;</span>
+</pre></div>
+
+
+<h3>Robots&nbsp;tag</h3>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;robots&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;index, follow&quot;</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h3>Canonical&nbsp;tag</h3>
+<p>When you have a few pages with identical content, you …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/seo-meta-tags.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/sticky-footer.html#sticky-footer">
+					<a href="https://janiceto.github.io/programming-notes/sticky-footer.html#sticky-footer">Sticky&nbsp;footer</a>
+				</h1>
+				<span class="post-date">qua 03 julho 2019</span>
+				<p>
+					<p>Get the footer to stick to the bottom of the window even when there is not enough content to fill the&nbsp;page.</p>
+<p><span class="caps">HTML</span>:</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>…<span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>…<span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>…<span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p><span class="caps">CSS</span>:</p>
+<div class="highlight"><pre><span></span><span class="nt">body</span> <span class="p">{</span>
+  <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
+  <span class="k">min-height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">vh</span><span class="p">;</span>
+  <span class="k">flex-direction</span><span class="p">:</span> <span class="kc">column</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">main</span> <span class="p">{</span>
+  <span class="k">flex</span><span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>References</h3>
+<ul>
+<li><a href="https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/">https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/</a></li>
+</ul>
+<p>Other:
+- <a href="https://css-tricks.com/couple-takes-sticky-footer/">https://css-tricks.com/couple-takes-sticky-footer/</a>
+- <a href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">https://getbootstrap.com/docs/4.0/examples/sticky-footer/</a></p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/sticky-footer.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/ajax.html#ajax">
+					<a href="https://janiceto.github.io/programming-notes/ajax.html#ajax">Making <span class="caps">AJAX</span>&nbsp;request</a>
+				</h1>
+				<span class="post-date">ter 07 maio 2019</span>
+				<p>
+					<h2>Send a Request To a Server (Pure&nbsp;Javascript)</h2>
+<div class="highlight"><pre><span></span><span class="c1">// Create a new XMLHttpRequest</span>
+<span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+
+<span class="c1">// Handle state changes for the request.</span>
+<span class="nx">request</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="nx">request</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Do something like:</span>
+    <span class="kd">var</span> <span class="nx">jsonData</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// Set up and make the request</span>
+<span class="nx">request</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;ajax_info.txt&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="nx">request</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+</pre></div>
+
+
+<p>Where:</p>
+<ul>
+<li>
+<p><code>open(method, url, async)</code>: Specifies the type of request. <em>method</em>: the type of request: <span class="caps">GET</span> or <span class="caps">POST</span>; <em>url</em>: the server (file) location; <em>async</em>: true (asynchronous) or false&nbsp;(synchronous)</p>
+</li>
+<li>
+<p><code>send()</code>: Sends the request to the server (used for <span class="caps">GET</span>)</p>
+</li>
+<li>
+<p><code>send(string)</code>: Sends the request to the server (used for <span class="caps">POST</span>). For instance: <code>xhttp.send("fname=Henry&amp;lname=Ford");</code></p>
+</li>
+<li>
+<p><code>onreadystatechange</code>: defines a function to be executed when the request receives an&nbsp;answer</p>
+</li>
+</ul>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/ajax.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/basics.html#basics">
@@ -208,166 +401,6 @@
 <h2>3) Configure …</h2>
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes/deploy-django-heroku.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/django-snippets.html#django-snippets">
-					<a href="https://janiceto.github.io/programming-notes/django-snippets.html#django-snippets">Collection of useful Django snippets for several&nbsp;purposes</a>
-				</h1>
-				<span class="post-date">ter 08 janeiro 2019</span>
-				<p>
-					<h3>Index</h3>
-<ul>
-<li><a href="#create-a-slug">Create a&nbsp;slug</a></li>
-<li><a href="#send-email">Send&nbsp;email</a></li>
-<li><a href="#database-dump-to-file">Database dump to&nbsp;file</a></li>
-<li><a href="#provide-data-to-db-via-django-python-shell">Provide data to <span class="caps">DB</span> via Django Python&nbsp;Shell</a></li>
-<li><a href="#create-script-with-access-to-django-shell">Create script with access to Django&nbsp;shell</a></li>
-<li><a href="#migrate-django-from-sqlite-to-postgresql">Migrate Django from SQLite to&nbsp;PostgreSQL</a></li>
-<li><a href="#using-django-messages-with-bootstrap">Using Django Messages with&nbsp;Bootstrap</a></li>
-<li><a href="#override-form-__init__-method">Override form <code>__init__</code> method</a></li>
-</ul>
-<hr>
-<h3>Create a&nbsp;slug</h3>
-<p>Call the Django <code>slugify</code> function automatically by overriding the <code>save</code> method. It is preferable to generate the slug only once when you create a new object, otherwise your URLs may change when the <code>q</code> field is edited, which can cause broken links. More info <a href="https://stackoverflow.com/questions/837828/how-do-i-create-a-slug-in-django">here</a>.</p>
-<div class="highlight"><pre><span></span><span class="c1"># models.py</span>
-
-<span class="kn">from</span> <span class="nn">django.utils.text</span> <span class="kn">import</span> <span class="n">slugify</span>
-
-<span class="k">class</span> <span class="nc">Test</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SlugField</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
-            <span class="c1"># Newly created object, so set slug</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="n">slugify</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">q</span><span class="p">)</span>
-
-        <span class="nb">super</span><span class="p">(</span><span class="n">Test</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-
-
-<hr>
-<h3>Send&nbsp;email</h3>
-<p>If <code>html_message</code> keyword argument is provided, the resulting email will be a multipart/alternative …</p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/django-snippets.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/image-metadata.html#image-metadata">
-					<a href="https://janiceto.github.io/programming-notes/image-metadata.html#image-metadata">Editing photos&nbsp;metadata</a>
-				</h1>
-				<span class="post-date">sex 14 dezembro 2018</span>
-				<p>
-					<p>You can do it in one line in the Terminal using <code>jhead</code>.</p>
-<p>For example, adjust all <span class="caps">EXIF</span> times forward by 1&nbsp;hour:</p>
-<div class="highlight"><pre><span></span><span class="n">jhead</span> <span class="o">-</span><span class="n">ta</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span> <span class="o">*</span><span class="p">.</span><span class="n">jpg</span>
-</pre></div>
-
-
-<p>Useful&nbsp;links: </p>
-<p><a href="http://www.sentex.net/~mwandel/jhead/">jhead download&nbsp;page</a></p>
-<p><a href="http://www.sentex.net/~mwandel/jhead/usage.html">jhead&nbsp;documentation</a></p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/image-metadata.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/filter-search.html#filter-search">
-					<a href="https://janiceto.github.io/programming-notes/filter-search.html#filter-search">Filter a table or list by typing in search&nbsp;box</a>
-				</h1>
-				<span class="post-date">ter 28 agosto 2018</span>
-				<p>
-					<h2>Using a <span class="caps">JS</span>&nbsp;library:</h2>
-<ul>
-<li><a href="http://listjs.com/">listjs.com</a></li>
-</ul>
-<h2>From&nbsp;scratch:</h2>
-<h3>For a&nbsp;table</h3>
-<p>1) <span class="caps">HTML</span> </p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myInput&quot;</span> <span class="na">onkeyup</span><span class="o">=</span><span class="s">&quot;myFunction()&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Search for names..&quot;</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">table</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myTable&quot;</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;header&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:60%;&quot;</span><span class="p">&gt;</span>Name<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:40%;&quot;</span><span class="p">&gt;</span>Country<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Alfreds Futterkiste<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Germany<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Berglunds snabbkop<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Sweden<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Island Trading<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>UK<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Koniglich Essen<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Germany<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
-</pre></div>
-
-
-<p>2) <span class="caps">CSS</span> </p>
-<div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">myInput</span> <span class="p">{</span>
-    <span class="k">background-image</span><span class="p">:</span> <span class="nb">url</span><span class="p">(</span><span class="s1">&#39;/css/searchicon.png&#39;</span><span class="p">);</span> <span class="c">/* Add a search icon to input */</span>
-    <span class="k">background-position</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Position the search icon */</span>
-    <span class="k">background-repeat</span><span class="p">:</span> <span class="kc">no-repeat</span><span class="p">;</span> <span class="c">/* Do not repeat the icon image */</span>
-    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span> <span class="c">/* Full-width */</span>
-    <span class="k">font-size</span><span class="p">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Increase font-size */</span>
-    <span class="k">padding</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">12</span><span class="kt">px</span> <span class="mi">40</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Add some padding */</span>
-    <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#ddd</span><span class="p">;</span> <span class="c">/* Add a grey border */</span>
-    <span class="k">margin-bottom</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Add some space below the input */</span>
-<span class="p">}</span>
-
-<span class="p">#</span><span class="nn">myTable …</span></pre></div>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/filter-search.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/vps-providers.html#vps-providers">
-					<a href="https://janiceto.github.io/programming-notes/vps-providers.html#vps-providers"><span class="caps">VPS</span>&nbsp;providers</a>
-				</h1>
-				<span class="post-date">ter 28 agosto 2018</span>
-				<p>
-					<p>When you need to host your projects, you have several options&nbsp;available:</p>
-<p><strong>Shared hosting</strong>, where you share a server with lots of other users and have very limited control over the server. <strong>Dedicated hosting</strong>, where you have complete control over a server, a very flexible option, but requires you to manage the whole server, worry about hardware failures and backups, and is typically expensive. A third option that is in between these two choices is a <strong>Virtual Private Server</strong>, or <strong><span class="caps">VPS</span></strong>.</p>
-<p>VPSs virtualized nature provides several advantages such as instant reinstallation of the operating system, quick recovery and backup, and fast and simple hardware upgrades (the hardware is virtual, after&nbsp;all).</p>
-<p>Here is a list of several popular <span class="caps">VPS</span>&nbsp;providers:</p>
-<ul>
-<li><a href="https://www.digitalocean.com/pricing/">digitalocean.com</a> - from 5 $/month + tax&nbsp;(anual)</li>
-<li><a href="https://www.linode.com">linode.com</a> - from 5 $/month +&nbsp;tax</li>
-<li><a href="https://www.heroku.com/pricing">heroku.com</a> from 7 $/month + tax&nbsp;(anual)</li>
-<li><a href="https://console.cloud.google.com/compute">Google&nbsp;Cloudm</a></li>
-<li><a href="https://aws.amazon.com/ec2/"><span class="caps">AWS</span> <span class="caps">EC2</span></a></li>
-</ul>
-<h3>Portugal based&nbsp;providers:</h3>
-<ul>
-<li><a href="https://www.ovh.pt/vps/vps-ssd.xml">ovh.pt</a> - from …</li></ul>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/vps-providers.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/python-raspbian.html#python-raspbian">
-					<a href="https://janiceto.github.io/programming-notes/python-raspbian.html#python-raspbian">Installing Python 3.7 on&nbsp;Raspbian</a>
-				</h1>
-				<span class="post-date">seg 27 agosto 2018</span>
-				<p>
-					<p>As of January 2018, Raspbian does not yet include the latest Python release, Python 3.6. This means we will have to build it ourselves, and here is how to do it. There is also an ansible role attached that automates it all for&nbsp;you.</p>
-<p>1) Install the required build-tools (some might already be installed on your&nbsp;system).</p>
-<div class="highlight"><pre><span></span>$ sudo apt-get update
-$ sudo apt-get install build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
-</pre></div>
-
-
-<p>If one of the packages cannot be found, try a newer version number (e.g. <code>libdb5.4-dev</code> instead of <code>libdb5.3-dev</code>).</p>
-<p>2) Download and install Python 3.6. When downloading the source code, select the most recent release of Python 3.6, available on the <a href="https://www.python.org/downloads/source/">official site</a>. Adjust the file names&nbsp;accordingly.</p>
-<div class="highlight"><pre><span></span>$ wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
-$ tar xf Python-3.7.0 …</pre></div>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/python-raspbian.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

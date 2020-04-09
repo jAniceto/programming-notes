@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - Python</title><link href="https://janiceto.github.io/programming-notes/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes/feeds/python.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes/</id><updated>2020-01-24T15:50:00+00:00</updated><entry><title>Anaconda</title><link href="https://janiceto.github.io/programming-notes/anaconda.html" rel="alternate"></link><published>2020-01-24T15:50:00+00:00</published><updated>2020-01-24T15:50:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2020-01-24:/programming-notes/anaconda.html</id><content type="html">&lt;h2&gt;Add a folder to the Anaconda&amp;nbsp;path&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - Python</title><link href="https://janiceto.github.io/programming-notes/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes/feeds/python.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes/</id><updated>2020-04-09T15:23:00+01:00</updated><entry><title>Create a REST API with Django Rest Framework</title><link href="https://janiceto.github.io/programming-notes/django-rest-api.html" rel="alternate"></link><published>2020-02-05T13:53:00+00:00</published><updated>2020-02-05T13:53:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2020-02-05:/programming-notes/django-rest-api.html</id><content type="html">&lt;h2&gt;References:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.django-rest-framework.org/"&gt;Django &lt;span class="caps"&gt;REST&lt;/span&gt;&amp;nbsp;framework&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=Uyei2iDA4Hs"&gt;Full Stack React &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt;&amp;nbsp;Django&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://v1k45.com/blog/modern-django-part-1-setting-up-django-and-react/"&gt;Modern Django: Part 1: Setting up Django and&amp;nbsp;React&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.valentinog.com/blog/drf/#Django_REST_with_React_Django_and_React_together"&gt;Django &lt;span class="caps"&gt;REST&lt;/span&gt; with&amp;nbsp;React&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wsvincent.com/django-rest-framework-todo-api-tutorial/"&gt;Django Rest Framework Tutorial - Todo &lt;span class="caps"&gt;API&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://medium.com/backticks-tildes/lets-build-an-api-with-django-rest-framework-32fcf40231e5"&gt;Let’s build an &lt;span class="caps"&gt;API&lt;/span&gt; with Django &lt;span class="caps"&gt;REST&lt;/span&gt;&amp;nbsp;Framework&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://sunscrapers.com/blog/ultimate-tutorial-django-rest-framework-part-1/"&gt;The Ultimate Tutorial for Django &lt;span class="caps"&gt;REST&lt;/span&gt;&amp;nbsp;Framework&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Python"></category></entry><entry><title>Anaconda</title><link href="https://janiceto.github.io/programming-notes/anaconda.html" rel="alternate"></link><published>2020-01-24T15:50:00+00:00</published><updated>2020-01-24T15:50:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2020-01-24:/programming-notes/anaconda.html</id><content type="html">&lt;h2&gt;Add a folder to the Anaconda&amp;nbsp;path&lt;/h2&gt;
 &lt;p&gt;By adding a folder to the Anaconda path you can call its Python scripts from any location in the Anaconda&amp;nbsp;Prompt. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;your_folder&lt;/span&gt;
 &lt;span class="n"&gt;conda&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;develop&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;
@@ -33,59 +42,37 @@
 &lt;h3&gt;Other&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://streamlit.io/docs/"&gt;Streamlit&lt;/a&gt; - Makes it easy to build beautiful apps for machine&amp;nbsp;learning.&lt;/li&gt;
-&lt;/ul&gt;</content><category term="Python"></category></entry><entry><title>Argument parsing using the argparse module</title><link href="https://janiceto.github.io/programming-notes/arg-parse.html" rel="alternate"></link><published>2019-11-22T17:47:00+00:00</published><updated>2019-11-22T17:47:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-11-22:/programming-notes/arg-parse.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;argparse&lt;/strong&gt; is a Python Standard Library module to write user-friendly command-line interfaces. The program defines what arguments it requires, and argparse will figure out how to parse those out of sys.argv. The argparse module also automatically generates help and usage messages and issues errors when users give the program invalid&amp;nbsp;arguments&lt;/p&gt;
+&lt;/ul&gt;</content><category term="Python"></category></entry><entry><title>Argument parsing using the argparse module</title><link href="https://janiceto.github.io/programming-notes/arg-parse.html" rel="alternate"></link><published>2019-11-22T17:47:00+00:00</published><updated>2020-04-03T15:42:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-11-22:/programming-notes/arg-parse.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;argparse&lt;/strong&gt; is a Python Standard Library module to write user-friendly command-line interfaces. The program defines what arguments it requires, and argparse will figure out how to parse those out of sys.argv. The argparse module also automatically generates help and usage messages and issues errors when users give the program invalid&amp;nbsp;arguments&lt;/p&gt;
 &lt;h3&gt;Initialize&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;argparse&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Instantiate the parser&lt;/span&gt;
-&lt;span class="n"&gt;parser&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;argparse&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ArgumentParser&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Optional app description&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;parser&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;argparse&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ArgumentParser&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prog&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Optional app name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                                 &lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Optional app description&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                                 &lt;span class="n"&gt;epilog&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Enjoy the program!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;By default, the &lt;strong&gt;argparse&lt;/strong&gt; uses the value of the sys.argv[0] element to set the name of the program (name of the Python script). However, you can specify the name of your program just by using the &lt;code&gt;prog&lt;/code&gt; keyword.&lt;/p&gt;
+&lt;p&gt;You can customize the text displayed before and after the arguments help text using the &lt;code&gt;description&lt;/code&gt; and &lt;code&gt;epilog&lt;/code&gt; keywords.&lt;/p&gt;
 &lt;h3&gt;Add&amp;nbsp;Arguments&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Required positional argument&lt;/span&gt;
 &lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_argument&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pos_arg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
                     &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;A required integer positional argument&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="c1"&gt;# Optional positional argument&lt;/span&gt;
-&lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_argument&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;opt_pos_arg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nargs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;?&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                    &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;An optional integer positional argument&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c1"&gt;# Optional argument&lt;/span&gt;
-&lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_argument&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;--opt_arg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                    &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;An optional integer argument&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c1"&gt;# Switch&lt;/span&gt;
-&lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_argument&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;--switch&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;action&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;store_true&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                    &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;A boolean switch&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Parse&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse_args&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Access&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Argument values:&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pos_arg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;opt_pos_arg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;opt_arg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Check&amp;nbsp;Values&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pos_arg&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;pos_arg cannot be larger …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;argparse&lt;/strong&gt; is a Python Standard Library module to write user-friendly command-line interfaces. The program defines what arguments it requires, and argparse will figure out how to parse those out of sys.argv. The argparse module also automatically generates help and usage messages and issues errors when users give the program invalid&amp;nbsp;arguments&lt;/p&gt;
+&lt;span class="c1"&gt;# Optional positional …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;argparse&lt;/strong&gt; is a Python Standard Library module to write user-friendly command-line interfaces. The program defines what arguments it requires, and argparse will figure out how to parse those out of sys.argv. The argparse module also automatically generates help and usage messages and issues errors when users give the program invalid&amp;nbsp;arguments&lt;/p&gt;
 &lt;h3&gt;Initialize&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;argparse&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Instantiate the parser&lt;/span&gt;
-&lt;span class="n"&gt;parser&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;argparse&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ArgumentParser&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Optional app description&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;parser&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;argparse&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ArgumentParser&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prog&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Optional app name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                                 &lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Optional app description&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                                 &lt;span class="n"&gt;epilog&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Enjoy the program!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;By default, the &lt;strong&gt;argparse&lt;/strong&gt; uses the value of the sys.argv[0] element to set the name of the program (name of the Python script). However, you can specify the name of your program just by using the &lt;code&gt;prog&lt;/code&gt; keyword.&lt;/p&gt;
+&lt;p&gt;You can customize the text displayed before and after the arguments help text using the &lt;code&gt;description&lt;/code&gt; and &lt;code&gt;epilog&lt;/code&gt; keywords.&lt;/p&gt;
 &lt;h3&gt;Add&amp;nbsp;Arguments&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Required positional argument&lt;/span&gt;
 &lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_argument&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pos_arg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -163,20 +150,8 @@ True
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://docs.python.org/3/library/argparse.html"&gt;Python&amp;nbsp;docs&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://stackoverflow.com/a/30493366"&gt;Stack Overflow&amp;nbsp;answer&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><category term="Python"></category></entry><entry><title>Jupyter Notebooks</title><link href="https://janiceto.github.io/programming-notes/jupyter-notebooks.html" rel="alternate"></link><published>2019-02-12T20:36:00+00:00</published><updated>2019-02-12T20:36:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-02-12:/programming-notes/jupyter-notebooks.html</id><content type="html">&lt;h2&gt;Instalation&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;jupyter&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Usage&lt;/h2&gt;
-&lt;p&gt;Starting the Notebook&amp;nbsp;Server:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;jupyter&lt;/span&gt; &lt;span class="n"&gt;notebook&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Open a specific&amp;nbsp;Notebook:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;jupyter&lt;/span&gt; &lt;span class="n"&gt;notebook&lt;/span&gt; &lt;span class="n"&gt;notebook&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ipynb&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="Python"></category></entry><entry><title>Datetime module</title><link href="https://janiceto.github.io/programming-notes/datetime.html" rel="alternate"></link><published>2019-02-03T21:45:00+00:00</published><updated>2019-02-03T21:45:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-02-03:/programming-notes/datetime.html</id><summary type="html">&lt;p&gt;The &lt;code&gt;datetime&lt;/code&gt; module is a standard library module that supplies classes for manipulating dates and times. While date and time arithmetic is supported, the focus of the implementation is on efficient attribute extraction for output formatting and&amp;nbsp;manipulation.&lt;/p&gt;
+&lt;li&gt;&lt;a href="https://realpython.com/command-line-interfaces-python-argparse/"&gt;Real Python - How to Build Command Line Interfaces in Python With&amp;nbsp;argparse&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Python"></category></entry><entry><title>Datetime module</title><link href="https://janiceto.github.io/programming-notes/datetime.html" rel="alternate"></link><published>2019-02-03T21:45:00+00:00</published><updated>2019-02-03T21:45:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-02-03:/programming-notes/datetime.html</id><summary type="html">&lt;p&gt;The &lt;code&gt;datetime&lt;/code&gt; module is a standard library module that supplies classes for manipulating dates and times. While date and time arithmetic is supported, the focus of the implementation is on efficient attribute extraction for output formatting and&amp;nbsp;manipulation.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;datetime&lt;/code&gt; module has three types for storing a point in&amp;nbsp;time:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;date&lt;/code&gt; for year, month, day of&amp;nbsp;month&lt;/li&gt;
@@ -477,14 +452,93 @@ True
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;</content><category term="Python"></category></entry><entry><title>Create a standalone exacutable from a Python scripy</title><link href="https://janiceto.github.io/programming-notes/create-exe.html" rel="alternate"></link><published>2018-08-27T17:21:00+01:00</published><updated>2018-08-27T17:21:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-27:/programming-notes/create-exe.html</id><content type="html">&lt;h2&gt;Using&amp;nbsp;pyinstaller&lt;/h2&gt;
-&lt;p&gt;To install pyinstaller on your pc (more details can be found here:&amp;nbsp;https://www.pyinstaller.org/)&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;pip install pyinstaller&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Use cmd to go to your program directory and to turn it into a exe&amp;nbsp;folder&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;pyinstaller yourprogram.py&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;What I&amp;nbsp;run:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;pyinstaller -F --windowed --icon=myapp.ico SumExcel.py&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;This makes it a single exe (without the folders with all dependables) but is slightly slower, minimizes the console window sine I have a &lt;span class="caps"&gt;GUI&lt;/span&gt;, and gives it a snazzy icon that I had saved (you have to copy over the icon, or have an exception incase it isn&amp;#8217;t&amp;nbsp;found)&lt;/p&gt;</content><category term="Python"></category></entry><entry><title>Run Matlab programs in Python</title><link href="https://janiceto.github.io/programming-notes/matlab.html" rel="alternate"></link><published>2018-07-26T15:11:00+01:00</published><updated>2018-07-26T15:11:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-07-26:/programming-notes/matlab.html</id><summary type="html">&lt;p&gt;This example shows how to create a Python package using a &lt;span class="caps"&gt;MATLAB&lt;/span&gt; function. You can then pass the generated package to the developer who is responsible for integrating it into an application. The target system does not require a licensed copy of &lt;span class="caps"&gt;MATLAB&lt;/span&gt;.&lt;/p&gt;
+&lt;hr&gt;</content><category term="Python"></category></entry><entry><title>Create a standalone exacutable using `pyinstaller`</title><link href="https://janiceto.github.io/programming-notes/create-exe.html" rel="alternate"></link><published>2018-08-27T17:21:00+01:00</published><updated>2020-04-09T15:23:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-27:/programming-notes/create-exe.html</id><summary type="html">&lt;p&gt;It&amp;#8217;s pretty straight forward:
+1. Create an entry-point script that calls your main function.
+2. Install PyInstaller.
+3. Run PyInstaller on your entry-point.
+4. Test your new executable.
+5. Ship your resulting &lt;code&gt;dist/&lt;/code&gt; folder to&amp;nbsp;users.&lt;/p&gt;
+&lt;h2&gt;Install&lt;/h2&gt;
+&lt;p&gt;To install &lt;code&gt;pyinstaller&lt;/code&gt; on your pc run (more details can be found here:&amp;nbsp;https://www.pyinstaller.org/):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;pyinstaller&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;For a single file&amp;nbsp;program&lt;/h2&gt;
+&lt;p&gt;If your program is a single script use &lt;code&gt;cmd&lt;/code&gt; to go to your program directory and to turn it into a exe folder&amp;nbsp;run&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pyinstaller&lt;/span&gt; &lt;span class="n"&gt;myprogram&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;For a&amp;nbsp;package&lt;/h2&gt;
+&lt;p&gt;Create an entrypoint outside your package folder that imports and runs your program. This will be the entry point. Call pyinstaller on the entrypoint script as&amp;nbsp;above.&lt;/p&gt;
+&lt;h2&gt;Options&lt;/h2&gt;
+&lt;p&gt;Change the name of your&amp;nbsp;executable: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pyinstaller&lt;/span&gt; &lt;span class="n"&gt;myprogram&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="c1"&gt;--name MY_PROGRAM&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Package your entire application into a single executable&amp;nbsp;file: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pyinstaller&lt;/span&gt; &lt;span class="n"&gt;myprogram&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="c1"&gt;--onefile&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Insert additional data or binary …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It&amp;#8217;s pretty straight forward:
+1. Create an entry-point script that calls your main function.
+2. Install PyInstaller.
+3. Run PyInstaller on your entry-point.
+4. Test your new executable.
+5. Ship your resulting &lt;code&gt;dist/&lt;/code&gt; folder to&amp;nbsp;users.&lt;/p&gt;
+&lt;h2&gt;Install&lt;/h2&gt;
+&lt;p&gt;To install &lt;code&gt;pyinstaller&lt;/code&gt; on your pc run (more details can be found here:&amp;nbsp;https://www.pyinstaller.org/):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;pyinstaller&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;For a single file&amp;nbsp;program&lt;/h2&gt;
+&lt;p&gt;If your program is a single script use &lt;code&gt;cmd&lt;/code&gt; to go to your program directory and to turn it into a exe folder&amp;nbsp;run&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pyinstaller&lt;/span&gt; &lt;span class="n"&gt;myprogram&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;For a&amp;nbsp;package&lt;/h2&gt;
+&lt;p&gt;Create an entrypoint outside your package folder that imports and runs your program. This will be the entry point. Call pyinstaller on the entrypoint script as&amp;nbsp;above.&lt;/p&gt;
+&lt;h2&gt;Options&lt;/h2&gt;
+&lt;p&gt;Change the name of your&amp;nbsp;executable: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pyinstaller&lt;/span&gt; &lt;span class="n"&gt;myprogram&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="c1"&gt;--name MY_PROGRAM&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Package your entire application into a single executable&amp;nbsp;file: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pyinstaller&lt;/span&gt; &lt;span class="n"&gt;myprogram&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="c1"&gt;--onefile&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Insert additional data or binary files into your&amp;nbsp;build: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pyinstaller&lt;/span&gt; &lt;span class="n"&gt;myprogram&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="c1"&gt;--add-data data/file.csv&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Exclude some modules from being included with your&amp;nbsp;executable: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pyinstaller&lt;/span&gt; &lt;span class="n"&gt;myprogram&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="c1"&gt;--exclude-module=pytest&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Avoid automatically opening a console window for stdout&amp;nbsp;logging: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pyinstaller&lt;/span&gt; &lt;span class="n"&gt;myprogram&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;w&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;What I usually&amp;nbsp;run: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pyinstaller&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;F&lt;/span&gt; &lt;span class="c1"&gt;--windowed --icon=myapp.ico myprogram.py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This makes it a single exe (without the folders with all dependables) but is slightly slower, minimizes the console window sine I have a &lt;span class="caps"&gt;GUI&lt;/span&gt;, and gives it a snazzy icon that I had saved (you have to copy over the icon, or have an exception incase it isn&amp;#8217;t&amp;nbsp;found)&lt;/p&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://realpython.com/pyinstaller-python/"&gt;Using PyInstaller to Easily Distribute Python&amp;nbsp;Applications&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Python"></category></entry><entry><title>Run Matlab programs in Python</title><link href="https://janiceto.github.io/programming-notes/matlab.html" rel="alternate"></link><published>2018-07-26T15:11:00+01:00</published><updated>2018-07-26T15:11:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-07-26:/programming-notes/matlab.html</id><summary type="html">&lt;p&gt;This example shows how to create a Python package using a &lt;span class="caps"&gt;MATLAB&lt;/span&gt; function. You can then pass the generated package to the developer who is responsible for integrating it into an application. The target system does not require a licensed copy of &lt;span class="caps"&gt;MATLAB&lt;/span&gt;.&lt;/p&gt;
 &lt;h2&gt;Requirements&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;A Matlab version with a license for &lt;span class="caps"&gt;MATLAB&lt;/span&gt; Compiler or &lt;span class="caps"&gt;MATLAB&lt;/span&gt; Compiler &lt;span class="caps"&gt;SDK&lt;/span&gt; to compile the Python&amp;nbsp;package.&lt;/li&gt;

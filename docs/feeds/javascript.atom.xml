@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - Javascript</title><link href="https://janiceto.github.io/programming-notes/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes/feeds/javascript.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes/</id><updated>2019-05-07T21:50:00+01:00</updated><entry><title>Making AJAX request</title><link href="https://janiceto.github.io/programming-notes/ajax.html" rel="alternate"></link><published>2019-05-07T21:50:00+01:00</published><updated>2019-05-07T21:50:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-05-07:/programming-notes/ajax.html</id><content type="html">&lt;h2&gt;Send a Request To a Server (Pure&amp;nbsp;Javascript)&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - Javascript</title><link href="https://janiceto.github.io/programming-notes/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes/feeds/javascript.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes/</id><updated>2020-02-29T22:18:00+00:00</updated><entry><title>React</title><link href="https://janiceto.github.io/programming-notes/react.html" rel="alternate"></link><published>2020-02-29T22:18:00+00:00</published><updated>2020-02-29T22:18:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2020-02-29:/programming-notes/react.html</id><content type="html">&lt;p&gt;React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called&amp;nbsp;&amp;#8220;components&amp;#8221;.&lt;/p&gt;
+&lt;h2&gt;Setup&lt;/h2&gt;
+&lt;p&gt;Best way to set up React is via NodeJS package manager &lt;code&gt;npm&lt;/code&gt;. Go to &lt;a href="https://nodejs.org/"&gt;nodejs.org&lt;/a&gt; and download NodeJS (&lt;span class="caps"&gt;LTS&lt;/span&gt; version is recommended). It is also recommended to install &lt;a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi"&gt;React Developer&amp;nbsp;Tools&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;To start a project we use the &lt;code&gt;create-react-app&lt;/code&gt; tool. By using &lt;code&gt;npx&lt;/code&gt; we run the &lt;code&gt;create-react-app&lt;/code&gt; script without installing. Using &lt;code&gt;npm&lt;/code&gt; will install the &lt;code&gt;create-react-app&lt;/code&gt; package&amp;nbsp;globally.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir my-app
+npx create-react-app .
+npm start
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This creates the following project&amp;nbsp;structure:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;my-app
+├── README.md
+├── node_modules
+├── package.json           &amp;lt;-- app info and dependencies
+├── .gitignore
+├── public
+│   ├── favicon.ico
+│   ├── index.html         &amp;lt;-- main webpage where React is outputed
+│   └── manifest.json
+└── src
+    ├── App.css
+    ├── App.js             &amp;lt;-- App component
+    ├── App.test.js
+    ├── index.css
+    ├── index.js           &amp;lt;-- React entry point
+    ├── logo.svg
+    └── serviceWorker.js&lt;/code&gt;&lt;/p&gt;</content><category term="Javascript"></category></entry><entry><title>Making AJAX request</title><link href="https://janiceto.github.io/programming-notes/ajax.html" rel="alternate"></link><published>2019-05-07T21:50:00+01:00</published><updated>2019-05-07T21:50:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-05-07:/programming-notes/ajax.html</id><content type="html">&lt;h2&gt;Send a Request To a Server (Pure&amp;nbsp;Javascript)&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// Create a new XMLHttpRequest&lt;/span&gt;
 &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;request&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;XMLHttpRequest&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
 
@@ -121,7 +148,7 @@
         &lt;span class="p"&gt;};&lt;/span&gt;
     &lt;span class="p"&gt;});&lt;/span&gt;
 &lt;span class="p"&gt;});&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="Javascript"></category></entry><entry><title>Filter a table or list by typing in search box</title><link href="https://janiceto.github.io/programming-notes/filter-search.html" rel="alternate"></link><published>2018-08-28T11:27:00+01:00</published><updated>2018-08-28T11:27:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-28:/programming-notes/filter-search.html</id><summary type="html">&lt;h2&gt;Using a &lt;span class="caps"&gt;JS&lt;/span&gt;&amp;nbsp;library:&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="Javascript"></category></entry><entry><title>Filter, sort and layout</title><link href="https://janiceto.github.io/programming-notes/filter-search.html" rel="alternate"></link><published>2018-08-28T11:27:00+01:00</published><updated>2020-02-02T22:52:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-28:/programming-notes/filter-search.html</id><summary type="html">&lt;h2&gt;Using a &lt;span class="caps"&gt;JS&lt;/span&gt;&amp;nbsp;library:&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://listjs.com/"&gt;List &lt;span class="caps"&gt;JS&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://isotope.metafizzy.co/"&gt;Isotope&lt;/a&gt;&lt;/li&gt;

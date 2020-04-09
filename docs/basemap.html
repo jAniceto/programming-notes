@@ -44,7 +44,7 @@
 					Annotatio
 				</a>
 			</h1>
-			<p class="lead">A collection of codding notes and snippets from my journey to self taught programming. </p>
+			<p class="lead">A collection of personal coding notes and snippets. </p>
 			<p></p>
 		</div>
 		<nav class="sidebar-nav">
@@ -63,7 +63,8 @@
 	<h1 class="post-title">Geo ploting with&nbsp;Basemap</h1>
 	<span class="post-date">qua 18 dezembro 2019</span>
 	<p>The matplotlib basemap toolkit is a library for plotting 2D data on maps in&nbsp;Python.</p>
-<h2>Basemap&nbsp;installation</h2>
+<h2>Installation</h2>
+<h4>Option&nbsp;1:</h4>
 <p>The recommended installation method for Basemap is using Anaconda and the conda-forge channel. In the Anaconda Prompt&nbsp;run:</p>
 <div class="highlight"><pre><span></span>$ conda install -c anaconda basemap
 </pre></div>
@@ -75,6 +76,18 @@
 
 
 <p>If the installation was sucessful you should now be able to run the following import in the Python (Anaconda) prompt without any&nbsp;errors:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+</pre></div>
+
+
+<h4>Option&nbsp;2:</h4>
+<p>If you are on Windows you can also install the binaries directly. This worked better for me than installing through Anaconda and conda-forge. Download the <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#basemap">Basemap</a> and <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyproj"><span class="caps">PROJ</span></a> binaries. Make sure you download the correct binary for your Python version. For instance, if you have Python 3.7 64-bit make sure to download the <code>pyproj‑2.4.2.post1‑cp37‑cp37m‑win_amd64.whl</code> and <code>basemap‑1.2.1‑cp37‑cp37m‑win_amd64.whl</code> files. The <code>cp37</code> indicates Python version and <code>amd64</code> the 64-bit version. You can now install both libraries with&nbsp;pip.</p>
+<div class="highlight"><pre><span></span>$ pip install pyproj‑2.4.2.post1‑cp37‑cp37m‑win_amd64.whl
+$ pip install basemap‑1.2.1‑cp37‑cp37m‑win_amd64.whl
+</pre></div>
+
+
+<p>Test the instalation by&nbsp;running:</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
 </pre></div>
 

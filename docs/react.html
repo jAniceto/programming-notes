@@ -60,36 +60,36 @@
 	</div>
 </div>		<div class="content container">
 <div class="post">
-	<h1 class="post-title">Datetime&nbsp;module</h1>
-	<span class="post-date">dom 03 fevereiro 2019</span>
-	<p>The <code>datetime</code> module is a standard library module that supplies classes for manipulating dates and times. While date and time arithmetic is supported, the focus of the implementation is on efficient attribute extraction for output formatting and&nbsp;manipulation.</p>
-<p>The <code>datetime</code> module has three types for storing a point in&nbsp;time:</p>
-<ul>
-<li><code>date</code> for year, month, day of&nbsp;month</li>
-<li><code>time</code> for hours, minutes, seconds, microseconds, time zone&nbsp;info</li>
-<li><code>datetime</code> combines <code>date</code> and <code>time</code>. It has the methods <code>date()</code> and <code>time()</code> to get the corresponding date and time objects, and there&#8217;s a handy <code>combine</code> function to combine date and time into a&nbsp;datetime.</li>
-</ul>
-<h2>Parsing and formatting date&nbsp;strings</h2>
-<p><code>datetime.strptime</code> is the main routine for parsing strings into datetimes. It can handle all sorts of formats, with the format determined by a format string you give&nbsp;it:</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="n">datetime_object</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s1">&#39;Jun 1 2005  1:33PM&#39;</span><span class="p">,</span> <span class="s1">&#39;%b </span><span class="si">%d</span><span class="s1"> %Y %I:%M%p&#39;</span><span class="p">)</span>
+	<h1 class="post-title">React</h1>
+	<span class="post-date">sáb 29 fevereiro 2020</span>
+	<p>React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called&nbsp;&#8220;components&#8221;.</p>
+<h2>Setup</h2>
+<p>Best way to set up React is via NodeJS package manager <code>npm</code>. Go to <a href="https://nodejs.org/">nodejs.org</a> and download NodeJS (<span class="caps">LTS</span> version is recommended). It is also recommended to install <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">React Developer&nbsp;Tools</a></p>
+<p>To start a project we use the <code>create-react-app</code> tool. By using <code>npx</code> we run the <code>create-react-app</code> script without installing. Using <code>npm</code> will install the <code>create-react-app</code> package&nbsp;globally.</p>
+<div class="highlight"><pre><span></span>mkdir my-app
+npx create-react-app .
+npm start
 </pre></div>
 
 
-<p><code>datetime.strftime</code> is the routine to format datetime objects to&nbsp;string.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
-
-<span class="n">t</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">t</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%m/</span><span class="si">%d</span><span class="s1">/%Y&#39;</span><span class="p">)</span>
-<span class="c1"># output: &#39;02/23/2012&#39;</span>
-</pre></div>
-
-
-<p>Format options available in the <a href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior">datetime documentation</a> and at <a href="http://strftime.org/">strftime.org</a>.</p>
-<p>To summarize:
-* <code>strptime</code> = &#8220;string parse time&#8221;
-* <code>strftime</code> = &#8220;string format&nbsp;time&#8221;</p>
+<p>This creates the following project&nbsp;structure:</p>
+<p><code>my-app
+├── README.md
+├── node_modules
+├── package.json           &lt;-- app info and dependencies
+├── .gitignore
+├── public
+│   ├── favicon.ico
+│   ├── index.html         &lt;-- main webpage where React is outputed
+│   └── manifest.json
+└── src
+    ├── App.css
+    ├── App.js             &lt;-- App component
+    ├── App.test.js
+    ├── index.css
+    ├── index.js           &lt;-- React entry point
+    ├── logo.svg
+    └── serviceWorker.js</code></p>
 	<br><br><br>
 	<div id="disqus_thread"></div>
 		<script type="text/javascript">

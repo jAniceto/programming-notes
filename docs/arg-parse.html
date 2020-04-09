@@ -44,7 +44,7 @@
 					Annotatio
 				</a>
 			</h1>
-			<p class="lead">A collection of codding notes and snippets from my journey to self taught programming. </p>
+			<p class="lead">A collection of personal coding notes and snippets. </p>
 			<p></p>
 		</div>
 		<nav class="sidebar-nav">
@@ -61,16 +61,20 @@
 </div>		<div class="content container">
 <div class="post">
 	<h1 class="post-title">Argument parsing using the argparse&nbsp;module</h1>
-	<span class="post-date">sex 22 novembro 2019</span>
+	<span class="post-date">sex 22 novembro 2019, last updated sex 03 abril 2020</span>
 	<p><strong>argparse</strong> is a Python Standard Library module to write user-friendly command-line interfaces. The program defines what arguments it requires, and argparse will figure out how to parse those out of sys.argv. The argparse module also automatically generates help and usage messages and issues errors when users give the program invalid&nbsp;arguments</p>
 <h3>Initialize</h3>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="c1"># Instantiate the parser</span>
-<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Optional app description&#39;</span><span class="p">)</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s1">&#39;Optional app name&#39;</span><span class="p">,</span> 
+                                 <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Optional app description&#39;</span><span class="p">,</span> 
+                                 <span class="n">epilog</span><span class="o">=</span><span class="s1">&#39;Enjoy the program!&#39;</span><span class="p">)</span>
 </pre></div>
 
 
+<p>By default, the <strong>argparse</strong> uses the value of the sys.argv[0] element to set the name of the program (name of the Python script). However, you can specify the name of your program just by using the <code>prog</code> keyword.</p>
+<p>You can customize the text displayed before and after the arguments help text using the <code>description</code> and <code>epilog</code> keywords.</p>
 <h3>Add&nbsp;Arguments</h3>
 <div class="highlight"><pre><span></span><span class="c1"># Required positional argument</span>
 <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;pos_arg&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
@@ -148,6 +152,7 @@ True
 <ul>
 <li><a href="https://docs.python.org/3/library/argparse.html">Python&nbsp;docs</a></li>
 <li><a href="https://stackoverflow.com/a/30493366">Stack Overflow&nbsp;answer</a></li>
+<li><a href="https://realpython.com/command-line-interfaces-python-argparse/">Real Python - How to Build Command Line Interfaces in Python With&nbsp;argparse</a></li>
 </ul>
 	<br><br><br>
 	<div id="disqus_thread"></div>

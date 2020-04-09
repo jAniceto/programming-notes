@@ -44,7 +44,7 @@
 					Annotatio
 				</a>
 			</h1>
-			<p class="lead">A collection of codding notes and snippets from my journey to self taught programming. </p>
+			<p class="lead">A collection of personal coding notes and snippets. </p>
 			<p></p>
 		</div>
 		<nav class="sidebar-nav">
@@ -61,19 +61,204 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/create-exe.html#create-exe">
-					<a href="https://janiceto.github.io/programming-notes/create-exe.html#create-exe">Create a standalone exacutable from a Python&nbsp;scripy</a>
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/django-snippets.html#django-snippets">
+					<a href="https://janiceto.github.io/programming-notes/django-snippets.html#django-snippets">Collection of useful Django snippets for several&nbsp;purposes</a>
+				</h1>
+				<span class="post-date">ter 08 janeiro 2019</span>
+				<p>
+					<h3>Index</h3>
+<ul>
+<li><a href="#create-a-slug">Create a&nbsp;slug</a></li>
+<li><a href="#send-email">Send&nbsp;email</a></li>
+<li><a href="#database-dump-to-file">Database dump to&nbsp;file</a></li>
+<li><a href="#provide-data-to-db-via-django-python-shell">Provide data to <span class="caps">DB</span> via Django Python&nbsp;Shell</a></li>
+<li><a href="#create-script-with-access-to-django-shell">Create script with access to Django&nbsp;shell</a></li>
+<li><a href="#migrate-django-from-sqlite-to-postgresql">Migrate Django from SQLite to&nbsp;PostgreSQL</a></li>
+<li><a href="#using-django-messages-with-bootstrap">Using Django Messages with&nbsp;Bootstrap</a></li>
+<li><a href="#override-form-__init__-method">Override form <code>__init__</code> method</a></li>
+</ul>
+<hr>
+<h3>Create a&nbsp;slug</h3>
+<p>Call the Django <code>slugify</code> function automatically by overriding the <code>save</code> method. It is preferable to generate the slug only once when you create a new object, otherwise your URLs may change when the <code>q</code> field is edited, which can cause broken links. More info <a href="https://stackoverflow.com/questions/837828/how-do-i-create-a-slug-in-django">here</a>.</p>
+<div class="highlight"><pre><span></span><span class="c1"># models.py</span>
+
+<span class="kn">from</span> <span class="nn">django.utils.text</span> <span class="kn">import</span> <span class="n">slugify</span>
+
+<span class="k">class</span> <span class="nc">Test</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SlugField</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
+            <span class="c1"># Newly created object, so set slug</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="n">slugify</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">q</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">Test</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+
+
+<hr>
+<h3>Send&nbsp;email</h3>
+<p>If <code>html_message</code> keyword argument is provided, the resulting email will be a multipart/alternative …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/django-snippets.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/image-metadata.html#image-metadata">
+					<a href="https://janiceto.github.io/programming-notes/image-metadata.html#image-metadata">Editing photos&nbsp;metadata</a>
+				</h1>
+				<span class="post-date">sex 14 dezembro 2018</span>
+				<p>
+					<p>You can do it in one line in the Terminal using <code>jhead</code>.</p>
+<p>For example, adjust all <span class="caps">EXIF</span> times forward by 1&nbsp;hour:</p>
+<div class="highlight"><pre><span></span><span class="n">jhead</span> <span class="o">-</span><span class="n">ta</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span> <span class="o">*</span><span class="p">.</span><span class="n">jpg</span>
+</pre></div>
+
+
+<p>Useful&nbsp;links: </p>
+<p><a href="http://www.sentex.net/~mwandel/jhead/">jhead download&nbsp;page</a></p>
+<p><a href="http://www.sentex.net/~mwandel/jhead/usage.html">jhead&nbsp;documentation</a></p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/image-metadata.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/filter-search.html#filter-search">
+					<a href="https://janiceto.github.io/programming-notes/filter-search.html#filter-search">Filter, sort and&nbsp;layout</a>
+				</h1>
+				<span class="post-date">ter 28 agosto 2018</span>
+				<p>
+					<h2>Using a <span class="caps">JS</span>&nbsp;library:</h2>
+<ul>
+<li><a href="http://listjs.com/">List <span class="caps">JS</span></a></li>
+<li><a href="https://isotope.metafizzy.co/">Isotope</a></li>
+<li><a href="https://sortablejs.github.io/Sortable/">SortableJS</a></li>
+<li><a href="http://docs.haundodesign.com/magnet/getting-started/">Magnet</a></li>
+<li><a href="https://haltu.github.io/muuri/">Muuri</a></li>
+</ul>
+<h2>From&nbsp;scratch:</h2>
+<h3>For a&nbsp;table</h3>
+<p>1) <span class="caps">HTML</span> </p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myInput&quot;</span> <span class="na">onkeyup</span><span class="o">=</span><span class="s">&quot;myFunction()&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Search for names..&quot;</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">table</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myTable&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;header&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:60%;&quot;</span><span class="p">&gt;</span>Name<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:40%;&quot;</span><span class="p">&gt;</span>Country<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Alfreds Futterkiste<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Germany<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Berglunds snabbkop<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Sweden<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Island Trading<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>UK<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Koniglich Essen<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Germany<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>2) <span class="caps">CSS</span> </p>
+<div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">myInput</span> <span class="p">{</span>
+    <span class="k">background-image</span><span class="p">:</span> <span class="nb">url</span><span class="p">(</span><span class="s1">&#39;/css/searchicon.png&#39;</span><span class="p">);</span> <span class="c">/* Add a search icon to input */</span>
+    <span class="k">background-position</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Position the search icon */</span>
+    <span class="k">background-repeat</span><span class="p">:</span> <span class="kc">no-repeat</span><span class="p">;</span> <span class="c">/* Do not repeat the icon image */</span>
+    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span> <span class="c">/* Full-width */</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Increase font-size */</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">12</span><span class="kt">px</span> <span class="mi">40</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Add some padding */</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#ddd</span><span class="p">;</span> <span class="c">/* Add a grey border */</span>
+    <span class="k">margin-bottom</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* Add some space …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/filter-search.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/vps-providers.html#vps-providers">
+					<a href="https://janiceto.github.io/programming-notes/vps-providers.html#vps-providers"><span class="caps">VPS</span>&nbsp;providers</a>
+				</h1>
+				<span class="post-date">ter 28 agosto 2018</span>
+				<p>
+					<p>When you need to host your projects, you have several options&nbsp;available:</p>
+<p><strong>Shared hosting</strong>, where you share a server with lots of other users and have very limited control over the server. <strong>Dedicated hosting</strong>, where you have complete control over a server, a very flexible option, but requires you to manage the whole server, worry about hardware failures and backups, and is typically expensive. A third option that is in between these two choices is a <strong>Virtual Private Server</strong>, or <strong><span class="caps">VPS</span></strong>.</p>
+<p>VPSs virtualized nature provides several advantages such as instant reinstallation of the operating system, quick recovery and backup, and fast and simple hardware upgrades (the hardware is virtual, after&nbsp;all).</p>
+<p>Here is a list of several popular <span class="caps">VPS</span>&nbsp;providers:</p>
+<ul>
+<li><a href="https://www.digitalocean.com/pricing/">digitalocean.com</a> - from 5 $/month + tax&nbsp;(anual)</li>
+<li><a href="https://www.linode.com">linode.com</a> - from 5 $/month +&nbsp;tax</li>
+<li><a href="https://www.heroku.com/pricing">heroku.com</a> from 7 $/month + tax&nbsp;(anual)</li>
+<li><a href="https://console.cloud.google.com/compute">Google&nbsp;Cloudm</a></li>
+<li><a href="https://aws.amazon.com/ec2/"><span class="caps">AWS</span> <span class="caps">EC2</span></a></li>
+</ul>
+<h3>Portugal based&nbsp;providers:</h3>
+<ul>
+<li><a href="https://www.ovh.pt/vps/vps-ssd.xml">ovh.pt</a> - from …</li></ul>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/vps-providers.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/python-raspbian.html#python-raspbian">
+					<a href="https://janiceto.github.io/programming-notes/python-raspbian.html#python-raspbian">Installing Python 3.7 on&nbsp;Raspbian</a>
 				</h1>
 				<span class="post-date">seg 27 agosto 2018</span>
 				<p>
-					<h2>Using&nbsp;pyinstaller</h2>
-<p>To install pyinstaller on your pc (more details can be found here:&nbsp;https://www.pyinstaller.org/)</p>
-<p><code>pip install pyinstaller</code></p>
-<p>Use cmd to go to your program directory and to turn it into a exe&nbsp;folder</p>
-<p><code>pyinstaller yourprogram.py</code></p>
-<p>What I&nbsp;run:</p>
-<p><code>pyinstaller -F --windowed --icon=myapp.ico SumExcel.py</code></p>
-<p>This makes it a single exe (without the folders with all dependables) but is slightly slower, minimizes the console window sine I have a <span class="caps">GUI</span>, and gives it a snazzy icon that I had saved (you have to copy over the icon, or have an exception incase it isn&#8217;t&nbsp;found)</p>
+					<p>As of January 2018, Raspbian does not yet include the latest Python release, Python 3.6. This means we will have to build it ourselves, and here is how to do it. There is also an ansible role attached that automates it all for&nbsp;you.</p>
+<p>1) Install the required build-tools (some might already be installed on your&nbsp;system).</p>
+<div class="highlight"><pre><span></span>$ sudo apt-get update
+$ sudo apt-get install build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+</pre></div>
+
+
+<p>If one of the packages cannot be found, try a newer version number (e.g. <code>libdb5.4-dev</code> instead of <code>libdb5.3-dev</code>).</p>
+<p>2) Download and install Python 3.6. When downloading the source code, select the most recent release of Python 3.6, available on the <a href="https://www.python.org/downloads/source/">official site</a>. Adjust the file names&nbsp;accordingly.</p>
+<div class="highlight"><pre><span></span>$ wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
+$ tar xf Python-3.7.0 …</pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/python-raspbian.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/create-exe.html#create-exe">
+					<a href="https://janiceto.github.io/programming-notes/create-exe.html#create-exe">Create a standalone exacutable using&nbsp;`pyinstaller`</a>
+				</h1>
+				<span class="post-date">seg 27 agosto 2018</span>
+				<p>
+					<p>It&#8217;s pretty straight forward:
+1. Create an entry-point script that calls your main function.
+2. Install PyInstaller.
+3. Run PyInstaller on your entry-point.
+4. Test your new executable.
+5. Ship your resulting <code>dist/</code> folder to&nbsp;users.</p>
+<h2>Install</h2>
+<p>To install <code>pyinstaller</code> on your pc run (more details can be found here:&nbsp;https://www.pyinstaller.org/):</p>
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pyinstaller</span>
+</pre></div>
+
+
+<h2>For a single file&nbsp;program</h2>
+<p>If your program is a single script use <code>cmd</code> to go to your program directory and to turn it into a exe folder&nbsp;run</p>
+<div class="highlight"><pre><span></span><span class="n">pyinstaller</span> <span class="n">myprogram</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+
+
+<h2>For a&nbsp;package</h2>
+<p>Create an entrypoint outside your package folder that imports and runs your program. This will be the entry point. Call pyinstaller on the entrypoint script as&nbsp;above.</p>
+<h2>Options</h2>
+<p>Change the name of your&nbsp;executable: </p>
+<div class="highlight"><pre><span></span><span class="n">pyinstaller</span> <span class="n">myprogram</span><span class="p">.</span><span class="n">py</span> <span class="c1">--name MY_PROGRAM</span>
+</pre></div>
+
+
+<p>Package your entire application into a single executable&nbsp;file: </p>
+<div class="highlight"><pre><span></span><span class="n">pyinstaller</span> <span class="n">myprogram</span><span class="p">.</span><span class="n">py</span> <span class="c1">--onefile</span>
+</pre></div>
+
+
+<p>Insert additional data or binary …</p>
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes/create-exe.html">Continue reading »</a>
 			</div>
@@ -183,143 +368,6 @@ $ sudo apt-get install python3-pip python3-dev libpq-dev nginx
 <p>This will install pip, the Python development files needed to build Gunicorn later and the Nginx web …</p>
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes/deploy-django.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/server-setup.html#server-setup">
-					<a href="https://janiceto.github.io/programming-notes/server-setup.html#server-setup">Initial Server Setup with Ubuntu&nbsp;18.04</a>
-				</h1>
-				<span class="post-date">qua 06 junho 2018</span>
-				<p>
-					<p>When first creating a new Ubuntu 18.04 server, there are a few configuration steps that you should take early on as part of the basic&nbsp;setup.</p>
-<h2>1) Creating a New&nbsp;User</h2>
-<p>Once you are logged in as root, we&#8217;re prepared to add the new user (synergix) account that we will use to log in from now&nbsp;on.</p>
-<p><code>adduser synergix</code></p>
-<p>Enter a strong password and, optionally, fill in any of the additional information if you would like. This is not required and you can just hit <span class="caps">ENTER</span> in any field you wish to&nbsp;skip.</p>
-<h2>2) Granting Administrative&nbsp;Privileges</h2>
-<p>Set up what is known as &#8220;superuser&#8221; or root privileges for our normal account. This will allow our normal user to run commands with administrative privileges by putting the word <code>sudo</code> before each command. As <strong>root</strong>, run this command to add your new user to the sudo&nbsp;group:</p>
-<p><code>usermod -aG sudo …</code></p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/server-setup.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/snippets.html#snippets">
-					<a href="https://janiceto.github.io/programming-notes/snippets.html#snippets">Useful Python code&nbsp;snippets</a>
-				</h1>
-				<span class="post-date">dom 03 junho 2018</span>
-				<p>
-					<p>A collection of several code snippets of common or useful operation in&nbsp;Python.</p>
-<h2>Get list of attributes (methods) of an&nbsp;object</h2>
-<p>Get a list of attributes (methods) of an object with <code>dir(object)</code></p>
-<p>To see everything except hidden/dunder methods you can&nbsp;do:</p>
-<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">((</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">d</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)))</span>
-</pre></div>
-
-
-<h2>Remove dictionary from&nbsp;list</h2>
-<p>Here&#8217;s how to remove a specific dictionary, or several dictionaries, from a list of dictionaries by a specific key. In the example below we are removing from the list all dictionaries which have and <code>id</code> key of <code>2</code>.</p>
-<div class="highlight"><pre><span></span><span class="n">thelist</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;paul&#39;</span><span class="p">},</span>
-           <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;john&#39;</span><span class="p">}]</span>
-
-<span class="n">thelist</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">thelist</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">]</span>
-</pre></div>
-
-
-<h2>List&nbsp;Comprehension</h2>
-<p>Without list&nbsp;comprehension:</p>
-<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
-<span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
-    <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-<span class="c1"># [1, 4, 9, 16]</span>
-</pre></div>
-
-
-<p>With list&nbsp;comprehension:</p>
-<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3 …</span></pre></div>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/snippets.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/csv.html#csv">
-					<a href="https://janiceto.github.io/programming-notes/csv.html#csv"><span class="caps">CSV</span>&nbsp;files</a>
-				</h1>
-				<span class="post-date">qui 19 abril 2018</span>
-				<p>
-					<p><span class="caps">CSV</span> (Comma Separated Values) is a very popular import and export data format used in spreadsheets and databases. Each line in a <span class="caps">CSV</span> file is a data record. Each record consists of one or more fields, separated by commas. While <span class="caps">CSV</span> is a very simple data format, there can be many differecies, such as different delimiters, new lines, or quoting&nbsp;characters.</p>
-<h2>Reading <span class="caps">CSV</span>&nbsp;files</h2>
-<p>Reading of <span class="caps">CSV</span> files into&nbsp;memory:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">example1</span><span class="p">.</span><span class="n">csv</span>
-<span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">2014</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="n">red</span>
-<span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">2014</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">green</span>
-<span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">2014</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">blue</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
-
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;example1.csv&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
-    <span class="n">readCSV</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">readCSV</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">],)</span>
-</pre></div>
-
-
-<h3>DictReader</h3>
-<p>The <code>csv.DictReader</code> class operates like a regular reader but maps the information read into a dictionary. The keys for the dictionary can be passed in with the fieldnames parameter …</p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/csv.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/django.html#django">
-					<a href="https://janiceto.github.io/programming-notes/django.html#django">Building a Django&nbsp;site</a>
-				</h1>
-				<span class="post-date">ter 03 abril 2018</span>
-				<p>
-					<h2>Installing&nbsp;Django</h2>
-<p><code>pip install Django</code></p>
-<h2>Start&nbsp;project</h2>
-<p>Navigate via the terminal or command prompt to an area where you want to work on your project, then&nbsp;do:</p>
-<p><code>django-admin startproject mysite</code></p>
-<p>This will create a directory called mysite. Within that directory, you have another one called mysite, along with a manage.py file. The manage.py file lets you easily interact with your project via the command line. The contents of the second mysite directory contain your settings and urls mainly. Broken&nbsp;down:</p>
-<div class="highlight"><pre><span></span><span class="o">/</span><span class="nv">mysite</span><span class="o">/</span>  <span class="nv">REM</span> <span class="nv">Simple</span> <span class="nv">container</span>, <span class="k">Call</span> <span class="nl">whatever</span> <span class="nv">you</span> <span class="nv">want</span>.
-    <span class="nv">manage</span>.<span class="nv">py</span>  <span class="nv">REM</span> <span class="nv">Lets</span> <span class="nv">you</span> <span class="nv">interact</span> <span class="nv">with</span> <span class="nv">your</span> <span class="nv">project</span> <span class="nv">via</span> <span class="nv">the</span> <span class="nv">command</span> <span class="nv">line</span>.
-    <span class="o">/</span><span class="nv">mysite</span><span class="o">/</span>  <span class="nv">REM</span> <span class="nv">Actual</span> <span class="nv">project</span> <span class="nv">directory</span>.
-        <span class="nv">__init__</span>.<span class="nv">py</span>  <span class="nv">REM</span> <span class="nv">Tells</span> <span class="nv">python</span> <span class="nv">this</span> <span class="nv">is</span> <span class="nv">a</span> <span class="nv">Python</span> <span class="nv">package</span>.
-        <span class="nv">settings</span>.<span class="nv">py</span>  <span class="nv">REM</span> <span class="nv">Settings</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">project</span>.
-        <span class="nv">urls</span>.<span class="nv">py</span>  <span class="nv">REM</span> <span class="nv">URL</span> <span class="nv">rules</span>. <span class="nv">Django</span> <span class="nv">docs</span> <span class="nv">aptly</span> <span class="nv">describes</span> <span class="nv">as</span> <span class="nv">your</span> <span class="nv">table</span> <span class="nv">of</span> <span class="nv">contents</span>.
-        <span class="nv">wsgi</span>.<span class="nv">py</span>  <span class="nv">REM</span> <span class="nv">WSGI</span> <span class="nv">magic</span> <span class="nv">begins</span> <span class="nv">here</span>. <span class="nv">Worry</span> <span class="nv">about</span> <span class="nv">this</span> <span class="nv">when …</span></pre></div>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/django.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/progress-bar.html#progress-bar">
-					<a href="https://janiceto.github.io/programming-notes/progress-bar.html#progress-bar">Progress&nbsp;Bars</a>
-				</h1>
-				<span class="post-date">qua 28 fevereiro 2018</span>
-				<p>
-					<h2>Basic progress&nbsp;bar</h2>
-<p>There are many progressbars out there for Python, but they are dependencies, and this can be really annoying, especially when it is hard to install pip&nbsp;libraries.</p>
-<p>To make any progressbar, you need to know the string option <code>\r</code>. What makes <code>\r</code> unique is that it will go to the start of&nbsp;printing.</p>
-<p>For example, if you were to do <code>print('Hello World!')</code>, it would print Hello World!. To visualize it, it is more&nbsp;like</p>
-<div class="highlight"><pre><span></span><span class="n">Hello</span> <span class="n">World</span><span class="o">!</span>
-            <span class="o">^</span>
-</pre></div>
-
-
-<p>The cursor is at the character after the !. If we were to use <code>\r</code>, the cursor would go to the front. In our example, it would&nbsp;mean</p>
-<div class="highlight"><pre><span></span><span class="n">Hello</span> <span class="n">World</span><span class="o">!</span>
-<span class="o">^</span>
-</pre></div>
-
-
-<p>See how the cursor is at the h? If it were to print anything, it would overwrite the character&nbsp;h.</p>
-<p>Theoretically, if we want to make a progressbar, we have to print a string multiple times with <code>\r</code>.</p>
-<div class="highlight"><pre><span></span><span class="n">times</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># how …</span></pre></div>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/progress-bar.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

@@ -44,7 +44,7 @@
 					Annotatio
 				</a>
 			</h1>
-			<p class="lead">A collection of codding notes and snippets from my journey to self taught programming. </p>
+			<p class="lead">A collection of personal coding notes and snippets. </p>
 			<p></p>
 		</div>
 		<nav class="sidebar-nav">
@@ -61,13 +61,15 @@
 </div>		<div class="content container">
 <div class="post">
 	<h1 class="post-title">Jupyter&nbsp;Notebooks</h1>
-	<span class="post-date">ter 12 fevereiro 2019</span>
-	<h2>Instalation</h2>
+	<span class="post-date">ter 24 março 2020</span>
+	<p><strong>Jupyter Notebook</strong> is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much&nbsp;more.</p>
+<p><strong>JupyterLab</strong> is the next-generation user interface for Project Jupyter. It offers all the familiar building blocks of the classic Jupyter Notebook (notebook, terminal, text editor, file browser, rich outputs, etc.) in a flexible and powerful user&nbsp;interface.</p>
+<h2>Setup Jupyter&nbsp;Notebook</h2>
+<p>Install Jupyter Notebook with the following command. Alternatively, it is already packaged and ready to use with the Anaconda&nbsp;distribution.</p>
 <div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">jupyter</span>
 </pre></div>
 
 
-<h2>Usage</h2>
 <p>Starting the Notebook&nbsp;Server:</p>
 <div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span>
 </pre></div>
@@ -76,6 +78,56 @@
 <p>Open a specific&nbsp;Notebook:</p>
 <div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span> <span class="n">notebook</span><span class="p">.</span><span class="n">ipynb</span>
 </pre></div>
+
+
+<h2>Setup&nbsp;JupyterLab</h2>
+<p>Install JupyterLab with the following&nbsp;command.</p>
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">jupyterlab</span>
+</pre></div>
+
+
+<p>Launch by&nbsp;running:</p>
+<div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">lab</span>
+</pre></div>
+
+
+<h2>Useful IPython&nbsp;commands</h2>
+<p>The <code>%matplotlib inline</code> command is an IPython magic function that sets the output of plotting commands to be displayed inline within frontends like the Jupyter notebook, directly below the code cell that produced it. The resulting plots will then also be stored in the notebook&nbsp;document.</p>
+<div class="highlight"><pre><span></span><span class="nf">%matplotlib</span> <span class="kr">inline</span>
+</pre></div>
+
+
+<p>The <code>figsize</code> sets the figure&nbsp;size</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.pylabtools</span> <span class="kn">import</span> <span class="n">figsize</span>
+
+<span class="n">figsize</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Globaly set the scale of text and font for&nbsp;Seaborn</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="s1">&#39;Palatino Linotype&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>Add parent folder to&nbsp;path</h2>
+<p>This is useful so you can import into the notebook utility functions from a parent&nbsp;directory.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Add parent directory to Python path</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">module_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">module_path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">module_path</span><span class="p">)</span>
+
+<span class="c1"># Import function fun1 from modeule file1 in directory utils</span>
+<span class="kn">from</span> <span class="nn">utils.file1</span> <span class="kn">import</span> <span class="n">fun1</span>
+</pre></div>
+
+
+<h2>References</h2>
+<ul>
+<li><a href="https://jupyterlab.readthedocs.io/en/stable/index.html">JupyterLab&nbsp;Documentation</a></li>
+</ul>
 	<br><br><br>
 	<div id="disqus_thread"></div>
 		<script type="text/javascript">

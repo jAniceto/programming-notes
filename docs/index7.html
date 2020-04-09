@@ -59,42 +59,32 @@
 		<p>by José Aniceto</p>
 	</div>
 </div>		<div class="content container">
-<div class="post">
-	<h1 class="post-title">Hiding Passwords and Secret Keys in Environment&nbsp;Variables</h1>
-	<span class="post-date">sex 02 fevereiro 2018</span>
-	<h3>Adding a Environment Variable&nbsp;(Windows)</h3>
-<p>System Menu &gt; <code>Advanced System Settings</code> &gt; <code>Environment Variables...</code> &gt; in User Variables click <code>New...</code> &gt; insert variable name (VAR_NAME) and value&nbsp;(VAR_VALUE)</p>
-<p>When coding it may be necessary to restart your <span class="caps">IDE</span> or text&nbsp;editor.</p>
-<h3>Adding a Environment Variable (Linux and&nbsp;Mac)</h3>
-<p>Open the&nbsp;terminal:</p>
-<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> 
-$ nano .bash_profile
-</pre></div>
+	<div class="posts">
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/imports.html#imports">
+					<a href="https://janiceto.github.io/programming-notes/imports.html#imports">Imports in&nbsp;Python</a>
+				</h1>
+				<span class="post-date">qua 02 agosto 2017</span>
+				<p>
+					<h3>Namespace</h3>
+<p>For example, you might be writing some code that has a function called <code>fun()</code> and there is another module available, which also has a function with the name <code>fun()</code>. Now the interpreter has no way of knowing which version of <code>fun()</code> function you are referring within your&nbsp;code.</p>
+<p><strong>Namespace</strong> is designed to overcome this difficulty and is used to differentiate functions, classes, variables etc. with the same name, available in different&nbsp;modules.</p>
+<h3>Module vs.&nbsp;Package</h3>
+<p>A Python <strong>module</strong> is simply a Python source file, which can expose classes, functions and global variables. When imported from another Python source file, the file name is sometimes treated as a&nbsp;namespace.</p>
+<p>A Python <strong>package</strong> is simply a directory of Python&nbsp;module(s).</p>
+<h3><code>__init__.py</code></h3>
+<p>The <code>__init__.py</code> file is the first thing that gets executed when a package is&nbsp;loaded.</p>
+<p>More on the <code>__init__.py</code> file in the <strong>Packages (with the <code>__init__ …</code></strong></p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/imports.html">Continue reading »</a>
+			</div>
+	</div>
+	<div class="pagination">
+		<!-- <span class="pagination-item older">Older</span>
+		<span class="pagination-item newer">Newer</span> -->
+<a href="https://janiceto.github.io/programming-notes/index6.html" class="pagination-item older">Newer</a>
 
-
-<p>To the file add the line and&nbsp;save:</p>
-<div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">VAR_NAME</span><span class="o">=</span><span class="ss">&quot;VAR_VALUE&quot;</span>
-</pre></div>
-
-
-<p>When coding it may be necessary to restart your <span class="caps">IDE</span> or text&nbsp;editor.</p>
-<h3>Acessing your Environment Variables in&nbsp;Python</h3>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="n">var1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;VAR_NAME&#39;</span><span class="p">)</span>
-</pre></div>
-	<br><br><br>
-	<div id="disqus_thread"></div>
-		<script type="text/javascript">
-			var disqus_shortname = 'annotatio';
-			(function() {
-	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	 		})();
-		</script>
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-</div>
+	</div>
 		</div>
 	</body>
 </html>

@@ -44,7 +44,7 @@
 					Annotatio
 				</a>
 			</h1>
-			<p class="lead">A collection of codding notes and snippets from my journey to self taught programming. </p>
+			<p class="lead">A collection of personal coding notes and snippets. </p>
 			<p></p>
 		</div>
 		<nav class="sidebar-nav">
@@ -61,13 +61,314 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/jupyter-notebooks.html#jupyter-notebooks">
+					<a href="https://janiceto.github.io/programming-notes/jupyter-notebooks.html#jupyter-notebooks">Jupyter&nbsp;Notebooks</a>
+				</h1>
+				<span class="post-date">ter 24 março 2020</span>
+				<p>
+					<p><strong>Jupyter Notebook</strong> is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much&nbsp;more.</p>
+<p><strong>JupyterLab</strong> is the next-generation user interface for Project Jupyter. It offers all the familiar building blocks of the classic Jupyter Notebook (notebook, terminal, text editor, file browser, rich outputs, etc.) in a flexible and powerful user&nbsp;interface.</p>
+<h2>Setup Jupyter&nbsp;Notebook</h2>
+<p>Install Jupyter Notebook with the following command. Alternatively, it is already packaged and ready to use with the Anaconda&nbsp;distribution.</p>
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">jupyter</span>
+</pre></div>
+
+
+<p>Starting the Notebook&nbsp;Server:</p>
+<div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span>
+</pre></div>
+
+
+<p>Open a specific&nbsp;Notebook:</p>
+<div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span> <span class="n">notebook</span><span class="p">.</span><span class="n">ipynb</span>
+</pre></div>
+
+
+<h2>Setup&nbsp;JupyterLab</h2>
+<p>Install JupyterLab with the following&nbsp;command.</p>
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">jupyterlab</span>
+</pre></div>
+
+
+<p>Launch by&nbsp;running:</p>
+<div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">lab</span>
+</pre></div>
+
+
+<h2>Useful IPython&nbsp;commands</h2>
+<p>The <code>%matplotlib inline</code> command is an IPython magic function that sets the output …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/jupyter-notebooks.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/react.html#react">
+					<a href="https://janiceto.github.io/programming-notes/react.html#react">React</a>
+				</h1>
+				<span class="post-date">sáb 29 fevereiro 2020</span>
+				<p>
+					<p>React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called&nbsp;&#8220;components&#8221;.</p>
+<h2>Setup</h2>
+<p>Best way to set up React is via NodeJS package manager <code>npm</code>. Go to <a href="https://nodejs.org/">nodejs.org</a> and download NodeJS (<span class="caps">LTS</span> version is recommended). It is also recommended to install <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">React Developer&nbsp;Tools</a></p>
+<p>To start a project we use the <code>create-react-app</code> tool. By using <code>npx</code> we run the <code>create-react-app</code> script without installing. Using <code>npm</code> will install the <code>create-react-app</code> package&nbsp;globally.</p>
+<div class="highlight"><pre><span></span>mkdir my-app
+npx create-react-app .
+npm start
+</pre></div>
+
+
+<p>This creates the following project&nbsp;structure:</p>
+<p><code>my-app
+├── README.md
+├── node_modules
+├── package.json           &lt;-- app info and dependencies
+├── .gitignore
+├── public
+│   ├── favicon.ico
+│   ├── index.html         &lt;-- main webpage where React is outputed
+│   └── manifest.json
+└── src
+    ├── App.css
+    ├── App.js             &lt;-- App component
+    ├── App.test.js
+    ├── index.css
+    ├── index.js           &lt;-- React entry point
+    ├── logo.svg
+    └── serviceWorker.js</code></p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/react.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/django-rest-api.html#django-rest-api">
+					<a href="https://janiceto.github.io/programming-notes/django-rest-api.html#django-rest-api">Create a <span class="caps">REST</span> <span class="caps">API</span> with Django Rest&nbsp;Framework</a>
+				</h1>
+				<span class="post-date">qua 05 fevereiro 2020</span>
+				<p>
+					<h2>References:</h2>
+<ul>
+<li><a href="https://www.django-rest-framework.org/">Django <span class="caps">REST</span>&nbsp;framework</a></li>
+<li><a href="https://www.youtube.com/watch?v=Uyei2iDA4Hs">Full Stack React <span class="amp">&amp;</span>&nbsp;Django</a></li>
+<li><a href="http://v1k45.com/blog/modern-django-part-1-setting-up-django-and-react/">Modern Django: Part 1: Setting up Django and&nbsp;React</a></li>
+<li><a href="https://www.valentinog.com/blog/drf/#Django_REST_with_React_Django_and_React_together">Django <span class="caps">REST</span> with&nbsp;React</a></li>
+<li><a href="https://wsvincent.com/django-rest-framework-todo-api-tutorial/">Django Rest Framework Tutorial - Todo <span class="caps">API</span></a></li>
+<li><a href="https://medium.com/backticks-tildes/lets-build-an-api-with-django-rest-framework-32fcf40231e5">Let’s build an <span class="caps">API</span> with Django <span class="caps">REST</span>&nbsp;Framework</a></li>
+<li><a href="https://sunscrapers.com/blog/ultimate-tutorial-django-rest-framework-part-1/">The Ultimate Tutorial for Django <span class="caps">REST</span>&nbsp;Framework</a></li>
+</ul>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/django-rest-api.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/anaconda.html#anaconda">
+					<a href="https://janiceto.github.io/programming-notes/anaconda.html#anaconda">Anaconda</a>
+				</h1>
+				<span class="post-date">sex 24 janeiro 2020</span>
+				<p>
+					<h2>Add a folder to the Anaconda&nbsp;path</h2>
+<p>By adding a folder to the Anaconda path you can call its Python scripts from any location in the Anaconda&nbsp;Prompt. </p>
+<div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">your_folder</span>
+<span class="n">conda</span><span class="o">-</span><span class="n">develop</span> <span class="p">.</span>
+</pre></div>
+
+
+<p>or </p>
+<div class="highlight"><pre><span></span><span class="n">conda</span><span class="o">-</span><span class="n">develop</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="k">to</span><span class="o">/</span><span class="n">module</span><span class="o">/</span>
+</pre></div>
+
+
+<p>https://stackoverflow.com/a/37008663/5240904</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/anaconda.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/vscode.html#vscode">
+					<a href="https://janiceto.github.io/programming-notes/vscode.html#vscode">Visual Studio Code&nbsp;setup</a>
+				</h1>
+				<span class="post-date">sex 24 janeiro 2020</span>
+				<p>
+					<h2>Themes</h2>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme">Material&nbsp;Theme</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=rickynormandeau.mariana-pro">Mariana&nbsp;Pro</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme">One Dark Pro</a> - Atom&#8217;s iconic One Dark&nbsp;theme</li>
+</ul>
+<h2>General use&nbsp;extensions</h2>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">Code Runner</a> - Run C, C++, Java, <span class="caps">JS</span>, <span class="caps">PHP</span>, Python, Perl, Ruby, Go and much&nbsp;more</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">Code Spell Checker</a> - Spelling checker for source&nbsp;code</li>
+</ul>
+<h2>Python&nbsp;extensions</h2>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a> - Linting, Debugging, Intellisense, formatting,&nbsp;etc</li>
+</ul>
+<h2>LaTeX&nbsp;extensions</h2>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop">LaTeX Workshop</a> - LaTeX typesetting efficiency with preview, compile, autocomplete, colorize, and&nbsp;more</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=tecosaur.latex-utilities">LaTeX Utilities</a> - Add-on to LaTeX Workshop that provides some extra, non-essential,&nbsp;features.</li>
+</ul>
+<h2><span class="caps">HTML</span>/<span class="caps">CSS</span>/Javascript</h2>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a> - Launch a development local Server with live reload feature for static <span class="amp">&amp;</span> dynamic&nbsp;pages</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome">Debugger for Chrome</a> - Debug your JavaScript code in the Chrome&nbsp;browser</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">Prettier</a> - Code&nbsp;formatter</li>
+</ul>
+<h2>Markdown</h2>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">markdownlint</a> - Markdown linting and style&nbsp;checking</li>
+</ul>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/vscode.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/vscode-shortcut.html#vscode-shortcut">
+					<a href="https://janiceto.github.io/programming-notes/vscode-shortcut.html#vscode-shortcut">VSCode shortcuts for&nbsp;Windows</a>
+				</h1>
+				<span class="post-date">sex 24 janeiro 2020</span>
+				<p>
+					<h2>Open/View</h2>
+<p>Open Command&nbsp;Pallete</p>
+<div class="highlight"><pre><span></span>Shift+Ctrl+P
+</pre></div>
+
+
+<p>Access&nbsp;Settings</p>
+<div class="highlight"><pre><span></span>Ctrl+,
+</pre></div>
+
+
+<p>Toggle&nbsp;Terminal</p>
+<div class="highlight"><pre><span></span>Ctrl+<span class="sb">`</span>
+</pre></div>
+
+
+<p>Create New&nbsp;Terminal</p>
+<div class="highlight"><pre><span></span><span class="n">Shift</span><span class="o">+</span><span class="n">Ctrl</span><span class="o">+`</span>
+</pre></div>
+
+
+<p>Toggle&nbsp;Sidebar</p>
+<div class="highlight"><pre><span></span>Ctrl+B
+</pre></div>
+
+
+<p>Open New&nbsp;Window/Instance</p>
+<div class="highlight"><pre><span></span>Shift+Ctrl+N
+</pre></div>
+
+
+<p>Close&nbsp;Window</p>
+<div class="highlight"><pre><span></span>Ctrl+W
+</pre></div>
+
+
+<h2>Working With&nbsp;Files</h2>
+<p>Sidebar&nbsp;Focus</p>
+<div class="highlight"><pre><span></span>Shift+Ctrl+E
+</pre></div>
+
+
+<p>Open File/Folder From&nbsp;Sidebar</p>
+<div class="highlight"><pre><span></span><span class="n">Ctrl</span><span class="o">+</span><span class="n">Down</span>
+</pre></div>
+
+
+<p>Change File&nbsp;Tabs</p>
+<div class="highlight"><pre><span></span>Ctrl+PageUP
+</pre></div>
+
+
+<p>Quick File&nbsp;Open</p>
+<div class="highlight"><pre><span></span>Ctrl+P
+</pre></div>
+
+
+<p>Open File From&nbsp;Explorer</p>
+<div class="highlight"><pre><span></span>Ctrl+O
+</pre></div>
+
+
+<p>New&nbsp;File</p>
+<div class="highlight"><pre><span></span>Ctrl+N
+</pre></div>
+
+
+<p>Save</p>
+<div class="highlight"><pre><span></span>Ctrl+S
+</pre></div>
+
+
+<p>Save&nbsp;As</p>
+<div class="highlight"><pre><span></span>Shift+Ctrl+S
+</pre></div>
+
+
+<p>Close&nbsp;File</p>
+<div class="highlight"><pre><span></span>Ctrl+W
+</pre></div>
+
+
+<p>Delete&nbsp;File</p>
+<div class="highlight"><pre><span></span><span class="n">Ctrl</span><span class="o">+</span><span class="k">Delete</span>
+</pre></div>
+
+
+<p>Reopen&nbsp;Files</p>
+<div class="highlight"><pre><span></span><span class="n">Shift</span><span class="o">+</span><span class="n">Ctrl</span><span class="o">+</span><span class="n">T</span>
+</pre></div>
+
+
+<p>Zoom</p>
+<div class="highlight"><pre><span></span>Ctrl++ <span class="c1"># Zoom in</span>
+Ctrl+- <span class="c1"># Zoom out</span>
+</pre></div>
+
+
+<p>Spilt&nbsp;Editor</p>
+<div class="highlight"><pre><span></span>Ctrl+<span class="se">\</span>
+</pre></div>
+
+
+<h2>Code&nbsp;Editing</h2>
+<p>Go To Start <span class="amp">&amp;</span> End Of&nbsp;Line</p>
+<div class="highlight"><pre><span></span>Ctrl+Right
+Ctrl+Left
+
+home
+end
+</pre></div>
+
+
+<p>Move By&nbsp;Word</p>
+<div class="highlight"><pre><span></span>Alt+Right
+Alt+Left
+</pre></div>
+
+
+<p>Go To Start <span class="amp">&amp;</span> End Of&nbsp;File</p>
+<div class="highlight"><pre><span></span>Ctrl+Home
+Ctrl+End
+</pre></div>
+
+
+<p>Cut, Copy <span class="amp">&amp;</span> Past&nbsp;Line</p>
+<div class="highlight"><pre><span></span>Ctrl+X <span class="c1"># Cut</span>
+Ctrl+C <span class="c1"># Copy</span>
+Ctrl+V <span class="c1"># Paste</span>
+</pre></div>
+
+
+<p>Move Line Up <span class="amp">&amp;</span>&nbsp;Down</p>
+<div class="highlight"><pre><span></span>Alt+Up …</pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes/vscode-shortcut.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/basemap.html#basemap">
 					<a href="https://janiceto.github.io/programming-notes/basemap.html#basemap">Geo ploting with&nbsp;Basemap</a>
 				</h1>
 				<span class="post-date">qua 18 dezembro 2019</span>
 				<p>
 					<p>The matplotlib basemap toolkit is a library for plotting 2D data on maps in&nbsp;Python.</p>
-<h2>Basemap&nbsp;installation</h2>
+<h2>Installation</h2>
+<h4>Option&nbsp;1:</h4>
 <p>The recommended installation method for Basemap is using Anaconda and the conda-forge channel. In the Anaconda Prompt&nbsp;run:</p>
 <div class="highlight"><pre><span></span>$ conda install -c anaconda basemap
 </pre></div>
@@ -83,20 +384,8 @@
 </pre></div>
 
 
-<h2>Ploting a simple&nbsp;map</h2>
-<p>Let&#8217;s plot a simple world&nbsp;map.</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-<span class="n">m</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;mill&#39;</span><span class="p">,</span><span class="n">llcrnrlat</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">urcrnrlat</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">llcrnrlon</span><span class="o">=-</span><span class="mi">180</span><span class="p">,</span> <span class="n">urcrnrlon</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
-
-<span class="c1"># Draw map features</span>
-<span class="n">m</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">()</span>
-<span class="n">m</span><span class="o">.</span><span class="n">fillcontinents</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#072B57&#39;</span><span class="p">,</span><span class="n">lake_color</span><span class="o">=</span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">)</span>
-
-<span class="c1"># Draw parallels and meridians</span>
-<span class="n">m</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange …</span></pre></div>
+<h4>Option&nbsp;2:</h4>
+<p>If you are on Windows you can also install the binaries directly. This worked better for me than installing through Anaconda and conda-forge. Download the <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#basemap">Basemap</a> and <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyproj"><span class="caps">PROJ</span></a> binaries. Make sure you download the correct binary for your Python version. For instance, if you have Python 3.7 64-bit make sure to download the <code>pyproj …</code></p>
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes/basemap.html">Continue reading »</a>
 			</div>
@@ -182,278 +471,22 @@
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="c1"># Instantiate the parser</span>
-<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Optional app description&#39;</span><span class="p">)</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s1">&#39;Optional app name&#39;</span><span class="p">,</span> 
+                                 <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Optional app description&#39;</span><span class="p">,</span> 
+                                 <span class="n">epilog</span><span class="o">=</span><span class="s1">&#39;Enjoy the program!&#39;</span><span class="p">)</span>
 </pre></div>
 
 
+<p>By default, the <strong>argparse</strong> uses the value of the sys.argv[0] element to set the name of the program (name of the Python script). However, you can specify the name of your program just by using the <code>prog</code> keyword.</p>
+<p>You can customize the text displayed before and after the arguments help text using the <code>description</code> and <code>epilog</code> keywords.</p>
 <h3>Add&nbsp;Arguments</h3>
 <div class="highlight"><pre><span></span><span class="c1"># Required positional argument</span>
 <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;pos_arg&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
                     <span class="n">help</span><span class="o">=</span><span class="s1">&#39;A required integer positional argument&#39;</span><span class="p">)</span>
 
-<span class="c1"># Optional positional argument</span>
-<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;opt_pos_arg&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;An optional integer positional argument&#39;</span><span class="p">)</span>
-
-<span class="c1"># Optional argument</span>
-<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--opt_arg&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;An optional integer argument&#39;</span><span class="p">)</span>
-
-<span class="c1"># Switch</span>
-<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--switch&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;A boolean switch&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<h3>Parse</h3>
-<div class="highlight"><pre><span></span><span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
-</pre></div>
-
-
-<h3>Access</h3>
-<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Argument values:&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">pos_arg</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">opt_pos_arg</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">opt_arg</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">switch</span><span class="p">)</span>
-</pre></div>
-
-
-<h3>Check&nbsp;Values</h3>
-<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">pos_arg</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;pos_arg cannot be larger …</span></pre></div>
+<span class="c1"># Optional positional …</span></pre></div>
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes/arg-parse.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/matplotlib.html#matplotlib">
-					<a href="https://janiceto.github.io/programming-notes/matplotlib.html#matplotlib">Matplotlib</a>
-				</h1>
-				<span class="post-date">sáb 19 outubro 2019</span>
-				<p>
-					<p>Index: 
-* <a href="#adding-labels-to-a-bar-chart">Adding labels to a bar&nbsp;chart</a></p>
-<h2>Adding labels to a bar&nbsp;chart</h2>
-<h3>For a vertical bar&nbsp;chart:</h3>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-
-<span class="c1"># Bring some raw data.</span>
-<span class="n">frequencies</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">244</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-
-<span class="c1"># In my original code I create a series and run on that,</span>
-<span class="c1"># so for consistency I create a series from the list.</span>
-<span class="n">freq_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">frequencies</span><span class="p">)</span>
-
-<span class="n">x_labels</span> <span class="o">=</span> <span class="p">[</span><span class="mf">108300.0</span><span class="p">,</span> <span class="mf">110540.0</span><span class="p">,</span> <span class="mf">112780.0</span><span class="p">,</span> <span class="mf">115020.0</span><span class="p">,</span> <span class="mf">117260.0</span><span class="p">,</span> <span class="mf">119500.0</span><span class="p">,</span>
-            <span class="mf">121740.0</span><span class="p">,</span> <span class="mf">123980.0</span><span class="p">,</span> <span class="mf">126220.0</span><span class="p">,</span> <span class="mf">128460.0</span><span class="p">,</span> <span class="mf">130700.0</span><span class="p">]</span>
-
-<span class="c1"># Plot the figure.</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">freq_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Amount Frequency&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Amount ($)&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">x_labels</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">add_value_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Add labels to the end of each bar in a bar chart.</span>
-
-<span class="sd">    Arguments:</span>
-<span class="sd">        ax (matplotlib.axes.Axes): The matplotlib object containing the …</span></pre></div>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/matplotlib.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/save-model.html#save-model">
-					<a href="https://janiceto.github.io/programming-notes/save-model.html#save-model">Saving Scikit-learn model for&nbsp;reuse</a>
-				</h1>
-				<span class="post-date">sáb 19 outubro 2019</span>
-				<p>
-					<p>Saving the model with Pickle allows you to recover the full Scikit-learn estimator object however some compatibility issues may occur if using different versions of sklearn. Other methods of saving models can deploy the model for prediction, usually by using tools supporting open model interchange formats but do not allow the recovery of the full Scikit-learn estimator&nbsp;object.</p>
-<h2>Using&nbsp;Pickle</h2>
-<p>Train the&nbsp;model:</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
-
-<span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="s1">&#39;scale&#39;</span><span class="p">)</span>
-<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  
-</pre></div>
-
-
-<p>Saving and reusing the&nbsp;model: </p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
-
-<span class="c1"># Save to file</span>
-<span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;model.sav&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">))</span>
-
-<span class="c1"># Load from file</span>
-<span class="n">clf2</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;model.sav&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
-
-<span class="c1"># Reuse</span>
-<span class="n">clf2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">])</span>
-
-<span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-
-
-<h2>References:</h2>
-<ul>
-<li><a href="https://scikit-learn.org/stable/modules/model_persistence.html">Scikit-learn&nbsp;docs</a></li>
-<li><a href="https://medium.com/datadriveninvestor/machine-learning-how-to-save-and-load-scikit-learn-models-d7b99bc32c27">Machine Learning — How to Save and Load scikit-learn&nbsp;Models</a></li>
-<li><a href="https://machinelearningmastery.com/save-load-machine-learning-models-python-scikit-learn/">Save and Load Machine Learning Models in Python with&nbsp;scikit-learn</a></li>
-</ul>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/save-model.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/seaborn.html#seaborn">
-					<a href="https://janiceto.github.io/programming-notes/seaborn.html#seaborn">Seaborn</a>
-				</h1>
-				<span class="post-date">sáb 19 outubro 2019</span>
-				<p>
-					<h2>Change overal&nbsp;asthetics</h2>
-<p>Scaling plot elements, like line widths. In increasing&nbsp;size:</p>
-<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;paper&quot;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;notebook&quot;</span><span class="p">)</span>  <span class="c1"># default</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;poster&quot;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>Scaling overall text&nbsp;size:</p>
-<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-
-<h3>References:</h3>
-<ul>
-<li><a href="https://seaborn.pydata.org/tutorial/aesthetics.html">https://seaborn.pydata.org/tutorial/aesthetics.html</a></li>
-</ul>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/seaborn.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/seo-meta-tags.html#seo-meta-tags">
-					<a href="https://janiceto.github.io/programming-notes/seo-meta-tags.html#seo-meta-tags">Meta tags for <span class="caps">SEO</span></a>
-				</h1>
-				<span class="post-date">qua 03 julho 2019</span>
-				<p>
-					<h3>Title&nbsp;tag</h3>
-<p>Title tags are usually used by search engines to determine the subject of a particular page and display it in&nbsp;SERPs.</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Your Fantastic Title<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-</pre></div>
-
-
-<h3>Meta description&nbsp;tag</h3>
-<p>Meta description is a short paragraph of text in the <span class="caps">HTML</span> <head> section of a page. It is usually displayed in a <span class="caps">SERP</span> snippet after website&#8217;s title and <span class="caps">URL</span>.</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;description&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;Your gorgeous description&quot;</span><span class="p">&gt;</span>
-</pre></div>
-
-
-<h3>Open Graph&nbsp;tags</h3>
-<p>Open Graph (<span class="caps">OG</span>) tags meta tags in <span class="caps">HTML</span> <head> section of a page that allow any webpage to become a rich object in social&nbsp;networks.</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&quot;og:title&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;The Rock&quot;</span> <span class="p">/&gt;</span>
-<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&quot;og:type&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;website&quot;</span> <span class="p">/&gt;</span>
-<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&quot;og:url&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;http://www.imdb.com/title/tt0117500/&quot;</span> <span class="p">/&gt;</span>
-<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&quot;og:image&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;http://ia.media-imdb.com/images/rock.jpg&quot;</span> <span class="p">/&gt;</span>
-</pre></div>
-
-
-<h3>Robots&nbsp;tag</h3>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;robots&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;index, follow&quot;</span><span class="p">&gt;</span>
-</pre></div>
-
-
-<h3>Canonical&nbsp;tag</h3>
-<p>When you have a few pages with identical content, you …</p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/seo-meta-tags.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/sticky-footer.html#sticky-footer">
-					<a href="https://janiceto.github.io/programming-notes/sticky-footer.html#sticky-footer">Sticky&nbsp;footer</a>
-				</h1>
-				<span class="post-date">qua 03 julho 2019</span>
-				<p>
-					<p>Get the footer to stick to the bottom of the window even when there is not enough content to fill the&nbsp;page.</p>
-<p><span class="caps">HTML</span>:</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>…<span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>…<span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>…<span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-</pre></div>
-
-
-<p><span class="caps">CSS</span>:</p>
-<div class="highlight"><pre><span></span><span class="nt">body</span> <span class="p">{</span>
-  <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
-  <span class="k">min-height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">vh</span><span class="p">;</span>
-  <span class="k">flex-direction</span><span class="p">:</span> <span class="kc">column</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nt">main</span> <span class="p">{</span>
-  <span class="k">flex</span><span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<h3>References</h3>
-<ul>
-<li><a href="https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/">https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/</a></li>
-</ul>
-<p>Other:
-- <a href="https://css-tricks.com/couple-takes-sticky-footer/">https://css-tricks.com/couple-takes-sticky-footer/</a>
-- <a href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">https://getbootstrap.com/docs/4.0/examples/sticky-footer/</a></p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/sticky-footer.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes/ajax.html#ajax">
-					<a href="https://janiceto.github.io/programming-notes/ajax.html#ajax">Making <span class="caps">AJAX</span>&nbsp;request</a>
-				</h1>
-				<span class="post-date">ter 07 maio 2019</span>
-				<p>
-					<h2>Send a Request To a Server (Pure&nbsp;Javascript)</h2>
-<div class="highlight"><pre><span></span><span class="c1">// Create a new XMLHttpRequest</span>
-<span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-
-<span class="c1">// Handle state changes for the request.</span>
-<span class="nx">request</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="nx">request</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// Do something like:</span>
-    <span class="kd">var</span> <span class="nx">jsonData</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">};</span>
-
-<span class="c1">// Set up and make the request</span>
-<span class="nx">request</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;ajax_info.txt&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">request</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
-</pre></div>
-
-
-<p>Where:</p>
-<ul>
-<li>
-<p><code>open(method, url, async)</code>: Specifies the type of request. <em>method</em>: the type of request: <span class="caps">GET</span> or <span class="caps">POST</span>; <em>url</em>: the server (file) location; <em>async</em>: true (asynchronous) or false&nbsp;(synchronous)</p>
-</li>
-<li>
-<p><code>send()</code>: Sends the request to the server (used for <span class="caps">GET</span>)</p>
-</li>
-<li>
-<p><code>send(string)</code>: Sends the request to the server (used for <span class="caps">POST</span>). For instance: <code>xhttp.send("fname=Henry&amp;lname=Ford");</code></p>
-</li>
-<li>
-<p><code>onreadystatechange</code>: defines a function to be executed when the request receives an&nbsp;answer</p>
-</li>
-</ul>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes/ajax.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

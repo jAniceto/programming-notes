@@ -44,7 +44,7 @@
 					Annotatio
 				</a>
 			</h1>
-			<p class="lead">A collection of codding notes and snippets from my journey to self taught programming. </p>
+			<p class="lead">A collection of personal coding notes and snippets. </p>
 			<p></p>
 		</div>
 		<nav class="sidebar-nav">
@@ -63,7 +63,17 @@
 	<h1 class="post-title">Matplotlib</h1>
 	<span class="post-date">sáb 19 outubro 2019</span>
 	<p>Index: 
+* <a href="#set-font">Set font</a>
 * <a href="#adding-labels-to-a-bar-chart">Adding labels to a bar&nbsp;chart</a></p>
+<h2>Set&nbsp;font</h2>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span>
+
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif&#39;</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cmb10&#39;</span><span class="p">,</span> <span class="s1">&#39;Adobe Caslon Pro&#39;</span><span class="p">,</span> <span class="s1">&#39;Palatino Linotype&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>A list of available fonts can be found <a href="http://jonathansoma.com/lede/data-studio/matplotlib/list-all-fonts-available-in-matplotlib-plus-samples/">here</a>.</p>
 <h2>Adding labels to a bar&nbsp;chart</h2>
 <h3>For a vertical bar&nbsp;chart:</h3>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
