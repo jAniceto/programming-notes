@@ -10,8 +10,14 @@
 import argparse
 
 # Instantiate the parser
-parser = argparse.ArgumentParser(description='Optional app description')
+parser = argparse.ArgumentParser(prog='Optional app name', 
+                                 description='Optional app description', 
+                                 epilog='Enjoy the program!')
 ```
+
+By default, the **argparse** uses the value of the sys.argv[0] element to set the name of the program (name of the Python script). However, you can specify the name of your program just by using the `prog` keyword.
+
+You can customize the text displayed before and after the arguments help text using the `description` and `epilog` keywords.
 
 ### Add Arguments
 
@@ -99,3 +105,4 @@ $ python prog.py -h
 
 - [Python docs](https://docs.python.org/3/library/argparse.html)
 - [Stack Overflow answer](https://stackoverflow.com/a/30493366)
+- [Real Python - How to Build Command Line Interfaces in Python With argparse](https://realpython.com/command-line-interfaces-python-argparse/)

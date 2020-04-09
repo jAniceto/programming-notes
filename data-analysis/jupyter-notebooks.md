@@ -1,12 +1,16 @@
 # Jupyter Notebooks
 
+**Jupyter Notebook** is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more.
 
-## Instalation
+**JupyterLab** is the next-generation user interface for Project Jupyter. It offers all the familiar building blocks of the classic Jupyter Notebook (notebook, terminal, text editor, file browser, rich outputs, etc.) in a flexible and powerful user interface.
+
+## Setup Jupyter Notebook
+
+Install Jupyter Notebook with the following command. Alternatively, it is already packaged and ready to use with the Anaconda distribution.
+
 ```
 pip install jupyter
 ```
-
-## Usage
 
 Starting the Notebook Server:
 ```
@@ -18,6 +22,18 @@ Open a specific Notebook:
 jupyter notebook notebook.ipynb
 ```
 
+## Setup JupyterLab
+
+Install JupyterLab with the following command.
+
+```
+pip install jupyterlab
+```
+
+Launch by running:
+```
+jupyter lab
+```
 
 ## Useful IPython commands
 
@@ -57,3 +73,7 @@ if module_path not in sys.path:
 # Import function fun1 from modeule file1 in directory utils
 from utils.file1 import fun1
 ```
+
+## References
+
+- [JupyterLab Documentation](https://jupyterlab.readthedocs.io/en/stable/index.html)
