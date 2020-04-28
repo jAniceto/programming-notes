@@ -31,6 +31,7 @@
 * Get Color Schemes of Websites - http://stylifyme.com
 * Create Gradients - https://uigradients.com
 * CSS Button Generator - http://css3buttongenerator.com 
+* SVG/CSS Background Patterns - https://www.heropatterns.com/
 
 ## IMAGE COMPRESSION:
 * Compress All Images - https://compressor.io/compress
