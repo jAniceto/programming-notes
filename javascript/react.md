@@ -6,6 +6,7 @@ React is a declarative, efficient, and flexible JavaScript library for building 
 ## Index
 - [Setup](#setup)
 - [Project structure](#project-structure)
+- [Add fonts](#add-fonts)
 - [References](#references)
 
 
@@ -129,6 +130,32 @@ Then import them like so:
 ```
 import { func1, func2 } from './utils'
 ```
+
+## Add fonts
+
+Download the font and move it to the `fonts` directory in your `src` directory. Now, in `App.css`, add:
+```css
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato'), url(./fonts/Lato-Regular.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-weight: 900;
+    src: local('Lato'), url(./fonts/Lato-Bold.otf) format('opentype');
+}
+```
+
+For `ttf` format, you have to mention `format('truetype')`. For `woff`, `format('woff')`. Now you can use the font in classes:
+
+```css
+.modal-title {
+    font-family: Lato, Arial, serif;
+    font-weight: black;
+}
+```
+
 
 
 ## References
