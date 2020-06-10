@@ -156,7 +156,51 @@ For `ttf` format, you have to mention `format('truetype')`. For `woff`, `format(
 }
 ```
 
+## Components
 
+### Class components
+
+```javascript
+import React from 'react';
+
+class Welcome extends React.Component {
+    
+    constructor(props) {
+    super(props);
+    this.state = {
+      var1: false
+    }
+
+    this.handleClick = this.handleClick.bind(this);
+    }
+    
+    this.handleClick(envent) {
+        // Do something when button is clicked
+    }
+    
+    render() {
+        // Can do something
+        return (
+            <button onClick={this.handleClick}>Hello, {this.props.name}</button>
+        );
+    }
+}
+
+export default Welcome;
+```
+
+### Functional components
+
+```javascript
+import React from 'react';
+
+function Welcome(props) {
+  // You can use Hooks here!
+  return <div />;
+}
+
+export default Welcome;
+```
 
 ## References
 - [React folder structure](https://www.robinwieruch.de/react-folder-structure)
