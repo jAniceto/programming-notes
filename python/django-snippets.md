@@ -91,7 +91,7 @@ $ python manage.py shell
 ---
 
 ### Create script with access to Django shell
-If you wnat to run an external script but have access to the Django environment like you do with `python manage.py shell` you can do the following. More info [here](https://stackoverflow.com/questions/8047204/django-script-to-access-model-objects-without-using-manage-py-shell)
+If you want to run an external script but have access to the Django environment like you do with `python manage.py shell` you can do the following. More info [here](https://stackoverflow.com/questions/8047204/django-script-to-access-model-objects-without-using-manage-py-shell)
 
 ```python
 # your_script.py
@@ -132,6 +132,19 @@ if __name__ == '__main__':
     print berlin
     berlin.delete()
 ```
+
+**Alternatively**
+
+Create your script and run it from within the python shell:
+
+```
+$ python manage.py shell
+
+>>> exec(open("filename.py").read())
+```
+
+This will read and run the contents of the file. Works on Python 3.
+
 ---
 
 ### Migrate Django from SQLite to PostgreSQL
