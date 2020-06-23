@@ -96,3 +96,73 @@ np.arange(3, 7, 2)
 np.linspace(2.0, 3.0, num=5)
 # array([ 2.0,  2.25,  2.5,  2.75, 3.0])
 ```
+
+
+## Download image from url
+
+```python
+import requests
+import os
+
+def download_image(url, dir):
+    if url.endswith(('.jpg', '.jpeg', '.png', '.gif')):
+        img = requests.get(url).content
+        file_name = os.path.basename(url)
+        with open(f'{dir}{file_name}', 'wb') as f:
+            f.write(img)
+
+download_image('https://impshum.co.uk/red.png', './')
+```
+
+
+## Create centered thumbnail from image
+
+```python
+from PIL import Image
+
+def create_thumbnail(infile, outfile, width, height):
+    thumb = width, height
+    img = Image.open(infile)
+    width, height = img.size
+
+    if width > height:
+        delta = width - height
+        left = int(delta / 2)
+        upper = 0
+        right = height + left
+        lower = height
+    else:
+        delta = height - width
+        left = 0
+        upper = int(delta / 2)
+        right = width
+        lower = width + upper
+
+    img = img.crop((left, upper, right, lower))
+    img.thumbnail(thumb, Image.ANTIALIAS)
+    img.save(outfile)
+
+create_thumbnail('file.jpg', 'file_thumb.jpg', 300, 300)
+```
+
+## Handle keyboard interrupt (Ctrl + C)
+
+```python
+try:
+    # DO STUFF HERE
+except KeyboardInterrupt:
+    print('stopped')
+finally:
+    # DO STUFF HERE
+    print('Exiting')
+```
+
+
+## Merge dictionaries
+
+```python
+x = {'a': 1, 'b': 2}
+y = {'b': 3, 'c': 4}
+
+z = {**x, **y}
+```
