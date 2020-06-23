@@ -2,6 +2,17 @@
 
 A collection of several code snippets of common or useful operation in Python.
 
+## Index
+  * [Get list of attributes (methods) of an object](#get-list-of-attributes-methods-of-an-object)
+  * [Remove dictionary from list](#remove-dictionary-from-list)
+  * [List Comprehension](#list-comprehension)
+  * [Lambda Functions](#lambda-functions)
+  * [Map and Filter](#map-and-filter)
+  * [Arange and Linspace](#arange-and-linspace)
+  * [Download image from url](#download-image-from-url)
+  * [Create centered thumbnail from image](#create-centered-thumbnail-from-image)
+  * [Handle keyboard interrupt (Ctrl + C)](#handle-keyboard-interrupt-ctrl-c)
+  * [Merge dictionaries](#merge-dictionaries)
 
 ## Get list of attributes (methods) of an object
 
