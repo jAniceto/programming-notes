@@ -40,7 +40,6 @@ jupyter lab
 - Debugger: a proper debugger 
 - jupyterlab-toc: auto-generates a table of contents in the left area when you have a notebook or markdown document open
 - jupyterlab_spellchecker: spellchecker for markdown cells
-- 
 
 [Here is a curated list of JupyterLab extensions](https://github.com/mauhai/awesome-jupyterlab)
 
