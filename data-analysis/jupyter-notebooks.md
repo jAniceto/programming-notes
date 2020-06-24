@@ -35,6 +35,15 @@ Launch by running:
 jupyter lab
 ```
 
+## Useful JupyterLab extensions
+- JupyterLab-LSP: adds code assistance capabilities to JupyterLab
+- Debugger: a proper debugger 
+- jupyterlab-toc: auto-generates a table of contents in the left area when you have a notebook or markdown document open
+- jupyterlab_spellchecker: spellchecker for markdown cells
+- 
+
+[Here is a curated list of JupyterLab extensions](https://github.com/mauhai/awesome-jupyterlab)
+
 ## Useful IPython commands
 
 The `%matplotlib inline` command is an IPython magic function that sets the output of plotting commands to be displayed inline within frontends like the Jupyter notebook, directly below the code cell that produced it. The resulting plots will then also be stored in the notebook document.
