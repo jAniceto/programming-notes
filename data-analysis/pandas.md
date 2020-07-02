@@ -2,6 +2,7 @@
 
 `pandas` is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language.
 
+
 ## Instalation
 
 `pandas`, and other required libraries like `numpy` and the remaining scientific stack, comes pre-installed if you use the Anaconda Python distribution. 
@@ -44,6 +45,18 @@ Note that you can't copy a dataframe simply by `df2 = df`. Here df2 and df refer
 
 ```python
 df2 = df.copy()
+```
+
+
+### Applying a function to each row of a dataframe:
+
+Use `dataframe.apply()` to run a function on each row, `axis=1`, (or column, `axis=0`) in a dataframe. In the example below we create a new column in the dataframe where the value for each row is the row index + 10.
+
+```python
+def function1(x):
+    return x.name + 10
+    
+df['new_column'] = df.apply(lambda row: function1(row), axis=1)
 ```
 
 
@@ -92,12 +105,6 @@ def remove_collinear_features(x, threshold):
     x = x.drop(columns=drops)
                
     return x
-```
-
-[^]()
-
-```python
-
 ```
 
 ## References
