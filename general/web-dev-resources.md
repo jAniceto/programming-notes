@@ -33,10 +33,11 @@
 * CSS Button Generator - http://css3buttongenerator.com 
 * SVG/CSS Background Patterns - https://www.heropatterns.com/
 
-## IMAGE COMPRESSION:
+## IMAGE COMPRESSION & CONVERSION:
 * Compress All Images - https://compressor.io/compress
 * Compress JPG - http://jpeg-optimizer.com/
 * Compress PNG - https://tinypng.com/
+* Convert images (any format) - https://convertio.co/
 
 ## CODE OPTIMIZATION:
 * Minify JS & CSS - http://minifier.org
@@ -60,6 +61,7 @@
 * Client Side Code - https://codepen.io
 * Client Side Code - https://jsfiddle.net
 * Client Side Code - http://liveweave.com
+* Client Side Code - https://codesandbox.io
 * Server Side Code - https://repl.it
 
 ## SNIPPET TOOLS:
