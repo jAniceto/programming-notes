@@ -1,21 +1,42 @@
 # Matplotlib
 
 Index: 
-* [Set font](#set-font)
-* [Adding labels to a bar chart](#adding-labels-to-a-bar-chart)
+- [Set font](#set-font)
+- [Set font size](#set-font-size)
+- [Set X and T axis to start on 0](#set-x-and-t-axis-to-start-on-0)
+- [Adding labels to a bar chart](#adding-labels-to-a-bar-chart)
+  * [For a vertical bar chart:](#for-a-vertical-bar-chart-)
+  * [And for an horizontal bar chart:](#and-for-an-horizontal-bar-chart-)
 
 
 ## Set font
 
 ```python
 from matplotlib import rcParams
-
 rcParams['font.family'] = 'serif'
 rcParams['font.sans-serif'] = ['cmb10', 'Adobe Caslon Pro', 'Palatino Linotype']
 ```
 
+or 
+
+```python
+import matplotlib.pyplot as plt
+plt.rcParams.update({'font.family': 'serif', 'font.sans-serif': ['cmb10', 'Adobe Caslon Pro', 'Palatino Linotype']})
+```
+
 A list of available fonts can be found [here](http://jonathansoma.com/lede/data-studio/matplotlib/list-all-fonts-available-in-matplotlib-plus-samples/).
 
+## Set font size
+```python
+import matplotlib.pyplot as plt
+plt.rcParams.update({'font.size': 22})
+```
+
+## Set X and T axis to start on 0
+```python
+plt.xlim(left=0)
+plt.ylim(bottom=0)
+```
 
 ## Adding labels to a bar chart
 
