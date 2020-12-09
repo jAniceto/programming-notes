@@ -14,6 +14,8 @@
 
 ## Python extensions
 - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) - Linting, Debugging, Intellisense, formatting, etc
+- [Python Docstring Generator](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring) - Automatically generates detailed docstrings for python functions
+- [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) - Jupyter Notebook support
 
 
 ## LaTeX extensions
