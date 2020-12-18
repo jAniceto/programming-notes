@@ -47,6 +47,19 @@ Note that you can't copy a dataframe simply by `df2 = df`. Here df2 and df refer
 df2 = df.copy()
 ```
 
+### Merge dataframes on common column [^](https://stackoverflow.com/questions/43297589/merge-two-data-frames-based-on-common-column-values-in-pandas)
+
+```python
+merged_df = pd.merge(df1, df2, on="column_name")
+```
+
+Only rows for which common keys are found are kept in both data frames. In case you want to keep all rows from the left data frame and only add values from `df2` where a matching key is available, you can use `how="left"`.
+
+Alternatively:
+
+```python
+dfinal = df1.merge(df2, on="column_name", how ='inner')
+```
 
 ### Applying a function to each row of a dataframe:
 
