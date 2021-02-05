@@ -14,6 +14,11 @@
 - :tv: [Python Tutorials](https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU) by Corey Schafer
 
 
+## Python Libraries
+
+- :newspaper: [The Most Detailed Selenium WebDriver Tutorial With Python](https://www.lambdatest.com/blog/selenium-webdriver-with-python/?utm_source=Reddit&utm_medium=blog&utm_campaign=RP-011229-1&utm_term=OrganicPosting) by Himanshu Sheth
+- :newspaper: [PyQt Layouts: Create Professional-Looking GUI Applications](https://realpython.com/python-pyqt-layout/) by Real Python
+
 ## Data analysis
 Libraries like `Numpy`, `Pandas`, and `Matplotlib`.
 
@@ -30,6 +35,7 @@ General Data Science theory as well as working with tools and frameworks like `s
 - :school: :tv: [CS50's Introduction to Artificial Intelligence with Python 2020](https://www.youtube.com/playlist?list=PLhQjrBD2T382Nz7z1AEXmioc27axa19Kv) by Harvard
 - :tv: [Keras - Python Deep Learning Neural Network API](https://www.youtube.com/playlist?list=PLZbbT5o_s2xrwRnXk_yCPtnqqo4_u2YGL) by deeplizard
 - :tv: [Machine Learning Basics](https://www.youtube.com/playlist?list=PLR0bgGon_WTJnvH92Ls_Vj4ueCi98PDW5) by Vinsloev Academy
+- :tv: [Neural Networks Explained from Scratch using Python](https://www.youtube.com/watch?v=9RN2Wr8xvro) by Bot Academy
 
 
 ## Web frameworks
@@ -42,5 +48,12 @@ Mostly `Django` and `Flask`.
 - :tv: [Python Flask From Scratch](https://www.youtube.com/playlist?list=PLillGF-RfqbbbPz6GSEM9hLQObuQjNoj_) by Traversy Media
 - :tv: [The Best Django Tutorial](https://www.youtube.com/playlist?list=PLei96ZX_m9sWlZ9pgnJ6eix76lffAZ2_0) by Chris Hawkes
 - :tv: [Building a Website with Django](https://www.youtube.com/playlist?list=PLei96ZX_m9sV5865IlH-RktGZXYW7hQTB) by Chris Hawkes
+
+
+## How To's
+Tutorials on building croncrete projects.
+
+- :newspaper: [Monitor your internet with python Joseph · 9 mins read · Discuss on Reddit](https://pythonprogramming.org/monitor-your-internet-with-python/) by Joseph
+- :newspaper: [How to build your own Python Voice Assistant](https://thecodingpie.com/post/how-to-build-your-own-python-voice-assistant-thecodingpie/) by thecodingpie
 
 - :: []() by 
