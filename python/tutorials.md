@@ -53,7 +53,6 @@ Mostly `Django` and `Flask`.
 ## How To's
 Tutorials on building croncrete projects.
 
-- :newspaper: [Monitor your internet with python Joseph · 9 mins read · Discuss on Reddit](https://pythonprogramming.org/monitor-your-internet-with-python/) by Joseph
+- :newspaper: [Monitor your internet with python](https://pythonprogramming.org/monitor-your-internet-with-python/) by Joseph
 - :newspaper: [How to build your own Python Voice Assistant](https://thecodingpie.com/post/how-to-build-your-own-python-voice-assistant-thecodingpie/) by thecodingpie
 
-- :: []() by 
