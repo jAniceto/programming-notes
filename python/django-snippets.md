@@ -1,6 +1,7 @@
 # Collection of useful Django snippets for several purposes
 
 ### Index
+* [Manage dev and production settings](#manage-dev-and-production-settings)
 * [Create a slug](#create-a-slug)
 * [Send email](#send-email)
 * [Database dump to file](#database-dump-to-file)
@@ -9,6 +10,25 @@
 * [Migrate Django from SQLite to PostgreSQL](#migrate-django-from-sqlite-to-postgresql)
 * [Using Django Messages with Bootstrap](#using-django-messages-with-bootstrap)
 * [Override form `__init__` method](#override-form-__init__-method)
+
+---
+
+### Manage dev and production settings [¹](https://docs.djangoproject.com/en/3.1/topics/settings/#envvar-DJANGO_SETTINGS_MODULE) [²](https://stackoverflow.com/questions/10664244/django-how-to-manage-development-and-production-settings)
+When working with Django it is often useful/needed to have different settings for development and production. One way to handle this is to have separate setting files for each case. For instance, `settings.py` for production and `settings_dev.py` for development. The `DJANGO_SETTINGS_MODULE` environment variable controls which settings file Django will load. So, in development, we can:
+
+```
+set DJANGO_SETTINGS_MODULE=mysite.settings_dev
+python manage.py runserver
+```
+
+Alternatively we can speciffy the settings file when calling the `manage.py`:
+
+```
+set DJANGO_SETTINGS_MODULE=mysite.settings_dev
+python manage.py runserver --settings=settings_dev
+```
+
+However, this will not work when doing migrations. So if you required different settings when migrating, the first methods is probably better.
 
 ---
 
