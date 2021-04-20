@@ -1,8 +1,6 @@
 # Programming Notes
 Programming notes, snippets and examples in one place.
     
-## .GITHUB
-
 ## GENERAL
 * [Deploy a Django app in an Ubuntu VPS (DigitalOcean)](/general/deploy-django.md)
 * [Editing photos metadata](/general/image-metadata.md)
