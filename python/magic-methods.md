@@ -1,3 +1,5 @@
+# Magic Methods
+
 ## Introduction
 
 This guide is the culmination of a few months' worth of blog posts. The subject is **magic methods**.
