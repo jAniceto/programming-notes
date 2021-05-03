@@ -1,18 +1,18 @@
 # Tutorials on various Python subjects
 
-### Legend:
+#### Legend:
 - :blue_book: - Book (usually freely available).
 - :school: - Course material, usually provided by an University.
-- :newspaper: - Written tutorial. May be an article, post or even a PDF document.
+- :newspaper: - Written tutorial. May be a blog, article, post or even a PDF document.
 - :tv: - Video tutorials. May be a playlist or a single video.
 
 
-## Python language workings
+## Python language workings (general)
 
 - :tv: :blue_book: [Automate the Boring Stuff with Python](https://www.youtube.com/playlist?list=PL0-84-yl1fUnRuXGFe_F7qSH1LEnn9LkW) by Al Sweigart
 - :tv: [Python OOP Tutorials - Working with Classes](https://www.youtube.com/playlist?list=PL-osiE80TeTsqhIuOqKhwlXsIBIdSeYtc) by Corey Schafer
 - :tv: [Python Tutorials](https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU) by Corey Schafer
-
+- :newspaper: [Full Stack Python](https://www.fullstackpython.com/blog.html)
 
 ## Python Libraries
 
@@ -41,13 +41,16 @@ General Data Science theory as well as working with tools and frameworks like `s
 ## Web frameworks
 Mostly `Django` and `Flask`.
 
+- :tv::newspaper: [Python Flask From Scratch](https://www.youtube.com/playlist?list=PLillGF-RfqbbbPz6GSEM9hLQObuQjNoj_) by Traversy Media
 - :tv: [Flask Tutorial](https://www.youtube.com/playlist?list=PLei96ZX_m9sWQco3fwtSMqyGL-JDQo28l) by Chris Hawkes
-- :tv: [Django Tutorials](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p) by Corey Schafer
+- :tv: [The Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) by Miguel Grinberg
 - :tv: [Practical Flask Web Development Tutorials](https://www.youtube.com/playlist?list=PLQVvvaa0QuDc_owjTbIY4rbgXOFkUYOUB) by sentdex
 - :tv: [Flask Web Development with Python Tutorials](https://www.youtube.com/playlist?list=PL6gx4Cwl9DGDi9F_slcQK7knjtO8TUvUs) by thenewboston
-- :tv: [Python Flask From Scratch](https://www.youtube.com/playlist?list=PLillGF-RfqbbbPz6GSEM9hLQObuQjNoj_) by Traversy Media
+- :tv: [Django Tutorials](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p) by Corey Schafer
 - :tv: [The Best Django Tutorial](https://www.youtube.com/playlist?list=PLei96ZX_m9sWlZ9pgnJ6eix76lffAZ2_0) by Chris Hawkes
 - :tv: [Building a Website with Django](https://www.youtube.com/playlist?list=PLei96ZX_m9sV5865IlH-RktGZXYW7hQTB) by Chris Hawkes
+- :tv: [Django Girls Tutorial](https://tutorial.djangogirls.org/en/index.html) by Django Girls
+- :newspaper: [A Complete Beginner's Guide to Django](https://simpleisbetterthancomplex.com/series/beginners-guide/1.11/) by Vitor Freitas
 
 
 ## How To's
