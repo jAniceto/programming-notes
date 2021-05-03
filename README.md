@@ -73,7 +73,7 @@ Programming notes, snippets and examples in one place.
 * [Building a Django site](/python/django.md)
 * [Decorators](/python/decorators.md)
 * [Python boilerplates](/python/boilerplate.md)
-* [Introduction](/python/magic-methods.md)
+* [Magic Methods](/python/magic-methods.md)
 
 ## DATA ANALYSIS
 * [Rollback Anaconda environment](/data-analysis/rollback-anaconda.md)
