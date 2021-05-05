@@ -23,6 +23,18 @@ with open('example1.csv') as csvfile:
         print(row[0],row[1],row[2],)
 ```
 
+Another example: reading a file with headers and data with specific encoding and delimiter. Print the header and create a data list (without the header line).
+
+```python
+data = []
+with open('data.csv', 'r', encoding='utf-8') as f:
+    csvreader = csv.reader(f, delimiter=';')
+    header = next(csvreader)  # skip header
+    print(header)
+    for row in csvreader:
+        data.append([float(val) for val in row])
+```
+
 ### DictReader 
 The `csv.DictReader` class operates like a regular reader but maps the information read into a dictionary. The keys for the dictionary can be passed in with the fieldnames parameter or inferred from the first row of the CSV file.
 
