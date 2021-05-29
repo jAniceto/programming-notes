@@ -4,6 +4,7 @@
 - [venv (Standard Library)](#venv-(standard-library))
 - [Pipenv](#pipenv)
 - [virtualenv](#virtualenv-package)
+- [Poetry](#poetry)
 
 
 ## venv (Standard Library)
@@ -100,3 +101,63 @@ This will create a requirements.txt file, which contains a simple list of all th
 
 (Linux) `$ deactivate`
 
+
+## Poetry
+
+Poetry not only handles dependenct management through virtual environments but also has several other features like pachaging.
+
+### Install
+
+The recommended way to install Poetry on Windows is via Powershell:
+```powershell
+(Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
+```
+You only need to install Poetry once. It will automatically pick up the current Python version and use it to create virtualenvs accordingly.
+
+To compleatly uninstall Poetry run:
+```
+python get-poetry.py --uninstall
+```
+
+### Usage
+
+To create a new project run named `poetry-demo`:
+```
+poetry new poetry-demo
+```
+This will create the `poetry-demo` directory with the following content:
+```
+poetry-demo
+├── pyproject.toml
+├── README.rst
+├── poetry_demo
+│   └── __init__.py
+└── tests
+    ├── __init__.py
+    └── test_poetry_demo.py
+```
+
+To add or modify dependicies you can edit the `pyproject.toml` file. Alternatively you can add a dependency by running:
+```
+poetry add package_name
+```
+By default, Poetry creates a virtual environment in `{cache-dir}\virtualenvs` on Windows.
+
+To run your script user:
+```
+poetry run python your_script.py
+OR
+poetry run pytest
+```
+
+To **activate the virtual environment** create a poetry shell with:
+```
+poetry shell
+```
+
+To deactivate the virtual environment and exit this new shell type `exit`
+
+To **install** the defined dependencies for your project: 
+```
+poetry install
+```
