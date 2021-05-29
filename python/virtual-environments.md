@@ -137,9 +137,13 @@ poetry-demo
     └── test_poetry_demo.py
 ```
 
-To add or modify dependicies you can edit the `pyproject.toml` file. Alternatively you can add a dependency by running:
+To **add or modify dependencies** you can edit the `pyproject.toml` file. Alternatively you can add a dependency by running:
 ```
 poetry add package_name
+```
+To add to dev packages run:
+```
+poetry add package_name --dev
 ```
 By default, Poetry creates a virtual environment in `{cache-dir}\virtualenvs` on Windows.
 
@@ -160,4 +164,9 @@ To deactivate the virtual environment and exit this new shell type `exit`
 To **install** the defined dependencies for your project: 
 ```
 poetry install
+```
+
+To list all of the available packages:
+```
+poetry show
 ```
