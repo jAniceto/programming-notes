@@ -1,6 +1,7 @@
 # Collection of useful Django snippets for several purposes
 
-### Index
+## Index
+* [Project structure](#project-structure)
 * [Manage dev and production settings](#manage-dev-and-production-settings)
 * [Create a slug](#create-a-slug)
 * [Send email](#send-email)
@@ -11,10 +12,48 @@
 * [Using Django Messages with Bootstrap](#using-django-messages-with-bootstrap)
 * [Override form `__init__` method](#override-form-__init__-method)
 
----
 
-### Manage dev and production settings [¹](https://docs.djangoproject.com/en/3.1/topics/settings/#envvar-DJANGO_SETTINGS_MODULE) [²](https://stackoverflow.com/questions/10664244/django-how-to-manage-development-and-production-settings)
-When working with Django it is often useful/needed to have different settings for development and production. One way to handle this is to have separate setting files for each case. For instance, `settings.py` for production and `settings_dev.py` for development. The `DJANGO_SETTINGS_MODULE` environment variable controls which settings file Django will load. So, in development, we can:
+
+## Project structure
+Below is an example of a structure for a large project that contains a Django app.[¹](https://realpython.com/python-application-layouts/#web-application-layouts) [²](https://stackoverflow.com/questions/22841764/best-practice-for-django-project-working-directory-structure)
+```
+project/
+│
+├── app/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   │
+│   ├── migrations/
+│   │   └── __init__.py
+│   │
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+│
+├── docs/
+│
+├── project/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+│
+├── static/
+│   └── style.css
+│
+├── templates/
+│   └── base.html
+│
+├── .gitignore
+├── manage.py
+├── LICENSE
+└── README.md
+```
+
+
+## Manage dev and production settings 
+When working with Django it is often useful/needed to have different settings for development and production. One way to handle this is to have separate setting files for each case.[¹](https://docs.djangoproject.com/en/3.1/topics/settings/#envvar-DJANGO_SETTINGS_MODULE) [²](https://stackoverflow.com/questions/10664244/django-how-to-manage-development-and-production-settings) For instance, `settings.py` for production and `settings_dev.py` for development. The `DJANGO_SETTINGS_MODULE` environment variable controls which settings file Django will load. So, in development, we can:
 
 ```
 set DJANGO_SETTINGS_MODULE=mysite.settings_dev
@@ -30,9 +69,9 @@ python manage.py runserver --settings=settings_dev
 
 However, this will not work when doing migrations. So if you required different settings when migrating, the first methods is probably better.
 
----
 
-### Create a slug
+
+## Create a slug
 Call the Django `slugify` function automatically by overriding the `save` method. It is preferable to generate the slug only once when you create a new object, otherwise your URLs may change when the `q` field is edited, which can cause broken links. More info [here](https://stackoverflow.com/questions/837828/how-do-i-create-a-slug-in-django).
 
 ```python
@@ -54,7 +93,7 @@ class Test(models.Model):
 
 ---
 
-### Send email
+## Send email
 If `html_message` keyword argument is provided, the resulting email will be a multipart/alternative email with `message` as the text/plain content type and `html_message` as the text/html content type. 
 
 ```python
@@ -73,9 +112,9 @@ send_mail(
 
 Mail is sent using the SMTP host and port specified in the `EMAIL_HOST` and `EMAIL_PORT` settings. The `EMAIL_HOST_USER` and `EMAIL_HOST_PASSWORD` settings, if set, are used to authenticate to the SMTP server, and the `EMAIL_USE_TLS` and `EMAIL_USE_SSL` settings control whether a secure connection is used. More info [here](https://docs.djangoproject.com/en/2.1/topics/email/).
 
----
 
-### Database dump to file
+
+## Database dump to file
 Save from DB
 ```
 $ python manage.py dumpdata > db_dump.json
@@ -86,9 +125,9 @@ Load fixture to DB
 $ python manage.py loaddata <fixture>
 ```
 
----
 
-### Provide data to DB via Django Python Shell
+
+## Provide data to DB via Django Python Shell
 Exemple for loading data in a json file named `filename.json` to the Model `Member` in the app `website`
 
 ```
@@ -108,9 +147,9 @@ $ python manage.py shell
 >>> exit()
 ```
 
----
 
-### Create script with access to Django shell
+
+## Create script with access to Django shell
 If you want to run an external script but have access to the Django environment like you do with `python manage.py shell` you can do the following. More info [here](https://stackoverflow.com/questions/8047204/django-script-to-access-model-objects-without-using-manage-py-shell)
 
 ```python
@@ -165,9 +204,9 @@ $ python manage.py shell
 
 This will read and run the contents of the file. Works on Python 3.
 
----
 
-### Migrate Django from SQLite to PostgreSQL
+
+## Migrate Django from SQLite to PostgreSQL
 
 Here's how to migrate a Django database from SQLite to PostgreSQL. More info [here](https://stackoverflow.com/questions/3034910/whats-the-best-way-to-migrate-a-django-db-from-sqlite-to-mysql).
 
@@ -198,9 +237,9 @@ python manage.py shell
 python manage.py loaddata datadump.json
 ```
 
----
 
-### Using Django Messages with Bootstrap
+
+## Using Django Messages with Bootstrap
 
 Configure the Django Messages Framework to work with Bootstrap by changing the `MESSAGE_TAGS`. In the `settings.py` file:
 ```python
@@ -240,9 +279,9 @@ messages.warning(request, 'Your account expires in three days.')
 messages.error(request, 'Document deleted.')
 ```
 
----
 
-### Override form `__init__` method
+
+## Override form `__init__` method
 You can change how a form is created base on logic from a view by modifying the form `__init__` method.
 
 ```python
