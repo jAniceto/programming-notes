@@ -66,6 +66,22 @@ Using `$ pipenv run` ensures that your installed packages are available to your 
 
 Documentation: [Pipenv](https://pipenv.readthedocs.io/en/latest/)
 
+### Set enviromental variables
+
+Create a `.env` file at the root folder of the project, next to the `Pipfile`. Add enviromental variables like so:
+```
+MY_TOKEN=SuperToKen
+MY_VAR=SuperVar
+```
+
+You can add comments in this file with a leading `#`. This file will be loaded automatically with `pipenv shell` or `pipenv run your_command` and the environment variables will be available.
+
+You can access/check them in your code with:
+```python
+print(os.getenv('MY_TOKEN', 'Token Not found'))
+```
+
+Note: Remembrt to exclude this file from your version control.
 
 
 ## virtualenv package
