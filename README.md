@@ -80,6 +80,7 @@ Programming notes, snippets and examples in one place.
 
 ## GENERAL
 * [VPS providers](/general/vps-providers.md)
+* [Windows terminal](/general/windows-terminal.md)
 * [Git Version Control System](/general/git.md)
 * [Installing Python 3.7 on Raspbian](/general/python-raspbian.md)
 * [Hiding Passwords and Secret Keys in Environment Variables](/general/os-env-vars.md)
