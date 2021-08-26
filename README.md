@@ -95,6 +95,9 @@ Programming notes, snippets and examples in one place.
 * [VSCode shortcuts for Windows](/general/vscode-shortcut.md)
 * [Deploy a Django app in an Ubuntu VPS (DigitalOcean)](/general/deploy-django.md)
 
+## MATLAB
+* [Design of Experiments](/matlab/doe.md)
+
 ## LATEX
 * [Bibliography management](/latex/bibliography.md)
 
