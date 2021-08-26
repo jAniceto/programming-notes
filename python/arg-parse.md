@@ -173,6 +173,12 @@ if __name__ == '__main__':
     argh.dispatch_commands([do_the_thing, do_the_other_thing])
 ```
 
+## Alternatives
+
+- [Click](https://click.palletsprojects.com/en/8.0.x/)
+- [Typer](https://typer.tiangolo.com/)
+- [Fire](https://github.com/google/python-fire)
+
 ### References:
 
 - [Python docs](https://docs.python.org/3/library/argparse.html)
