@@ -74,6 +74,7 @@ Programming notes, snippets and examples in one place.
 * [Storing dictionaries for later use: JSON and Pickle](/python/store-dicts.md)
 * [Web scrapping with Beautiful Soup 4](/python/beautifulsoup4.md)
 * [Annonymous functions (Lambda functions)](/python/lambda-functions.md)
+* [Configuration files](/python/config-files.md)
 * [Building a Flask site](/python/flask.md)
 * [Interfacing with Strava API using stavalib](/python/stravalib.md)
 * [Working with JSON](/python/json.md)
