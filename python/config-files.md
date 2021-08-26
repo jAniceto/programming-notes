@@ -89,9 +89,10 @@ print(config.truck['color'])
 ```
 
 ## Other alternatives
-- Using a JSON file
-
+- Using a JSON file.
+- Using .env files to write configuration as environmental variables.
 
 ## References
 - [What's the best practice using a settings file in Python?](https://stackoverflow.com/questions/5055042/whats-the-best-practice-using-a-settings-file-in-python/34354110#34354110)
 - [Configuration files in Python](https://martin-thoma.com/configuration-files-in-python/)
+- [From Novice to Expert: How to Write a Configuration file in Python](https://towardsdatascience.com/from-novice-to-expert-how-to-write-a-configuration-file-in-python-273e171a8eb3)
