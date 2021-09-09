@@ -67,6 +67,10 @@ or
 conda-develop /path/to/module/
 ```
 
+## Rollback Anaconda environment
+
+[Link](../data-analysis/rollback-anaconda.md)
+
 ## References
 - https://stackoverflow.com/a/37008663/5240904
 - https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
