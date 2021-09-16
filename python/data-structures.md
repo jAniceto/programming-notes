@@ -1,4 +1,61 @@
 # Data structures
+Python offers several data structures such as:
+- Strings
+- Lists
+- Tuples
+- Dictionaries
+- Sets
+- Deques
+
+We'll cover some of these below.
+
+
+## Tuples
+Tuples are an ordered collection of values that cannot be modified at runtime. This module shows how tuples are created, iterated, accessed and combined.
+
+This is a tuple of integers:
+```python
+immutable = (1, 2, 3, 4)
+```
+
+It can be indexed like a list:
+```python
+assert immutable[0] == 1
+assert immutable[-1] == 4
+```
+
+It can be sliced like a list:
+```python
+assert immutable[1:3] == (2, 3)
+assert immutable[3:4] == (4,)
+assert immutable[1::2] == (2, 4)
+assert immutable[::-1] == (4, 3, 2, 1)
+```
+
+It can be iterated over like a list:
+```python
+for ix, number in enumerate(immutable):
+    assert immutable[ix] == number
+```
+
+But its contents cannot be changed. As an alternative, we can create new tuples from existing tuples 
+```python
+bigger_immutable = immutable + (5, 6)
+assert bigger_immutable == (1, 2, 3, 4, 5, 6)
+smaller_immutable = immutable[0:2]
+assert smaller_immutable == (1, 2)
+```
+
+We use tuples when the number of items is consistent. An example where this can help is a 2D game with X and Y coordinates. Using a tuple with two numbers can ensure that the number of coordinates doesn't change to one, three, four, etc.
+```python
+moved_count = 0
+pos_x, pos_y = (0, 0)
+for i in range(1, 5, 2):
+    moved_count += 1
+    pos_x, pos_y = (pos_x + 10 * i, pos_y + 15 * i)
+assert moved_count == 2
+assert pos_x == 40 and pos_y == 60
+```
 
 ## Sets
 Sets are an unordered collection of unique values that can be modified at
@@ -90,4 +147,5 @@ assert multiples_two.issuperset(multiples_two_exclusive)
 
 
 ## References
-- [Ultimate Python](https://github.com/huangsam/ultimate-python/blob/master/ultimatepython/data_structures/set.py)
+- [Ultimate Python - Tuples](https://github.com/huangsam/ultimate-python/blob/master/ultimatepython/data_structures/tuple.py)
+- [Ultimate Python - Sets](https://github.com/huangsam/ultimate-python/blob/master/ultimatepython/data_structures/set.py)
