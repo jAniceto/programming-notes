@@ -35,18 +35,21 @@ Upload changes to remote: `$ git push origin master`
 
 
 ### Remove a file from version control
-Remove the file from the Git repository and from the filesystem
+Remove the file from the Git repository but not from the filesystem
 
 ```git
-$ git rm file1.txt
-$ git commit -m "remove file1.txt"
-```
-But if you want to remove the file only from the Git repository and not remove it from the filesystem, use:
-```git
 $ git rm --cached file1.txt
-$ git commit -m "remove file1.txt"
 ```
+
+If you want to remove a whole folder, you need to remove all files in it recursively. 
+
+```git
+$ git rm -r --cached folder_name
+```
+  
+  
 Then push changes to remote repo
 ```
+$ git commit -m "Removed stuff"
 $ git push origin branch_name  
 ```
