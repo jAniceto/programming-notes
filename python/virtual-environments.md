@@ -186,3 +186,9 @@ To list all of the available packages:
 ```
 poetry show
 ```
+
+To create a `pip` style `requirements.txt` file (including dev dependencies)
+```
+poetry export -f requirements.txt --output requirements.txt --dev --without-hashes
+```
+
