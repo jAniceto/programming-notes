@@ -66,3 +66,6 @@ Django uses a lot of magic under the hood, so some quirks are expected. If the a
 The quickest workaround is to add an import statement for that module, for instance in the `manage.py` script. But please report the incident to the mailing list so that we can prepare a proper fix that everyone can benefit from.
 
 If this does not help, have a look at [[How to Report Bugs#before-submitting-a-report-make-sure-everything-is-packaged]] to track down the problem.
+
+## References
+- [https://realpython.com/installable-django-app/](How to Write an Installable Django App)
