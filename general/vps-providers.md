@@ -8,6 +8,7 @@ VPSs virtualized nature provides several advantages such as instant reinstallati
 
 Here is a list of several popular VPS providers:
 
+* [hetzner.co](https://www.hetzner.com/cloud) - from 4.29 €/month, based in Germany
 * [digitalocean.com](https://www.digitalocean.com/pricing/) - from 5 $/month + tax (anual)
 * [linode.com](https://www.linode.com) - from 5 $/month + tax
 * [heroku.com](https://www.heroku.com/pricing) from 7 $/month + tax (anual)
