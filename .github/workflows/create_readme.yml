@@ -20,6 +20,7 @@ jobs:
         run: |
           git config --global user.name 'jAniceto'
           git config --global user.email 'jAniceto@users.noreply.github.com'
-          git commit -am "Updated readme.md"
+          git diff --exit-code || git commit -m "Updated readme.md" -a
+          #git commit -am "Updated readme.md"
           git push
-          # git diff --exit-code || git commit -m "Updated readme.md" -a
+          
