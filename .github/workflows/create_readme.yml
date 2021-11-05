@@ -1,32 +1,25 @@
-name: Create readme.md
+name: Update readme.md
 
-on: [push]
+on: push
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout repo content
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         
-      - name: setup python
+      - name: Setup
         uses: actions/setup-python@v2
         with:
           python-version: 3.x
       
-      - name: execute py script
+      - name: Execute update script
         run: python create_readme.py
             
-      - name: commit files
+      - name: Commit changes
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add -A
+          git config --global user.name 'jAniceto'
+          git config --global user.email 'jAniceto@users.noreply.github.com'
+          git commit -am "Updated readme.md"
+          git push
           # git diff --exit-code || git commit -m "Updated readme.md" -a
-          git commit -m "Updated readme.md" -a
-          
-      - name: push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: master  
