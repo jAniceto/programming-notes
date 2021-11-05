@@ -4,20 +4,40 @@ Anaconda is a distribution of the Python language aimed for scientific computing
 
 ## Managing enviroments
 
+### Enviroments info
+```
+$ conda env list
+```
+or 
+```
+$ conda info --envs
+```
+
 ### Create a new enviroment
 
+Create an environment:
 ```
-$ conda create --name venv
-```
-
-To activate this environment, use
-```
-$ conda activate full/path/venv
+$ conda create --name venv_name
 ```
 
-To deactivate an active environment, use
+Create an environment with a specific version of Python: 
+```
+$ conda create -n venv_name python=3.6
+```
+
+To activate this environment:
+```
+$ conda activate venv_name
+```
+
+To deactivate an active environment:
 ```
 $ conda deactivate
+```
+
+To remove an environment:
+```
+$ conda remove --name myenv --all
 ```
 
 To specify the location of the new enviroment use:
@@ -25,22 +45,37 @@ To specify the location of the new enviroment use:
 $ conda create --prefix /tmp/test-env
 ```
 
-### Creating a requirements file
+### Create an enviroment from a file
+
+Export your active environment to a new file:
+```
+$ conda env export > environment.yml
+```
+
+Create from `environment.yml`:
+```
+$ conda env create -f environment.yml
+```
+The first line of the `yml` file sets the new environment's name.
+
+
+### Create a requirements file
 
 To create an Anaconde requirements file use:
 ```
 $ conda list -e > requirements.txt
 ```
+Note: This `requirements.txt` is not compatible with `pip`. 
 
 The resulting file can be used to create a conda virtual environment with:
 ```
-$ conda create --name <env_name> --file requirements.txt
+$ conda create --name venv_name --file requirements.txt
 ```
 
 However, this output isn't in the right format for `pip`. If you want a file which you can use to create a `pip` virtual environment you can install pip within the conda environment, the use pip to create `requirements.txt`.
 
 ```
-$ conda activate <env>
+$ conda activate venv_name
 $ conda install pip
 $ pip freeze > requirements.txt
 ```
@@ -49,7 +84,7 @@ $ pip freeze > requirements.txt
 
 For instance, to clone the base enviroment use:
 ```
-$ conda create --name <env_name> --clone base
+$ conda create --name venv_name --clone base
 ```
 
 ## Add a folder to the Anaconda path
@@ -65,6 +100,33 @@ or
 
 ```
 conda-develop /path/to/module/
+```
+
+## Set environment variables
+To list any variables:
+```
+$ conda env config vars list
+```
+
+To set environment variables:
+```
+$ conda env config vars set my_var=value
+```
+
+Once you have set an environment variable, you have to reactivate your environment with `conda activate venv_name`. To check if the environment variable has been set, run `echo my_var` or `conda env config vars list`.
+
+Declare environment variables in the `environment.yml`:
+```
+name: venv_name
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - codecov
+variables:
+  VAR1: valueA
+  VAR2: valueB
 ```
 
 ## Rollback Anaconda environment
