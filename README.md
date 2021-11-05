@@ -2,7 +2,6 @@
 Programming notes, snippets and examples in one place.
     
 ## LATEX
-* [Latex test](/latex/test-latex.md)
 * [Bibliography management](/latex/bibliography.md)
 
 ## PYTHON
