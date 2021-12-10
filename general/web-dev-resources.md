@@ -22,6 +22,7 @@
 * Dummy Image Placeholders - https://source.unsplash.com/
 * Dummy Image Placeholders - https://placeholder.com
 * Free Icons - https://www.iconfinder.com
+* Icons and Photos - https://thenounproject.com/
 
 ## COLOR & DESIGN:
 * Generate Color Palette from Image - https://www.canva.com/color-palette/
