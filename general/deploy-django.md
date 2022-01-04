@@ -22,12 +22,12 @@ This will install pip, the Python development files needed to build Gunicorn lat
 
 Install the database system and the libraries needed to interact with it.
 
-#### For Postgres: 
+### For Postgres: 
 ```
 $ sudo apt-get install postgresql postgresql-contrib`
 ```
 
-#### For MySQL
+### For MySQL
 ```
 $ sudo apt-get install libmysqlclient-dev
 $ sudo apt-get install mysql-server mysql-client
@@ -127,7 +127,7 @@ We can collect all of the static content into the directory location we configur
 
 The static files will then be placed in a directory called static within your project directory.
 
-#### Connect your Django app to MySQL
+### Connect your Django app to MySQL
 
 Navigate to the settings.py file and replace the current DATABASES lines with the following. We will configure your database dictionary so that it knows to use MySQL as your database backend and from what file to read your database connection credentials:
 
@@ -271,8 +271,42 @@ $ sudo ufw allow 'Nginx Full'
 You should now be able to go to your server's domain or IP address to view your application.
 
 
+## 8) Re-deploy
 
-## 8) Troubleshooting
+Once the website is running you can take the following steps to make changes.
+
+- Make a backup on the server
+- Copy new files to the server using somethng like WinSCP. Note: DO NOT COPY THE MIGRATIONS FOLDER
+- Run the following commands:
+
+```
+cd mysite
+source venv/bin/activate
+python manage.py makemigrations [appname]
+python manage.py migrate [appname]
+python manage.py collectstatic
+sudo systemctl restart gunicorn
+```
+
+### If there are problems with the migrations not applying
+
+In MySQL Database delete rows `app_name` from the table `django_migrations`:
+
+```mysql
+SELECT * FROM django_migrations;
+DELETE FROM django_migrations WHERE id=xx;
+```
+OR
+```mysql
+DELETE FROM django_migrations WHERE id IN (xx,yy,zz);
+```
+
+Delete all migration files in migrations folder.
+
+Try again `python manage.py makemigrations` and `python manage.py migrate` commands.
+
+
+## 9) Troubleshooting
 
 Logs can help narrow down root causes. Check each of them in turn and look for messages indicating problem areas. The following logs may be helpful:
 
