@@ -1,4 +1,4 @@
-# Graphical user interface in Python
+# Graphical User Interfaces (GUIs) in Python
 
 ### For simple command line programs
 
