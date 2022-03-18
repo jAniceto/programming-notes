@@ -10,7 +10,8 @@ This can be adapted to solve many ML problems. It has plenty of shortcomings, bu
 - Numeric features may not need scaling
 - A different model may be better
 
-Load data
+## Load data
+
 ```python
 import pandas as pd
 
@@ -26,7 +27,8 @@ df_new = pd.read_csv('http://bit.ly/kaggletest', nrows=10)
 X_new = df_new[cols]
 ```
 
-ML imports
+## ML imports
+
 ```python
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
@@ -36,7 +38,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import cross_val_score
 ```
 
-Preprocessing
+## Preprocessing
+
 ```python
 # set up preprocessing for numeric columns
 imp_median = SimpleImputer(strategy='median', add_indicator=True)
@@ -56,7 +59,7 @@ preprocessor = make_column_transformer(
     (make_pipeline(imp_constant, ohe), cat_cols))
 ```
 
-Create pipeline
+## Create pipeline
 ```python
 # create a pipeline
 pipe = make_pipeline(preprocessor, LogisticRegression())
@@ -65,7 +68,7 @@ pipe = make_pipeline(preprocessor, LogisticRegression())
 cross_val_score(pipe, X, y).mean()
 ```
 
-Fitting and making predictions
+## Fitting and making predictions
 ```python
 # fit the pipeline and make predictions
 pipe.fit(X, y)
