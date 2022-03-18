@@ -65,7 +65,6 @@ Programming notes, snippets and examples in one place.
 * [Simple Machine Learning workflow](/data-analysis/ml-workflows.md)
 * [Streamlit](/data-analysis/streamlit.md)
 * [Saving Scikit-learn model for reuse](/data-analysis/save-model.md)
-* [Rollback Anaconda environment](/data-analysis/rollback-anaconda.md)
 * [Python Libraries for Data Science](/data-analysis/data-science-libs.md)
 * [Seaborn](/data-analysis/seaborn.md)
 
