@@ -17,4 +17,5 @@ Minimal Bloilerplates:
 - [Skeleton](http://getskeleton.com/)
 
 Other:
+- [AgnosticUI](https://www.agnosticui.com/) - Accessible CSS component primitives that work with React, Vue 3, Svelte, and Angular!
 - [Tailwind](https://tailwindcss.com/)
