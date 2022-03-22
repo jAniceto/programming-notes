@@ -1,6 +1,13 @@
 # Machine Learning with `scikit-learn`
 
-## Intro
+This document compiles some code snippets that cover the process of training a Machine Learning model using the [`scikit-learn`](https://scikit-learn.org) Python library.
+
+Required Python libraries to run this code:
+- [pandas](https://pandas.pydata.org/)
+- [numpy](https://numpy.org/)
+- [scikit-learn](https://scikit-learn.org/stable/)
+- [matplotlib](https://matplotlib.org/)
+
 
 Useful resources:
 - [scikit-learn documentation](https://scikit-learn.org/stable/index.html)
@@ -18,7 +25,7 @@ Some nomenclature used here:
 
 ## Loading and saving data
 
-## Loading data from CSV with pandas:
+### Loading data from CSV with pandas:
 
 ```python
 import pandas as pd
@@ -26,7 +33,7 @@ import pandas as pd
 df = pd.read_csv('path/to/csvfile.csv')
 ```
 
-## Save pandas.Dataframe to CSV:
+### Save pandas.Dataframe to CSV:
 
 ```python
 df.to_csv('path/to/csvfile.csv', index=False)
@@ -234,6 +241,8 @@ best_model_y_test = best_model.predict(x_test)
 Create a plot of **experimental vs calculated** values (also called **true vs predicted**). Points falling on the diagonal represent cases where the prediction is accurate.
 
 ```python
+import matplotlib.pyplot as plt
+
 # Determine the upper range of the plot regarding the target
 max_val = np.max([np.max(y_test), np.max(best_model_y_test)])
     
