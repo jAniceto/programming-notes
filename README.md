@@ -24,6 +24,7 @@ Programming notes, snippets and examples.
 - [Magic Methods](/python/magic-methods.md)
 - [Annonymous functions (Lambda functions)](/python/lambda-functions.md)
 - [Building a Django site](/python/django.md)
+- [ML with `scikit-learn`](/python/ml-sklearn.md)
 - [Dataclasses](/python/dataclasses.md)
 - [Datetime module](/python/datetime.md)
 - [Decorators](/python/decorators.md)
