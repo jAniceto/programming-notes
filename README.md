@@ -88,6 +88,7 @@ Programming notes, snippets and examples.
 
 ## MATLAB
 - [Design of Experiments](/matlab/doe.md)
+- [Surface fitting with MATLAB](/matlab/surface-fit.md)
 
 ## GENERAL
 - [Powershell](/general/powershell.md)
