@@ -1,4 +1,22 @@
-# Create a standalone exacutable using `pyinstaller`
+# Create a standalone executable of a Python app
+
+## Alternatives
+
+Most popular options:
+
+- [pyinstaller](https://pyinstaller.readthedocs.io/en/stable/)
+- [cx_Freeze](https://cx-freeze.readthedocs.io/en/latest/)
+- [Nuitka](https://nuitka.net/)
+
+Other alternatives:
+
+- [py2exe](https://www.py2exe.org/) - Based on `pyinstaller`. For Windows.
+- [py2app](https://py2app.readthedocs.io/en/latest/) - Based on `pyinstaller`. For MacOS X.
+- [PyOxidizer](https://pyoxidizer.readthedocs.io/en/stable/)
+
+
+
+## Using `pyinstaller`
 
 It's pretty straight forward:
 1. Create an entry-point script that calls your main function.
@@ -7,7 +25,7 @@ It's pretty straight forward:
 4. Test your new executable.
 5. Ship your resulting `dist/` folder to users.
 
-## Install
+### Install
 
 To install `pyinstaller` on your pc run (more details can be found here: https://www.pyinstaller.org/):
 
@@ -15,7 +33,7 @@ To install `pyinstaller` on your pc run (more details can be found here: https:/
 pip install pyinstaller
 ```
 
-## For a single file program
+### For a single file program
 
 If your program is a single script use `cmd` to go to your program directory and to turn it into a exe folder run
 
@@ -24,11 +42,11 @@ pyinstaller myprogram.py
 ```
 
 
-## For a package
+### For a package
 
 Create an entrypoint outside your package folder that imports and runs your program. This will be the entry point. Call pyinstaller on the entrypoint script as above.
 
-## Options
+### Options
 
 Change the name of your executable: 
 ```
