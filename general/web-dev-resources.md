@@ -33,6 +33,7 @@
 * Create Gradients - https://uigradients.com
 * CSS Button Generator - http://css3buttongenerator.com 
 * SVG/CSS Background Patterns - https://www.heropatterns.com/
+* Color restrictive palletes (Pixel Art) - https://lospec.com/
 
 ## IMAGE COMPRESSION & CONVERSION:
 * Compress All Images - https://compressor.io/compress
