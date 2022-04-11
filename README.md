@@ -46,6 +46,7 @@ Programming notes, snippets and examples.
 - [Simple Machine Learning workflow](/python/ml-workflows.md)
 - [Web scrapping with Beautiful Soup 4](/python/beautifulsoup4.md)
 - [Run Matlab programs in Python](/python/matlab.md)
+- [Python type hints](/python/type-hints.md)
 - [Sending e-mails with Python](/python/email.md)
 - [Imports in Python](/python/imports.md)
 - [CSV files](/python/csv.md)
