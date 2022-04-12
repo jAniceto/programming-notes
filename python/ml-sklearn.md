@@ -2,21 +2,24 @@
 
 This document compiles some code snippets that cover the process of training a Machine Learning model using the [`scikit-learn`](https://scikit-learn.org) Python library.
 
-Required Python libraries to run this code:
+**Required Python libraries:**
 - [pandas](https://pandas.pydata.org/)
 - [numpy](https://numpy.org/)
 - [scikit-learn](https://scikit-learn.org/stable/)
 - [matplotlib](https://matplotlib.org/)
 
 
-Useful resources:
+**Useful resources:**
 - [scikit-learn documentation](https://scikit-learn.org/stable/index.html)
 - A. Geron (2021) Hands-On Machine Learning with Scikit-Learn, Keras & Tensorflow, O'Reilly, 2nd Ed.
 - [JPS Aniceto et al. (2021) Machine learning models for the prediction of diffusivities in supercritical CO2 systems, Journal of Molecular Liquids.](https://www.sciencedirect.com/science/article/pii/S0167732221000076)
 - [JPS Aniceto et al. (2021) Predictive Models for the Binary Diffusion Coefficient at Infinite Dilution in Polar and Nonpolar Fluids, Materials.](https://www.mdpi.com/1996-1944/14/3/542)
 
+**Other:**
+- [Intel Extension for Scikit-learn](https://intel.github.io/scikit-learn-intelex/index.html) - software acceleration of Scikit-learn applications achieved through the use of vector instructions, IA hardware-specific memory optimizations, threading, and optimizations for all upcoming Intel platforms at launch time.
 
-Some nomenclature used here:
+
+**Nomenclature:**
 - `x_train` - training set variables/descriptors/features values. Size is [*number of data points*] x [*number of features*].
 - `y_train` - training set targets. Size is [*number of data points*] x [*number of targets*]. Usually the *number of targets* is 1.
 - `x_test` - test set variables/descriptors/features values. Size is [*number of data points*] x [*number of features*].
