@@ -68,7 +68,7 @@ sns.set(font_scale=2, font='Palatino Linotype')
 
 ## Add parent folder to path
 
-This is useful so you can import into the notebook utility functions from a parent directory.
+This is useful so you can import into the notebook utility functions from a parent directory. 
 
 ```python
 # Add parent directory to Python path
@@ -81,6 +81,29 @@ if module_path not in sys.path:
 # Import function fun1 from modeule file1 in directory utils
 from utils.file1 import fun1
 ```
+
+### Here is another alternative.
+
+Supose you have the following diretory structure. 
+
+```
+myproject/
+|-- README
+|-- myproject/
+    |-- utils.py
+|-- notebooks/
+    |-- example.ipynb
+```
+
+We want to use our functions inside `utils.py` from our `example.ipynb` notebook.
+
+```python
+import sys; sys.path.insert(0, '..')
+
+from myproject.utils import func1
+```
+
+
 
 ## References
 
