@@ -197,13 +197,13 @@ We use this style by:
 
 ```python
 import matplotlib.pyplot as plt
-plt.style.use('./images/pub.mplstyle')
+plt.style.use('images/pub.mplstyle')
 ```
 
 If you only want to use a style for a specific block of code but don't want to change the global styling, use a context manager:
 
 ```python
-with plt.style.context('dark_background'):
+with plt.style.context('images/pub.mplstyle'):
     plt.plot(np.sin(np.linspace(0, 2 * np.pi)), 'r-o')
 ```
 
