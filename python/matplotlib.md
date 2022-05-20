@@ -7,6 +7,7 @@ Index:
 - [Adding labels to a bar chart](#adding-labels-to-a-bar-chart)
   * [For a vertical bar chart:](#for-a-vertical-bar-chart-)
   * [And for an horizontal bar chart:](#and-for-an-horizontal-bar-chart-)
+- [Defining a style sheet](#defining-a-style-sheet)
 
 
 ## Set font
@@ -179,3 +180,31 @@ add_value_labels(ax)
 
 ![barh](https://i.stack.imgur.com/hkyjD.png)
 
+
+## Defining a style sheet
+
+You can create custom styles and use them by calling `style.use()` with the path or URL to the style sheet. For example, for a styte in `images/pub.mplstyle`:
+
+```
+axes.titlesize : 24
+axes.labelsize : 20
+lines.linewidth : 3
+lines.markersize : 10
+xtick.labelsize : 16
+ytick.labelsize : 16
+
+We use this style by:
+
+```python
+import matplotlib.pyplot as plt
+plt.style.use('./images/pub.mplstyle')
+```
+
+If you only want to use a style for a specific block of code but don't want to change the global styling, use a context manager:
+
+```python
+with plt.style.context('dark_background'):
+    plt.plot(np.sin(np.linspace(0, 2 * np.pi)), 'r-o')
+```
+
+[See more.](https://matplotlib.org/3.5.0/tutorials/introductory/customizing.html)
