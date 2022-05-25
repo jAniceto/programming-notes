@@ -59,6 +59,7 @@ Programming notes, snippets and examples.
 - [Python type hints](/python/type-hints.md)
 - [Argument parsing using the argparse module](/python/arg-parse.md)
 - [Collection of useful Django snippets for several purposes](/python/django-snippets.md)
+- [Python packaging](/python/python-packaging.md)
 - [Python Libraries for Data Science and Data Viz](/python/data-science-libs.md)
 - [*args and **kwargs](/python/args-kwargs.md)
 - [MessagePack serializer for Python](/python/msgpack.md)
