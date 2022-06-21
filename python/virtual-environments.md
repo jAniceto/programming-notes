@@ -48,6 +48,11 @@ $ pipenv install requests
 ```
 Pipenv will install the excellent Requests library and create a Pipfile for you in your project’s directory. The Pipfile is used to track which dependencies your project needs in case you need to re-install them, such as when you share your project with others.
 
+To remove an installed package run:
+```
+$ pipenv uninstall requests
+```
+
 ### Using installed packages
 
 Import your packages normally in your scripts. Then you can run the script using `pipenv run`:
