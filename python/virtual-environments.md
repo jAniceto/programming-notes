@@ -48,6 +48,11 @@ $ pipenv install requests
 ```
 Pipenv will install the excellent Requests library and create a Pipfile for you in your project’s directory. The Pipfile is used to track which dependencies your project needs in case you need to re-install them, such as when you share your project with others.
 
+To install as a dev dependency run:
+```
+$ pipenv install -dev requests
+```
+
 To remove an installed package run:
 ```
 $ pipenv uninstall requests
@@ -61,15 +66,20 @@ Import your packages normally in your scripts. Then you can run the script using
 $ pipenv run python main.py
 ```
 
-Using `$ pipenv run` ensures that your installed packages are available to your script. It’s also possible to spawn a new shell that ensures all commands have access to your installed packages with `$ pipenv shell`.
+Using `$ pipenv run` ensures that your installed packages are available to your script. 
+
+It's also possible to spawn a new shell that ensures all commands have access to your installed packages with `$ pipenv shell`.
+```
+$ pipenv shell
+(env-name) $ python main.py
+```
 
 ### Other commands:
-* `pipenv --rm`: Removes the virtual environment compleatly
+* `pipenv --rm`: Removes the virtual environment completly
 * `pipenv --python 3.6.5`: Specify Python version
 * `pipenv --venv`: Shows virtual environment path
 * `pipenv graph`: Dependencies tree
-
-Documentation: [Pipenv](https://pipenv.readthedocs.io/en/latest/)
+* `pipenv install --dev -e .`: Install as editable
 
 ### Set enviromental variables
 
@@ -86,7 +96,11 @@ You can access/check them in your code with:
 print(os.getenv('MY_TOKEN', 'Token Not found'))
 ```
 
-Note: Remembrt to exclude this file from your version control.
+Note: Remember to exclude this file from your version control.
+
+### References
+- [Pipenv Documentation](https://pipenv.readthedocs.io/en/latest/)
+- [Pipenv playground](https://rootnroll.com/d/pipenv/)
 
 
 ## virtualenv package
