@@ -15,6 +15,9 @@
 * Font Pair - https://fontpair.co/
 * HTML symbols - https://www.toptal.com/designers/htmlarrows/
 
+## UI Kits
+- Wired elements - https://github.com/rough-stuff/wired-elements
+
 ## IMAGE RESOURCES:
 * Free Stock Images - https://www.pexels.com
 * Free Stock Images With Great API - https://unsplash.com/
@@ -73,6 +76,7 @@
 ## WIREFRAME:
 * In Browser Wireframing - https://app.moqups.com
 * Very Basic In Browser Wireframing - https://wireframe.cc
+* Wireframes and prototyping - https://www.justinmind.com/
 
 ## RESPONSIVENESS:
 * Device Testing - http://www.responsinator.com
