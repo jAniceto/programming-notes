@@ -110,6 +110,7 @@ Programming notes, snippets and examples.
 
 ## LATEX
 - [Bibliography management](/latex/bibliography.md)
+- [Working with figures](/latex/figures.md)
 
 
 These notes contain excerpts, code snippets and examples from various sources including, but not limited to, Python Docs, The Hitchhiker’s Guide to Python, Real Python and Stack Overflow users.
