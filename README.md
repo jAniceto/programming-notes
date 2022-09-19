@@ -5,6 +5,7 @@ Programming notes, snippets and examples.
 - [Set expiration time (TTL) for LocalStorage](/javascript/expiration-localstorage.md)
 - [Filter, sort and layout](/javascript/filter-search.md)
 - [Basic Javascript concepts](/javascript/basics.md)
+- [Modern JavaScript](/javascript/modern-js.md)
 - [Create ReactJS app and deploy to Github pages](/javascript/create-react-app.md)
 - [React](/javascript/react.md)
 - [DataTables JS Library](/javascript/DataTables.md)
