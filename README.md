@@ -72,6 +72,7 @@ Programming notes, snippets and examples.
 - [Create a REST API with Django Rest Framework](/python/django-rest-api.md)
 - [Sorting lists](/python/builtin-functions.md)
 - [Progress Bars](/python/progress-bar.md)
+- [Sphinx](/python/sphinx.md)
 - [Interfacing with Strava API using stavalib](/python/stravalib.md)
 - [Hosting scripts and services](/python/hosting.md)
 - [Data manipulation with `pandas`](/python/pandas.md)
