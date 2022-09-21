@@ -13,6 +13,10 @@ To install via PyPI run:
 $ pip install pandas
 ```
 
+## DataFrame indexing
+
+See [here](https://lucytalksdata.com/how-to-effectively-index-pandas-dataframes/).
+
 ## Useful snippets:
 
 Create a test dataframe:
@@ -123,3 +127,4 @@ def remove_collinear_features(x, threshold):
 ## References
 
 - [Pandas docs](https://pandas.pydata.org/pandas-docs/stable/getting_started/index.html)
+- [Pandas DataFrame Indexing Explained](https://lucytalksdata.com/how-to-effectively-index-pandas-dataframes/)
