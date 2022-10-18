@@ -1,5 +1,12 @@
 # Guide to contributing on GitHub
 
+This is a step-by-step guide to contributing to an open-source project hosted on GitHub. You need a Guthub account to contribute.
+
+Steps 1 through 4 are setup steps, meaning you only have to do them once for each GitHub project.
+
+Steps 5 through 17 should be repeated for each contribution to that project.
+
+
 ## 1) Fork the project repository
 
 Forking the repository creates a copy of the project repository in your GitHub account.
@@ -38,7 +45,13 @@ Use `git remote -v` to check that you now have two remotes: an origin that point
 
 ## 5) Pull the latest changes from upstream into your local repository
 
-Before you start making any changes to your local files, it's a good practice to first synchronize your local repository with the project repository. Use `git pull upstream master` to "pull" any changes from the "master" branch of the "upstream" into your local repository. (If the project repository uses "main" instead of "master" for its default branch, then you would use `git pull upstream main` instead.)
+Before you start making any changes to your local files, it's a good practice to first synchronize your local repository with the project repository. Use 
+
+```
+git pull upstream master
+``` 
+
+to "pull" any changes from the "master" branch of the "upstream" into your local repository. (If the project repository uses "main" instead of "master" for its default branch, then you would use `git pull upstream main` instead.)
 
 If you forked and cloned the project repository just a few minutes ago, it's very unlikely there will be any changes, in which case Git will report that your local repository is "already up to date". But if there are any changes, they will automatically be merged into your local repository.
 
@@ -47,7 +60,13 @@ If you forked and cloned the project repository just a few minutes ago, it's ver
 
 Rather than making changes to the project's "master" branch, it's a good practice to instead create your own branch. This creates an environment for your work that is isolated from the master branch.
 
-Use `git checkout -b BRANCH_NAME` to create a new branch and then immediately switch to it. The name of the branch should briefly describe what you are working on, and should not contain any spaces.
+Use 
+
+```
+git checkout -b BRANCH_NAME
+```
+
+to create a new branch and then immediately switch to it. The name of the branch should briefly describe what you are working on, and should not contain any spaces.
 
 Use `git branch` to show your local branches. You should see your new branch as well as "master", and your new branch should have an asterisk next to it to indicate that it's "checked out" (meaning that you're working in it).
 
@@ -59,14 +78,32 @@ Use a text editor or IDE to make the changes you planned to the files in your lo
 
 ## 8) Commit your changes
 
-After you make a set of changes, use `git add -A` to stage your changes and `git commit -m "DESCRIPTION OF CHANGES"` to commit them.
+After you make a set of changes, use 
+
+```
+git add -A
+```
+
+to stage your changes and 
+
+```
+git commit -m "DESCRIPTION OF CHANGES"
+```
+
+to commit them.
 
 If you are making multiple sets of changes, it's a good practice to make a commit after each set.
 
 
 ## 9) Push your changes to your fork
 
-When you are done making all of your changes, upload these changes to your fork using `git push origin BRANCH_NAME`. This "pushes" your changes to the "BRANCH_NAME" branch of the "origin" (which is your fork on GitHub).
+When you are done making all of your changes, upload these changes to your fork using 
+
+```
+git push origin BRANCH_NAME
+```
+
+This "pushes" your changes to the "BRANCH_NAME" branch of the "origin" (which is your fork on GitHub).
 
 
 ## 10) Begin the pull request
@@ -117,18 +154,34 @@ If the project maintainers accept your pull request, they will merge your propos
 
 You should also delete the branch you created from your local repository, so that you don't accidentally start working in it the next time you want to make a contribution to this project.
 
-First, switch to the master branch: `git checkout master`.
+First, switch to the master branch: 
 
-Then, delete the branch you created: `git branch -D BRANCH_NAME`. 
+```
+git checkout master
+```
+
+Then, delete the branch you created: 
+
+```
+git branch -D BRANCH_NAME
+``` 
 
 
 ## 17) Synchronize your fork with the project repository
 
 At this point, your fork is out of sync with the project repository's master branch.
 
-To get it back in sync, you should first use Git to pull the latest changes from "upstream" (the project repository) into your local repository: `git pull upstream master`.
+To get it back in sync, you should first use Git to pull the latest changes from "upstream" (the project repository) into your local repository: 
 
-Then, push those changes from your local repository to the "origin" (your fork): `git push origin master`.
+```
+git pull upstream master
+```
+
+Then, push those changes from your local repository to the "origin" (your fork): 
+
+```
+git push origin master
+```
 
 If you return to your fork on GitHub, you will see that the master branch is "even" with the project repository's master branch.
 
