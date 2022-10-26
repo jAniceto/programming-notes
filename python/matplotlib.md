@@ -183,7 +183,7 @@ add_value_labels(ax)
 
 ## Defining a style sheet
 
-You can create custom styles and use them by calling `style.use()` with the path or URL to the style sheet. For example, for a styte in `images/pub.mplstyle`:
+You can create custom styles and use them by calling `style.use()` with the path or URL to the style sheet. For example, for a style in `images/pub.mplstyle`:
 
 ```
 axes.titlesize : 24
@@ -192,6 +192,7 @@ lines.linewidth : 3
 lines.markersize : 10
 xtick.labelsize : 16
 ytick.labelsize : 16
+```
 
 We use this style by:
 
@@ -207,4 +208,76 @@ with plt.style.context('images/pub.mplstyle'):
     plt.plot(np.sin(np.linspace(0, 2 * np.pi)), 'r-o')
 ```
 
-[See more.](https://matplotlib.org/3.5.0/tutorials/introductory/customizing.html)
+To see an exhaustive list of `rcparams` you can run:
+
+```python
+import matplotlib as mpl
+mpl.rcParams.keys()
+```
+
+Here is an example stylesheet:
+
+```mplstyle
+# Set custom colors. All colors are in web style hex format.
+axes.prop_cycle: cycler('color', ['1879CE', 'FC4F30', '3EBCD2', '379A8B', 'EBB434', '758D99'])
+
+
+# Style spines
+axes.linewidth: 1               # Spine edge line width
+axes.spines.top: False          # Display axis spines (True or False)
+axes.spines.left: True          # We only want the left and bottom spines
+axes.spines.right: False
+axes.spines.bottom: True
+
+# Set line styling for line plots
+lines.linewidth: 4              # line width in points
+lines.solid_capstyle: butt      # Makes a square ending of the line stopping at datapoint
+
+# Grid style
+axes.grid: true                 # display grid or not
+axes.grid.axis: y               # which axis the grid should apply to          
+grid.linewidth: 1               # in points
+grid.color: A5A5A5              # grid color
+axes.axisbelow: True            # Sets axis gridlines below lines and patches.
+
+# Setting font sizes and spacing
+axes.labelsize: 18              # font size of the x and y labels
+xtick.labelsize: 18             # font size of the x tick labels      
+ytick.labelsize: 18             # font size of the y tick labels
+font.size: 18                   # default font size for text, given in points.
+xtick.major.pad: 8              # distance to major tick label in points  
+ytick.major.pad: 12             # distance to major tick label in points
+
+# Title styling
+axes.titlelocation: left        # alignment of the title: {left, right, center}
+axes.titlepad: 20               # pad between axes and title in points
+axes.titlesize: 28              # font size of the axes title
+axes.titleweight: bold          # font weight of title
+
+# Remove major and minor ticks except for on the x-axis.
+xtick.major.size: 5             # major tick size in points
+xtick.minor.size: 0             # minor tick size in points
+ytick.major.size: 0
+ytick.minor.size: 0
+
+# Set spacing for figure and also DPI.
+figure.subplot.left: 0.08       # the left side of the subplots of the figure
+figure.subplot.right: 0.95      # the right side of the subplots of the figure
+figure.subplot.bottom: 0.07     # the bottom of the subplots of the figure
+figure.figsize: 16, 11          # figure size in inches
+figure.dpi: 150                 # figure dots per inch
+
+# Properties for saving the figure. Ensure a high DPI when saving so we have a good resolution.
+savefig.dpi:       300          # figure dots per inch or 'figure'
+savefig.facecolor: white        # figure face color when saving
+savefig.bbox:      tight        # {tight, standard}
+savefig.pad_inches:   0.2       # padding when bbox is set to tight
+
+# Legend Styling
+legend.framealpha: 1
+```
+
+See more on stylesheets:
+
+- [Matplotlib docs](https://matplotlib.org/3.5.0/tutorials/introductory/customizing.html)
+- [The Magic of Matplotlib Stylesheets](https://www.datafantic.com/the-magic-of-matplotlib-stylesheets/)
