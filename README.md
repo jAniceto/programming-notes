@@ -21,6 +21,7 @@ Programming notes, snippets and examples.
 
 ## LATEX
 - [Working with figures](/latex/figures.md)
+- [Derivatives](/latex/derivatives.md)
 - [An Introduction to LaTeX](/latex/latex-intro.md)
 - [Bibliography management](/latex/bibliography.md)
 
