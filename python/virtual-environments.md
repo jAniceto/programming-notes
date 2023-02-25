@@ -144,14 +144,22 @@ Poetry not only handles dependenct management through virtual environments but a
 ### Install
 
 The recommended way to install Poetry on Windows is via Powershell:
+
 ```powershell
-(Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
+(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
 ```
 You only need to install Poetry once. It will automatically pick up the current Python version and use it to create virtualenvs accordingly.
 
 To compleatly uninstall Poetry run:
-```
+
+```powershell
 python get-poetry.py --uninstall
+```
+
+or 
+
+```powershell
+(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py - --uninstall
 ```
 
 ### Usage
