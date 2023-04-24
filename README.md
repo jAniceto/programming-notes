@@ -75,6 +75,7 @@ Programming notes, snippets and examples.
 - [Run Matlab programs in Python](/python/matlab.md)
 - [Streamlit](/python/streamlit.md)
 - [Pipelines](/python/ml-pipeline.md)
+- [Deploying to Github pages with `ghp-import`](/python/ghp-import.md)
 - [Tutorials on various Python subjects](/python/tutorials.md)
 - [Working with JSON](/python/json.md)
 - [Data manipulation with `pandas`](/python/pandas.md)
