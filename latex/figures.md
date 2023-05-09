@@ -1,5 +1,19 @@
 # Working with figures
 
+## Simple figure
+
+```latex
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics{path/to/figure.pdf}
+    \caption{Figure caption here.}
+    \label{fig:fig-label}
+\end{figure}
+```
+
+The `!htbp` forces the image position.
+
+
 ## Figures side by side
 
 ```latex
