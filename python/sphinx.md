@@ -1,4 +1,115 @@
-# Sphinx
+# Creating documentation with Sphinx
+
+## Set up
+
+Install Sphinx:
+
+```
+pip install sphinx
+```
+
+Generate the basic structure of Sphinx documentation. It is usually recommended to separate source and build directories.
+
+```
+sphinx-quickstart docs
+```
+
+Now we can build the HTML documentation with:
+
+```
+cd docs/
+make html
+```
+
+Serve with Python built-in HTTP server:
+
+```
+python -m http
+```
+
+## Using Markdown with Sphinx
+
+Convert RST files to Markdown:
+
+```
+pip install rst2myst
+rst2myst convert docs/**/*.rst
+```
+
+We can now delete the index.rst file.
+
+In the Sphinx `config.py` file we now need to add the following extension:
+
+```
+extensions = [
+    "myst_parser",
+]
+```
+
+and install it:
+
+```
+pip install myst-parser
+```
+
+Now we can build the HTML from the Markdown files.
+
+```
+cd docs/
+make html
+python -m http
+```
+
+## Useful configurations
+
+To monitor changes in the docs and rebuild the HTML we can use `sphinx-autobuild`:
+
+```
+pip install sphinx-autobuild
+sphinx-autobuild docs/source/ docs/build/html
+```
+
+If you wish to include the README.md file in the docs, in the docs/source/index.md add the following directive:
+
+
+    ```{include} ../../README.md
+    :relative-images:
+    ```
+
+To add a warning:
+
+    ```{warning} 
+    Warning text.
+    ```
+
+Other handy extensions:
+
+```
+extensions = [
+    "myst_parser",
+    "sphinx.ext.duration",
+    "sphinx.ext.autosectionlabel",
+]
+```
+
+Install another theme:
+
+```
+pip install furo
+```
+
+In the Sphinx `config.py`:
+
+```
+html_theme = 'furo'
+```
+
+Create a new page (`usage.md`) next to the `index.md` file. Link to a page:
+
+```
+Check page {doc}`usage`. 
+Specifically the section {ref}`Instalation`.
+```
 
 ## Creating module pages automatically
 
