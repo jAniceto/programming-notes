@@ -18,13 +18,15 @@ Now we can build the HTML documentation with:
 
 ```
 cd docs/
-make html
+.\make.bat html
 ```
+
+Note: `.\make.bat html` is for Powershell. `make html` for macOS, Linux or Windows command prompt
 
 Serve with Python built-in HTTP server:
 
 ```
-python -m http
+python -m http.server
 ```
 
 ## Using Markdown with Sphinx
@@ -32,7 +34,7 @@ python -m http
 Convert RST files to Markdown:
 
 ```
-pip install rst2myst
+pip install "rst-to-myst[sphinx]"
 rst2myst convert docs/**/*.rst
 ```
 
@@ -86,9 +88,9 @@ Other handy extensions:
 
 ```
 extensions = [
-    "myst_parser",
-    "sphinx.ext.duration",
-    "sphinx.ext.autosectionlabel",
+    'myst_parser',
+    'sphinx.ext.duration',
+    'sphinx.ext.autosectionlabel',
 ]
 ```
 
