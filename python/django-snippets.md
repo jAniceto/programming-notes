@@ -11,6 +11,7 @@
 * [Migrate Django from SQLite to PostgreSQL](#migrate-django-from-sqlite-to-postgresql)
 * [Using Django Messages with Bootstrap](#using-django-messages-with-bootstrap)
 * [Override form `__init__` method](#override-form-__init__-method)
+* [Switch to a new Database](#switch-to-a-new-Database)
 
 
 
@@ -318,4 +319,82 @@ def transaction_new(request, account_id):
 	return render(request, 'expense_tracker/new_transaction.html', context)
 ```
 
----
+
+
+
+
+## Switch to a new Database
+
+### 1) Add the new Database to `settings.py`
+
+Edit your `settings.py` and add the new database to the DATABASES list and give it the name "new". For example, I am using the MySQL database, so I will add the "new" dictionary:
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    'new': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'tFnXEEpcjQ',
+        'USER': 'tFnXEEpcjQ',
+        'PASSWORD': 'UW9BWCT8m2',
+        'HOST': 'remotemysql.com',
+        'PORT': '3306',
+    }
+}
+```
+
+I have used the MySQL database in this example. You will add the code for the database that you are using.
+Note: You need to install the client for whatever database you are using on your machine.
+
+### 2) Create tables in the new Database
+
+Make sure that you have not deleted the migrations folder. If you have deleted it by accident, make migrations again.
+
+To create tables in your new database, run the migrations on it using the following command:
+
+```python
+python manage.py migrate --database=new
+```
+
+### 3) Transfer data to the new Database (optional)
+
+You can skip this step if you do not want to transfer the data from your old database to the new one. 
+
+First, clear the new database by running the following command:
+
+```python
+python manage.py flush --database=new
+```
+
+Export data from your current database to a JSON file using the following command:
+
+```python
+python manage.py dumpdata>data.json
+```
+
+Now load data into the new database using the following command:
+
+```python
+python manage.py loaddata data.json --database=new
+```
+
+### 4) Remove the old Database
+
+Now remove the old database from `settings.py` and rename the "new" database to "default". My final `DATABASES` look like this:
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'tFnXEEpcjQ',
+        'USER': 'tFnXEEpcjQ',
+        'PASSWORD': 'UW9BWCT8m2',
+        'HOST': 'remotemysql.com',
+        'PORT': '3306',
+    }
+}
+```
+
