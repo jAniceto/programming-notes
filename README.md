@@ -18,6 +18,7 @@ Programming notes, snippets and examples.
 - [Set up Amazon S3 to serve Django Static and Media files](/general/s3-django-setup.md)
 - [Online Resources For Web Developers](/general/web-dev-resources.md)
 - [VSCode shortcuts for Windows](/general/vscode-shortcut.md)
+- [Deploy Django app to Azure App Service](/general/deploy-django-azure.md)
 - [Regular expressions](/general/regex.md)
 - [Installing Python 3.7 on Raspbian](/general/python-raspbian.md)
 - [Deploy a Django app in an Ubuntu VPS (DigitalOcean)](/general/deploy-django.md)
