@@ -120,25 +120,34 @@ More styles [here](https://gist.github.com/jAniceto/e58cf2738b970de54910d886d910
 
 ```python
 import matplotlib.pyplot as plt
+from matplotlib.offsetbox import AnchoredText
 
 with plt.style.context('science'):
     fig, ax = plt.subplots()
     
     ax = plot(x, y)
-    
+
+    # Labels
     ax.set_xlabel(r'$D_{12}$ $\mathrm{(cm^2 s^{-1})}$')  # x-axis label using LaTeX
     ax.set_ylabel(r'Y axis label')  # y-axis label using LaTeX
+
+    # Ticks and grids
     ax.grid(False)  # Remove grid
-    plt.xlim(0, 10)  # Set x-axis limits
-    plt.ylim(0, 2)  # Set y-axis limits 
+    ax.set_xlim([1, 11])  # Set x-axis limits
+    ax.set_ylim([6.5, 8.5])  # Set y-axis limits
     
-    plt.ticklabel_format(style='sci', axis='x', scilimits=(0,0))  # Set x-axis ticks to scientific notation
-    plt.ticklabel_format(style='sci', axis='both', scilimits=(0,0))  # Set both axis ticks to scientific notation
+    ax.ticklabel_format(style='sci', axis='x', scilimits=(0,0))  # Set x-axis ticks to scientific notation
+    ax.ticklabel_format(style='sci', axis='both', scilimits=(0,0))  # Set both axis ticks to scientific notation
+
+    # Add a text box to a corner of the graph with e.g. 'a)'
+    anchor_text = AnchoredText('a)', pad=0, loc='upper right', frameon=False, prop=dict(fontweight="bold", fontsize=12, fontfamily='serif'))
+    ax.add_artist(anchor_text)
 
     plt.tight_layout()
 
     fig.set_size_inches(5.25, 3.95)  # Set figure size in inches
+
     fig.savefig('fig1.png', dpi=300, bbox_inches='tight')  # Save figure in png
-    fig.savefig('fig1.pdf', dpi=300, bbox_inches='tight')  # Save figure in png
+    fig.savefig('fig1.pdf', dpi=300, bbox_inches='tight')  # Save figure in pdf
 ```
 
