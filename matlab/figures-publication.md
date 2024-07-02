@@ -60,3 +60,18 @@ print('img/my_figure', '-dpng', '-r600')
 ```
 
 If using vector graphics, `-dpng` can be replaced by `-epsc` for colored eps.
+
+
+## Summary
+
+Here is a simple copy-pastable template:
+
+```matlab
+width = 8; % cm
+height = 5; % cm
+
+set(gcf, 'units', 'centimeters', 'position', [0 0 width height])
+set(gca, 'LooseInset', max(get(gca,'TightInset'), 0.02))
+gcf.PaperPositionMode   = 'auto';
+print(mfilename, '-dpng', '-r600')  % saves figure with the name of the current script
+```
