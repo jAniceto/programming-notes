@@ -38,6 +38,10 @@
 * SVG/CSS Background Patterns - https://www.heropatterns.com/
 * Color restrictive palletes (Pixel Art) - https://lospec.com/
 
+## DATA VIZ
+- Color palete selection - https://colorbrewer2.org
+- Color palete selection - https://projects.susielu.com/viz-palette
+
 ## IMAGE COMPRESSION & CONVERSION:
 * Compress All Images - https://compressor.io/compress
 * Compress JPG - http://jpeg-optimizer.com/
