@@ -13,26 +13,51 @@
 
 ### Create a new virtual enviroment: 
 
-To create a new virtual environment: `$ python -m venv env_name`
+To create a new virtual environment: 
+```
+$ python -m venv env_name
+```
+A new folder appears in your current location containinng the new Python installation. The environemnt uses the same Python version as the one used to create it. 
 
-A new folder appears in your current location containinng the new Python installation. The environemnt uses the same Python version as the one used to create it.
-
-To activate the virtual environment: `$ env_name/Scripts/activate.bat`
-
+To activate the virtual environment: 
+```
+$ env_name/Scripts/activate.bat      # Windows command line
+$ env_name/Scripts/activate          # Windows command line or Powershell
+$ env_name/Scripts/Activate.ps1      # Windows Powershell
+$ source env_name/bin/activate       # Unix system
+```
 Once the virtual environment is activated, when you install a package with `pip install package`, it will only be installed in the environment.
 
-To deactivate the virtual environment: `$ deactivate`
+To deactivate the virtual environment: 
+```
+$ deactivate
+```
 
-To create a requirements file for your project: `$ pip freeze > requirements.txt`
+You can check installed packages in the new environment by running the command below. For a new/clean environment you should get the following output. 
 
-To delete the virtual environment completly just delete the enviroment folder (`env_name`) or run: `$ rmdir env_name /s`
+```
+$ pip list
 
-To install packages from an existing `requirements.txt` file: `pip install -r requirements.txt`
+Package    Version
+---------- -------
+pip        24.1.1
+setuptools 65.5.0
+```
 
-Create a virtual environment with access to the packages in the global installation of Python: 
+To create a requirements file for your project: 
+```
+$ pip freeze > requirements.txt
+```
 
-`$ python -m venv env_name --system-site-packages`
+To delete the virtual environment completly just delete the enviroment folder (`env_name`) or run: 
+```
+$ rmdir env_name /s
+```
 
+To install packages from an existing `requirements.txt` file: 
+```
+pip install -r requirements.txt`
+```
 
 
 ## Pipenv
