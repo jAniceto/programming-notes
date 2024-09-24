@@ -2,6 +2,7 @@
 
 ## Main packages to handle virtual environments
 - [venv (Standard Library)](#venv-(standard-library))
+- [uv](#uv)
 - [Pipenv](#pipenv)
 - [virtualenv](#virtualenv-package)
 - [Poetry](#poetry)
@@ -59,6 +60,52 @@ To install packages from an existing `requirements.txt` file:
 pip install -r requirements.txt`
 ```
 
+
+## uv
+
+To create a virtual environment in a given directory:
+```
+$ uv venv
+```
+If no directory name is provided, the venv will be created in the directory `.venv`.
+
+To activate the virtual environment run:
+```
+$ .venv/Scripts/activate         # on Windows Powershell
+$ source .venv/bin/activate      # Unix system
+```
+
+Installing packages from PyPI:
+```
+$ uv pip install <package_name>
+```
+
+Installing from a git repository:
+```
+$ uv pip install "<package_name> @ https://github.com/<user>/<repo>"
+```
+
+To list what’s installed in a given venv
+```
+$ uv pip freeze
+```
+You can direct the results to a file like:
+```
+$ uv pip freeze > requeirements.txt
+```
+The list will have explicit version requirements for each package, meaning it will be “locked” to the specific versions.
+
+If you want to take an existing `pyproject.toml` or `requirements.in` file and generate a locked dependency set as `requirement.txt`, use:
+```
+$ uv pip compile pyproject.toml -o requirements.txt
+# or
+$ uv pip compile requirements.in -o requirements.txt
+```
+
+To bring a project’s installed dependencies in sync with a list of locked dependencies use:
+```
+$ uv pip sync requirements.txt
+```
 
 ## Pipenv
 
