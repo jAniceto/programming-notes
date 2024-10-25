@@ -118,6 +118,7 @@ Programming notes, snippets and examples.
 - [Integrating from data points](/matlab/integrate.md)
 
 ## LINUX
+- [Keep processes running and closing SSH connection](/linux/keep-scripts-running-ssh.md)
 - [Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)](/linux/ubuntu-vps.md)
 - [Set up server in Raspberry Pi](/linux/raspberrypi.md)
 - [Keep SSH sessions running after disconnecting](/linux/keep-ssh-running.md)
