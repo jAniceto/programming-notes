@@ -124,6 +124,7 @@ Programming notes, snippets and examples.
 - [Set `$PATH` variable in Ubuntu](/linux/path.md)
 - [Initial Server Setup with Ubuntu 18.04](/linux/server-setup.md)
 - [Linux Crontab](/linux/crontab.md)
+- [Set up a Django production server with gunicorn](/linux/django-production-server.md)
 
 
 These notes contain excerpts, code snippets and examples from various sources including, but not limited to, Python Docs, The Hitchhiker’s Guide to Python, Real Python and Stack Overflow users.
