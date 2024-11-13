@@ -1,6 +1,6 @@
 # Preparing figures for publication
 
-Here is a summary the most important steps and commands necessary to obtain nice figures of your data that can be imported into the text editing program of your choice.
+Here is a summary of the most important steps and commands necessary to obtain nice figures of your data that can be imported into the text editing program of your choice.
 
 ## Scaling 
 
@@ -33,9 +33,7 @@ The maximum width for one-column and two-column figures, respectively, is usuall
 Here we select the font Times and set the font size to 9.
 
 ```matlab
-set(fig.Children, ...
-    'FontName',     'Times', ...
-    'FontSize',     9);
+set(fig.Children, 'FontName', 'Times', 'FontSize', 9);
 ```
 
 
@@ -59,7 +57,7 @@ fig.PaperPositionMode   = 'auto';
 print('img/my_figure', '-dpng', '-r600')
 ```
 
-If using vector graphics, `-dpng` can be replaced by `-epsc` for colored eps.
+If using vector graphics, `-dpng` can be replaced by `-epsc` for colored eps or `-dsvg`.
 
 
 ## Summary
@@ -67,11 +65,17 @@ If using vector graphics, `-dpng` can be replaced by `-epsc` for colored eps.
 Here is a simple copy-pastable template:
 
 ```matlab
+filename = 'something';  % output file name
 width = 8; % cm
 height = 5; % cm
 
-set(gcf, 'units', 'centimeters', 'position', [0 0 width height])
-set(gca, 'LooseInset', max(get(gca,'TightInset'), 0.02))
-gcf.PaperPositionMode   = 'auto';
-print(mfilename, '-dpng', '-r600')  % saves figure with the name of the current script
+fig.Units               = 'centimeters';
+fig.Position(3)         = width;
+fig.Position(4)         = height;
+set(fig, 'LooseInset', max(get(gca,'TightInset'), 0.02))
+set(fig, 'PaperPositionMode','auto', 'PaperUnits','centimeters', 'PaperSize',[fig.Position(3), fig.Position(4)])
+print(filename, '-dpng', '-r600')  % save as png using 600 dpi resolution
+print(filename, '-dtiff', '-r600')  % save as svg using 600 dpi resolution
+print(filename, '-dpdf', '-r600')  % save as pdf using 600 dpi resolution
+print(filename, '-dsvg', '-r600')  % save as svg using 600 dpi resolution
 ```
