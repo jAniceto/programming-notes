@@ -107,6 +107,7 @@ Programming notes, snippets and examples.
 ## LATEX
 - [Bibliography management](/latex/bibliography.md)
 - [An Introduction to LaTeX](/latex/latex-intro.md)
+- [Create LaTeX presentations with Beamer](/latex/beamer.md)
 - [Derivatives](/latex/derivatives.md)
 - [Working with figures](/latex/figures.md)
 
