@@ -55,6 +55,7 @@ Programming notes, snippets and examples.
 - [Python Libraries for Data Science and Data Viz](/python/data-science-libs.md)
 - [Schedule task in Python](/python/schedule.md)
 - [Create a REST API with Django Rest Framework](/python/django-rest-api.md)
+- [Working with uv](/python/uv.md)
 - [Configuration files](/python/config-files.md)
 - [Interfacing with Strava API using stavalib](/python/stravalib.md)
 - [Project set-up](/python/project-set-up.md)
