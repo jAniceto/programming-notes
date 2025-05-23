@@ -1,0 +1,14 @@
+nav:
+  - Home: index.md
+  - Python: python
+  - MATLAB: matlab
+  - JavaScript: javascript
+  - HTML & CSS: html-css
+  - LaTeX: latex
+  - Linux: linux
+  - general
+
+append_unmatched: true
+
+sort:
+  sections: first

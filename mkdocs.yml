@@ -1,0 +1,46 @@
+# Project information
+site_name: Programming Notes
+site_url: https://janiceto.github.io/programming-notes/
+site_author: José Aniceto
+site_description: >-
+  A collection of programming notes, snippets and examples. Mainly focused on Python and MATLAB.
+
+# Repository
+repo_name: jAniceto/programming-notes
+repo_url: https://github.com/jAniceto/programming-notes
+edit_uri: edit/master/
+
+# Configuration
+docs_dir: programming-notes
+
+theme:
+  name: material
+  palette:
+    primary: teal
+    accent: teal
+  features:
+    - navigation.tabs
+    - content.action.edit
+    # - navigation.footer
+    - search.suggest
+
+plugins:
+  - search
+  - awesome-nav
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+extra:
+  social:
+    - icon: fontawesome/brands/github 
+      link: https://github.com/jAniceto
+    - icon: fontawesome/brands/mastodon
+      link: https://fosstodon.org/@squidfunk
+  generator: false

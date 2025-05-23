@@ -1,0 +1,8 @@
+# nav:
+#   - "*/"
+#   - "*.md"
+
+append_unmatched: true
+
+sort:
+  sections: first

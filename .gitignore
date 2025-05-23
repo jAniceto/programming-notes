@@ -1,13 +1,6 @@
-articles/
-create_articles.py
-create_file_info.py
-articles.json
-update_script.py
-update_blog.bat
-
 .idea/
 __pycache__/
 
 
-# Book built output
-_book docs/
+.venv/
+site/
