@@ -25,5 +25,5 @@ jobs:
           path: .cache 
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material mkdocs-awesome-nav
+      - run: pip install mkdocs-material mkdocs-awesome-nav mkdocs-include-markdown-plugin
       - run: mkdocs gh-deploy --force

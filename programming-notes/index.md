@@ -1,3 +1,1 @@
-Programming Notes
-
-test
+--8<-- "../README.md"
