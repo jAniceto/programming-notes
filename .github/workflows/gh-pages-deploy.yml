@@ -25,5 +25,8 @@ jobs:
           path: .cache 
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material mkdocs-awesome-nav mkdocs-include-markdown-plugin
+      - name: Copy README.md to docs/index.md
+        run: |
+          cp README.md programming-notes/index.md
+      - run: pip install mkdocs-material mkdocs-awesome-nav
       - run: mkdocs gh-deploy --force

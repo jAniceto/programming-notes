@@ -27,7 +27,6 @@ theme:
 plugins:
   - search
   - awesome-nav
-  - include-markdown
 
 markdown_extensions:
   - pymdownx.highlight:
