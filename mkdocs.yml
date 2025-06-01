@@ -16,8 +16,8 @@ docs_dir: programming-notes
 theme:
   name: material
   palette:
-    primary: teal
-    accent: teal
+    primary: blue grey
+    accent: blue grey
   features:
     - navigation.tabs
     - content.action.edit
@@ -41,6 +41,4 @@ extra:
   social:
     - icon: fontawesome/brands/github 
       link: https://github.com/jAniceto
-    - icon: fontawesome/brands/mastodon
-      link: https://fosstodon.org/@squidfunk
   generator: false
