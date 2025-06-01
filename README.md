@@ -1,8 +1,20 @@
 # Programming Notes
-Programming notes, snippets and examples.
+
+A collection of programming notes, snippets and examples. By José Aniceto.
     
+[Click here to check the website](https://janiceto.github.io/programming-notes/)
+
+Below is a list of the most used pages.
+
+## Python
+
+- [Simple Machine Learning workflow](/programming-notes/python/ml-workflows)
+- [Scientific quality figures](/programming-notes/python/scientific-figures)
+- [Python packages and modules](/programming-notes/python/packages)
+
+
 ## MATLAB
-- [Preparing figures for publication](/matlab/figures-publication.md)
+- [Preparing figures for publication](programming-notes/matlab/figures-publication.md)
 - [Surface fitting with MATLAB](/matlab/surface-fit.md)
 - [Working with strings](/matlab/strings.md)
 - [Links and Resources](/matlab/links.md)
@@ -64,73 +76,7 @@ Programming notes, snippets and examples.
 - [Simple CSS reset](/html-css/css-reset.md)
 
 ## PYTHON
-- [Simple Machine Learning workflow](/python/ml-workflows.md)
-- [Scientific quality figures](/python/scientific-figures.md)
-- [Graphical User Interfaces (GUIs) in Python](/python/gui.md)
-- [Python packages and modules](/python/packages.md)
-- [Useful Python code snippets](/python/snippets.md)
-- [Collection of useful Django snippets for several purposes](/python/django-snippets.md)
-- [Using MySQL in Python](/python/mysql.md)
-- [*args and **kwargs](/python/args-kwargs.md)
-- [Building a Django site](/python/django.md)
-- [CSV files](/python/csv.md)
-- [Datetime module](/python/datetime.md)
-- [Working with the Python version](/python/python-version.md)
-- [Dataclasses](/python/dataclasses.md)
-- [Data structures](/python/data-structures.md)
-- [Create a REST API with Django Rest Framework](/python/django-rest-api.md)
-- [Abstract classes](/python/abstract-classes.md)
-- [Working with uv](/python/uv.md)
-- [Python Libraries for Data Science and Data Viz](/python/data-science-libs.md)
-- [Slice notation](/python/slice-notation.md)
-- [Create a executable Django App](/python/django-pyinstaller.md)
-- [Sorting lists](/python/builtin-functions.md)
-- [MessagePack serializer for Python](/python/msgpack.md)
-- [Saving Scikit-learn model for reuse](/python/ml-save-model.md)
-- [Virtual enviroments](/python/virtual-environments.md)
-- [Classes and OOP (Object Oriented Programming)](/python/classes.md)
-- [Seaborn](/python/seaborn.md)
-- [Annonymous functions (Lambda functions)](/python/lambda-functions.md)
-- [Create a standalone executable of a Python app](/python/create-exe.md)
-- [Web scrapping with Beautiful Soup 4](/python/beautifulsoup4.md)
-- [Storing dictionaries for later use: JSON and Pickle](/python/store-dicts.md)
-- [Anaconda](/python/anaconda.md)
-- [Jupyter](/python/jupyter.md)
-- [Hosting scripts and services](/python/hosting.md)
-- [Working with paths in Python using `pathlib`](/python/pathlib.md)
-- [Creating documentation with Sphinx](/python/sphinx.md)
-- [Interfacing with Strava API using stavalib](/python/stravalib.md)
-- [Image manipulation in Python](/python/image-manipulation.md)
-- [Geo ploting with Basemap](/python/basemap.md)
-- [Machine Learning with `scikit-learn`](/python/ml-sklearn.md)
-- [Data manipulation with `pandas`](/python/pandas.md)
-- [Imports in Python](/python/imports.md)
-- [Streamlit](/python/streamlit.md)
-- [Schedule task in Python](/python/schedule.md)
-- [Logging](/python/logging.md)
-- [Magic Methods](/python/magic-methods.md)
-- [Databases with SQLAlchemy](/python/sql-alchemy.md)
-- [Progress Bars](/python/progress-bar.md)
-- [Python packaging](/python/python-packaging.md)
-- [Matplotlib](/python/matplotlib.md)
-- [Decorators](/python/decorators.md)
-- [Deploying to Github pages with `ghp-import`](/python/ghp-import.md)
-- [Run Matlab programs in Python](/python/matlab.md)
-- [Working with JSON](/python/json.md)
-- [String formatting in Python](/python/string-formatting.md)
-- [Pipelines](/python/ml-pipeline.md)
-- [Sending e-mails with Python](/python/email.md)
-- [Django and UV workflow](/python/django-uv-workflow.md)
-- [Tutorials on various Python subjects](/python/tutorials.md)
-- [Python boilerplates](/python/boilerplate.md)
-- [Custom exceptions](/python/custom-exceptions.md)
-- [Profiling in Python](/python/profiling.md)
-- [Configuration files](/python/config-files.md)
-- [Project set-up](/python/project-set-up.md)
-- [Pure Python web development](/python/web-dev.md)
-- [Python type hints](/python/type-hints.md)
-- [Argument parsing using the argparse module](/python/arg-parse.md)
-- [Building a Flask site](/python/flask.md)
+
 
 
 These notes contain excerpts, code snippets and examples from various sources including, but not limited to, Python Docs, The Hitchhiker’s Guide to Python, Real Python and Stack Overflow users.
