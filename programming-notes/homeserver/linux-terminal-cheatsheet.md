@@ -111,3 +111,106 @@
 `tail <file>`: Shows the last few lines of a file.
 
 `awk ‘{print}’ <file>`: Prints every line in a file.
+
+
+## Packages
+
+### Package management (APT)
+
+`sudo apt install <package>`: Installs a package.
+
+`sudo apt install -f –reinstall <package>`: Reinstalls a broken package.
+
+`apt search <package>`: Searches for APT packages.
+
+`apt-cache policy <package>`: Lists available package versions.
+
+`sudo apt update`: Updates package lists.
+
+`sudo apt upgrade`: Upgrades all upgradable packages.
+
+`sudo apt remove <package>`: Removes a package.
+
+`sudo apt purge <package>`: Removes a package and all its configuration files.
+
+
+### Package management (Snap)
+
+`snap find <package>`: Search for Snap packages.
+
+`sudo snap install <snap_name>`: Installs a Snap package.
+
+`sudo snap remove <snap_name>`: Removes a Snap package.
+
+`sudo snap refresh`: Updates all installed Snap packages.
+
+`snap list`: Lists all installed Snap packages.
+
+`snap info <snap_name>`: Displays information about a Snap package.
+
+
+## Users and groups
+
+### User management
+
+`w`: Shows which users are logged in.
+
+`sudo adduser <username>`: Creates a new user.
+
+`sudo deluser <username>`: Deletes a user.
+
+`sudo passwd <username>`: Sets or changes the password for a user.
+
+`su <username>`: Switches user.
+
+`sudo passwd -l <username>`: Locks a user account.
+
+`sudo passwd -u <username>`: Unlocks a user password.
+
+`sudo chage <username>`: Sets user password expiration date.
+
+
+### Group management
+
+`id [username]`: Displays user and group IDs.
+
+`groups [username]`: Shows the groups a user belongs to.
+
+`sudo addgroup <groupname>`: Creates a new group.
+
+`sudo delgroup <groupname>`: Deletes a group.
+
+
+## Networking
+
+### Networking
+
+`ip addr show`: Displays network interfaces and IP addresses.
+
+`ip -s link`: Shows network statistics.
+
+`ss -l`: Shows listening sockets.
+
+`ping <host>`: Pings a host and outputs results.
+
+
+### Firewall management
+
+`sudo ufw status`: Displays the status of the firewall.
+
+`sudo ufw enable`: Enables the firewall.
+
+`sudo ufw disable`: Disables the firewall.
+
+`sudo ufw allow <port/service>`: Allows traffic on a specific port or service.
+
+`sudo ufw deny <port/service>`: Denies traffic on a specific port or service.
+
+`sudo ufw delete allow/deny <port/service>`: Deletes an existing rule.
+
+
+### SSH and remote access
+
+`ssh <user@host>`: Connects to a remote host via SSH.
+
+`scp <source> <user@host>:<destination>`: Securely copies files between hosts.
