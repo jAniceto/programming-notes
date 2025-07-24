@@ -1,5 +1,12 @@
 # Docker
 
+## Types of Docker storage
+
+**Volumes**: Managed by Docker, stored in `/var/lib/docker/volumes/` (on Linux), best for most use cases.
+
+**Bind mounts**: Maps a host directory into the container. Useful for development.
+
+**Tmpfs**: Temporary storage in memory. Disappears after container stops.
 
 ## Set up Docker and Docker Compose
 
