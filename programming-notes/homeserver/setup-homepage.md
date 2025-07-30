@@ -2,15 +2,17 @@
 
 <sub><sup>Reference: [Docker Installation](https://gethomepage.dev/installation/docker/)</sub></sup>
 
-Set up directory for configuration file, for instance
+Set up directory for configuration file, for instance, in your `/home` directory:
 
 ```bash
-cd ~/server/configs/homepage
+cd ~
+mkdir -p homepage/config
 ```
 
 Create a `docker-compose.yml` file:
 
 ```bash
+cd homepage
 nano docker-compose.yml
 ```
 
@@ -22,10 +24,10 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - '/home/${USER}/server/configs/homepage:/config' # Make sure your local config directory exists
+      - '/home/${USER}/homepage/config:/config' # Make sure your local config directory exists
       - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations
     environment:
-      HOMEPAGE_ALLOWED_HOSTS: hostname:XXXX # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
+      HOMEPAGE_ALLOWED_HOSTS: hostname:3000 # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
 ```
 
 Start Docker container:
@@ -34,4 +36,4 @@ Start Docker container:
 docker compose up -d
 ```
 
-Going to `hostname:XXXX`, you should see your homepage.
+Going to `http://hostname:3000`, you should see your homepage.
