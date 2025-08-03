@@ -36,6 +36,10 @@ Overview of several services for a Home Server.
 
 - [Uptime Kuma](https://uptimekuma.org/)
 
+### Documentation and knowledge base
+
+- [Outline](https://www.getoutline.com/)
+
 
 
 ## Resources
@@ -55,3 +59,5 @@ Overview of several services for a Home Server.
 - [Looking for a minimal-fluff guide to first home server setup for technical people](https://www.reddit.com/r/HomeServer/comments/17vcllp/looking_for_a_minimalfluff_guide_to_first_home/)
 
 - [The complete guide to building your personal self hosted server for streaming and ad-blocking](https://www.reddit.com/r/Piracy/comments/pqsomd/the_complete_guide_to_building_your_personal_self/)
+
+- [Techno TIm](https://technotim.live/)

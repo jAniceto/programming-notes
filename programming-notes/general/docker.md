@@ -86,13 +86,13 @@ Docker provides [restart policies](https://docs.docker.com/engine/containers/sta
 The following command starts container named `containername` and configures it to always restart, unless the container is explicitly stopped, or the daemon restarts.
 
 ```bash
-docker run -d --restart always containername
+docker run -d --restart unless-stopped containername
 ```
 
 The following command changes the restart policy for an already running container:
 
 ```bash
-docker update --restart always containername
+docker update --restart unless-stopped containername
 ```
 
 ### Using a process manager

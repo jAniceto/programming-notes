@@ -16,7 +16,7 @@ cd homepage
 nano docker-compose.yml
 ```
 
-```bash
+```yaml
 services:
   homepage:
     image: ghcr.io/gethomepage/homepage:latest
@@ -28,6 +28,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations
     environment:
       HOMEPAGE_ALLOWED_HOSTS: hostname:3000 # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
+    restart: 'unless-stopped'
 ```
 
 Start Docker container:

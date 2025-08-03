@@ -11,6 +11,7 @@ Below is a list of the most used pages.
 
 - [Ubuntu CLI cheat sheet](linux/linux-terminal-cheatsheet.md)
 
+
 ## Python
 
 - [Scientific quality figures](python/scientific-figures.md)
