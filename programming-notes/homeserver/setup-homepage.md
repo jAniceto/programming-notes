@@ -38,3 +38,49 @@ docker compose up -d
 ```
 
 Going to `http://hostname:3000`, you should see your homepage.
+
+
+## Configuration
+
+In the `services.yml`:
+
+```yaml
+- Media:
+    - Immich:
+        href: http://homeserver:2283
+        description: Photo and video management
+
+    - Plex:
+        href: http://homeserver:32400/web
+        description: Media server
+
+- Utilities:
+    - Portainer:
+        href: http://homeserver:9443
+        description: Docker container management
+
+    - qBittorrent:
+        href: http://homeserver:8080
+        description: Bittorrent client
+
+- Servarr:
+    - Radarr:
+        href: http://homeserver:7878
+        description: Movies
+
+    - Sonarr:
+        href: http://homeserver:8989
+        description: TV shows
+
+    - Prowlarr:
+        href: http://homeserver:9696
+        description: Indexer manager
+
+    - Bazarr:
+        href: http://homeserver:6767
+        description: Subtitle manager
+
+    - Overseerr:
+        href: http://homeserver:5055
+        description: Media requests manager
+```
