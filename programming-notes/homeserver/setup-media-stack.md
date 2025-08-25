@@ -297,3 +297,103 @@ docker compose up -d
 
 Overseerr will be available at `http://homeserver:5055`.
 
+
+
+## Complete Docker Compose
+
+The following `docker-compose.yml` will install:
+
+- Plex
+- Radarr, Sonarr, Prowlarr, Bazarr, and Overseerr
+
+
+```yaml
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Lisbon
+      - VERSION=docker
+    #   - PLEX_CLAIM=  # optional, get from https://account.plex.tv/claim
+    volumes:
+      - '/home/${USER}/plex/library:/config'
+      - '/home/${USER}/data/shows:/tv'
+      - '/home/${USER}/data/movies:/movies'
+      - '/home/${USER}/transcode/temp>:/transcode'
+    restart: unless-stopped
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Lisbon
+    volumes:
+      - '/home/${USER}/radarr/data:/config'
+      - '/home/${USER}/media/movies:/movies' # optional
+      - '/home/${USER}/media/downloads:/downloads' # optional
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Lisbon
+    volumes:
+      - '/home/${USER}/sonarr/data:/config'
+      - '/home/${USER}/media/shows:/tv' # optional
+      - '/home/${USER}/media/downloads:/downloads' # optional
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Lisbon
+    volumes:
+      - '/home/${USER}/prowlarr/data:/config'
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Lisbon
+    volumes:
+      - '/home/${USER}/bazarr/config:/config'
+      - '/home/${USER}/media/movies:/movies' # optional
+      - '/home/${USER}/media/shows:/tv' # optional
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+
+  overseerr:
+    image: sctx/overseerr:latest
+    container_name: overseerr
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=Europe/Lisbon
+      - PORT=5055 #optional
+    ports:
+      - 5055:5055
+    volumes:
+      - '/home/${USER}/overseerr/config:/config'
+    restart: unless-stopped
+```
