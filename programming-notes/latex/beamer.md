@@ -1,30 +1,51 @@
 # Create LaTeX presentations with Beamer
 
+## Elements
+
+### Columns
+
+Create two columns:
+
+```tex
+\begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+        % content
+    \end{column}
+    \begin{column}{0.48\textwidth}
+        % content
+    \end{column}
+\end{columns}
+```
+
+This will leave `0.04\textwidth` of spacing between the columns. The `[T]` aligns the column content to the top. You can also use `c` for center and `b` for bottom.
+
+### Blocks
+
+Creating a block environment. 
+
+```latex
+\begin{block}{Block Title}
+    % content
+\end{block}
+
+\begin{alertblock}{Block Title}
+    % content
+\end{alertblock}
+
+\begin{exampleblock}{Block Title}
+    % content
+\end{exampleblock}
+```
+
+
 ## Templates
 
 A good theme compilation can be found at: [The Ultimate Beamer Theme List](https://github.com/martinbjeldbak/ultimate-beamer-theme-list)
 
-Here are a few select examples.
+Here are a few select examples:
 
-
-[Metropolis](https://github.com/matze/mtheme)
-
----
-
-[Execushares](https://github.com/hamaluik/Beamer-Theme-Execushares)
-
----
-
-![](https://writelatex.s3.amazonaws.com/published_ver/39692.jpeg?X-Amz-Expires=14400&X-Amz-Date=20241128T133038Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWJBOALPNFPV7PVH5/20241128/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=68013045953bba2c202ba2f41c2fb8b14c0faed1bb03d7578136f088e39af0f9)
-
-[wildcat](https://www.overleaf.com/latex/templates/wildcat/knynymwgrxxj)
-
----
-
-[ant-center-brief](https://www.overleaf.com/latex/templates/ant-center-brief/rhkgyzdnkhhn)
-
----
-
-![](https://writelatex.s3.amazonaws.com/published_ver/40062.jpeg?X-Amz-Expires=14400&X-Amz-Date=20241128T132615Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWJBOALPNFPV7PVH5/20241128/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=afc753ac67a33c1c97627e18176f3c4abcb12567e11c29412757c8f815619462)
-
-[uic-presentation-template](https://www.overleaf.com/latex/templates/uic-presentation-template/dgjbtyvtgqcg)
+- [Metropolis](https://github.com/matze/mtheme)
+- [Execushares](https://github.com/hamaluik/Beamer-Theme-Execushares)
+- [wildcat](https://www.overleaf.com/latex/templates/wildcat/knynymwgrxxj)
+- [ant-center-brief](https://www.overleaf.com/latex/templates/ant-center-brief/rhkgyzdnkhhn)
+- [uic-presentation-template](https://www.overleaf.com/latex/templates/uic-presentation-template/dgjbtyvtgqcg)
