@@ -40,6 +40,10 @@ Overview of several services for a Home Server.
 
 - [Outline](https://www.getoutline.com/)
 
+### Other
+
+- [Dawarich](https://dawarich.app/) - Self-hosted alternative to Google Timeline
+
 
 
 ## Resources
@@ -54,10 +58,12 @@ Overview of several services for a Home Server.
 
 - [Synology arr guide](https://github.com/MathiasFurenes/synology-arr-guide)
 
-- [Workshop How2Homelab ](https://projects.franciscoribeiro.pt/workshops/glua/how2homelab_practical_guide.html)
+- [Workshop How2Homelab](https://projects.franciscoribeiro.pt/workshops/glua/how2homelab_practical_guide.html)
 
 - [Looking for a minimal-fluff guide to first home server setup for technical people](https://www.reddit.com/r/HomeServer/comments/17vcllp/looking_for_a_minimalfluff_guide_to_first_home/)
 
 - [The complete guide to building your personal self hosted server for streaming and ad-blocking](https://www.reddit.com/r/Piracy/comments/pqsomd/the_complete_guide_to_building_your_personal_self/)
 
 - [Techno TIm](https://technotim.live/)
+
+- [TechHutTV Wiki](https://github.com/TechHutTV/homelab)
