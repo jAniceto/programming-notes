@@ -6,6 +6,7 @@ To check status of all containers:
 
 ```bash
 docker ps
+docker ps -a
 ```
 
 Add the `-a` flag to include stopped containers.
@@ -14,6 +15,12 @@ Stop a container:
 
 ```bash
 docker stop container_name
+```
+
+If stopping doesn’t work, killing the container may also sometimes be necessary:
+
+```bash
+docker kill container_name
 ```
 
 Remove a container:
@@ -71,9 +78,43 @@ volumes:
 Both syntax are equivalent.
 
 
-## Set up Docker and Docker Compose
+
+## Docker Compose
 
 See [Set up Docker and Docker Compose](homeserver/setup-docker.md).
+
+
+Docker Compose allows you to define and run multi-container applications with Docker.
+
+To builds, (re)create, start, and attach containers for a service.
+
+```bash
+docker compose up
+docker compose up --build
+docker compose up -d
+```
+
+The `--build` builds images before starting containers. The `-d` flag starts the containers in the background and leaves them running. The `--force-recreate` flag forces Compose to stop and recreate all containers
+
+
+To remove the volumes along with the containers:
+
+```bash
+docker compose down -v
+```
+
+To access the logs:
+
+```bash
+docker compose logs
+```
+
+
+## Updating containers
+
+The basic method for updating a container is to pull a newer version of the container image, remove the container, and then start a new container using the new image version. This is one reason storing data inside volumes is important. It's the only way data can survive this process.
+
+[Watchtower](https://containrrr.dev/watchtower) is a service for keeping containers up to date (runs inside a container). It detects whenever a new version is available and automatically replaces containers with the new version using the same settings they were created with. 
 
 
 
