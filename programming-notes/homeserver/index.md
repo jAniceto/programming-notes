@@ -19,31 +19,45 @@
 
 Overview of several services for a Home Server.
 
+
 ### Dashboard
 
 - [Homepage](https://gethomepage.dev/configs/)
+- [Glance](https://github.com/glanceapp/glance)
 
-### File server
 
+### Files
+
+- [File Browser](https://github.com/filebrowser/filebrowser) and currently [FileBrowser Quantum](https://github.com/gtsteffaniak/filebrowser)
 - [NextCloud](https://nextcloud.com/install/#instructions-server)
 - OwnCloud
+- [Syncthing](https://syncthing.net/)
+
+
+### Media
+
+- [audiobookshelf](https://www.audiobookshelf.org/)
+
 
 ### Reverse proxy
 
 - [Caddy](https://caddyserver.com/)
 
+
 ### Server monitoring
 
 - [Uptime Kuma](https://uptimekuma.org/)
+
 
 ### Documentation and knowledge base
 
 - [Outline](https://www.getoutline.com/)
 
+
 ### Other
 
 - [Dawarich](https://dawarich.app/) - Self-hosted alternative to Google Timeline
-
+- [Joplin](https://joplinapp.org) - Note-taking app
 
 
 ## Resources
