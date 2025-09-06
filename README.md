@@ -75,7 +75,7 @@ Below is a list of the most used pages.
 - [Sticky footer](/html-css/sticky-footer.md)
 - [Simple CSS reset](/html-css/css-reset.md)
 
-## PYTHON
+
 
 
 
