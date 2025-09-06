@@ -218,8 +218,68 @@ DATABASES = {
  }
 ```
 
+Finally, we can run the `docker-compose.yaml` file:
+
+```bash
+docker-compose up
+```
 
 
+## Executing commands
+
+After something like creating models, you may want to run migrations:
+
+```bash
+docker exec django_app python manage.py makemigrations
+docker exec django_app python manage.py migrate
+```
+
+And to access the PostgreSQL shell:
+
+```bash
+docker exec -ti django_app postgres_db psql -U username -d demo_db
+```
+
+or to access the Django shell:
+
+```bash
+docker exec -ti django_app manage.py shell
+```
+
+
+## Creating an entrypoint
+
+You may want to create an entrypoint.
+
+In the same level as the `manage.py` file create a `entrypoint.sh` file:
+
+```
+#!/bin/sh
+
+echo "Running migrations..."
+python manage.py migrate
+
+echo "Starting server..."
+python manage.py runserver 0.0.0.0:8000
+```
+
+Then:
+
+```bash
+chmod +x entrypoint.sh
+```
+
+You can now go to your `Dockerfile` and change the final line:
+
+```
+# ...
+
+CMD ["./entrypoint.sh"]
+```
+
+```bash
+docker-compose up
+```
 
 
 ## References
