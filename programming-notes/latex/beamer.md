@@ -38,6 +38,29 @@ Creating a block environment.
 ```
 
 
+## Formating
+
+Add vertical space between elements:
+
+```latex
+\vspace{0.5cm}
+```
+
+Font size:
+
+```latex
+\tiny This is tiny font size
+\scriptsize This is scriptsize font size
+\footnotesize This is footnotesize font size
+\small This is small font size
+\normalsize This is normalsize font size
+\large This is large font size
+\Large This is Large font size
+\LARGE This is LARGE font size
+\huge This is huge font size
+\Huge This is Huge font size
+```
+
 ## Templates
 
 A good theme compilation can be found at: [The Ultimate Beamer Theme List](https://github.com/martinbjeldbak/ultimate-beamer-theme-list)
