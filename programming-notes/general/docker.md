@@ -53,6 +53,12 @@ To restart a container:
 docker restart container_name
 ```
 
+Check container logs:
+
+```bash
+docker logs container_name
+```
+
 
 ## Types of Docker storage
 
