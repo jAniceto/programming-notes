@@ -243,7 +243,7 @@ docker exec -ti django_app postgres_db psql -U username -d demo_db
 or to access the Django shell:
 
 ```bash
-docker exec -ti django_app manage.py shell
+docker exec -ti django_app python manage.py shell
 ```
 
 
