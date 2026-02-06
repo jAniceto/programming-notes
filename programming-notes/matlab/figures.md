@@ -6,6 +6,19 @@ Hierarchy of Figure objects.
 
 
 
+## Commonly usefull plot options
+
+Take the following example:
+
+```matlab
+plot(x, y, '-', DisplayName='blabla', HandleVisibility='off')
+```
+
+ - `DisplayName`: Label for the data. Calling `legend()` will create thee legend using the `DisplayName`.
+ - `HandleVisibility`: If `off` the series will not appear in the legend.
+
+
+
 ## Reset color order
 
 ```matlab
