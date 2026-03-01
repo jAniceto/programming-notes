@@ -24,6 +24,7 @@ Below is a list of the most used pages.
 ## LINUX
 - [Set `$PATH` variable in Ubuntu](programming-notes/linux/path.md)
 - [Linux Crontab](programming-notes/linux/crontab.md)
+- [Mount drives](programming-notes/linux/mount-drives.md)
 
 ## LATEX
 - [Working with figures](programming-notes/latex/figures.md)
