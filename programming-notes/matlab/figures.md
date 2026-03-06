@@ -18,8 +18,20 @@ plot(x, y, '-', DisplayName='blabla', HandleVisibility='off')
  - `HandleVisibility`: If `off` the series will not appear in the legend.
 
 
+## Select a different color theme
+
+Before ploting:
+
+```matlab
+set(groot,'defaultAxesColorOrder',turbo(7));
+```
+
+A list of built-in themes [here](https://www.mathworks.com/help/matlab/ref/colormap.html#buc3wsn-6).
+
 
 ## Reset color order
+
+Reset color order so MATLAB goes back to the initial color. Good when trying to match colors (e.g., of points and lines) in same plot.
 
 ```matlab
 set(gca,'ColorOrderIndex',1)  % reset color order for plot
