@@ -120,6 +120,19 @@ docker compose logs
 
 The basic method for updating a container is to pull a newer version of the container image, remove the container, and then start a new container using the new image version. This is one reason storing data inside volumes is important. It's the only way data can survive this process.
 
+If using a compose file you can:
+
+```bash
+docker compose pull
+docker compose up -d
+```
+
+After updating, you might want to remove unsued images:
+
+```bash
+docker image prune
+```
+
 [Watchtower](https://containrrr.dev/watchtower) is a service for keeping containers up to date (runs inside a container). It detects whenever a new version is available and automatically replaces containers with the new version using the same settings they were created with. 
 
 
