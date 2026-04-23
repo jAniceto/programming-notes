@@ -151,3 +151,42 @@ with plt.style.context('science'):
     fig.savefig('fig1.pdf', dpi=300, bbox_inches='tight')  # Save figure in pdf
 ```
 
+## Sizing images correctly
+
+If a journal's style guide tells the widths of the columns, you can use those values when generating your figure. If it doesn't tell the width, you can use the `printlen` LaTeX package to print it out inside your document:
+
+```latex
+...
+% In the preamble
+\usepackage{printlen}
+...
+% In a figure environment
+  \begin{center}
+    \includegraphics[width=\columnwidth]{example_fig}
+  \end{center}
+  \caption{%
+    \label{fig:example_fig}
+    In this figure caption, I can see that the width of
+    one column is \printlength{\columnwidth}.}
+...
+```
+
+ Once we find the correct width, we use it in our python script:
+
+```python
+pt = 1./72.27  # 72.27 points to an inch
+
+jour_sizes = {
+    "PRD": {"onecol": 246*pt, "twocol": 510*pt},
+    "CQG": {"onecol": 374*pt},  # CQG is only one column
+    # Add more journals below. Can add more properties to each journal
+}
+
+width = jour_sizes["PRD"]["onecol"]
+
+# Our figure's aspect ratio using the golden ratio
+golden = (1 + 5 ** 0.5) / 2
+my_height = my_width/golden
+
+fig = plt.figure(figsize=(my_width,  my_height))
+```
