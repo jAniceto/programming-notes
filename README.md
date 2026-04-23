@@ -6,18 +6,19 @@ A collection of programming notes, snippets and examples. By José Aniceto.
 
 Below is a list of the most used pages.
 
-## GENERAL
+## General
 - [Create a Windows batch script](programming-notes/general/batch-script.md)
 - [Hiding Passwords and Secret Keys in Environment Variables](programming-notes/general/os-env-vars.md)
 - [Windows terminal](programming-notes/general/windows-terminal.md)
 - [Docker](programming-notes/general/docker.md)
 
 ## Python
+- [Anaconda](programming-notes/python/anaconda.md)
 - [Working with uv](programming-notes/python/uv.md)
 - [Simple Machine Learning workflow](programming-notes/python/ml-workflows.md)
 - [Scientific quality figures](programming-notes/python/scientific-figures.md)
 
-## LINUX
+## Linux
 - [Set `$PATH` variable in Ubuntu](programming-notes/linux/path.md)
 - [Linux Crontab](programming-notes/linux/crontab.md)
 - [Mount drives](programming-notes/linux/mount-drives.md)
@@ -26,7 +27,7 @@ Below is a list of the most used pages.
 - [Figures in MATLAB](programming-notes/matlab/figures.md)
 - [Preparing figures for publication](programming-notes/matlab/figures-publication.md)
 
-## LATEX
+## LaTeX
 - [Working with figures](programming-notes/latex/figures.md)
 - [Create LaTeX presentations with Beamer](programming-notes/latex/beamer.md)
 - [Derivatives](programming-notes/latex/derivatives.md)
