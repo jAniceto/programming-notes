@@ -2,6 +2,8 @@
 
 A collection of programming notes, snippets and examples. By José Aniceto.
     
+[Click here to check the website](https://janiceto.github.io/programming-notes/)
+
 Below is a list of the most used pages.
 
 ## General
@@ -13,6 +15,7 @@ Below is a list of the most used pages.
 ## Python
 - [Anaconda](programming-notes/python/anaconda.md)
 - [Working with uv](programming-notes/python/uv.md)
+- [Ruff linter and formatter](programming-notes/python/ruff.md)
 - [Simple Machine Learning workflow](programming-notes/python/ml-workflows.md)
 - [Scientific quality figures](programming-notes/python/scientific-figures.md)
 
