@@ -7,31 +7,31 @@ A collection of programming notes, snippets and examples. By José Aniceto.
 Below is a list of the most used pages.
 
 ## General
-- [Create a Windows batch script](programming-notes/general/batch-script.md)
-- [Hiding Passwords and Secret Keys in Environment Variables](programming-notes/general/os-env-vars.md)
-- [Windows terminal](programming-notes/general/windows-terminal.md)
-- [Docker](programming-notes/general/docker.md)
+- [Create a Windows batch script](general/batch-script)
+- [Hiding Passwords and Secret Keys in Environment Variables](general/os-env-vars)
+- [Windows terminal](general/windows-terminal)
+- [Docker](general/docker)
 
 ## Python
-- [Anaconda](programming-notes/python/anaconda.md)
-- [Working with uv](programming-notes/python/uv.md)
-- [Ruff linter and formatter](programming-notes/python/ruff.md)
-- [Simple Machine Learning workflow](programming-notes/python/ml-workflows.md)
-- [Scientific quality figures](programming-notes/python/scientific-figures.md)
+- [Anaconda](python/anaconda)
+- [Working with uv](python/uv)
+- [Ruff linter and formatter](python/ruff)
+- [Simple Machine Learning workflow](python/ml-workflows)
+- [Scientific quality figures](python/scientific-figures)
 
 ## Linux
-- [Set `$PATH` variable in Ubuntu](programming-notes/linux/path.md)
-- [Linux Crontab](programming-notes/linux/crontab.md)
-- [Mount drives](programming-notes/linux/mount-drives.md)
+- [Set `$PATH` variable in Ubuntu](linux/path)
+- [Linux Crontab](linux/crontab)
+- [Mount drives](linux/mount-drives)
 
 ## MATLAB
-- [Figures in MATLAB](programming-notes/matlab/figures.md)
-- [Preparing figures for publication](programming-notes/matlab/figures-publication.md)
+- [Figures in MATLAB](matlab/figures)
+- [Preparing figures for publication](matlab/figures-publication)
 
 ## LaTeX
-- [Working with figures](programming-notes/latex/figures.md)
-- [Create LaTeX presentations with Beamer](programming-notes/latex/beamer.md)
-- [Derivatives](programming-notes/latex/derivatives.md)
+- [Working with figures](latex/figures)
+- [Create LaTeX presentations with Beamer](latex/beamer)
+- [Derivatives](latex/derivatives)
 
 
 
