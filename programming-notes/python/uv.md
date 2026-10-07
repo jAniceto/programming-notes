@@ -41,6 +41,8 @@ $ cd project_name
 $ uv init
 ```
 
+By default `uv` starts an application project, with a `src/<project_name>/` structure. See more about [types of projects](#types-of-projects) below.
+
 When starting a new project you can specify the Python version using:
 
 ```
@@ -49,7 +51,7 @@ $ uv init project_name --python 3.11
 
 ### Types of projects
 
-**Application** projects are suitable for web servers, scripts, and command-line interfaces.
+**Application** projects are suitable for web servers, scripts, and command-line interfaces. This is the default project type (corresponds to the `--app` flag).
 
 ```
 uv init example-app
@@ -58,38 +60,18 @@ uv init example-app --app
 
 ```
 example-app/
-├─ main.py
-├─ pyproject.toml  # [project] metadata only, no [build-system]
+├─ .python-version
+├─ pyproject.toml  # includes [build-system]
 ├─ README.md
-└─ .python-version
+└─ src/
+   └─ example-app/
+      └─ __init__.py
 ```
 
-The `pyproject.toml` includes basic metadata. It does not include a build system, it is not a package and will not be installed into the environment
-
-**Packaged application** projects are suitable if you require a package, for instance, a command-line interface that will be published to PyPI or if you want to define tests in a dedicated directory.
-
-```
-uv init --package example-pkg
-```
-
-```
-example-pkg/
-├─ src/
-│  └─ example_pkg/
-│     ├─ __init__.py
-│     ├─ cli.py   # CLI entrypoint code
-│     └─ core.py
-├─ tests/
-│  └─ test.py
-├─ pyproject.toml  # [project] + [project.scripts] + [build-system]
-├─ README.md
-└─ .python-version
-```
-
-The source code is moved into a src directory with a module directory and an `__init__.py` file. A build system is defined, so the project will be installed into the environment.
+A build system is defined in `pyproject.toml`, so the project will be installed into the environment
 
 
-**Library** projects provide functions and objects for other projects to consume. Libraries are intended to be built and distributed, e.g., by uploading them to PyPI. Using `--lib` implies `--package`. Libraries always require a packaged project.
+**Library** projects provide functions and objects for other projects to consume. Libraries are intended to be built and distributed, e.g., by uploading them to PyPI.
 
 ```
 uv init --lib example-lib
@@ -97,18 +79,35 @@ uv init --lib example-lib
 
 ```
 example-lib/
-├─ src/
-│  └─ example_lib/
-│     ├─ __init__.py  # library package root
-│     └─ module.py # your library code
-├─ tests/
-│  └─ test.py
-├─ pyproject.toml  # [project] + [build-system]
+├─ .python-version
+├─ pyproject.toml  # includes [build-system]
 ├─ README.md
-└─ .python-version
+└─ src/
+   └─ example-lib/
+      ├─ py.typed
+      └─ module.py # your library code
+      └─ __init__.py
 ```
 
 As with a packaged application, a `src` layout is used. A `py.typed` marker is included to indicate to consumers that types can be read from the library. A `src` layout ensures that the library is isolated from any python invocations in the project root and that distributed library code is well separated from the rest of the project source. A build system is defined, so the project will be installed into the environment.
+
+
+**No package** projects disable using a build system.
+
+```
+uv init --no-package example-app
+```
+
+```
+example-app/
+├─ .python-version
+├─ pyproject.toml  # no [build-system]
+├─ README.md
+└─ main.py
+```
+
+More info [here](https://docs.astral.sh/uv/concepts/projects/init/).
+
 
 
 ## Installing packages
